@@ -217,9 +217,11 @@ $$
 s^k_i = \prod_{j=i}^{i+k}\frac{P(A_j\mid\beta\text{-plaat})}{P(A_j)}\,.
 $$
 
+![Illustratie van het glijdend venster over een sequentie.](../figuren/glijdendvenster.png)
+
 In elke stap (voor elk glijdend venster) maken we een voorspelling die we later visueel kunnen voorstellen in een plot.
 
-Eerder hebben we gesteld dat we een regio als een β-plaat klassificiëren indien
+Eerder hebben we gesteld dat we een regio als een β-plaat classificeren indien
 
 $$
 P(\beta\text{-plaat}\mid \text{eiwitsequentie}) > 0.5\,.
