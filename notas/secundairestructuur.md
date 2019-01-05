@@ -277,6 +277,7 @@ Beide foute voorspellingen zijn nauw verbonden met de keuze van de drempelwaarde
 ### Stappenplan
 
 Concreet zullen we de computer dus instructeren om het volgende te doen:
+
 1. Startend bij het begin van een eiwitsequentie maakt de computer een eerste voorspelling voor het stukje van de sequentie dat zich in het glijdend venster bevindt. Dit doet hij door Naïeve Bayes toe te passen en het stukje sequentie als ß-plaat te voorspellen wanneer de berekende kans groter is dan de vooropgestelde drempelwaarde θ.
 2. Daarna schuift de computer het glijdend venster één aminozuur op in de sequentie en maakt een nieuwe voorspelling voor dit glijdend venster. Dit proces herhaalt de computer tot het einde van de eiwitsequentie bereikt is.
 3. Voor elk glijdend venster slaat de computer de voorspelling op, zodat die later visueel voorgesteld kan worden.
@@ -285,7 +286,10 @@ Concreet zullen we de computer dus instructeren om het volgende te doen:
 
 
 - [ ] *voeg exacte locatie toe waar ze de notebook kunnen vinden*
+- [ ] maak oefeningen
 
 ## En verder...
 
-De concepten die je in deze praktische sessie geleerd hebt zijn eenvoudig en kunnen zeer nuttig zijn in de praktijk, maar er bestaan ook veel complexere methoden om eiwitten te bestuderen. Daarenboven staat onderzoek in de bio-informatica nooit stil en zijn er zelfs grote bedrijven in geïnteresseerd, net omdat computers ons veel kunnen bijleren over biologie. Een zeer recent voorbeeld is Deepmind, een bedrijf dat onder Google werkt. Recent werk van hen gebruikt complexe artificiële intelligentie om de tertiaire structuur van een eiwit accuraat te voorspellen. Hun ontwikkelde methode [AlphaFold](https://deepmind.com/blog/alphafold/) is de eerste in zijn soort, maar zal waarschijnlijk niet de laatste zijn. Ook deze complexe methoden zijn gebasseerd op wiskundige concepten, en het is net daarom dat bio-informatica zo krachtig kan zijn. Als je dus slechts een ding onthoudt van deze praktische sessie moet het wel het volgende zijn: wiskunde zit écht overal.
+De concepten die je in deze praktische sessie geleerd hebt zijn eenvoudig en kunnen zeer nuttig zijn in de praktijk, maar er bestaan ook veel complexere methoden om eiwitten te bestuderen. Misschien vind je onze methode van het glijdend venster nogal onelegant. Een veel krachtigere methode om secundaire structuren te bepalen is via *verborgen Markov ketens* (Engels: Hidden Markov Chains) die op een slimme manier eiwit- en DNA-sequenties kunnen annoteren.
+
+Daarenboven staat onderzoek in de bio-informatica nooit stil en zijn er zelfs grote bedrijven in geïnteresseerd, net omdat computers ons veel kunnen bijleren over biologie. Een zeer recent voorbeeld is Deepmind, een bedrijf dat onder Google werkt. Recent werk van hen gebruikt complexe artificiële intelligentie om de tertiaire structuur van een eiwit accuraat te voorspellen. Hun ontwikkelde methode [AlphaFold](https://deepmind.com/blog/alphafold/) is de eerste in zijn soort, maar zal waarschijnlijk niet de laatste zijn. Net zoals we in dit project gedaan hebben, werd hierbij een model gefit aan een databank met geannoteerde voorbeelden. Wij hebben echter met een model gewerkt met een twintigtal parameters, in de praktijk zijn het er miljoenen of miljarden.
