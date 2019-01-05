@@ -60,11 +60,9 @@ $$
 
 ![Voorstelling van de basisregels kans kansrekening. Kansen voor beurtenissen worden voorsteld door niet-negatieve waarden die samen to 1 sommeren. Onderaan een illustratie van de rekenregels voor kansen.](../figuren/probabiliteit.png)
 
-> **Oefening 1:** Je wordt op een nacht rillend van de koorts wakker. Je geeft over en hebt overal jeuk. Er zijn twee ziekten met deze symptomen: blauwkoorts en groenzucht. De ene ziekte komt vaker voor dan de andere: wie ziek is heeft in 75% van de gevallen last van blauwkoorts, terwijl groenzucht slechts in 25% van de gevallen voorkomt. Zoals de naam doet vermoeden, hebben deze ziekten nog een ander symptoom van chromatische aard. Mensen met blauwkoorts krijgen doorgaans een blauw gezicht en deze met groenzucht een groen gezicht. **In 10% van de gevallen is het echter andersom!** Je spoedt je naar de spiegel en iemand met een groen gezicht staart terug. Welke ziekte heb je? Bekijk onderstaande figuur en vul de ontbrekende kansen in de tabel verder aan.
+> **Oefening 1:** Je wordt op een nacht rillend van de koorts wakker. Je geeft over en hebt overal jeuk. Er zijn twee ziekten met deze symptomen: blauwkoorts en groenzucht. De ene ziekte komt vaker voor dan de andere: wie ziek is heeft in 80% van de gevallen last van blauwkoorts, terwijl groenzucht slechts in 20% van de gevallen voorkomt. Zoals de naam doet vermoeden, hebben deze ziekten nog een ander symptoom van chromatische aard. Mensen met blauwkoorts krijgen doorgaans een blauw gezicht en deze met groenzucht een groen gezicht. **In 20% van de gevallen krijgt een persoon met blauwkoorts een groen gezicht en in 30% van de gevallen krijgt iemand met groenkoorts een blauw gezicht!** Je spoedt je naar de spiegel en iemand met een groen gezicht staart terug. Welke ziekte heb je? Bekijk onderstaande figuur en vul de ontbrekende kansen in de tabel verder aan.
 
-- [ ] pas tekening en oefening aan!
-
-![Twintig individuen met blauwkoorts en groenzucht. Sommigen hebben een blauwe gezichtskleur, anderen een groene.](https://i.imgur.com/zj4Tdhc.png)
+![Honderd individuen met blauwkoorts en groenzucht. Sommigen hebben een blauwe gezichtskleur, anderen een groene.](../figuren/ziektebayes.png)
 
 
 $$
@@ -73,10 +71,10 @@ $$
 
 <br>
 
-  | ziekte     | kans blauw gezicht   | kans groen gezicht |
-| :------------- | :------------- | :-|
-| blauwkoorts      |   ...    | ... |
-| groenzucht   |  ... | ... |
+| ziekte      | kans blauw gezicht | kans groen gezicht |
+|:------------|:-------------------|--------------------|
+| blauwkoorts | ...                | ...                |
+| groenzucht  | ...                | ...                |
 
 <br>
 
@@ -90,9 +88,9 @@ $$
 
 ### Naïeve Bayes
 
-- [ ] TODO: knip logaritmes weg
-- [ ] Orden tabel alfabetish
-- [ ] Vul tabel in.
+- [x] TODO: knip logaritmes weg
+- [ ] Orden tabel alfabetisch
+- [ ] Vul tabel in met dingen de waarden die niet nodig zijn voor de oefening
 
 Nu we de regel van Bayes intuïtief begrijpen, kunnen we deze toepassen voor het voorspellen van ß-platen in eiwitten. De *naïeve Bayes*-methode kan hiervoor gebruikt worden. Deze methode maakt gebruik van de regel van Bayes om voorspellingen te maken o.b.v. een gegeven input. In dit project willen we een ß-plaat voorspellen o.b.v. de eiwitsequentie (de input).
 
@@ -127,34 +125,19 @@ $$
 = \prod_{i=1}^n P(A_i\mid\beta\text{-plaat})
 $$
 
-We kunnen de berekeningen vereenvoudigen door de logaritme van de kansen te nemen. Dit verandert het product in een som[^logaritme]:
-
-[^logaritme]: De logaritme met basis 10 wordt gedefineerd als $$\log_{10}x=y \Longleftrightarrow 10^y=x\,.$$ Herinner je dat voor positieve getallen $a$ en $b$ geldt dat $\log(ab)=\log(a) + \log(b)$ en $\log(a/b)=\log(a) - \log(b)$. Wetenschappers gebruiken logaritmes vaak om vermenigvuldigingen in sommen om te zetten. De logaritmische transformatie heeft ook als voordeel dat de heel kleine getallen die je bekomt door de vermenigvuldiging in negatieve waarden omgezet worden.
-
-$$
-\log_{10}(P(\text{eiwitsequentie} \mid \beta\text{-plaat})) \approx \sum_{i=1}^n \log_{10} (P(A_i\mid\beta\text{-plaat}))
-$$
-
-en
-
-$$
-\log_{10}(P(\text{eiwitsequentie})) \approx \sum_{i=1}^n \log_{10} (P(A_i))\,.
-$$
-
-
 Uiteindelijk kunnen we de regel van Bayes dus als volgt noteren om ß-platen te voorspellen:
 
 $$
-\log_{10}(P( \beta\text{-plaat} \mid \text{eiwitsequentie} )) \approx \sum_{i=1}^n \log_{10} (P(A_i\mid\beta\text{-plaat})) + \log_{10}(P(\beta\text{-plaat}))- \sum_{i=1}^n \log_{10} (P(A_i))\,.
+P( \beta\text{-plaat} \mid \text{eiwitsequentie} ) \approx P(\beta\text{-plaat}) \prod_{i=1}^n \frac{P(A_i\mid\beta\text{-plaat})}{P(A_i)}\,.
 $$
 
-Laat ons dit nog even herschrijven als
+We kunnen de kans op een $\beta$-plaat gegeven een sequentie dus berekenen aan de hand van termen die we makkelijk uit data kunnen schatten door te tellen! De kans dat het aminozuur voorkomt in een $\beta$-plaat gedeeld door de kans dat dat aminozuur wordt de **odds** genoemd[^odds].
 
-$$
-\log_{10}(P( \beta\text{-plaat} \mid \text{eiwitsequentie} )) \approx \log_{10}(P(\beta\text{-plaat})) +\sum_{i=1}^n \log_{10}\left(\frac{P(A_i\mid \beta\text{-plaat})}{P(A_i)}\right)\,.
-$$
+> **Vraag:** Wanneer zou je stellen dat een regio waarschijnlijk een $\beta$-plaat is?
 
-We kunnen de logaritme van de kans op een $\beta$-plaat dus schrijven als een som van termen voor het aminozuur op iedere positie $i$, namelijk de logaritme van de kans dat het aminozuur voorkomt in een $\beta$-plaat gedeeld door de kans dat dat aminozuur überhaubt voorkomt! Deze term wordt de **log-odds** genoemd[^odds].
+Hoewel we dit hier niet zullen doen, is het misschien ook wel belangrijk te vermelden dat in de praktijk de logaritme[^logaritme] van deze kansen genomen wordt om de berekeningen te vereenvoudigen.
+
+[^logaritme]: De logaritme met basis 10 wordt gedefineerd als $$\log_{10}x=y \Longleftrightarrow 10^y=x\,.$$ Herinner je dat voor positieve getallen $a$ en $b$ geldt dat $\log(ab)=\log(a) + \log(b)$ en $\log(a/b)=\log(a) - \log(b)$. Wetenschappers gebruiken logaritmes vaak om vermenigvuldigingen in sommen om te zetten. De logaritmische transformatie heeft ook als voordeel dat de heel kleine getallen die je bekomt door de vermenigvuldiging in negatieve waarden omgezet worden.
 
 [^odds]: Sorry, er is geen Nederlandse term voor...
 
@@ -169,8 +152,9 @@ Nu kunnen we de bovenstaande formule gebruiken om voorspellingen te maken voor e
 
 > **Oefening 2:** Onderstaande tabel bevat empirisch bepaalde aminozuur (AZ) aantallen uit staart eiwitten van fagen die we zullen gebruiken om voorspellingen te maken. Op basis van de aantallen en het totaal aantal AZ kan je de ontbrekende kansen in de tabel berekenen, alsook de kans op een $\beta$-plaat. Deze kansen heb je nodig om de formule uit te werken.
 
+<br>
 
-|  AZ  | totaal aantal | $\mathbf{P(A_i)}$ | aantal in $\beta$-plaat | $\mathbf{P(A_i\mid\beta\text{-plaat})}$ | $\mathbf{\log_{10}\left(\frac{P(A_i\mid \beta\text{-plaat})}{P(A_i)}\right)}$ |
+|  AZ  | totaal aantal | $\mathbf{P(A_i)}$ | aantal in $\beta$-plaat | $\mathbf{P(A_i\mid\beta\text{-plaat})}$ | $\mathbf{\frac{P(A_i\mid \beta\text{-plaat})}{P(A_i)}}$ |
 |:---|:----|:----------|:-----|:-----|:----|
 | W  |  64 | ... | 21 | ... | ... |
 | C  |  56 | ... | 23 | ...| ... |
@@ -202,17 +186,16 @@ $$
 
 > **Oefening 3:** Volgende korte sequentie is een klein deeltje van het P22 staarteiwit: 'YSIEADKK'. Experimenteel werd reeds bepaald dat dit geen $\beta$-plaat is, maar een $\alpha$-helix. Bereken nu via de laatst geziene formule de kans dat die sequentie een $\beta$-plaat bevat (deze kans zou klein moeten zijn). Maak gebruik van de tabel met probabiliteiten die je net hebt ingevuld.
 
-|$i$| $A_i$ | $\log_{10}\left(\frac{P(A_i\mid \beta\text{-plaat})}{P(A_i)}\right)$ |
-|:-|:--|:---|
-|1|...|...|
-|2|...|...|
-|3|...|...|
-|4|...|...|
-|5|...|...|
-|6|...|...|
-|7|...|...|
-|8|...|...|
-
+| $i$ | $A_i$ | $\frac{P(A_i\mid \beta\text{-plaat})}{P(A_i)}$ |
+|:----|:------|:---------------------------------------------------------------------|
+| 1   | ...   | ...                                                                  |
+| 2   | ...   | ...                                                                  |
+| 3   | ...   | ...                                                                  |
+| 4   | ...   | ...                                                                  |
+| 5   | ...   | ...                                                                  |
+| 6   | ...   | ...                                                                  |
+| 7   | ...   | ...                                                                  |
+| 8   | ...   | ...                                                                  |
 $$
 \log_{10}(P(\beta\text{-plaat}\mid\text{eiwitsequentie}))\approx \ldots
 $$
@@ -231,24 +214,25 @@ $$
 In het computerdeel van dit practicum gaan we nu de naïeve Bayes methode toepassen op het volledige P22 eiwit dat we eerder besproken hebben. Het doel is om te ontdekken waar de $\beta$-platen zich in het eiwit bevinden. We zullen $\beta$-platen voorspellen met behulp van de naïeve Bayes methode en de voorspellingen (i.e. de kansen) dan voorstellen via een grafiek. Hiervoor bewegen we aminozuur voor aminozuur over het eiwit via een *glijdend venster* van lengte $k$. In dit glijdend venster kijken we naar de aminozuren op elke positie van $i$ tot $i+k$ en tellen alle odds op voor elk aminzozuur. We noteren dit als
 
 $$
-s^k_i = \sum_{j=i}^{i+k}\log_{10}\left(\frac{P(A_i\mid\beta\text{-plaat})}{P(A_i)}\right)\,.
+s^k_i = \prod_{j=i}^{i+k}\frac{P(A_j\mid\beta\text{-plaat})}{P(A_j)}\,.
 $$
 
 In elke stap (voor elk glijdend venster) maken we een voorspelling die we later visueel kunnen voorstellen in een plot.
 
-Daarenboven kunnen we onze voorspellingen nog vereenvoudigen. De kans op een bepaalde eiwitsequentie $P(\text{eiwitsequentie})$ is onafhankelijk van de kans op een $\beta$-plaat $P(\beta\text{-plaat})$. Hun quotiënt vormt een constante term die we hier kunnen wegdelen uit de regel van Bayes. Hierdoor kunnen we stellen dat een sequentie voorspeld wordt als een $\beta$-plaat als:
+Eerder hebben we gesteld dat we een regio als een β-plaat klassificiëren indien
 
 $$
-\log_{10}(P(\text{eiwitsequentie}\mid\beta\text{-plaat})) > θ
+P(\beta\text{-plaat}\mid \text{eiwitsequentie}) > 0.5\,.
 $$
 
-of, equivalent, als
+We willen dit echter veralgemenen zodat we strenger of minder streng kunnen zijn om secundaire structuren te vinden:
 
 $$
-P(\text{eiwitsequentie}\mid\beta\text{-plaat}) > 10^θ
+P(\beta\text{-plaat}\mid \text{eiwitsequentie}) > θ\,.
 $$
 
 Hier is $\theta$ een zorgvuldig gekozen *drempelwaarde* (Engels: threshold). De keuze van θ heeft gevolgen voor de correctheid van onze voorspellingen:
+
 - als we θ te hoog kiezen is onze drempelwaarde te streng en zullen we dus bepaalde regio's niet als $\beta$-platen voorspellen terwijl dit eigenlijk wel $\beta$-platen zijn.
 - als we θ te laag kiezen zijn we niet streng genoeg. We zullen dus regio's voorspellen als $\beta$-plaat dat eigenlijk geen $\beta$-plaat zijn.
 
@@ -265,11 +249,10 @@ Om inzicht te krijgen in hoe goed of hoe slecht een model voorspellingen maakt, 
 
 De correcte en foute voorspellingen kunnen we eenvoudig voorstellen in een compacte tabel:
 
-|                                  | **Voorspeld als $\beta$-plaat** | **Voorspeld als geen $\beta$-plaat** |
-|:-------------------------------- |:------------------------- |:------------------------------ |
-| **Regio is deel van $\beta$-plaat**      | echt positief             | vals negatief                  |
-| **Regio is geen deel van $\beta$-plaat** | vals positief             | echt negatief                  |
-
+|                                          | **Voorspeld als $\beta$-plaat** | **Voorspeld als geen $\beta$-plaat** |
+|:-----------------------------------------|:--------------------------------|:-------------------------------------|
+| **Regio is deel van $\beta$-plaat**      | echt positief                   | vals negatief                        |
+| **Regio is geen deel van $\beta$-plaat** | vals positief                   | echt negatief                        |
 <br>
 
 Beide foute voorspellingen zijn nauw verbonden met de keuze van de drempelwaarde θ, alsook de grootte van het glijdend venster. In een laatste stap zullen we daarom de drempelwaarde θ en de grootte van het glijdend venster manueel aanpassen en het effect bestuderen op het aantal foute voorspellingen. Op die manier kunnen we θ en de grootte van het venster optimaal kiezen, om de foute voorspellingen tot een minimum te beperken.
