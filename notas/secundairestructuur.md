@@ -1,7 +1,7 @@
 
 # Eiwitten beter begrijpen met kansberekening
 
-- [ ]==abstract==
+- [ ] ==abstract==
 
 [toc]
 
@@ -9,37 +9,33 @@
 
 ### De wereld van eiwitten en hun opbouw
 
-Eiwitten vormen een van de meest belangrijke klassen van biologische moleculen. Waar DNA een grotendeels passieve drager is van informatie, vervullen eiwitten vaak een meer actieve rol. Zo zijn eiwitten essentieel voor zowat alle biologische processen: ze staan in voor het verteren van voedsel, zorgen voor detoxificatie, geven informatie door, maken beweging mogelijk en nog veel meer. Ze vormen een fundamenteel onderdeel van elk biologisch organisme.
+Eiwitten vormen één van de meest belangrijke klassen van biologische moleculen. Waar DNA een grotendeels passieve drager is van informatie, vervullen eiwitten vaak een meer actieve rol. Zo zijn eiwitten essentieel voor zowat alle biologische processen: ze staan in voor het verteren van voedsel, zorgen voor detoxificatie, geven informatie door, maken beweging mogelijk en nog veel meer. Ze vormen een fundamenteel onderdeel van elk levend organisme.
 
-De opbouw van een eiwit is relatief simpel. Net zoals DNA is een eiwit een lange streng van meer eenvoudige moleculen. Voor de meeste organismen bestaan eiwitten uit een specifieke opeenvolging van 20 mogelijke *aminozuren*, elk voorgesteld door een hoofdletter. Deze aminozuren verschillen in hun grootte, lading en flexibiliteit. De opvolging van deze aminozuren wordt ook wel de *primaire structuur* van een eiwit genoemd. Deze primaire structuur bepaalt hoe het eiwit zich verder zal opvouwen en legt de biologische functie van een eiwit vast.
+De opbouw van een eiwit is relatief simpel. Net zoals DNA is een eiwit een *polymeer*: een lange streng van meer eenvoudige moleculen. Voor de meeste organismen bestaan eiwitten uit een specifieke opeenvolging van 20 mogelijke *aminozuren*, elk voorgesteld door een hoofdletter. Deze aminozuren verschillen in hun grootte, lading en flexibiliteit. De opvolging van deze aminozuren wordt ook wel de *primaire structuur* van een eiwit genoemd. Deze primaire structuur bepaalt hoe het eiwit zich verder zal opvouwen en legt de biologische functie van een eiwit vast.
 
-Uit de primaire structuur van eiwitten volgt de *secundaire structuur*. Deze structuren onstaan door waterstofbruggen (niet-covente bindingen tussen vrije waterstoffen en hydroxylgroepen) tussen naburige aminozuren. De belangrijkste secundaire structuren zijn *$\alpha$-helices* en $\beta$-platen (Engels: $\beta$-sheets). Gegeven dat deze secundaire structuur enkel door de primaire structuur bepaald wordt, kunnen we wiskunde gebruiken om de secundaire structuur te voorspellen[^structuur].
+Uit de primaire structuur van eiwitten volgt de *secundaire structuur*. Deze structuren onstaan door waterstofbruggen (niet-covente bindingen tussen vrije waterstoffen en hydroxylgroepen) tussen naburige aminozuren. De belangrijkste secundaire structuren zijn *$\alpha$-helices* en $*\beta$-platen* (Engels: $\beta$-sheets). Gegeven dat deze secundaire structuur enkel door de primaire structuur bepaald wordt, kunnen we wiskunde gebruiken om de secundaire structuur te voorspellen[^structuur].
 
 [^structuur]: Naast de primaire en secundaire structuur hebben eiwitten doorgaans ook en *tertiaire* en *quaternaire* structuur. De tertiaire structuur is de globale opvouwing van het eiwit en is veel (veeeeeeeeel) moeilijker om computationeel te bepalen. De quaternaire structuur omvat hoe verschillende eiwitten samen een groter complex vormen.
 
-![(boven) Eiwitsequenties vormen secundaire structuren via niet-covalente waterstofbindingen. (onder) Een eiwit is slechts een aaneenschakeling van aminozuren die zich zelfstandig opvouwen tot een drie-dimensionale conformatie.](https://i.imgur.com/rpQiUut.png)
-
-
-
+![(boven) Eiwitsequenties vormen secundaire structuren via niet-covalente waterstofbindingen. (onder) Een eiwit is slechts een aaneenschakeling van aminozuren die zich zelfstandig opvouwen tot een drie-dimensionale conformatie.](../figuren/sec_struct.png)
 
 ### Stoute bacteriën en goede virussen
 
-Zelfs de allerkleinste biologische entiteiten, de virussen, gebruiken eiwitten voor infectie en aldus om zich te kunnen repliceren. Een zeer interessante groep virussen zijn de fagen. Dit zijn virussen die bacteriën infecteren en kunnen afdoden. Bacteriën, en dus ook fagen, komen overvloedig voor in ons lichaam. Vele bacteriën zijn goedaardig, en helpen ons lichaam optimaal functioneren. Soms echter dringen pathogene bacteriën ons lichaam binnen en maken ze ons ziek. *Salmonella enterica* is zo’n bacterie. *Salmonella* dringt ons lichaam binnen via besmet voedsel: de bacterie kan overleven op onvoldoende verhitte eieren en vlees, alsook op rauwe groenten en fruit. Eens de bacterie zich in onze darmen bevindt kan ze ons ernstig ziek maken.
+Zelfs de allerkleinste biologische entiteiten, de virussen, gebruiken eiwitten voor infectie en aldus om zich te kunnen repliceren. Een zeer interessante groep virussen zijn de bacteriofagen of kortweg fagen. Dit zijn virussen die bacteriën infecteren en aldus ook kunnen afdoden. Bacteriën, en dus ook fagen, komen overvloedig voor in ons lichaam. Vele bacteriën zijn goedaardig, en helpen ons lichaam optimaal functioneren. Soms echter dringen pathogene bacteriën ons lichaam binnen en maken ze ons ziek. *Salmonella enterica* is zo’n bacterie. *Salmonella* dringt ons lichaam binnen via besmet voedsel: de bacterie kan overleven op onvoldoende verhitte eieren en vlees, alsook op rauwe groenten en fruit. Eens de bacterie zich in onze darmen bevindt kan ze ons ernstig ziek maken.
+
+- [ ] figuur van Salmonella en haar faag
 
 Een bijkomend probleem is dat *Salmonella* en andere bacteriën ook steeds meer resistent worden tegen antibiotica. Gelukkig kunnen we ook fagen inzetten om bacteriën te bestrijden! Cruciaal voor een faag bij het infecteren van zijn bacteriële gastheer zijn specifieke eiwitten die componenten van de *Salmonellabacterie* herkennen. Verschillende *Salmonella* fagen kunnen verschillende componenten van de bacterie herkennen door variaties in die specifieke eiwitten. Deze eiwitten hebben daarnaast ook wel vaak een geconserveerd eiwitdomein: een ß-helicaal domein. Dit domein vormt als het ware een *moleculaire boor* die de celwand van de bacterie kan doorboren, wat nodig is om de infectie te starten. Door deze eiwitten beter te begrijpen kunnen we ze daarna ook beter inzetten tegen gevaarlijke bacteriën.
 
-### Bioinformatica van eiwitten
-
 Een voorbeeld van zo'n eiwit is het staarteiwit van Salmonella faag P22: [P12528](https://www.uniprot.org/uniprot/P12528). Tussen aminozuur 140 en 543 bevindt zich een groot ß-helicaal domein (bestaande uit parallele ß-platen) dat een puntig einde heeft rond aminozuur 113. De aanwezigheid van die ß-platen is aldus belangrijk voor de specifieke functie van het eiwit. Deze secundaire structuren (de ß-platen) kunnen we bestuderen via wiskunde en computers. Dit onderzoeksdomein noemen we *bio-informatica*. In bio-informatica wordt wiskunde gecombineerd met computerkracht om interessante biologische fenomenen te bestuderen en biologische problemen op te lossen.
 
-![Het P12528 eiwit, ook wel Salmonella faag P22 *tail spike* eiwit genoemd. Dit eiwit bestaat uit een uitzonderlijk groot aantal $\beta$-platen die samen een complexe boorkop vormen. Regenboogkleuring in volgorde van de sequentie.](https://i.imgur.com/TKeFToC.png)
+![Het P12528 eiwit, ook wel Salmonella faag P22 *tail spike* eiwit genoemd. Dit eiwit bestaat uit een uitzonderlijk groot aantal $\beta$-platen die samen een complexe boorkop vormen. Regenboogkleuring in volgorde van de sequentie.](../figuren/P12528.png)
 
-
-In dit project zetten we de computer aan het werk om eiwitten te bestuderen. Zo'n eiwitten bestuderen wetenschappers vaak op basis van de aminozuursequentie van het eiwit. Door specifieke instructies te geven aan de computer kunnen we voorspellingen maken voor ß-platen om zo het ß-helicaal domein te vinden! In dit practicum zullen we de computer leren om zo'n voorspellingen te maken. Hieronder bekijken we eerst welke wiskunde je daar net voor nodig hebt.
+In dit project zetten we de computer aan het werk om eiwitten te bestuderen. Zo'n eiwitten bestuderen wetenschappers vaak op basis van de aminozuursequentie van het eiwit. Door specifieke instructies te geven aan de computer kunnen we voorspellingen maken voor ß-platen om zo de ß-helicae domeinen te vinden! In dit project zullen we de computer leren om dergelijke voorspellingen te maken. Hieronder bekijken we eerst welke wiskunde je daar net voor nodig hebt.
 
 ## Rekenen met kansen en de regel van Bayes
 
-### Inleiding
+### Kansrekening in een notendop
 
 Kansrekening of probabiliteitstheorie is de tak van de wiskunde die zich bezig houdt met *kansen*. Met kansen kom je dagelijks in contact, denk maar aan gezelschapsspellen waarbij je moet dobbelen of Frank Deboosere die aangeeft dat er een 60%[^procent] kans op neerslag is voor morgen. Er zijn nog vele andere voorbeelden, en net omdat kansberekenen zo belangrijk is in het dagelijkse leven, is het interessant om dit te bestuderen.
 
@@ -62,10 +58,11 @@ $$
 [^onafhkansen]: Bijvoorbeeld, de kans dat je bij twee opeenvolgende worpen van een dobbelsteen twee keer een zes gooit is $1/6\cdot1/6=1/36$.
 [^condkansen]: Bijvoorbeeld, de kans dat we met een dobbelsteen een zes gooien gegeven dat het een even getal was is $(1/6)/(1/2)=1/3$.
 
-![Voorstelling van de basisregels kans kansrekening. Kansen voor beurtenissen worden voorsteld door niet-negatieve waarden die samen to 1 sommeren. Onderaan een illustratie van de rekenregels voor kansen.](https://i.imgur.com/ZpYeE3g.png)
+![Voorstelling van de basisregels kans kansrekening. Kansen voor beurtenissen worden voorsteld door niet-negatieve waarden die samen to 1 sommeren. Onderaan een illustratie van de rekenregels voor kansen.](../figuren/probabiliteit.png)
 
+> **Oefening 1:** Je wordt op een nacht rillend van de koorts wakker. Je geeft over en hebt overal jeuk. Er zijn twee ziekten met deze symptomen: blauwkoorts en groenzucht. De ene ziekte komt vaker voor dan de andere: wie ziek is heeft in 75% van de gevallen last van blauwkoorts, terwijl groenzucht slechts in 25% van de gevallen voorkomt. Zoals de naam doet vermoeden, hebben deze ziekten nog een ander symptoom van chromatische aard. Mensen met blauwkoorts krijgen doorgaans een blauw gezicht en deze met groenzucht een groen gezicht. **In 10% van de gevallen is het echter andersom!** Je spoedt je naar de spiegel en iemand met een groen gezicht staart terug. Welke ziekte heb je? Bekijk onderstaande figuur en vul de ontbrekende kansen in de tabel verder aan.
 
-> **Oefening 1:** Je wordt op een nacht rillend van de koorts wakker. Je geeft over en hebt overal jeuk. Er zijn twee ziekten met deze symptomen: blauwkoorts en groenzucht. De ene ziekte komt vaker voor dan de andere: wie ziek is heeft in 75% van de gevallen last van blauwkoorts, terwijl groenzucht slechts in 25% van de gevallen voorkomt. Zoals de naam doet vermoeden, hebben deze ziekten nog een ander symptoom van chromatische aard. Mensen met blauwkoorts krijgen doorgaans een blauw gezicht en deze met groenzucht een groen gezicht. **In 20% van de gevallen is het echter andersom!** Je spoedt je naar de spiegel en iemand met een groen gezicht staart terug. Welke ziekte heb je? Bekijk onderstaande figuur en vul de ontbrekende kansen in de tabel verder aan.
+- [ ] pas tekening en oefening aan!
 
 ![Twintig individuen met blauwkoorts en groenzucht. Sommigen hebben een blauwe gezichtskleur, anderen een groene.](https://i.imgur.com/zj4Tdhc.png)
 
@@ -92,6 +89,10 @@ P(\text{blauwkoorts} \mid \text{groen gezicht}) = \ldots\quad\quad P(\text{groen
 $$
 
 ### Naïeve Bayes
+
+- [ ] TODO: knip logaritmes weg
+- [ ] Orden tabel alfabetish
+- [ ] Vul tabel in.
 
 Nu we de regel van Bayes intuïtief begrijpen, kunnen we deze toepassen voor het voorspellen van ß-platen in eiwitten. De *naïeve Bayes*-methode kan hiervoor gebruikt worden. Deze methode maakt gebruik van de regel van Bayes om voorspellingen te maken o.b.v. een gegeven input. In dit project willen we een ß-plaat voorspellen o.b.v. de eiwitsequentie (de input).
 
@@ -222,7 +223,10 @@ $$
 
 ## Naïeve Bayes op de computer
 
-### Doel en vereenvoudiging van de voorspelling
+### Glijdende vensters en drempelwaarden
+
+- [ ] figuur glijdend venster
+- [ ] controleer logica
 
 In het computerdeel van dit practicum gaan we nu de naïeve Bayes methode toepassen op het volledige P22 eiwit dat we eerder besproken hebben. Het doel is om te ontdekken waar de $\beta$-platen zich in het eiwit bevinden. We zullen $\beta$-platen voorspellen met behulp van de naïeve Bayes methode en de voorspellingen (i.e. de kansen) dan voorstellen via een grafiek. Hiervoor bewegen we aminozuur voor aminozuur over het eiwit via een *glijdend venster* van lengte $k$. In dit glijdend venster kijken we naar de aminozuren op elke positie van $i$ tot $i+k$ en tellen alle odds op voor elk aminzozuur. We noteren dit als
 
@@ -231,7 +235,6 @@ s^k_i = \sum_{j=i}^{i+k}\log_{10}\left(\frac{P(A_i\mid\beta\text{-plaat})}{P(A_i
 $$
 
 In elke stap (voor elk glijdend venster) maken we een voorspelling die we later visueel kunnen voorstellen in een plot.
-
 
 Daarenboven kunnen we onze voorspellingen nog vereenvoudigen. De kans op een bepaalde eiwitsequentie $P(\text{eiwitsequentie})$ is onafhankelijk van de kans op een $\beta$-plaat $P(\beta\text{-plaat})$. Hun quotiënt vormt een constante term die we hier kunnen wegdelen uit de regel van Bayes. Hierdoor kunnen we stellen dat een sequentie voorspeld wordt als een $\beta$-plaat als:
 
@@ -245,17 +248,17 @@ $$
 P(\text{eiwitsequentie}\mid\beta\text{-plaat}) > 10^θ
 $$
 
-Hier is θ een zorgvuldig gekozen drempelwaarde. De keuze van θ heeft gevolgen voor de correctheid van onze voorspellingen:
+Hier is $\theta$ een zorgvuldig gekozen *drempelwaarde* (Engels: threshold). De keuze van θ heeft gevolgen voor de correctheid van onze voorspellingen:
 - als we θ te hoog kiezen is onze drempelwaarde te streng en zullen we dus bepaalde regio's niet als $\beta$-platen voorspellen terwijl dit eigenlijk wel $\beta$-platen zijn.
 - als we θ te laag kiezen zijn we niet streng genoeg. We zullen dus regio's voorspellen als $\beta$-plaat dat eigenlijk geen $\beta$-plaat zijn.
 
 Je kan dus inzien dat we de waarde van θ net goed willen kiezen zodat we het aantal foute voorspellingen tot een minimum beperken. Dit beperken van foute voorspellingen is altijd gewenst bij het gebruik van wiskundige modellen, en om deze fouten te bestuderen doen we aan *modelevaluatie*.
 
-### Modelevaluatie
+### Modelevaluatie: op welke manier is je model fout?
 
 Wiskundige modellen maken zelden perfecte voorspellingen. Toch is het in de praktijk belangrijk dat modellen zeer accurate voorspellingen maken. Als bijvoorbeeld een zelfrijdende auto een foute voorspelling maakt over waar hij moet rijden kan dat mogelijks fataal zijn voor personen in de wagen en/of in de omgeving. Wanneer een wiskundig model voorspelt dat jij een kankergezwel hebt terwijl dat eigenlijk niet zo is krijg je onnodig dure chemotherapie (die vaak ook slechte bijwerkingen heeft). Er zijn natuurlijk ook minder ernstige voorbeelden: wanneer het algoritme van Netflix je weer een serie aanraadt die je niet goed vindt, ga je naar die serie simpelweg niet beginnen kijken. Maar uiteraard wil ook Netflix zijn klanten de meest relevante films en series aanraden, en dat doen ze door continu voorspellingen te maken o.b.v. de series en films die jij al bekeken hebt en de grote hoeveelheid data die ze over hun andere klanten hebben.
 
-Om inzicht te krijgen in hoe goed of hoe slecht een model voorspellingen maakt, zullen we het model evalueren: we bepalen hoe goed het model werkt op nieuwe data. Bij het voorspellen van secundaire structuren kan ons model slechts twee soorten voorspellingen maken: ofwel is de beschouwde regio onderdeel van een $\beta$-plaat ofwel is die dat niet. Het eerste noemen we een positieve voorspelling, het tweede een negatieve voorspelling. Deze terminologie is afkomstig uit de geneeskunde: een diagnostische test is positief als de persoon ziek is, en negatief als de persoon gezond is. In onze context hebben we echter geen voorkeur voor een positieve of negatieve voorspelling, we willen enkel correcte voorspellingen! Ons model kan twee soorten foute voorspellingen maken:
+Om inzicht te krijgen in hoe goed of hoe slecht een model voorspellingen maakt, zullen we het model evalueren: we bepalen hoe goed het model werkt op nieuwe data. Bij het voorspellen van secundaire structuren kan ons model slechts twee soorten voorspellingen maken: ofwel is de beschouwde regio onderdeel van een $\beta$-plaat ofwel is die dat niet. Het eerste noemen we een *positieve voorspelling*, het tweede een *negatieve voorspelling*. Deze terminologie is afkomstig uit de geneeskunde: een diagnostische test is positief als de persoon ziek is, en negatief als de persoon gezond is. In onze context hebben we echter geen voorkeur voor een positieve of negatieve voorspelling, we willen enkel correcte voorspellingen! Ons model kan twee soorten foute voorspellingen maken:
 
 - Er werd foutief voorspeld dat een regio deel uit maakt van een $\beta$-plaat. Dit heet een **vals positieve** voorspelling (Engels: *false positive*).
 - Een regio werd voorspeld als deel van een $\beta$-plaat terwijl dit niet zo is. Dit is een **vals negatieve** voorspelling (Engels: *false negative*).
@@ -280,9 +283,8 @@ Concreet zullen we de computer dus instructeren om het volgende te doen:
 4. We laten de computer de voorspellingen vergelijken met de werkelijke secundaire structuren, zodat we het model kunnen evalueren o.b.v. vals positieven en vals negatieven.
 5. Als laatste stap veranderen we manueel de drempelwaarde θ en de grootte van het glijdend venster, om op die manier te proberen de vals positieven en vals negatieven tot een minimum te houden.
 
-We zullen deze stappen implementeren via Python, een van de eenvoudigste maar toch meest veelzijdige programmeertalen. Op de computer vind je een interactieve 'notebook' waar de code instaat die je zult gebruiken en aanvullen.
 
-*voeg exacte locatie toe waar ze de notebook kunnen vinden*
+- [ ] *voeg exacte locatie toe waar ze de notebook kunnen vinden*
 
 ## En verder...
 
