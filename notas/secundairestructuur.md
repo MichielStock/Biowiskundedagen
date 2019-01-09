@@ -150,9 +150,35 @@ Nu kunnen we de bovenstaande formule gebruiken om voorspellingen te maken voor e
 - $P(A_i\mid\beta\text{-plaat})$: de kans om een bepaald aminozuur waar te nemen, gegeven dat de sequentie een $\beta$-plaat is.
 
 
-> **Oefening 2:** Onderstaande tabel bevat empirisch bepaalde aminozuur (AZ) aantallen uit staart eiwitten van fagen die we zullen gebruiken om voorspellingen te maken. Op basis van de aantallen en het totaal aantal AZ kan je de ontbrekende kansen in de tabel berekenen, alsook de kans op een $\beta$-plaat. Deze kansen heb je nodig om de formule uit te werken.
+> **Oefening 2:** Onderstaande tabel bevat empirisch bepaalde aminozuur (AZ) aantallen een staart eiwit van een faag die we zullen gebruiken om voorspellingen te maken. Op basis van de aantallen en het totaal aantal AZ kan je de ontbrekende kansen in de tabel berekenen, alsook de kans op een $\beta$-plaat. Deze kansen heb je nodig om de formule uit te werken. Vervolledig deze tabel.
 
 <br>
+
+| AZ         | totaal aantal | $\mathbf{P(A_i)}$ | aantal in $\beta$-plaat | $\mathbf{P(A_i\mid\beta\text{-plaat})}$ | $\mathbf{\frac{P(A_i\mid \beta\text{-plaat})}{P(A_i)}}$ |
+|:-----------|:--------------|:------------------|:------------------------|:----------------------------------------|:--------------------------------------------------------|
+| A          | 48            | ...               | 21                      | ...                                     | ...                                                     |
+| C          | 8             | 0.0120            | 2                       | 0.0060                                  | 0.5038                                                  |
+| D          | 48            | ...               | 19                      | ...                                     | ...                                                     |
+| E          | 22            | ...               | 11                      | ...                                     | ...                                                     |
+| F          | 25            | 0.0375            | 13                      | 0.0393                                  | 1.0479                                                  |
+| G          | 71            | 0.1064            | 29                      | 0.0876                                  | 0.8231                                                  |
+| H          | 10            | 0.0150            | 4                       | 0.0121                                  | 0.8060                                                  |
+| I          | 51            | ...               | 36                      | ...                                     | ...                                                     |
+| K          | 34            | ...               | 12                      | ...                                     | ...                                                     |
+| L          | 49            | 0.0735            | 30                      | 0.0906                                  | 1.2337                                                  |
+| M          | 9             | 0.0135            | 6                       | 0.0181                                  | 1.3434                                                  |
+| N          | 41            | 0.0615            | 18                      | 0.0544                                  | 0.8847                                                  |
+| P          | 28            | 0.0420            | 7                       | 0.0211                                  | 0.5038                                                  |
+| Q          | 22            | 0.0330            | 9                       | 0.0272                                  | 0.8244                                                  |
+| R          | 23            | 0.0345            | 14                      | 0.0423                                  | 1.2266                                                  |
+| S          | 50            | ...               | 25                      | ...                                     | ...                                                     |
+| T          | 46            | 0.0690            | 23                      | 0.0695                                  | 1.0076                                                  |
+| V          | 48            | 0.0720            | 31                      | 0.0937                                  | 1.3014                                                  |
+| W          | 7             | 0.0105            | 2                       | 0.0060                                  | 0.5757                                                  |
+| Y          | 27            | ...               | 19                      | ...                                     | ...                                                     |
+| **Totaal** | **667**       | -                 | **331**                 | -                                       | -                                                       |
+
+- [ ] deze moet / mag weg?
 
 |  AZ  | totaal aantal | $\mathbf{P(A_i)}$ | aantal in $\beta$-plaat | $\mathbf{P(A_i\mid\beta\text{-plaat})}$ | $\mathbf{\frac{P(A_i\mid \beta\text{-plaat})}{P(A_i)}}$ |
 |:---|:----|:----------|:-----|:-----|:----|
@@ -176,7 +202,7 @@ Nu kunnen we de bovenstaande formule gebruiken om voorspellingen te maken voor e
 | G  |  506 | ... | 174 | ...| ... |
 | A  |  389 | ... | 104 | ...| ... |
 | L  |  323 | ... | 135 | ...| ... |
-| **Totaal** |  **5012** | - | **1740** | -|-
+| **Totaal** |  **5012** | - | **1740** | -|-|
 
 <br>
 
@@ -184,7 +210,7 @@ $$
 P(\beta\text{-plaat}) = \ldots
 $$
 
-> **Oefening 3:** Volgende korte sequentie is een klein deeltje van het P22 staarteiwit: 'YSIEADKK'. Experimenteel werd reeds bepaald dat dit geen $\beta$-plaat is, maar een $\alpha$-helix. Bereken nu via de laatst geziene formule de kans dat die sequentie een $\beta$-plaat bevat (deze kans zou klein moeten zijn). Maak gebruik van de tabel met probabiliteiten die je net hebt ingevuld.
+> **Oefening 3:** Volgende korte sequentie is een klein deeltje van het P22 staarteiwit: 'YSIEADKK'. Experimenteel werd reeds bepaald dat dit geen $\beta$-plaat is, maar een $\alpha$-helix. Bereken nu via de laatst geziene formule de kans dat die sequentie een $\beta$-plaat bevat (deze kans zou klein moeten zijn). Maak gebruik van de tabel met kansen die je net hebt ingevuld.
 
 | $i$ | $A_i$ | $\frac{P(A_i\mid \beta\text{-plaat})}{P(A_i)}$ |
 |:----|:------|:---------------------------------------------------------------------|
@@ -196,10 +222,7 @@ $$
 | 6   | ...   | ...                                                                  |
 | 7   | ...   | ...                                                                  |
 | 8   | ...   | ...                                                                  |
-$$
-\log_{10}(P(\beta\text{-plaat}\mid\text{eiwitsequentie}))\approx \ldots
-$$
-dus:
+Dus:
 $$
 P(\beta\text{-plaat}\mid\text{eiwitsequentie}) \approx\ldots
 $$
@@ -208,10 +231,10 @@ $$
 
 ### Glijdende vensters en drempelwaarden
 
-In het computerdeel van dit practicum gaan we nu de naïeve Bayes methode toepassen op het volledige P22 eiwit dat we eerder besproken hebben. Het doel is om te ontdekken waar de $\beta$-platen zich in het eiwit bevinden. We zullen $\beta$-platen voorspellen met behulp van de naïeve Bayes methode en de voorspellingen (i.e. de kansen) dan voorstellen via een grafiek. Hiervoor bewegen we aminozuur voor aminozuur over het eiwit via een *glijdend venster* van lengte $k$. In dit glijdend venster kijken we naar de aminozuren op elke positie van $i$ tot $i+k$ en tellen alle odds op voor elk aminzozuur. We noteren dit als
+In het computerdeel van dit practicum gaan we nu de naïeve Bayes methode toepassen op het volledige P22 eiwit dat we eerder besproken hebben. Het doel is om te ontdekken waar de $\beta$-platen zich in het eiwit bevinden. We zullen $\beta$-platen voorspellen met behulp van de naïeve Bayes methode en de voorspellingen (i.e. de kansen) dan voorstellen via een grafiek. Hiervoor bewegen we aminozuur voor aminozuur over het eiwit via een *glijdend venster* van lengte $k$. In dit glijdend venster kijken we naar de aminozuren op elke positie van $i$ tot $i+k$ en vermenigvuldiging alle odds voor elk aminzozuur. We noteren dit als
 
 $$
-s^k_i = \prod_{j=i}^{i+k}\frac{P(A_j\mid\beta\text{-plaat})}{P(A_j)}\,.
+s^k_i = P(\beta\text{-plaat})\prod_{j=i}^{i+k}\frac{P(A_j\mid\beta\text{-plaat})}{P(A_j)}\,.
 $$
 
 ![Illustratie van het glijdend venster over een sequentie.](../figuren/glijdendvenster.png)
