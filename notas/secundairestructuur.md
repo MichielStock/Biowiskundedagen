@@ -13,7 +13,7 @@ Eiwitten vormen één van de meest belangrijke klassen van biologische moleculen
 
 De opbouw van een eiwit is relatief simpel. Net zoals DNA is een eiwit een *polymeer*: een lange streng van meer eenvoudige moleculen. Voor de meeste organismen bestaan eiwitten uit een specifieke opeenvolging van 20 mogelijke *aminozuren*, elk voorgesteld door een hoofdletter. Deze aminozuren verschillen in hun grootte, lading en flexibiliteit. De opvolging van deze aminozuren wordt ook wel de *primaire structuur* van een eiwit genoemd. Deze primaire structuur bepaalt hoe het eiwit zich verder zal opvouwen en legt de biologische functie van een eiwit vast.
 
-Uit de primaire structuur van eiwitten volgt de *secundaire structuur*. Deze structuren onstaan door waterstofbruggen (niet-covente bindingen tussen vrije waterstoffen en hydroxylgroepen) tussen naburige aminozuren. De belangrijkste secundaire structuren zijn *$\alpha$-helices* en $*\beta$-platen* (Engels: $\beta$-sheets). Gegeven dat deze secundaire structuur enkel door de primaire structuur bepaald wordt, kunnen we wiskunde gebruiken om de secundaire structuur te voorspellen[^structuur].
+Uit de primaire structuur van eiwitten volgt de *secundaire structuur*. Deze structuren onstaan door waterstofbruggen (niet-covente bindingen tussen vrije waterstoffen en hydroxylgroepen) tussen naburige aminozuren. De belangrijkste secundaire structuren zijn *$\alpha$-helices* en *$\beta$-platen* (Engels: $\beta$-sheets). Gegeven dat deze secundaire structuur enkel door de primaire structuur bepaald wordt, kunnen we wiskunde gebruiken om de secundaire structuur te voorspellen[^structuur].
 
 [^structuur]: Naast de primaire en secundaire structuur hebben eiwitten doorgaans ook en *tertiaire* en *quaternaire* structuur. De tertiaire structuur is de globale opvouwing van het eiwit en is veel (veeeeeeeeel) moeilijker om computationeel te bepalen. De quaternaire structuur omvat hoe verschillende eiwitten samen een groter complex vormen.
 
@@ -23,15 +23,15 @@ Uit de primaire structuur van eiwitten volgt de *secundaire structuur*. Deze str
 
 Zelfs de allerkleinste biologische entiteiten, de virussen, gebruiken eiwitten voor infectie en aldus om zich te kunnen repliceren. Een zeer interessante groep virussen zijn de bacteriofagen of kortweg fagen. Dit zijn virussen die bacteriën infecteren en aldus ook kunnen afdoden. Bacteriën, en dus ook fagen, komen overvloedig voor in ons lichaam. Vele bacteriën zijn goedaardig, en helpen ons lichaam optimaal functioneren. Soms echter dringen pathogene bacteriën ons lichaam binnen en maken ze ons ziek. *Salmonella enterica* is zo’n bacterie. *Salmonella* dringt ons lichaam binnen via besmet voedsel: de bacterie kan overleven op onvoldoende verhitte eieren en vlees, alsook op rauwe groenten en fruit. Eens de bacterie zich in onze darmen bevindt kan ze ons ernstig ziek maken.
 
-- [ ] figuur van Salmonella en haar faag
+![(links) Microscopische figuur van de *Salmonellabacterie. (rechts) Figuur van P22 fagen die *Salmonella* kunnen infecteren.](../figuren/salmonellafaag.png)
 
-Een bijkomend probleem is dat *Salmonella* en andere bacteriën ook steeds meer resistent worden tegen antibiotica. Gelukkig kunnen we ook fagen inzetten om bacteriën te bestrijden! Cruciaal voor een faag bij het infecteren van zijn bacteriële gastheer zijn specifieke eiwitten die componenten van de *Salmonellabacterie* herkennen. Verschillende *Salmonella* fagen kunnen verschillende componenten van de bacterie herkennen door variaties in die specifieke eiwitten. Deze eiwitten hebben daarnaast ook wel vaak een geconserveerd eiwitdomein: een ß-helicaal domein. Dit domein vormt als het ware een *moleculaire boor* die de celwand van de bacterie kan doorboren, wat nodig is om de infectie te starten. Door deze eiwitten beter te begrijpen kunnen we ze daarna ook beter inzetten tegen gevaarlijke bacteriën.
+Een bijkomend probleem is dat *Salmonella* en andere bacteriën ook steeds meer resistent worden tegen antibiotica. Gelukkig kunnen we ook fagen inzetten om bacteriën te bestrijden! Cruciaal voor een faag bij het infecteren van zijn bacteriële gastheer zijn specifieke eiwitten die componenten van de *Salmonellabacterie* herkennen. Verschillende *Salmonella* fagen kunnen verschillende componenten van de bacterie herkennen door variaties in die specifieke eiwitten. Deze eiwitten hebben daarnaast ook wel vaak een geconserveerd eiwitdomein: een $\beta$-helicaal domein. Dit domein vormt als het ware een *moleculaire boor* die de celwand van de bacterie kan doorboren, wat nodig is om de infectie te starten. Door deze eiwitten beter te begrijpen kunnen we ze daarna ook beter inzetten tegen gevaarlijke bacteriën.
 
-Een voorbeeld van zo'n eiwit is het staarteiwit van Salmonella faag P22: [P12528](https://www.uniprot.org/uniprot/P12528). Tussen aminozuur 140 en 543 bevindt zich een groot ß-helicaal domein (bestaande uit parallele ß-platen) dat een puntig einde heeft rond aminozuur 113. De aanwezigheid van die ß-platen is aldus belangrijk voor de specifieke functie van het eiwit. Deze secundaire structuren (de ß-platen) kunnen we bestuderen via wiskunde en computers. Dit onderzoeksdomein noemen we *bio-informatica*. In bio-informatica wordt wiskunde gecombineerd met computerkracht om interessante biologische fenomenen te bestuderen en biologische problemen op te lossen.
+Een voorbeeld van zo'n eiwit is het staarteiwit van Salmonella faag P22: [P12528](https://www.uniprot.org/uniprot/P12528). Tussen aminozuur 140 en 543 bevindt zich een groot $\beta$-helicaal domein (bestaande uit parallele $\beta$-platen) dat een puntig einde heeft rond aminozuur 113. De aanwezigheid van die $\beta$-platen is aldus belangrijk voor de specifieke functie van het eiwit. Deze secundaire structuren (de $\beta$-platen) kunnen we bestuderen via wiskunde en computers. Dit onderzoeksdomein noemen we *bio-informatica*. In bio-informatica wordt wiskunde gecombineerd met computerkracht om interessante biologische fenomenen te bestuderen en biologische problemen op te lossen.
 
 ![Het P12528 eiwit, ook wel Salmonella faag P22 *tail spike* eiwit genoemd. Dit eiwit bestaat uit een uitzonderlijk groot aantal $\beta$-platen die samen een complexe boorkop vormen. Regenboogkleuring in volgorde van de sequentie.](../figuren/P12528.png)
 
-In dit project zetten we de computer aan het werk om eiwitten te bestuderen. Zo'n eiwitten bestuderen wetenschappers vaak op basis van de aminozuursequentie van het eiwit. Door specifieke instructies te geven aan de computer kunnen we voorspellingen maken voor ß-platen om zo de ß-helicae domeinen te vinden! In dit project zullen we de computer leren om dergelijke voorspellingen te maken. Hieronder bekijken we eerst welke wiskunde je daar net voor nodig hebt.
+In dit project zetten we de computer aan het werk om eiwitten te bestuderen. Zo'n eiwitten bestuderen wetenschappers vaak op basis van de aminozuursequentie van het eiwit. Door specifieke instructies te geven aan de computer kunnen we voorspellingen maken voor $\beta$-platen om zo de $\beta$-helicae domeinen te vinden! In dit project zullen we de computer leren om dergelijke voorspellingen te maken. Hieronder bekijken we eerst welke wiskunde je daar net voor nodig hebt.
 
 ## Rekenen met kansen en de regel van Bayes
 
@@ -92,7 +92,7 @@ $$
 - [ ] Orden tabel alfabetisch
 - [ ] Vul tabel in met dingen de waarden die niet nodig zijn voor de oefening
 
-Nu we de regel van Bayes intuïtief begrijpen, kunnen we deze toepassen voor het voorspellen van ß-platen in eiwitten. De *naïeve Bayes*-methode kan hiervoor gebruikt worden. Deze methode maakt gebruik van de regel van Bayes om voorspellingen te maken o.b.v. een gegeven input. In dit project willen we een ß-plaat voorspellen o.b.v. de eiwitsequentie (de input).
+Nu we de regel van Bayes intuïtief begrijpen, kunnen we deze toepassen voor het voorspellen van $\beta$-platen in eiwitten. De *naïeve Bayes*-methode kan hiervoor gebruikt worden. Deze methode maakt gebruik van de regel van Bayes om voorspellingen te maken o.b.v. een gegeven input. In dit project willen we een $\beta$-plaat voorspellen o.b.v. de eiwitsequentie (de input).
 
 De regel van Bayes kan voor dit geval als volgt geschreven worden:
 
@@ -125,7 +125,7 @@ $$
 = \prod_{i=1}^n P(A_i\mid\beta\text{-plaat})
 $$
 
-Uiteindelijk kunnen we de regel van Bayes dus als volgt noteren om ß-platen te voorspellen:
+Uiteindelijk kunnen we de regel van Bayes dus als volgt noteren om $\beta$-platen te voorspellen:
 
 $$
 P( \beta\text{-plaat} \mid \text{eiwitsequentie} ) \approx P(\beta\text{-plaat}) \prod_{i=1}^n \frac{P(A_i\mid\beta\text{-plaat})}{P(A_i)}\,.
@@ -208,9 +208,6 @@ $$
 
 ### Glijdende vensters en drempelwaarden
 
-- [ ] figuur glijdend venster
-- [ ] controleer logica
-
 In het computerdeel van dit practicum gaan we nu de naïeve Bayes methode toepassen op het volledige P22 eiwit dat we eerder besproken hebben. Het doel is om te ontdekken waar de $\beta$-platen zich in het eiwit bevinden. We zullen $\beta$-platen voorspellen met behulp van de naïeve Bayes methode en de voorspellingen (i.e. de kansen) dan voorstellen via een grafiek. Hiervoor bewegen we aminozuur voor aminozuur over het eiwit via een *glijdend venster* van lengte $k$. In dit glijdend venster kijken we naar de aminozuren op elke positie van $i$ tot $i+k$ en tellen alle odds op voor elk aminzozuur. We noteren dit als
 
 $$
@@ -221,7 +218,7 @@ $$
 
 In elke stap (voor elk glijdend venster) maken we een voorspelling die we later visueel kunnen voorstellen in een plot.
 
-Eerder hebben we gesteld dat we een regio als een β-plaat classificeren indien
+Eerder hebben we gesteld dat we een regio als een $\beta$-plaat classificeren indien
 
 $$
 P(\beta\text{-plaat}\mid \text{eiwitsequentie}) > 0.5\,.
@@ -230,15 +227,15 @@ $$
 We willen dit echter veralgemenen zodat we strenger of minder streng kunnen zijn om secundaire structuren te vinden:
 
 $$
-P(\beta\text{-plaat}\mid \text{eiwitsequentie}) > θ\,.
+P(\beta\text{-plaat}\mid \text{eiwitsequentie}) > \theta\,.
 $$
 
-Hier is $\theta$ een zorgvuldig gekozen *drempelwaarde* (Engels: threshold). De keuze van θ heeft gevolgen voor de correctheid van onze voorspellingen:
+Hier is $\theta$ een zorgvuldig gekozen *drempelwaarde* (Engels: threshold). De keuze van $\theta$ heeft gevolgen voor de correctheid van onze voorspellingen:
 
-- als we θ te hoog kiezen is onze drempelwaarde te streng en zullen we dus bepaalde regio's niet als $\beta$-platen voorspellen terwijl dit eigenlijk wel $\beta$-platen zijn.
-- als we θ te laag kiezen zijn we niet streng genoeg. We zullen dus regio's voorspellen als $\beta$-plaat dat eigenlijk geen $\beta$-plaat zijn.
+- als we $\theta$ te hoog kiezen is onze drempelwaarde te streng en zullen we dus bepaalde regio's niet als $\beta$-platen voorspellen terwijl dit eigenlijk wel $\beta$-platen zijn.
+- als we $\theta$ te laag kiezen zijn we niet streng genoeg. We zullen dus regio's voorspellen als $\beta$-plaat dat eigenlijk geen $\beta$-plaat zijn.
 
-Je kan dus inzien dat we de waarde van θ net goed willen kiezen zodat we het aantal foute voorspellingen tot een minimum beperken. Dit beperken van foute voorspellingen is altijd gewenst bij het gebruik van wiskundige modellen, en om deze fouten te bestuderen doen we aan *modelevaluatie*.
+Je kan dus inzien dat we de waarde van $\theta$ net goed willen kiezen zodat we het aantal foute voorspellingen tot een minimum beperken. Dit beperken van foute voorspellingen is altijd gewenst bij het gebruik van wiskundige modellen, en om deze fouten te bestuderen doen we aan *modelevaluatie*.
 
 ### Modelevaluatie: op welke manier is je model fout?
 
@@ -257,17 +254,17 @@ De correcte en foute voorspellingen kunnen we eenvoudig voorstellen in een compa
 | **Regio is geen deel van $\beta$-plaat** | vals positief                   | echt negatief                        |
 <br>
 
-Beide foute voorspellingen zijn nauw verbonden met de keuze van de drempelwaarde θ, alsook de grootte van het glijdend venster. In een laatste stap zullen we daarom de drempelwaarde θ en de grootte van het glijdend venster manueel aanpassen en het effect bestuderen op het aantal foute voorspellingen. Op die manier kunnen we θ en de grootte van het venster optimaal kiezen, om de foute voorspellingen tot een minimum te beperken.
+Beide foute voorspellingen zijn nauw verbonden met de keuze van de drempelwaarde $\theta$, alsook de grootte van het glijdend venster. In een laatste stap zullen we daarom de drempelwaarde $\theta$ en de grootte van het glijdend venster manueel aanpassen en het effect bestuderen op het aantal foute voorspellingen. Op die manier kunnen we $\theta$ en de grootte van het venster optimaal kiezen, om de foute voorspellingen tot een minimum te beperken.
 
 ### Stappenplan
 
 Concreet zullen we de computer dus instructeren om het volgende te doen:
 
-1. Startend bij het begin van een eiwitsequentie maakt de computer een eerste voorspelling voor het stukje van de sequentie dat zich in het glijdend venster bevindt. Dit doet hij door Naïeve Bayes toe te passen en het stukje sequentie als ß-plaat te voorspellen wanneer de berekende kans groter is dan de vooropgestelde drempelwaarde θ.
+1. Startend bij het begin van een eiwitsequentie maakt de computer een eerste voorspelling voor het stukje van de sequentie dat zich in het glijdend venster bevindt. Dit doet hij door Naïeve Bayes toe te passen en het stukje sequentie als $\beta$-plaat te voorspellen wanneer de berekende kans groter is dan de vooropgestelde drempelwaarde $\theta$.
 2. Daarna schuift de computer het glijdend venster één aminozuur op in de sequentie en maakt een nieuwe voorspelling voor dit glijdend venster. Dit proces herhaalt de computer tot het einde van de eiwitsequentie bereikt is.
 3. Voor elk glijdend venster slaat de computer de voorspelling op, zodat die later visueel voorgesteld kan worden.
 4. We laten de computer de voorspellingen vergelijken met de werkelijke secundaire structuren, zodat we het model kunnen evalueren o.b.v. vals positieven en vals negatieven.
-5. Als laatste stap veranderen we manueel de drempelwaarde θ en de grootte van het glijdend venster, om op die manier te proberen de vals positieven en vals negatieven tot een minimum te houden.
+5. Als laatste stap veranderen we manueel de drempelwaarde $\theta$ en de grootte van het glijdend venster, om op die manier te proberen de vals positieven en vals negatieven tot een minimum te houden.
 
 
 - [ ] *voeg exacte locatie toe waar ze de notebook kunnen vinden*
