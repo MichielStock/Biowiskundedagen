@@ -221,7 +221,10 @@ $$
 | 5   | ...   | ...                                                                  |
 | 6   | ...   | ...                                                                  |
 | 7   | ...   | ...                                                                  |
-| 8   | ...   | ...                                                                  |
+| 8   | ...   | ...                                                                 |
+
+<br>
+
 Dus:
 $$
 P(\beta\text{-plaat}\mid\text{eiwitsequentie}) \approx\ldots
@@ -258,6 +261,10 @@ Hier is $\theta$ een zorgvuldig gekozen *drempelwaarde* (Engels: threshold). De 
 - als we $\theta$ te hoog kiezen is onze drempelwaarde te streng en zullen we dus bepaalde regio's niet als $\beta$-platen voorspellen terwijl dit eigenlijk wel $\beta$-platen zijn.
 - als we $\theta$ te laag kiezen zijn we niet streng genoeg. We zullen dus regio's voorspellen als $\beta$-plaat dat eigenlijk geen $\beta$-plaat zijn.
 
+Hieronder zie je een voorbeeld van een analyse met een glijdend venster.
+
+![](../figuren/glijdendvenstervoorbeeld.png)
+
 Je kan dus inzien dat we de waarde van $\theta$ net goed willen kiezen zodat we het aantal foute voorspellingen tot een minimum beperken. Dit beperken van foute voorspellingen is altijd gewenst bij het gebruik van wiskundige modellen, en om deze fouten te bestuderen doen we aan *modelevaluatie*.
 
 ### Modelevaluatie: op welke manier is je model fout?
@@ -288,7 +295,6 @@ Concreet zullen we de computer dus instructeren om het volgende te doen:
 3. Voor elk glijdend venster slaat de computer de voorspelling op, zodat die later visueel voorgesteld kan worden.
 4. We laten de computer de voorspellingen vergelijken met de werkelijke secundaire structuren, zodat we het model kunnen evalueren o.b.v. vals positieven en vals negatieven.
 5. Als laatste stap veranderen we manueel de drempelwaarde $\theta$ en de grootte van het glijdend venster, om op die manier te proberen de vals positieven en vals negatieven tot een minimum te houden.
-
 
 - [ ] *voeg exacte locatie toe waar ze de notebook kunnen vinden*
 - [ ] maak oefeningen

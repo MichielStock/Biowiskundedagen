@@ -1,6 +1,6 @@
 """
 Created on Wednesday 09 Janary 2018
-Last update: -
+Last update: Thursday 10 January 2019
 
 @author: Michiel Stock
 michielfmstock@gmail.com
@@ -24,11 +24,14 @@ beta_platen = ["SRSF", "KIYIGQ", "VYIE", "HVQI", "QPLII", "IVY", "IVTVQ",
                  "TIDAPNSTVSGITG", "INVANL", "NIRANS", "GYDSAAIKL", "KTL",
                  "SGALYSHI", "AYTQLTAIS", "TPDAVSLKVN", "GAE", "VPD",
                  "DSSCFLPYWE", "SLKALVK", "LVRLTLA"]
+
 # locaties beta-platen (start, stop)
 regios = []
+beta_masker = np.zeros(len(P22eiwit), dtype=bool)
 for bp in beta_platen:
     start = P22eiwit.find(bp)
     regios.append((start, start + len(bp)))
+    beta_masker[start:start+len(bp)] = True
 
 AZ_aantal = Counter(P22eiwit)
 AZ_beta_platen_aantal = Counter()
@@ -63,12 +66,29 @@ def glijdendvenster(sequentie, k=5):
         posterior_kans[i] = np.prod([odds_array[i-w:i+w+1]]) * prior_beta
     return posterior_kans
 
-def plot_glijdend_venster(sequentie, k=5):
-    # DOC
-    fig, ax = plt.subplots()
-    ax.set_ylim([1e-4, 4])
-    for start, stop:
-        ax.fill_betweenx(start, 2, stop)
+def plot_glijdend_venster(sequentie, threshold=0.5, k=5):
+    """
+    Maak een plot van het glijdend venster.
+
+    Parameters:
+        - sequentie : eiwitsequentie
+        - threshold
+        - k
+    """
+    fig, ax = plt.subplots(figsize=(15, 5))
+    ax.set_ylim([1e-4, 2])
+    ax.set_xlim([0, len(sequentie)])
+    ax.plot(glijdendvenster(sequentie, k), zorder=2, color="#2a9d8f",
+                            label=r'P($\beta$-plaat | regio)')
+    ax.plot([0, len(sequentie)], [threshold, threshold], zorder=2, ls="--",
+                    color="#e76f51", label=r'$\theta$={:.4f}'.format(threshold))
+    for start, stop in regios:
+        ax.fill_between(np.linspace(start, stop, 10), 2 * np.ones(10), color="#e9c46a",
+                        zorder=1, alpha=0.6)
+    ax.legend(loc=1)
+    ax.set_xlabel(r"positie $i$")
+    ax.set_title("Glijdend venster met k={}".format(k))
+    return fig
 
 if __name__ == '__main__':
 
@@ -99,8 +119,6 @@ if __name__ == '__main__':
                 AZ_totaal=AZ_totaal,
                 AZ_beta_platen_totaal=AZ_beta_platen_totaal
             ))
-
-
     kans_beta = prior_beta
     for AZ in peptide:
         kans_beta *= AZ_odds[AZ]
@@ -108,3 +126,7 @@ if __name__ == '__main__':
                 peptide=peptide,
                 kans_beta=kans_beta
             ))
+
+    # maak plot glijdendvenster
+    fig = plot_glijdend_venster(P22eiwit)
+    fig.savefig("../figuren/glijdendvenstervoorbeeld.png")
