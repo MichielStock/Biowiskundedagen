@@ -12,7 +12,7 @@ from collections import Counter
 import numpy as np
 import matplotlib.pyplot as plt
 
-P22eiwit = "MTDITANVVVSNPRPIFTESRSFKAVANGKIYIGQIDTDPVNPANQIPVYIENEDGSHVQITQPLIINAAGKIVYNGQLVKIVTVQGHSMAIYDANGSQVDYIANVLKYDPDQYSIEADKKFKYSVKLSDYPTLQDAASAAVDGLLIDRDYNFYGGETVDFGGKVLTIECKAKFIGDGNLIFTKLGKGSRIAGVFMESTTTPWVIKPWTDDNQWLTDAAAVVATLKQSKTDGYQPTVSDYVKFPGIETLLPPNAKGQNITSTLEIRECIGVEVHRASGLMAGFLFRGCHFCKMVDANNPSGGKDGIITFENLSGDWGKGNYVIGGRTSYGSVSSAQFLRNNGGFERDGGVIGFTSYRAGESGVKTWQGTVGSTTSRNYNLQFRDSVVIYPVWDGFDLGADTDMNPELDRPGDYPITQYPLHQLPLNHLIDNLLVRGALGVGFGMDGKGMYVSNITVEDCAGSGAYLLTHESVFTNIAIIDTNTKDFQANQIYISGACRVNGLRLIGIRSTDGQGLTIDAPNSTVSGITGMVDPSRINVANLAEEGLGNIRANSFGYDSAAIKLRIHKLSKTLDSGALYSHINGGAGSGSAYTQLTAISGSTPDAVSLKVNHKDCRGAEIPFVPDIASDDFIKDSSCFLPYWENNSTSLKALVKKPNGELVRLTLATL"
+sequentie = P22eiwit = "MTDITANVVVSNPRPIFTESRSFKAVANGKIYIGQIDTDPVNPANQIPVYIENEDGSHVQITQPLIINAAGKIVYNGQLVKIVTVQGHSMAIYDANGSQVDYIANVLKYDPDQYSIEADKKFKYSVKLSDYPTLQDAASAAVDGLLIDRDYNFYGGETVDFGGKVLTIECKAKFIGDGNLIFTKLGKGSRIAGVFMESTTTPWVIKPWTDDNQWLTDAAAVVATLKQSKTDGYQPTVSDYVKFPGIETLLPPNAKGQNITSTLEIRECIGVEVHRASGLMAGFLFRGCHFCKMVDANNPSGGKDGIITFENLSGDWGKGNYVIGGRTSYGSVSSAQFLRNNGGFERDGGVIGFTSYRAGESGVKTWQGTVGSTTSRNYNLQFRDSVVIYPVWDGFDLGADTDMNPELDRPGDYPITQYPLHQLPLNHLIDNLLVRGALGVGFGMDGKGMYVSNITVEDCAGSGAYLLTHESVFTNIAIIDTNTKDFQANQIYISGACRVNGLRLIGIRSTDGQGLTIDAPNSTVSGITGMVDPSRINVANLAEEGLGNIRANSFGYDSAAIKLRIHKLSKTLDSGALYSHINGGAGSGSAYTQLTAISGSTPDAVSLKVNHKDCRGAEIPFVPDIASDDFIKDSSCFLPYWENNSTSLKALVKKPNGELVRLTLATL"
 
 beta_platen = ["SRSF", "KIYIGQ", "VYIE", "HVQI", "QPLII", "IVY", "IVTVQ",
                 "SMAIY", "QVDYIA", "SVK", "YPT", "VDGLLI", "TVD", "TIEC",
@@ -53,6 +53,22 @@ for AZ in sorted(aminozuren):
     AZ_prob_beta[AZ] = AZ_beta_platen_aantal[AZ] / AZ_beta_platen_totaal
     AZ_odds[AZ] = AZ_prob_beta[AZ] / AZ_prob[AZ]
 
+def confusiematrix(y, p):
+    n=len(y)
+    print(
+    """
+                                    | Voorspeld als beta | Voorspeld als geen beta |
+    --------------------------------------------------------------------------------
+    regio is deel van beta-plaat    |       {tp}         |           {fn}             |
+    regio geen deel van beta-plaat  |       {fp}         |           {tn}            |
+    """.format(tp=sum(np.logical_and(y, p)),
+            fn=np.sum(p) - sum(np.logical_and(y, p)),
+            fp=np.sum(y) - sum(np.logical_and(y, p)),
+            tn=n - sum(np.logical_or(y, p))
+    )
+
+    )
+
 def glijdendvenster(sequentie, k=5):
     # FIX: kansen groter dan 1?
     # DOC
@@ -66,7 +82,7 @@ def glijdendvenster(sequentie, k=5):
         posterior_kans[i] = np.prod([odds_array[i-w:i+w+1]]) * prior_beta
     return posterior_kans
 
-def plot_glijdend_venster(sequentie, threshold=0.5, k=5):
+def plot_glijdend_venster(threshold=0.5, k=5):
     """
     Maak een plot van het glijdend venster.
 
@@ -78,7 +94,8 @@ def plot_glijdend_venster(sequentie, threshold=0.5, k=5):
     fig, ax = plt.subplots(figsize=(15, 5))
     ax.set_ylim([1e-4, 2])
     ax.set_xlim([0, len(sequentie)])
-    ax.plot(glijdendvenster(sequentie, k), zorder=2, color="#2a9d8f",
+    gv = glijdendvenster(sequentie, k)
+    ax.plot(gv, zorder=2, color="#2a9d8f",
                             label=r'P($\beta$-plaat | regio)')
     ax.plot([0, len(sequentie)], [threshold, threshold], zorder=2, ls="--",
                     color="#e76f51", label=r'$\theta$={:.4f}'.format(threshold))
@@ -88,6 +105,7 @@ def plot_glijdend_venster(sequentie, threshold=0.5, k=5):
     ax.legend(loc=1)
     ax.set_xlabel(r"positie $i$")
     ax.set_title("Glijdend venster met k={}".format(k))
+    confusiematrix(beta_masker, gv > threshold)
     return fig
 
 if __name__ == '__main__':
@@ -128,5 +146,5 @@ if __name__ == '__main__':
             ))
 
     # maak plot glijdendvenster
-    fig = plot_glijdend_venster(P22eiwit)
+    fig = plot_glijdend_venster()
     fig.savefig("../figuren/glijdendvenstervoorbeeld.png")
