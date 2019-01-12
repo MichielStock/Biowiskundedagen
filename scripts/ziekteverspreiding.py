@@ -54,6 +54,13 @@ def deax(ax):
     ax.set_xticks([])
     ax.set_yticks([])
 
+def printdegreetable(n):
+    """Print de tabel voor gradenverdeling"""
+    print("| $k$ | $D(k)$ |")
+    print("|:--|:--|")
+    for i in range(n):
+        print("| ${}$ | ... |".format(i+1))
+
 if __name__ == '__main__':
     import matplotlib.pyplot as plt
     plt.xkcd()
@@ -97,11 +104,23 @@ if __name__ == '__main__':
     ax.plot(bereken_gradenverdeling(netwerk_grid), color=oranje, ls=":",
                                             label="grid netwerk")
 
-    ax.set_xlabel("Graad")
-    ax.set_ylabel("Relatief aantal knopen")
+    ax.set_xlabel(r"Graad $k$")
+    ax.set_ylabel(r"Relatief aantal knopen $D(d)$")
     ax.set_title("Gradenverdeling van drie netwerken\n met 1000 knopen")
     ax.legend(loc=0)
     ax.loglog()
     fig.tight_layout()
 
     fig.savefig('figuren/gradenverdelingen.png')
+
+    # Plot voor gradenverdeling
+    # -------------------------
+
+    fig, ax = plt.subplots(figsize=(10, 8))
+
+    ax.plot(bereken_gradenverdeling(netwerk_voorbeeld), color='w')
+    ax.grid(color='g', linestyle=':', linewidth=0.25)
+    ax.set_xlabel(r"Graad $k$")
+    ax.set_ylabel(r"Relatief aantal knopen $D(d)$")
+
+    fig.savefig('figuren/gradenverdelingenleeg.png')

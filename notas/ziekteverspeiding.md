@@ -133,7 +133,7 @@ Het sociaal netwerk dat we beschouwen wordt weergegeven in onderstaande figuur. 
 | **14** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 | **15** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
-- [ ] maak netwerk + plot
+- [x] maak netwerk + plot
 - [x] verbindingmatrix
 
 ### Gradenverdeling
@@ -142,13 +142,33 @@ Het sociaal netwerk dat we beschouwen wordt weergegeven in onderstaande figuur. 
 
 Een graaf is een complexe wiskundige structuur. Een gegeven knoop in een graaf wordt gekarakteriseerd door zijn bogen en dus ook graad. Echter, belangrijke eigenschappen van de graaf zijn *emergent*, dit wil zeggen dat ze enkel te verklaren zijn door de graaf in zijn geheel en niet enkel de individuele onderdelen.
 
-Als we iets willen leren over een netwerk, welke informatie kunnen we bekijken? Het zou zeer interessant zijn om te weten hoe verbonden het netwerk is. Hoe kunnen we bepalen tot welke mate de knopen met elkaar verbonden zijn? We zouden naar de gemiddelde knoopgraad kunnen kijken, maar dit zou ons niet veel zeggen. In plaats daarvan kunnen we tellen voor elk nummer $x$ het aantal $y$ van knopen met graad $x$. Deze plot wordt de *gradenverdeling* genoemd en kan ons veel vertellen over de structuur van een netwerk. Wiskundig drukken we de gradenverdeling uit als
+Als we iets willen leren over een netwerk, welke informatie kunnen we bekijken? Het zou zeer interessant zijn om te weten hoe verbonden het netwerk is. Hoe kunnen we bepalen tot welke mate de knopen met elkaar verbonden zijn? We zouden naar de gemiddelde knoopgraad kunnen kijken, maar dit zou ons niet veel zeggen. In plaats daarvan kunnen we tellen voor elk nummer $x$ het aantal $y$ van knopen met graad $x$. Deze plot wordt de *gradenverdeling*  (Engels: *degree distribution*) genoemd en kan ons veel vertellen over de structuur van een netwerk. Wiskundig drukken we de gradenverdeling uit als
 
 $$
 D(k)=\text{fractie van de knopen met $k$ bogen}\,.
 $$
 
-> **Oefening**: Bereken en plot de gradenverdeling van het sociaal netwerk.
+> **Oefening 2**: Bereken en plot de gradenverdeling van het sociaal netwerk. Vul eerst onderstaande tabel in en teken dan de plot.
+
+| $k$ | $D(k)$ |
+|:--|:--|
+| $1$ | ... |
+| $2$ | ... |
+| $3$ | ... |
+| $4$ | ... |
+| $5$ | ... |
+| $6$ | ... |
+| $7$ | ... |
+| $8$ | ... |
+| $9$ | ... |
+| $10$ | ... |
+| $11$ | ... |
+| $12$ | ... |
+| $13$ | ... |
+| $14$ | ... |
+| $15$ | ... |
+
+![](../figuren/gradenverdelingenleeg.png)
 
 ### Drie types van netwerken
 
