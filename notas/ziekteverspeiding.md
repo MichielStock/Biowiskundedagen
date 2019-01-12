@@ -2,9 +2,9 @@
 
 - [ ] ==abstract==
 
-[toc]
+In dit project zullen we bestuderen hoe ziektes kunnen verspreiden via een (sociaal) netwerk. We zullen onderzoeken hoe de structuur van een netwerk een invloed kan hebben hoe snel een ziekte doorgegeven wordt. Ten slotte zullen we het effect van vaccinatie bekijken.
 
-In dit practicum zullen we bestuderen hoe ziektes kunnen verspreiden via een (sociaal) netwerk. We zullen onderzoeken hoe de structuur van een netwerk een invloed kan hebben hoe snel een ziekte doorgegeven wordt. Ten slotte zullen we het effect van vaccinatie bekijken.
+[toc]
 
 ## Besmettelijke ziektes
 
@@ -71,7 +71,7 @@ De overgangssnelheid van vatbaar naar geïnfecteerd hangt af van het contact tus
 
 De overgangssnelheid van geïnfecteerd naar resistent hangt alleen af van de snelheid van herstel, die we $\gamma$ noemen. Dus het aantal geïnfecteerde personen vermindert met deze snelheid op else tijdstip.
 
-> **VRAAG**: Kan je aantonen dat het totaal aantal individuen in de populatie $(S(t)+I(t)+R(t))$ constant zal blijven?
+> **Vraag 1**: Kan je aantonen dat het totaal aantal individuen in de populatie $(S(t)+I(t)+R(t))$ constant zal blijven?
 >
 
 Bij het vaststellen van deze overgangssnelheiden hebben we een andere belangrijke vereenvoudiging gemaakt. We nemen aan dat elke persoon in de populatie een gelijke waarschijnlijkheid heeft om in contact te komen met elke andere persoon. Anders gezegd, nemen we aan dat de populatie perfect gemengd is. In sommige gevallen kan deze vereenvoudiging passen bij de realiteit, bijvoorbeeld als we willen bijhouden hoe een griep zich door een fuif verspreidt.
@@ -82,7 +82,7 @@ Met behulp van computers is het gemakkelijk om op deze manier een numerieke oplo
 
 ![](https://i.imgur.com/M0NVPcz.png)
 
-> **VRAAG**: Een epidemie wordt **uitbreidend** genoemd als het aantal geïnfecteerden toeneemt. Wanneer is de epidemie uitbreidend? Op het moment wanneer $I$ verandert van toenemend naar afnemend, wat kun je zeggen over de verandering van $I$? (**hint**: kijk naar de vorm van $\frac{dI}{dt}$)
+> **Vraag 2**: Een epidemie wordt **uitbreidend** genoemd als het aantal geïnfecteerden toeneemt. Wanneer is de epidemie uitbreidend? Op het moment wanneer $I$ verandert van toenemend naar afnemend, wat kun je zeggen over de verandering van $I$? (**hint**: kijk naar de vorm van $\frac{dI}{dt}$)
 >
 
 ## Sociale netwerken
@@ -93,12 +93,12 @@ Het standaard SIR model maakt de onrealistische veronderstelling dat twee willek
 
 ### Een voorbeeld
 
-Hieronder zie je een voorbeeld van een netwerk. Laten we ons voorstellen dat het het sociale netwerk van een schoolklas vertegenwoordigt. De punten vertegenwoordigen de studenten en worden *knopen* genoemd. De contacten tussen studenten worden weergegeven door lijnsegmenten tussen knopen, en worden *bogen* genoemd. We zeggen dat twee knopen met elkaar *verbonden* zijn als er een boog tussen zit. Hier gaan we er van uit dat een knoop niet verbonden kan zijn met zichzelf[^selfconnectance]. Ook is er maar maximaal één boog mogelijk tussen twee knopen. De *graad* van een knoop is het aantal bogen dat ermee verbonden zijn.
+Hieronder zie je een voorbeeld van een twee netwerken. Laten we ons voorstellen dat het het sociale netwerk van een schoolklas vertegenwoordigt. De punten vertegenwoordigen de studenten en worden *knopen* genoemd. De contacten tussen studenten worden weergegeven door lijnsegmenten tussen knopen, en worden *bogen* genoemd. We zeggen dat twee knopen met elkaar *verbonden* zijn als er een boog tussen zit. Hier gaan we er van uit dat een knoop niet verbonden kan zijn met zichzelf[^selfconnectance]. Ook is er maar maximaal één boog mogelijk tussen twee knopen. De *graad* van een knoop is het aantal bogen dat ermee verbonden zijn.
 
 [^selfconnectance]: We gaan er van uit dat je niet kan bevriend zijn met jezelf.
 
-> **OEFENING**: perhaps two networks representing e.g. a class of 4 year olds and a class of 12 year olds? and ask to compare them, and why they think the structures are different.
->
+> **Vraag 2**: perhaps two networks representing e.g. a class of 4 year olds and a class of 12 year olds? and ask to compare them, and why they think the structures are different.
+
 
 ![](https://i.imgur.com/AozX7EL.jpg)
 ([source](https://royalsocietypublishing.org/doi/full/10.1098/rspb.2010.1807))
@@ -110,18 +110,36 @@ Hieronder zie je een voorbeeld van een netwerk. Laten we ons voorstellen dat het
 
 Zoals je ziet wordt een network of een graaf vaak voorgesteld in een figuur waar cirkels (of andere elementen) de knopen voorstellen die geconnecteerd zijn door lijnen, de bogen. Deze figuren zijn niet uniek: eenzelfde netwerk kan vaak op verschillende manieren voorgesteld worden. Soms hebben de knopen ook een kleur, bijvoorbeeld om geslacht te duiden in een sociaal netwerk. In dat geval spreekt men van een *gekleurde graaf*.
 
-Een figuur is nuttig om te bekijken hoe het netwerk er uit ziet. Om er berekeningen mee te doen zijn er echter andere representaties nodig. Een graaf kan wiskundig voorgesteld worden in een matrix die heet en *bogenmatrix* (Engels: adjacency matrix). Als de aantal knopen in de graaf $n$ is, dan is de bogenmatrix een vierkante matrix met dimensies $n \times n$. Het element $A_{ij} = 1$ als de knopen $i$ en $j$ verbonden zijn, en $A_{i,j} = 0$ als ze niet verbonden zijn[^verbindingslijst].
+Een figuur is nuttig om te bekijken hoe het netwerk er uit ziet. Om er berekeningen mee te doen zijn er echter andere representaties nodig. Een graaf kan wiskundig voorgesteld worden in een matrix die heet en *bogenmatrix* (Engels: adjacency matrix). Als de aantal knopen in de graaf $n$ is, dan is de bogenmatrix een vierkante matrix met dimensies $n \times n$. Het element $A_{ij} = 1$ als de knopen $i$ en $j$ verbonden zijn, en $A_{i,j} = 0$ als ze niet verbonden zijn[^verbindingslijst]. Hoewel we hier niet zo ver zullen gaan, linkt de bogenmatrix graaftheorie met matrixtheorie!
 
 [^verbindingslijst]: In het echte leven hebben de meeste mensen in een populatie geen contact met elkaar (denk aan het sociaal netwerk van een  hele stad). Dus de graaf is verre van *volledig verbonden* (elk paar knopen is verbonden) en de elementen van de bogenmatrix bestaat grotendeels uit nullen. In deze gevallen kan het soms beter zijn om een *verbindingslijst* te gebruiken. Dit is een lijst met dimensies $m \times 2$ waarbij $m$ het aantal bogen is, en elke rij bevat een koppel knopen die verbonden zijn. Afhankelijk van het specifieke netwerk dat we bestuderen en wat we ermee willen doen, kan de ene of de andere van deze datastructuren efficiënter zijn.
 
-> **OEFENING**: voltooi de bogenmatrix en de verbindingslijst voor het sociale netwerk.
+> **Oefening 1**: voltooi de bogenmatrix en de verbindingslijst voor het sociale netwerk.
+
+|      | 1    | 2    | 3    | 4    | 5    | 6    | 7    | 8    | 9    | 10   | 11   | 12   | 13   | 14   | 15  |
+:---| :---| :---| :---| :---| :---| :---| :---| :---| :---| :---| :---| :---| :---| :---|:--|
+| **1** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **2** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **3** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **4** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **5** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **6** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **7** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **8** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **9** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **10** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **11** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **12** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **13** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **14** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **15** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
 - [ ] maak netwerk + plot
 - [ ] verbindingmatrix
 
 ### Gradenverdeling
 
-> **VRAAG**: Wie zal er eerder een verkoudheid oplopen: _ of _ ?
+> **Vraag 3**: Wie zal er eerder een verkoudheid oplopen: _ of _ ?
 
 Een graaf is een complexe wiskundige structuur. Een gegeven knoop in een graaf wordt gekarakteriseerd door zijn bogen en dus ook graad. Echter, belangrijke eigenschappen van de graaf zijn *emergent*, dit wil zeggen dat ze enkel te verklaren zijn door de graaf in zijn geheel en niet enkel de individuele onderdelen.
 
