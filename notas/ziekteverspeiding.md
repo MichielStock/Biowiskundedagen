@@ -95,24 +95,23 @@ Het standaard SIR model maakt de onrealistische veronderstelling dat twee willek
 
 Hieronder zie je een voorbeeld van een twee netwerken. Laten we ons voorstellen dat het het sociale netwerk van een schoolklas vertegenwoordigt. De punten vertegenwoordigen de studenten en worden *knopen* genoemd. De contacten tussen studenten worden weergegeven door lijnsegmenten tussen knopen, en worden *bogen* genoemd. We zeggen dat twee knopen met elkaar *verbonden* zijn als er een boog tussen zit. Hier gaan we er van uit dat een knoop niet verbonden kan zijn met zichzelf[^selfconnectance]. Ook is er maar maximaal één boog mogelijk tussen twee knopen. De *graad* van een knoop is het aantal bogen dat ermee verbonden zijn.
 
-[^selfconnectance]: We gaan er van uit dat je niet kan bevriend zijn met jezelf.
-
-> **Vraag 2**: perhaps two networks representing e.g. a class of 4 year olds and a class of 12 year olds? and ask to compare them, and why they think the structures are different.
-
-
 ![](https://i.imgur.com/AozX7EL.jpg)
 ([source](https://royalsocietypublishing.org/doi/full/10.1098/rspb.2010.1807))
 
-- [ ] figuur maken
-
-
-### Voorstelling van netwerken
-
 Zoals je ziet wordt een network of een graaf vaak voorgesteld in een figuur waar cirkels (of andere elementen) de knopen voorstellen die geconnecteerd zijn door lijnen, de bogen. Deze figuren zijn niet uniek: eenzelfde netwerk kan vaak op verschillende manieren voorgesteld worden. Soms hebben de knopen ook een kleur, bijvoorbeeld om geslacht te duiden in een sociaal netwerk. In dat geval spreekt men van een *gekleurde graaf*.
+
+[^selfconnectance]: We gaan er van uit dat je niet kan bevriend zijn met jezelf.
+
+> **Vraag 2**: Beschrijf het verschil tussen de sociale netwerken tussen kinderen van verschillende leeftijden.
 
 Een figuur is nuttig om te bekijken hoe het netwerk er uit ziet. Om er berekeningen mee te doen zijn er echter andere representaties nodig. Een graaf kan wiskundig voorgesteld worden in een matrix die heet en *bogenmatrix* (Engels: adjacency matrix). Als de aantal knopen in de graaf $n$ is, dan is de bogenmatrix een vierkante matrix met dimensies $n \times n$. Het element $A_{ij} = 1$ als de knopen $i$ en $j$ verbonden zijn, en $A_{i,j} = 0$ als ze niet verbonden zijn[^verbindingslijst]. Hoewel we hier niet zo ver zullen gaan, linkt de bogenmatrix graaftheorie met matrixtheorie!
 
 [^verbindingslijst]: In het echte leven hebben de meeste mensen in een populatie geen contact met elkaar (denk aan het sociaal netwerk van een  hele stad). Dus de graaf is verre van *volledig verbonden* (elk paar knopen is verbonden) en de elementen van de bogenmatrix bestaat grotendeels uit nullen. In deze gevallen kan het soms beter zijn om een *verbindingslijst* te gebruiken. Dit is een lijst met dimensies $m \times 2$ waarbij $m$ het aantal bogen is, en elke rij bevat een koppel knopen die verbonden zijn. Afhankelijk van het specifieke netwerk dat we bestuderen en wat we ermee willen doen, kan de ene of de andere van deze datastructuren efficiënter zijn.
+
+Het sociaal netwerk dat we beschouwen wordt weergegeven in onderstaande figuur. De knopen (hier personen) zijn genummerd voor ons gemak. We houden geen rekening met geslacht of andere attributen. We zullen hier een ziekteuitbraak op simuleren!
+
+![Een sociaal netwerk tussen vijftien personen.](../figuren/socialnetwerk.png)
+
 
 > **Oefening 1**: voltooi de bogenmatrix en de verbindingslijst voor het sociale netwerk.
 
@@ -135,11 +134,11 @@ Een figuur is nuttig om te bekijken hoe het netwerk er uit ziet. Om er berekenin
 | **15** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
 - [ ] maak netwerk + plot
-- [ ] verbindingmatrix
+- [x] verbindingmatrix
 
 ### Gradenverdeling
 
-> **Vraag 3**: Wie zal er eerder een verkoudheid oplopen: _ of _ ?
+> **Vraag 5**: Wie zal er eerder een verkoudheid oplopen: persoon 3 of 15 ?
 
 Een graaf is een complexe wiskundige structuur. Een gegeven knoop in een graaf wordt gekarakteriseerd door zijn bogen en dus ook graad. Echter, belangrijke eigenschappen van de graaf zijn *emergent*, dit wil zeggen dat ze enkel te verklaren zijn door de graaf in zijn geheel en niet enkel de individuele onderdelen.
 
