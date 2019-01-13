@@ -108,6 +108,8 @@ if __name__ == '__main__':
     ax.set_ylabel(r"Relatief aantal knopen $D(d)$")
     ax.set_title("Gradenverdeling van drie netwerken\n met 1000 knopen")
     ax.legend(loc=0)
+    #ax.set_xticks([1, 10, 100, 1000])
+    #ax.set_yticklabels([0.001, 0.01, 0.1, 1], map(str, [0.001, 0.01, 0.1, 1]))
     ax.loglog()
     fig.tight_layout()
 

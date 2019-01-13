@@ -18,7 +18,7 @@ Tegenwoordig veroorzaakt besmettelijke ziektes minder doden door betere medische
 ![](https://i.imgur.com/TC1h64w.jpg)
 
 - [ ] bron figuur?
-- [ ] technieken => link naar ander labo!
+- [x] technieken => link naar ander labo!
 
 ## Ziekteverspreidingsmodellen
 
@@ -47,9 +47,9 @@ Een van de eenvoudigste manieren om ziekteverspreiding in een gemeenschap te mod
 
 In deze beschrijving maken we een eerste grote vereenvoudiging van de werkelijkheid. We nemen aan dat elk van deze variablen reëelwaardig zijn en dat het aantal individuen in elke groep continu kan variëeren. In werkelijkheid is het aantal geïnfecteerden of vatbare individuen een geheel getal, je bent immers besmet of je bent het niet. Modelleerders werken echter graag met continue variablen omdat ze dan de technieken van wiskundige analyse kunnen gebruiken.
 
-> **VRAAG**: Onder welke omstandigheden gaat deze continue benadering ongeveer op? Wanneer niet?
+> **Vraag 1**: Onder welke omstandigheden gaat deze continue benadering ongeveer op? Wanneer niet?
 
-- [ ] **PICTURE**: here put a simple compartment flowchart from S -> I -> R (unhappy face to sick face to happy face)
+![Visule voorstelling van het SIR model. Een vatbaar individu (toestand $S$) kan geïnfecteerd worden (toestand $I$), weergegeven door de volle pijlen. Een gïnfecteerd individu kan immuun worden en vatbare individuen kunnen  geimmuniseerd worden, weergegeven door de pijlen met stippellijnen. In dit project zullen we deze overgangen niet beschouwen.](../figuren/SIRtoestanden.png)
 
 Deze drie variabelen worden aan elkaar gelinkt aan de hand van drie vergelijkingen. Hierin nemen we aan dat de grootte van de populatie ongewijzigd blijft. In de tijdspanne die het model beschrijft gebeuren er dus geen geboortes, noch sterven er mensen. We zullen ons hier dus betrekken tot de verspreiding van een relatief onschuldige ziekte zoals een verkoudheid. De drie vergelijkingen zijn als volgt:
 
@@ -172,6 +172,8 @@ $$
 
 ### Drie types van netwerken
 
+![Illustraties van gradenverdelingen van verschillende types van netwerken.](../figuren/gradenverdelingen.png)
+
 - [ ] inleiding
 
 #### Willekeurige netwerken
@@ -244,7 +246,7 @@ Soms zijn we niet alleen geïnteresseerd in de individuen en hun contacten in ee
 
 > **PICTURE?**
 
-> **OEFENING**: Kun je de gradenverdeling van een regelmatig gridnetwerk afleiden?
+> **Vraag**: Kun je de gradenverdeling van een regelmatig gridnetwerk met $m$ rijen en $n$ kolommen afleiden? **Hint** Stel dat $n$ en $m$ erg groot zijn.
 
 
 ## Verspreiding van een ziekte doorheen een netwerk
@@ -268,7 +270,7 @@ Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan er
 - [ ] figure of state changes
 
 
-> **OEFENING**: Gebruik het sociale netwerk dat je hebt gekregen om de verspreiding van een ziekte te modelleren.
+> **Oefening 3**: Gebruik het sociale netwerk dat je hebt gekregen om de verspreiding van een ziekte te modelleren.
 >1. Elk individu begint als vatbaar. Kies een persoon om de eerste geïnfecteerde te worden en kleurt deze in.
 >2. Bij elke tijdstip, ga een voor een door de buren van een geïnfecteerde persoon en laat hen ook geïnfecteerde raken volgens de bovenstaande regels. Vul de tabel in om de spreiding over de tijd te volgen.
 >3. Herhaal totdat het netwerk niet meer verandert.
