@@ -264,10 +264,9 @@ Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan er
 1. Indien een knoop in tijdstip $t$ in toestand $S$ zit en al zijn buren eveneens in toestand $S$ zitten, blijft de knoop in tijdstip $t+1$ in toestand $S$.
 2. Indien een knoop in tijdstip $t$ in toestand $S$ zit en minstend één van zijn buren eveneens in toestand $I$ zit, verandert de knoop in tijdstip $t+1$ naar toestand $I$.
 3. Indien een knoop in tijdstip $t$ in toestand $I$ zit blijft de knoop in tijdstip $t+1$ in toestand $I$.
-4.
 
 
-- [ ] figure of state changes
+![Overzicht van de regels voor het SIR model op een netwerk.](../figuren/SIRregels.png)
 
 
 > **Oefening 3**: Gebruik het sociale netwerk dat je hebt gekregen om de verspreiding van een ziekte te modelleren.
