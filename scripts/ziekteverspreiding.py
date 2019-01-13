@@ -61,6 +61,14 @@ def printdegreetable(n):
     for i in range(n):
         print("| ${}$ | ... |".format(i+1))
 
+def printtoestandtabel(n, t):
+    """Print tabel voor toestand transities"""
+    print("| knoop |" + " ".join([" $t={}$ |".format(i) for i in range(t+1)]))
+    print("|" + ":--|" * (t+2))
+    for knoop in range(n):
+        print("| ${}$ |".format(knoop+1) + " ... |" * (t+1))
+    print("| **totaal aantal geinfecteerden** |".format(knoop+1) + " ... |" * (t+1))
+
 if __name__ == '__main__':
     import matplotlib.pyplot as plt
     plt.xkcd()
