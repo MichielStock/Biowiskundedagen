@@ -1,6 +1,6 @@
 """
 Created on Wednesday 09 Janary 2018
-Last update: Thursday 10 January 2019
+Last update: Thursday 17 January 2019
 
 @author: Michiel Stock
 michielfmstock@gmail.com
@@ -40,7 +40,7 @@ AZ_beta_platen_aantal = Counter()
 for beta_plaat in beta_platen:
     AZ_beta_platen_aantal.update(beta_plaat)
 
-aminozuren = AZ_aantal.keys()
+aminozuren = list(AZ_aantal.keys())
 
 AZ_totaal = sum(AZ_aantal.values())
 AZ_beta_platen_totaal = sum(AZ_beta_platen_aantal.values())
@@ -55,7 +55,29 @@ for AZ in sorted(aminozuren):
     AZ_prob_beta[AZ] = AZ_beta_platen_aantal[AZ] / AZ_beta_platen_totaal
     AZ_odds[AZ] = AZ_prob_beta[AZ] / AZ_prob[AZ]
 
-#def genereer_van_distributie(n, )
+# Genereer een random eiwit met bepaalde structuur
+# AZ per regio gesampelt volgens geoberveerde distributies
+
+p_beta = [AZ_prob_beta[az] for az in aminozuren]
+p_niet_beta = [AZ_aantal[az] - AZ_beta_platen_aantal[az] for az in aminozuren]
+
+def genereer_seq_van_distributie(n, p_vect):
+    return "".join(rd.choices(aminozuren, weights=p_vect, k=n))
+
+# geneer een eiwit volgens die distributie
+
+if True:  # genereer nieuwe sequentie
+    sequentie = ""
+    regios = []
+    beta_masker = []
+
+    while len(sequentie) < 700:
+        niet_beta_plaat = genereer_seq_van_distributie(rd.randint(20, 100), p_niet_beta)
+        sequentie += niet_beta_plaat
+        beta_plaat = genereer_seq_van_distributie(rd.randint(15, 50), p_beta)
+        regios.append((len(sequentie), len(sequentie) + len(beta_plaat) - 1))
+        beta_masker += [False] * len(niet_beta_plaat) + [True] * len(beta_plaat)
+        sequentie += beta_plaat
 
 def confusiematrix(y, p):
     n=len(y)
