@@ -11,6 +11,8 @@ Basic python module for project secondary protein structure.
 from collections import Counter
 import numpy as np
 import matplotlib.pyplot as plt
+import random as rd
+rd.seed(43)
 
 sequentie = P22eiwit = "MTDITANVVVSNPRPIFTESRSFKAVANGKIYIGQIDTDPVNPANQIPVYIENEDGSHVQITQPLIINAAGKIVYNGQLVKIVTVQGHSMAIYDANGSQVDYIANVLKYDPDQYSIEADKKFKYSVKLSDYPTLQDAASAAVDGLLIDRDYNFYGGETVDFGGKVLTIECKAKFIGDGNLIFTKLGKGSRIAGVFMESTTTPWVIKPWTDDNQWLTDAAAVVATLKQSKTDGYQPTVSDYVKFPGIETLLPPNAKGQNITSTLEIRECIGVEVHRASGLMAGFLFRGCHFCKMVDANNPSGGKDGIITFENLSGDWGKGNYVIGGRTSYGSVSSAQFLRNNGGFERDGGVIGFTSYRAGESGVKTWQGTVGSTTSRNYNLQFRDSVVIYPVWDGFDLGADTDMNPELDRPGDYPITQYPLHQLPLNHLIDNLLVRGALGVGFGMDGKGMYVSNITVEDCAGSGAYLLTHESVFTNIAIIDTNTKDFQANQIYISGACRVNGLRLIGIRSTDGQGLTIDAPNSTVSGITGMVDPSRINVANLAEEGLGNIRANSFGYDSAAIKLRIHKLSKTLDSGALYSHINGGAGSGSAYTQLTAISGSTPDAVSLKVNHKDCRGAEIPFVPDIASDDFIKDSSCFLPYWENNSTSLKALVKKPNGELVRLTLATL"
 
@@ -53,6 +55,8 @@ for AZ in sorted(aminozuren):
     AZ_prob_beta[AZ] = AZ_beta_platen_aantal[AZ] / AZ_beta_platen_totaal
     AZ_odds[AZ] = AZ_prob_beta[AZ] / AZ_prob[AZ]
 
+#def genereer_van_distributie(n, )
+
 def confusiematrix(y, p):
     n=len(y)
     print(
@@ -82,7 +86,7 @@ def glijdendvenster(sequentie, k=5):
         posterior_kans[i] = np.prod([odds_array[i-w:i+w+1]]) * prior_beta
     return posterior_kans
 
-def plot_glijdend_venster(threshold=0.5, k=5):
+def plot_glijdend_venster_ax(ax, threshold=0.5, k=5):
     """
     Maak een plot van het glijdend venster.
 
@@ -91,7 +95,6 @@ def plot_glijdend_venster(threshold=0.5, k=5):
         - threshold
         - k
     """
-    fig, ax = plt.subplots(figsize=(15, 5))
     ax.set_ylim([1e-4, 2])
     ax.set_xlim([0, len(sequentie)])
     gv = glijdendvenster(sequentie, k)
@@ -106,7 +109,12 @@ def plot_glijdend_venster(threshold=0.5, k=5):
     ax.set_xlabel(r"positie $i$")
     ax.set_title("Glijdend venster met k={}".format(k))
     confusiematrix(beta_masker, gv > threshold)
-    return fig
+
+def plot_glijdend_venster(threshold, k):
+    fig, ax = plt.subplots(figsize=(15, 5))
+    plot_glijdend_venster_ax(ax, threshold, k)
+    #return fig
+
 
 if __name__ == '__main__':
 
@@ -146,5 +154,6 @@ if __name__ == '__main__':
             ))
 
     # maak plot glijdendvenster
-    fig = plot_glijdend_venster()
+    fig, ax = plt.subplots(figsize=(15, 5))
+    plot_glijdend_venster_ax(ax=ax)
     fig.savefig("../figuren/glijdendvenstervoorbeeld.png")
