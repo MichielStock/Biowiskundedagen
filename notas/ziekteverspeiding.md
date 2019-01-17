@@ -47,7 +47,7 @@ Een van de eenvoudigste manieren om ziekteverspreiding in een gemeenschap te mod
 
 In deze beschrijving maken we een eerste grote vereenvoudiging van de werkelijkheid. We nemen aan dat elk van deze variablen reëelwaardig zijn en dat het aantal individuen in elke groep continu kan variëeren. In werkelijkheid is het aantal geïnfecteerden of vatbare individuen een geheel getal, je bent immers besmet of je bent het niet. Modelleerders werken echter graag met continue variablen omdat ze dan de technieken van wiskundige analyse kunnen gebruiken.
 
-> **VRAAG**: Onder welke omstandigheden gaat deze continue benadering ongeveer op? Wanneer niet?
+> **Vraag 2**: Onder welke omstandigheden gaat deze continue benadering ongeveer op? Wanneer niet?
 
 - [ ] **PICTURE**: here put a simple compartment flowchart from S -> I -> R (unhappy face to sick face to happy face)
 
@@ -71,7 +71,7 @@ De overgangssnelheid van vatbaar naar geïnfecteerd hangt af van het contact tus
 
 De overgangssnelheid van geïnfecteerd naar resistent hangt alleen af van de snelheid van herstel, die we $\gamma$ noemen. Dus het aantal geïnfecteerde personen vermindert met deze snelheid op else tijdstip.
 
-> **VRAAG**: Kan je aantonen dat het totaal aantal individuen in de populatie $(S(t)+I(t)+R(t))$ constant zal blijven?
+> **Vraag 3**: Kan je aantonen dat het totaal aantal individuen in de populatie $(S(t)+I(t)+R(t))$ constant zal blijven?
 >
 
 Bij het vaststellen van deze overgangssnelheiden hebben we een andere belangrijke vereenvoudiging gemaakt. We nemen aan dat elke persoon in de populatie een gelijke waarschijnlijkheid heeft om in contact te komen met elke andere persoon. Anders gezegd, nemen we aan dat de populatie perfect gemengd is. In sommige gevallen kan deze vereenvoudiging passen bij de realiteit, bijvoorbeeld als we willen bijhouden hoe een griep zich door een fuif verspreidt.
@@ -82,7 +82,7 @@ Met behulp van computers is het gemakkelijk om op deze manier een numerieke oplo
 
 ![](https://i.imgur.com/M0NVPcz.png)
 
-> **VRAAG**: Een epidemie wordt **uitbreidend** genoemd als het aantal geïnfecteerden toeneemt. Wanneer is de epidemie uitbreidend? Op het moment wanneer $I$ verandert van toenemend naar afnemend, wat kun je zeggen over de verandering van $I$? (**hint**: kijk naar de vorm van $\frac{dI}{dt}$)
+> **Vraag 4**: Een epidemie wordt **uitbreidend** genoemd als het aantal geïnfecteerden toeneemt. Wanneer is de epidemie uitbreidend? Op het moment wanneer $I$ verandert van toenemend naar afnemend, wat kun je zeggen over de verandering van $I$? (**hint**: kijk naar de vorm van $\frac{dI}{dt}$)
 >
 
 ## Sociale netwerken
