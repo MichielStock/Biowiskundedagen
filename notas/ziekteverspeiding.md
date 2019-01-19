@@ -1,10 +1,8 @@
-# Ziekteverspreiding
+# Verspreiding van ziektes doorheen sociale netwerken
 
-- [ ] ==abstract==
+In dit project zullen we bestuderen hoe ziektes kunnen verspreiden via een (sociaal) netwerk. We zullen onderzoeken hoe de structuur van een netwerk een invloed kan hebben hoe snel een ziekte doorgegeven wordt. Ten slotte zullen we het effect van vaccinatie bekijken.
 
 [toc]
-
-In dit practicum zullen we bestuderen hoe ziektes kunnen verspreiden via een (sociaal) netwerk. We zullen onderzoeken hoe de structuur van een netwerk een invloed kan hebben hoe snel een ziekte doorgegeven wordt. Ten slotte zullen we het effect van vaccinatie bekijken.
 
 ## Besmettelijke ziektes
 
@@ -15,10 +13,7 @@ In de geschiedenis van de mensheid[^niethumaneziekten] heeft niets zoveel mensen
 Tegenwoordig veroorzaakt besmettelijke ziektes minder doden door betere medische kennis, technieken en middelen. Echter blijven ze een ernstig probleem voor de volksgezondheid. Toch zijn 3 van de 10 belangrijkste doodsoorzaken wereldwijd besmettelijke ziekten. Naast de verbeteringen van de moderne wereld zijn er ook nieuwe uitdagingen voor het stoppen van epidemieën. Nu kan een besmette persoon op een vliegtuig stappen en in een paar uur tijd een ziekte naar een ander continent verspreiden.
 
 
-![](https://i.imgur.com/TC1h64w.jpg)
-
-- [ ] bron figuur?
-- [ ] technieken => link naar ander labo!
+![Verschillende vliegtuigroutes tussen luchthavens. De wereld is sterk geconnecteerd en ziektes kunnen zich nu veel sneller verspreiden.](../figuren/luchthaven.jpg)
 
 ## Ziekteverspreidingsmodellen
 
@@ -47,9 +42,9 @@ Een van de eenvoudigste manieren om ziekteverspreiding in een gemeenschap te mod
 
 In deze beschrijving maken we een eerste grote vereenvoudiging van de werkelijkheid. We nemen aan dat elk van deze variablen reëelwaardig zijn en dat het aantal individuen in elke groep continu kan variëeren. In werkelijkheid is het aantal geïnfecteerden of vatbare individuen een geheel getal, je bent immers besmet of je bent het niet. Modelleerders werken echter graag met continue variablen omdat ze dan de technieken van wiskundige analyse kunnen gebruiken.
 
-> **Vraag 2**: Onder welke omstandigheden gaat deze continue benadering ongeveer op? Wanneer niet?
+> **Vraag 1**: Onder welke omstandigheden gaat deze continue benadering ongeveer op? Wanneer niet?
 
-- [ ] **PICTURE**: here put a simple compartment flowchart from S -> I -> R (unhappy face to sick face to happy face)
+![Visule voorstelling van het SIR model. Een vatbaar individu (toestand $S$) kan geïnfecteerd worden (toestand $I$), weergegeven door de volle pijlen. Een gïnfecteerd individu kan immuun worden en vatbare individuen kunnen  geimmuniseerd worden, weergegeven door de pijlen met stippellijnen. In dit project zullen we deze overgangen niet beschouwen.](../figuren/SIRtoestanden.png)
 
 Deze drie variabelen worden aan elkaar gelinkt aan de hand van drie vergelijkingen. Hierin nemen we aan dat de grootte van de populatie ongewijzigd blijft. In de tijdspanne die het model beschrijft gebeuren er dus geen geboortes, noch sterven er mensen. We zullen ons hier dus betrekken tot de verspreiding van een relatief onschuldige ziekte zoals een verkoudheid. De drie vergelijkingen zijn als volgt:
 
@@ -71,8 +66,7 @@ De overgangssnelheid van vatbaar naar geïnfecteerd hangt af van het contact tus
 
 De overgangssnelheid van geïnfecteerd naar resistent hangt alleen af van de snelheid van herstel, die we $\gamma$ noemen. Dus het aantal geïnfecteerde personen vermindert met deze snelheid op else tijdstip.
 
-> **Vraag 3**: Kan je aantonen dat het totaal aantal individuen in de populatie $(S(t)+I(t)+R(t))$ constant zal blijven?
->
+> **Vraag 2**: Kan je aantonen dat het totaal aantal individuen in de populatie $(S(t)+I(t)+R(t))$ constant zal blijven?
 
 Bij het vaststellen van deze overgangssnelheiden hebben we een andere belangrijke vereenvoudiging gemaakt. We nemen aan dat elke persoon in de populatie een gelijke waarschijnlijkheid heeft om in contact te komen met elke andere persoon. Anders gezegd, nemen we aan dat de populatie perfect gemengd is. In sommige gevallen kan deze vereenvoudiging passen bij de realiteit, bijvoorbeeld als we willen bijhouden hoe een griep zich door een fuif verspreidt.
 
@@ -80,10 +74,9 @@ Het SIR-model kan niet exact worden opgelost, zoals veel differentiaalvergelijki
 
 Met behulp van computers is het gemakkelijk om op deze manier een numerieke oplossing voor het SIR-model te vinden. Vanuit deze oplossing kunnen we leren hoe de verschillende variabelen in de loop van de tijd veranderen. Om dit te doen, vertrekken we van een beginvoorwaarde: het is logisch om te beginnen met een populatie met zero resistente personen, een paar geïnfecteerde personen en de rest vatbaar. Vervolgens kunnen we onze numerieke oplossing gebruiken om het aantal mensen in elke groep bij elke tijdstap te berekenen. Als we een plot maken, zullen we de dynamiek zien die in de onderstaande figuur wordt getoond.
 
-![](https://i.imgur.com/M0NVPcz.png)
+![Een simulatie van een oplossingen van het stelsen differentiaalvergelijkingen die het standaard SIR model voorstellen.](../figuren/SIRsimulatie.png)
 
-> **Vraag 4**: Een epidemie wordt **uitbreidend** genoemd als het aantal geïnfecteerden toeneemt. Wanneer is de epidemie uitbreidend? Op het moment wanneer $I$ verandert van toenemend naar afnemend, wat kun je zeggen over de verandering van $I$? (**hint**: kijk naar de vorm van $\frac{dI}{dt}$)
->
+> **Vraag 3**: Een epidemie wordt **uitbreidend** genoemd als het aantal geïnfecteerden toeneemt. Wanneer is de epidemie uitbreidend? Op het moment wanneer $I$ verandert van toenemend naar afnemend, wat kun je zeggen over de verandering van $I$? (**hint**: kijk naar de vorm van $\frac{dI}{dt}$)
 
 ## Sociale netwerken
 
@@ -93,49 +86,86 @@ Het standaard SIR model maakt de onrealistische veronderstelling dat twee willek
 
 ### Een voorbeeld
 
-Hieronder zie je een voorbeeld van een netwerk. Laten we ons voorstellen dat het het sociale netwerk van een schoolklas vertegenwoordigt. De punten vertegenwoordigen de studenten en worden *knopen* genoemd. De contacten tussen studenten worden weergegeven door lijnsegmenten tussen knopen, en worden *bogen* genoemd. We zeggen dat twee knopen met elkaar *verbonden* zijn als er een boog tussen zit. Hier gaan we er van uit dat een knoop niet verbonden kan zijn met zichzelf[^selfconnectance]. Ook is er maar maximaal één boog mogelijk tussen twee knopen. De *graad* van een knoop is het aantal bogen dat ermee verbonden zijn.
+Hieronder zie je een voorbeeld van een twee netwerken. Laten we ons voorstellen dat het het sociale netwerk van een schoolklas vertegenwoordigt. De punten vertegenwoordigen de studenten en worden *knopen* genoemd. De contacten tussen studenten worden weergegeven door lijnsegmenten tussen knopen, en worden *bogen* genoemd. We zeggen dat twee knopen met elkaar *verbonden* zijn als er een boog tussen zit. Hier gaan we er van uit dat een knoop niet verbonden kan zijn met zichzelf[^selfconnectance]. Ook is er maar maximaal één boog mogelijk tussen twee knopen. De *graad* van een knoop is het aantal bogen dat ermee verbonden zijn.
 
-[^selfconnectance]: We gaan er van uit dat je niet kan bevriend zijn met jezelf.
+![Voorbeelden van gekleurde grafen die netwerken tussen kinderen van verschillende leeftijden voorstellen ([bron](https://royalsocietypublishing.org/doi/full/10.1098/rspb.2010.1807)).](../figuren/netwerkkinderen.jpg)
 
-> **OEFENING**: perhaps two networks representing e.g. a class of 4 year olds and a class of 12 year olds? and ask to compare them, and why they think the structures are different.
->
-
-![](https://i.imgur.com/AozX7EL.jpg)
-([source](https://royalsocietypublishing.org/doi/full/10.1098/rspb.2010.1807))
-
-- [ ] figuur maken
-
-
-### Voorstelling van netwerken
 
 Zoals je ziet wordt een network of een graaf vaak voorgesteld in een figuur waar cirkels (of andere elementen) de knopen voorstellen die geconnecteerd zijn door lijnen, de bogen. Deze figuren zijn niet uniek: eenzelfde netwerk kan vaak op verschillende manieren voorgesteld worden. Soms hebben de knopen ook een kleur, bijvoorbeeld om geslacht te duiden in een sociaal netwerk. In dat geval spreekt men van een *gekleurde graaf*.
 
-Een figuur is nuttig om te bekijken hoe het netwerk er uit ziet. Om er berekeningen mee te doen zijn er echter andere representaties nodig. Een graaf kan wiskundig voorgesteld worden in een matrix die heet en *bogenmatrix* (Engels: adjacency matrix). Als de aantal knopen in de graaf $n$ is, dan is de bogenmatrix een vierkante matrix met dimensies $n \times n$. Het element $A_{ij} = 1$ als de knopen $i$ en $j$ verbonden zijn, en $A_{i,j} = 0$ als ze niet verbonden zijn[^verbindingslijst].
+[^selfconnectance]: We gaan er van uit dat je niet kan bevriend zijn met jezelf.
+
+> **Vraag 4**: Beschrijf het verschil tussen de sociale netwerken tussen kinderen van verschillende leeftijden.
+
+Een figuur is nuttig om te bekijken hoe het netwerk er uit ziet. Om er berekeningen mee te doen zijn er echter andere representaties nodig. Een graaf kan wiskundig voorgesteld worden in een matrix die heet en *bogenmatrix* (Engels: adjacency matrix). Als de aantal knopen in de graaf $n$ is, dan is de bogenmatrix een vierkante matrix met dimensies $n \times n$. Het element $A_{ij} = 1$ als de knopen $i$ en $j$ verbonden zijn, en $A_{ij} = 0$ als ze niet verbonden zijn[^verbindingslijst]. De bogenmatrix graaftheorie met matrixtheorie!
 
 [^verbindingslijst]: In het echte leven hebben de meeste mensen in een populatie geen contact met elkaar (denk aan het sociaal netwerk van een  hele stad). Dus de graaf is verre van *volledig verbonden* (elk paar knopen is verbonden) en de elementen van de bogenmatrix bestaat grotendeels uit nullen. In deze gevallen kan het soms beter zijn om een *verbindingslijst* te gebruiken. Dit is een lijst met dimensies $m \times 2$ waarbij $m$ het aantal bogen is, en elke rij bevat een koppel knopen die verbonden zijn. Afhankelijk van het specifieke netwerk dat we bestuderen en wat we ermee willen doen, kan de ene of de andere van deze datastructuren efficiënter zijn.
 
-> **OEFENING**: voltooi de bogenmatrix en de verbindingslijst voor het sociale netwerk.
+Het sociaal netwerk dat we beschouwen wordt weergegeven in onderstaande figuur. De knopen (hier personen) zijn genummerd voor ons gemak. We houden geen rekening met geslacht of andere attributen. We zullen hier een ziekteuitbraak op simuleren!
 
-- [ ] maak netwerk + plot
-- [ ] verbindingmatrix
+![Een sociaal netwerk tussen vijftien personen.](../figuren/socialnetwerk.png)
+
+
+> **Oefening 1**: voltooi de bogenmatrix en de verbindingslijst voor het sociale netwerk.
+
+|      | 1    | 2    | 3    | 4    | 5    | 6    | 7    | 8    | 9    | 10   | 11   | 12   | 13   | 14   | 15  |
+:---| :---| :---| :---| :---| :---| :---| :---| :---| :---| :---| :---| :---| :---| :---|:--|
+| **1** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **2** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **3** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **4** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **5** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **6** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **7** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **8** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **9** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **10** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **11** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **12** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **13** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **14** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **15** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
 ### Gradenverdeling
 
-> **VRAAG**: Wie zal er eerder een verkoudheid oplopen: _ of _ ?
+> **Vraag 5**: Wie zal er eerder een verkoudheid oplopen: persoon 3 of 15 ?
 
 Een graaf is een complexe wiskundige structuur. Een gegeven knoop in een graaf wordt gekarakteriseerd door zijn bogen en dus ook graad. Echter, belangrijke eigenschappen van de graaf zijn *emergent*, dit wil zeggen dat ze enkel te verklaren zijn door de graaf in zijn geheel en niet enkel de individuele onderdelen.
 
-Als we iets willen leren over een netwerk, welke informatie kunnen we bekijken? Het zou zeer interessant zijn om te weten hoe verbonden het netwerk is. Hoe kunnen we bepalen tot welke mate de knopen met elkaar verbonden zijn? We zouden naar de gemiddelde knoopgraad kunnen kijken, maar dit zou ons niet veel zeggen. In plaats daarvan kunnen we tellen voor elk nummer $x$ het aantal $y$ van knopen met graad $x$. Deze plot wordt de *gradenverdeling* genoemd en kan ons veel vertellen over de structuur van een netwerk. Wiskundig drukken we de gradenverdeling uit als
+Als we iets willen leren over een netwerk, welke informatie kunnen we bekijken? Het zou zeer interessant zijn om te weten hoe verbonden het netwerk is. Hoe kunnen we bepalen tot welke mate de knopen met elkaar verbonden zijn? We zouden naar de gemiddelde knoopgraad kunnen kijken, maar dit zou ons niet veel zeggen. In plaats daarvan kunnen we tellen de fractie van de knopen met graad $k$. Deze plot wordt de *gradenverdeling*  (Engels: *degree distribution*) genoemd en kan ons veel vertellen over de structuur van een netwerk. Wiskundig drukken we de gradenverdeling uit als
 
 $$
-D(k)=\text{fractie van de knopen met $k$ bogen}\,.
+D(k)=\text{fractie van de knopen met $k$ bogen (graad $k$)}\,.
 $$
 
-> **Oefening**: Bereken en plot de gradenverdeling van het sociaal netwerk.
+> **Oefening 2**: Bereken en plot de gradenverdeling van het sociaal netwerk. Vul eerst onderstaande tabel in en teken dan de plot.
+
+| $k$ | $D(k)$ |
+|:--|:--|
+| $1$ | ... |
+| $2$ | ... |
+| $3$ | ... |
+| $4$ | ... |
+| $5$ | ... |
+| $6$ | ... |
+| $7$ | ... |
+| $8$ | ... |
+| $9$ | ... |
+| $10$ | ... |
+| $11$ | ... |
+| $12$ | ... |
+| $13$ | ... |
+| $14$ | ... |
+| $15$ | ... |
+
+![](../figuren/gradenverdelingenleeg.png)
 
 ### Drie types van netwerken
 
-- [ ] inleiding
+Er zijn vele verschillende types van netwerken. We beschouwen twee belangrijke: **willekeurige** netwerken en **schaalvrije** netwerken.
+
+![Illustraties van gradenverdelingen van verschillende types van netwerken.](../figuren/gradenverdelingen.png)
+
 
 #### Willekeurige netwerken
 
@@ -151,7 +181,7 @@ De meeste knopen hebben een graad dicht bij dit gemiddelde. **In een (groot) wil
 
 [^gradenrn]: Om precies te zijn, de kans dat een knoop in een netwerk met $n$ knopen exact $m$ bogen heeft wordt gegeven door $$p^m(1-p)^{{n \choose 2} - M},,$$. Dit volgt uit de Binomiale verdeling. Hier is ${n \choose 2}$ de binomiaalcoëfficient $${n \choose 2}=\frac{n(n-1)}{2}\,,$$ dit is het aantal mogelijke manier je twee knopen kan kiezen uit $n$.
 
-> **Oefening** Een sociaal netwerk van een school telt 1000 leerlingen. Ga er van uit dat dit beschreven kan worden als een willekeurig netwerk met $p=0.01$. Hoeveel vrienden heeft een persoon gemiddeld? Denk je dat het waarschijnlijk is dat er iemand rond loopt die slechts twee of minder vrienden heeft?
+> **Oefening 3** Een sociaal netwerk van een school telt 1000 leerlingen. Ga er van uit dat dit beschreven kan worden als een willekeurig netwerk met $p=0.01$. Hoeveel vrienden heeft een persoon gemiddeld? Denk je dat het waarschijnlijk is dat er iemand rond loopt die slechts twee of minder vrienden heeft?
 
 $$
 \text{Gemiddeld aantal vriendschappen} = \ldots \quad
@@ -173,7 +203,7 @@ $$
 P(\text{Twee of minder vrienden})= \ldots
 $$
 
-> **Vraag** Binnen een random netwerk heeft elke knoop ongeveer hetzelfde aantal graden (iedereen heeft ongeveer evenveel vrienden in een sociaal netwerk). Denk je dat dit een realistische assumptie is voor veel netwerken?
+> **Vraag 6** Binnen een random netwerk heeft elke knoop ongeveer hetzelfde aantal graden (iedereen heeft ongeveer evenveel vrienden in een sociaal netwerk). Denk je dat dit een realistische assumptie is voor veel netwerken?
 
 
 #### Schaalvrije netwerken
@@ -183,7 +213,7 @@ Een netwerk wordt *schaalvrij* (Engels: scale-free)  genoemd als de gradenverdel
 [^propto]: $\propto$ wil zeggen 'evenredig aan'.
 
 $$
-d(k) \propto \frac{1}{k^a}\,,
+D(k) \propto \frac{1}{k^a}\,,
 $$
 
 met $a$ een exponent die verschild van network tot netwerk. **In een schaalvrij netwerk hebben enkele knopen een hoge graad en zijn er veel knopen met een lage graad.** Schaalvrije netwerken onstaan door een aggregatieproces waarbij 'the rich get richer': wanneer nieuwe knopen aan een netwerk toegevoegd worden, gaan deze preferentieel verbindingen aan met  knopen met een reeds hoge graad.
@@ -194,21 +224,7 @@ Schaalvrije netwerken komen overal voor:
 - netwerken van het internet: links (bogen) tussen websites (knopen);
 - netwerken die interacties (bogen) weergeven tussen eiwitten (knopen).
 
-> **Vraag**: Stel je een sociaal netwerk voor van drie vrienden waar gradueel nieuwe mensen aan geïntroduceerd worden. Kan je je een scenario voorstellen waarbij een schaalvrij netwerk bekomen zou worden?
-
-#### Ruimtelijke netwerken
-
-Soms zijn we niet alleen geïnteresseerd in de individuen en hun contacten in een netwerk, maar ook in de onderliggende ruimte. We kunnen grafen ook gebruiken om een *ruimtelijk* proces te beschrijven. Stel dat de knopen punten zijn die evenredig verspeid liggen op een grid. Er is een boog die twee punten verbindt als die naburig zijn, zoals op onderstaande figuur te zien is. We noemen dit een *gridnetwerk*.
-
-- [ ] figuur
-- [ ] notas:
-    - [ ] graden
-    - [ ] verspreiding
-
-> **PICTURE?**
-
-> **OEFENING**: Kun je de gradenverdeling van een regelmatig gridnetwerk afleiden?
-
+> **Vraag 7**: Stel je een sociaal netwerk voor van drie vrienden waar gradueel nieuwe mensen aan geïntroduceerd worden. Kan je je een scenario voorstellen waarbij een schaalvrij netwerk bekomen zou worden?
 
 ## Verspreiding van een ziekte doorheen een netwerk
 
@@ -225,31 +241,57 @@ Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan er
 1. Indien een knoop in tijdstip $t$ in toestand $S$ zit en al zijn buren eveneens in toestand $S$ zitten, blijft de knoop in tijdstip $t+1$ in toestand $S$.
 2. Indien een knoop in tijdstip $t$ in toestand $S$ zit en minstend één van zijn buren eveneens in toestand $I$ zit, verandert de knoop in tijdstip $t+1$ naar toestand $I$.
 3. Indien een knoop in tijdstip $t$ in toestand $I$ zit blijft de knoop in tijdstip $t+1$ in toestand $I$.
-4.
+
+> **Oefening 3** Gebruik het sociale netwerk dat je hebt gekregen om de verspreiding van een ziekte te modelleren.
+> 1. Elk individu begint als vatbaar. Kies een persoon om de eerste geïnfecteerde te worden en kleurt deze in.
+> 2. Bij elke tijdstip, ga een voor een door de buren van een geïnfecteerde persoon en laat hen ook geïnfecteerde raken volgens de bovenstaande regels. Vul de tabel in om de spreiding over de tijd te volgen.
+> 3. Herhaal totdat het netwerk niet meer verandert.
+> 4. Volgens de tabel, plot het aantal geïnfecteerden bij elke tijdstip.
 
 
-- [ ] figure of state changes
+| knoop | $t=0$ |  $t=1$ |  $t=2$ |  $t=3$ |  $t=4$ |  $t=5$ |  $t=6$ |  $t=7$ |  $t=8$ |  $t=9$ |  $t=10$ |
+|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
+| $1$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $2$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $3$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $4$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $5$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $6$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $7$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $8$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $9$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $10$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $11$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $12$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $13$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $14$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $15$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **totaal aantal geinfecteerden** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
-
-> **OEFENING**: Gebruik het sociale netwerk dat je hebt gekregen om de verspreiding van een ziekte te modelleren.
->1. Elk individu begint als vatbaar. Kies een persoon om de eerste geïnfecteerde te worden en kleurt deze in.
->2. Bij elke tijdstip, ga een voor een door de buren van een geïnfecteerde persoon en laat hen ook geïnfecteerde raken volgens de bovenstaande regels. Vul de tabel in om de spreiding over de tijd te volgen.
->3. Herhaal totdat het netwerk niet meer verandert.
->4. Volgens de tabel, plot het aantal geïnfecteerden bij elke tijdstip.
-
-
-| knoop | $t = 0$   | $t = 1$ |
-| :------------- | :------------- | :-|
-| A      |    $S^0_A$    |$S^1_A$
-| B      |    $S^0_B$    |$I^1_B$
+<br>
 
 > **OEFENING**: Herhaal de laatste oefening met een ander startpunt: kies een persoon met minder of meer contacten. Vul de tabel in en plot het aantal geïnfecteerden bij elke tijdstip. Hoe verandert de ziekteverspreiding ?
->
 
-| knoop | $t = 0$   | $t = 1$ |
-| :------------- | :------------- | :-|
-| A      |    $S^0_A$    |$S^1_A$
-| B      |    $S^0_B$    |$I^1_B$
+<br>
+
+| knoop                            | $t=0$ | $t=1$ | $t=2$ | $t=3$ | $t=4$ | $t=5$ | $t=6$ | $t=7$ | $t=8$ | $t=9$ | $t=10$ |
+|:-------------------------------- |:----- |:----- |:----- |:----- |:----- |:----- |:----- |:----- |:----- |:----- |:------ |
+| $1$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $2$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $3$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $4$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $5$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $6$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $7$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $8$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $9$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $10$                             | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $11$                             | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $12$                             | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $13$                             | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $14$                             | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $15$                             | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| **totaal aantal geinfecteerden** | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
 
 ### Immuniteit en vaccinatie
 
@@ -262,54 +304,30 @@ Beschouw nu de volgende regels:
 3. Indien een knoop in tijdstip $t$ in toestand $I$ zit blijft de knoop in tijdstip $t+1$ in toestand $I$.
 4. Een knoop in toestand $R$ blijft altijd in toestand $R$.
 
-> **Oefening**: Simuleren we nu een epidemie in een populatie met een bepaalde  niveau van *natuurlijke immuniteit*.
->1. Elk individu begint als vatbaar. Kies een persoon om de eerste geïnfecteerde te worden en kleurt deze in.
->2. Ga een voor een door de buren van een geïnfecteerde persoon. Voor elke knoop gooi een dobbelsteen: als het **1 of 2** is, wordt die persoon ook geïnfecteerd. Als het **een ander nummer** is, zijn ze resistent.
->3. Herhaal voor de nieuwe geïnfecteerde mensen en ga door totdat je de dobbelstenen gegooid hebt voor de buren van elke geïnfecteerde persoon.
->4. Tel hoeveel mensen in de populatie zijn geïnfecteerd en hoeveel stappen je hebt genomen om ze allemaal te infecteren. Maak een plot.
->5. Herhaal de oefening met verschillende startpunten.
-
-> **Oefening**: Nu herhalen we de oefening, maar met *gerichte vaccinatie*.
->1. Elk individu begint als vatbaar. Vaccineer **50% van de populatie**: verander hun toestand in resistent.
->2. Kies een persoon om de eerste geïnfecteerde te worden en kleurt deze in.
->2. Ga een voor een door de buren van een geïnfecteerde persoon en laat hen ook geïnfecteerde raken volgens de bovenstaande regels.
->3. Herhaal voor de nieuwe geïnfecteerde mensen en ga door totdat je de dobbelstenen gegooid hebtvoor de buren van elke geïnfecteerde persoon.
->4. Tel hoeveel mensen in de populatie zijn geïnfecteerd en hoeveel stappen je hebt genomen om ze allemaal te infecteren. Maak een plot.
->5. Herhaal de oefening: deze keer vaccineer **75% van de populatie**.
-
-> **VRAAG**: Wat zou je doen als je slechts 3 doses van het vaccin had? Kies je om de meest populaire mensen te vaccineren, of zou je op bepaalde plaatsen proberen het netwerk te doorbreken? Waarom?
-
-
-### Kudde-immuniteit
+![Overzicht van de regels voor het SIR model op een netwerk.](../figuren/SIRregels.png)
 
 Sommige mensen kunnen door verschillende redenen niet immuun worden. Bijvoorbeeld, vaccins kunnen niet gegeven worden aan jonge baby's of mensen met ernstige medische aandoeningen. In deze groep is *kudde-immuniteit* dus een belangrijke beschermingsmethode.
 
 Kudde immuniteit betekent een indirecte bescherming tegen besmettelijke ziekten. Deze komt voor wanneer een groot percentage van de populatie immuun is tegen een infectie (door natuurlijke immuniteit of vaccinatie) en daardoor beschermen ze mensen die niet immuun zijn. Dit gebeurt omdat het grote aantal immune mensen de ziekteverspreiding vertraagt of zelfs stopt, want de transmissieverbindingen zijn verbroken.
 
-> **PICTURE**
-
-[example of nice figures](https://www.reddit.com/r/dataisbeautiful/comments/5v72fw/how_herd_immunity_works_oc/)
+![Illustratie van kudde-immuniteit. Als voldoende mensen geimmuniseerd zijn breidt de ziekte zich niet verder uit bij vatbare mensen. (links) Netwerk na 100 stappen. (rechts) Verdelingen van de toestanden in de tijd.](../figuren/kuddeimmuniteit.png)
 
 Als een bepaalde grenslijn kan bereikt worden, zal de kudde-immuniteit een ziekte uit een populatie elimineren. Als deze eliminatie over de hele wereld bereikt wordt, kan het aantal infecties permanent tot nul teruggebracht worden. Dan kunnen we spreken van de *uitroeiing* van de ziekte. Het moet duidelijk zijn dat volledige uitroeiing zeer moeilijk te bereiken is. Veel ziekten zijn regionaal uitgeroeid (bijvoorbeeld cholera in België), terwijl slechts twee ziekten wereldwijd uitgeroeid zijn: pokken en runderpest.
 
+> **Computeroefening**: Laat ons overgaan naar simulaties op de computer. Je kan deze uitvoeren in de Jupyter notebooks, schikbaar via de [biowiskundedagen website](https://mybinder.org/v2/gh/michielstock/biowiskundedagen/master). Via de interactieve widget kan je een netwerk van een bepaalde grootte genereren met 1 tot 10 geinfecteerde personen (deze knopen zijn donkerblauw ingekleurd). Het netwerk dat verschijnt is na 10 tijdsstappen. Ernaast zijn de fracties van de knopen in een bepaalde toestand geplot.
+> - **zonder vaccinatie**: `frac_vac=0`
+>   1. Hoeveel tijdstappen zijn er nodig voordat iedereen geïnfecteerd is?
+>   2. Is er een verschil tussen hoe snel de ziekte zich verspreidt tussen een willekeurig of een scaalvrij netwerk?
+> - **met vaccinatie**: `frac_vac>0`, er is keuze tussen een bepaalde fractie individuen willekeurig te kiezen voor vaccinatie of de fractie meest geconnecteerde individuen te vaccineren.
+>   1. Bekijk het effect van willekeurig vaccineren. Vanaf welke fractie worden ook vatbare individuen beschermd?
+>   2. wat is het verschil met gerichte vaccinatie?
 
-## ziektespreidingsmodellen in de praktijk
+## Ziektespreidingsmodellen in de praktijk
 
-Epidemieën komen voortdurend voor en daarom gebruiken volksgezondheidsorganisaties over de hele wereld modellen om interventiestrategieën te ontwikkelen en te evalueren. Met behulp van simulaties kunnen ze snel de situatie beoordelen en belangrijke beslissingen nemen.
-Om een ​​epidemie te herkennen en erop te reageren, hebben gezondheidswerkers informatie nodig die inherent onvoorspelbaar is (wat, waar, hoeveel gevallen, hoeveel zullen sterven, waar zal het zich verspreiden). De interacties die tot het uitbreken van een ziekte leiden zijn zeer complex: ze zijn vaak niet-lineair, zodat de resultaten soms onverwacht of contra-intuïtief zijn. Er zijn modellen nodig om deze interacties te begrijpen en om de kwantitatieve voorspellingen te maken die volksgezondheidswerkers nodig hebben om te beslissen over interventiestrategieën.
+Epidemieën komen voortdurend voor en daarom gebruiken volksgezondheidsorganisaties over de hele wereld modellen om interventiestrategieën te ontwikkelen en te evalueren. Met behulp van simulaties kunnen ze snel de situatie beoordelen en belangrijke beslissingen nemen. Om een ​​epidemie te herkennen en erop te reageren, hebben gezondheidswerkers informatie nodig die inherent onvoorspelbaar is (wat, waar, hoeveel gevallen, hoeveel zullen sterven, waar zal het zich verspreiden). De interacties die tot het uitbreken van een ziekte leiden zijn zeer complex: ze zijn vaak niet-lineair, zodat de resultaten soms onverwacht of contra-intuïtief zijn. Er zijn modellen nodig om deze interacties te begrijpen en om de kwantitatieve voorspellingen te maken die volksgezondheidswerkers nodig hebben om te beslissen over interventiestrategieën.
 
 Menselijk gedrag tijdens ziekte-uitbraken verandert vaak drastisch. Mensen vermijden drukke plaatsen of haasten zich naar drukke plaatsen zoals luchthavens of treinstations als ze proberen te ontsnappen aan de epidemie. Modellering kan gezondheidswerkers helpen dit soort effecten te voorzien en te begrijpen.
 
-Modellen kunnen ook worden gebruikt om te bepalen hoe bestaansmiddelen moeten worden toegewezen om de beste kans te hebben om de verspreiding van de ziekte te stoppen - bijvoorbeeld, als vaccins beperkt zijn, welke groep mensen dan met voorrang moet worden gevaccineerd? Wetenschappers kunnen modellen gebruiken om de uitkomsten van verschillende controlestrategieën te vergelijken.
-Modellen kunnen ook worden gekoppeld aan langetermijngegevens over het klimaat en klimaatvoorspellingen, om voorspellingen van uitbraken vele maanden in de toekomst te maken. Deze benadering wordt gebruikt om vaccinatiecampagnes te bepalen, bijvoorbeeld tegen influenza of mazelen.
+Modellen kunnen ook worden gebruikt om te bepalen hoe bestaansmiddelen moeten worden toegewezen om de beste kans te hebben om de verspreiding van de ziekte te stoppen - bijvoorbeeld, als vaccins beperkt zijn, welke groep mensen dan met voorrang moet worden gevaccineerd? Wetenschappers kunnen modellen gebruiken om de uitkomsten van verschillende controlestrategieën te vergelijken. Modellen kunnen ook worden gekoppeld aan langetermijngegevens over het klimaat en klimaatvoorspellingen, om voorspellingen van uitbraken vele maanden in de toekomst te maken. Deze benadering wordt gebruikt om vaccinatiecampagnes te bepalen, bijvoorbeeld tegen influenza of mazelen.
 
 Wetenschappers ontwikkelen hun begrip van ziekteverspreiding met behulp van gegevens zoals gedrags-, demografische en epidemische trends. Maar het is vaak moeilijk om betrouwbare gegevens te verzamelen en voor veel ziekten missen we nog steeds belangrijke informatie over hoe ze zich verspreiden. Modellering kan ook in deze gevallen helpen, omdat wetenschappers verschillende hypotheses kunnen testen om te proberen de hiaten in hun kennis in te vullen.
-
-![example in a high profile scientific study of exactly what the students have done](https://i.imgur.com/jEJJ3fJ.jpg)[^PNAS]
-
-[^PNAS]: Source: Cauchemez et al., "Role of social networks in shaping disease transmission during a community outbreak of 2009 H1N1 pandemic influenza," PNAS 108 (7): 2825-2830 (2011).
-
-
-## Meer informatie
-
-- https://www.gleamproject.org/news
