@@ -1,7 +1,7 @@
 
 # Eiwitten beter begrijpen met kansberekening
 
-- [ ] ==abstract==
+In dit project zullen we kansrekening gebruiken om de secundaire structuur ($\beta$-platen) van een eiwit te voorspellen. We overlopen eerst de basisregels van kansrekening en dan zullen we een vereenvoudiging doorvoeren om het rekenen mogelijk te maken. Zo bekomen we een data-gedreven model om voor een amizuur de kans te berekenen of dit waarschijnlijk in $\beta$-plaat voorkomt of niet. Dit zullen we toepassen over volledige eiwitten via de glijdend venster methode. Ten slotte hebben we het kort even hebben over modelevaluatie: hoe betrouwbaar is zo'n model?
 
 [toc]
 
@@ -266,11 +266,16 @@ Concreet zullen we de computer dus instructies geven om het volgende te doen:
 4. We laten de computer de voorspellingen vergelijken met de werkelijke secundaire structuren, zodat we het model kunnen evalueren o.b.v. vals positieven en vals negatieven.
 5. Als laatste stap veranderen we manueel de drempelwaarde $\theta$ en de grootte van het glijdend venster, om op die manier te proberen de vals positieven en vals negatieven tot een minimum te beperken.
 
-- [ ] *voeg exacte locatie toe waar ze de notebook kunnen vinden*
-- [ ] maak oefeningen
+> **Computeroefeningen** Het glijdend venster om secundaire structuur te voorspellen is beschikbaar in een Jupyter notebook. Deze zijn beschikbaar via de website van de biowiskundedagen[^58ac248b] of door op [deze link](https://mybinder.org/v2/gh/michielstock/biowiskundedagen/master) te klikken.
+> 1. Eerst experimenteer met de grootte van het venster, de paramter $k$, welke invloed heeft die als die groter wordt? Wat wil $k=1$ zeggen?
+> 2. Verhoog en verlaag je threshold? Welke invloed heeft dit op je verschillende fouten?
+>     - Kan je het aantal valse positieven (niet-$\beta$-platen die als $\beta$-plaat voorspeld worden) zo laag mogelijk krijgen?
+>     - Hoe zorg je er voor dat je geen enkele $\beta$-plaat mist? Wat is het nadeel hiervan?
+
+[^58ac248b]: http://www.biowiskundedagen.ugent.be/
 
 ## En verder...
 
-De concepten die je in deze praktische sessie geleerd hebt zijn eenvoudig en kunnen zeer nuttig zijn in de praktijk, maar er bestaan ook veel complexere methoden om eiwitten te bestuderen. Misschien vind je onze methode van het glijdend venster nogal onelegant. Een veel krachtigere methode om secundaire structuren te bepalen is via *verborgen Markovketens* (Engels: Hidden Markov Chains) die op een slimme manier eiwit- en DNA-sequenties kunnen labellen.
+De concepten die je in deze praktische sessie geleerd hebt zijn eenvoudig en kunnen zeer nuttig zijn in de praktijk. Deze methode is een vereenvoudigede versie van de **Chou-Fasman** methode om secundaire structuren te voorspellen. Er bestaan echter ook veel complexere methoden om eiwitten te bestuderen. Misschien vind je onze methode van het glijdend venster nogal onelegant. Een veel krachtigere methode om secundaire structuren te bepalen is via *verborgen Markovketens* (Engels: Hidden Markov Chains) die op een slimme manier eiwit- en DNA-sequenties kunnen labellen.
 
 Daarenboven staat onderzoek in de bio-informatica nooit stil en zijn er zelfs grote bedrijven in geïnteresseerd, net omdat computers ons veel kunnen bijleren over biologie. Een zeer recent voorbeeld is Deepmind, een bedrijf dat onder Google werkt. Recent werk van hen gebruikt complexe artificiële intelligentie om de tertiaire structuur van een eiwit accuraat te voorspellen. Hun ontwikkelde methode [AlphaFold](https://deepmind.com/blog/alphafold/) is de eerste in zijn soort, maar zal waarschijnlijk niet de laatste zijn. Net zoals we in dit project gedaan hebben, werd hierbij een model gefit aan een databank met geannoteerde voorbeelden. Wij hebben echter met een model gewerkt met een twintigtal parameters, in de praktijk zijn het er miljoenen of miljarden.
