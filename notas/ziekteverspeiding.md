@@ -95,7 +95,7 @@ Zoals je ziet wordt een network of een graaf vaak voorgesteld in een figuur waar
 
 [^selfconnectance]: We gaan er van uit dat je niet kan bevriend zijn met jezelf.
 
-> **Vraag 2**: Beschrijf het verschil tussen de sociale netwerken tussen kinderen van verschillende leeftijden.
+> **Vraag 4**: Beschrijf het verschil tussen de sociale netwerken tussen kinderen van verschillende leeftijden.
 
 Een figuur is nuttig om te bekijken hoe het netwerk er uit ziet. Om er berekeningen mee te doen zijn er echter andere representaties nodig. Een graaf kan wiskundig voorgesteld worden in een matrix die heet en *bogenmatrix* (Engels: adjacency matrix). Als de aantal knopen in de graaf $n$ is, dan is de bogenmatrix een vierkante matrix met dimensies $n \times n$. Het element $A_{ij} = 1$ als de knopen $i$ en $j$ verbonden zijn, en $A_{ij} = 0$ als ze niet verbonden zijn[^verbindingslijst]. De bogenmatrix graaftheorie met matrixtheorie!
 
@@ -162,9 +162,10 @@ $$
 
 ### Drie types van netwerken
 
+Er zijn vele verschillende types van netwerken. We beschouwen twee belangrijke: **willekeurige** netwerken en **schaalvrije** netwerken.
+
 ![Illustraties van gradenverdelingen van verschillende types van netwerken.](../figuren/gradenverdelingen.png)
 
-- [ ] inleiding
 
 #### Willekeurige netwerken
 
@@ -224,20 +225,6 @@ Schaalvrije netwerken komen overal voor:
 - netwerken die interacties (bogen) weergeven tussen eiwitten (knopen).
 
 > **Vraag**: Stel je een sociaal netwerk voor van drie vrienden waar gradueel nieuwe mensen aan geïntroduceerd worden. Kan je je een scenario voorstellen waarbij een schaalvrij netwerk bekomen zou worden?
-
-#### Ruimtelijke netwerken
-
-Soms zijn we niet alleen geïnteresseerd in de individuen en hun contacten in een netwerk, maar ook in de onderliggende ruimte. We kunnen grafen ook gebruiken om een *ruimtelijk* proces te beschrijven. Stel dat de knopen punten zijn die evenredig verspeid liggen op een grid. Er is een boog die twee punten verbindt als die naburig zijn, zoals op onderstaande figuur te zien is. We noemen dit een *gridnetwerk*.
-
-- [ ] figuur
-- [ ] notas:
-    - [ ] graden
-    - [ ] verspreiding
-
-> **PICTURE?**
-
-> **Vraag**: Kun je de gradenverdeling van een regelmatig gridnetwerk met $m$ rijen en $n$ kolommen afleiden? **Hint** Stel dat $n$ en $m$ erg groot zijn.
-
 
 ## Verspreiding van een ziekte doorheen een netwerk
 
@@ -342,9 +329,7 @@ Sommige mensen kunnen door verschillende redenen niet immuun worden. Bijvoorbeel
 
 Kudde immuniteit betekent een indirecte bescherming tegen besmettelijke ziekten. Deze komt voor wanneer een groot percentage van de populatie immuun is tegen een infectie (door natuurlijke immuniteit of vaccinatie) en daardoor beschermen ze mensen die niet immuun zijn. Dit gebeurt omdat het grote aantal immune mensen de ziekteverspreiding vertraagt of zelfs stopt, want de transmissieverbindingen zijn verbroken.
 
-> **PICTURE**
-
-[example of nice figures](https://www.reddit.com/r/dataisbeautiful/comments/5v72fw/how_herd_immunity_works_oc/)
+- [ ] maak figuur herd immunity
 
 Als een bepaalde grenslijn kan bereikt worden, zal de kudde-immuniteit een ziekte uit een populatie elimineren. Als deze eliminatie over de hele wereld bereikt wordt, kan het aantal infecties permanent tot nul teruggebracht worden. Dan kunnen we spreken van de *uitroeiing* van de ziekte. Het moet duidelijk zijn dat volledige uitroeiing zeer moeilijk te bereiken is. Veel ziekten zijn regionaal uitgeroeid (bijvoorbeeld cholera in België), terwijl slechts twee ziekten wereldwijd uitgeroeid zijn: pokken en runderpest.
 

@@ -1,6 +1,6 @@
 """
 Created on Tuesday 18 December 2018
-Last update: -
+Last update: Saturday 19 January 2019
 
 @author: Michiel Stock
 michielfmstock@gmail.com
@@ -107,14 +107,14 @@ if __name__ == '__main__':
     netwerk_schaalvrij = nx.barabasi_albert_graph(n=1000, m=10)
     ax.plot(bereken_gradenverdeling(netwerk_schaalvrij), color=rood, ls=':',
                                             label="schaalvrij netwerk")
-
+    """
     netwerk_grid = nx.grid_2d_graph(n=50, m=20)
     ax.plot(bereken_gradenverdeling(netwerk_grid), color=oranje, ls=":",
                                             label="grid netwerk")
-
+    """
     ax.set_xlabel(r"Graad $k$")
     ax.set_ylabel(r"Relatief aantal knopen $D(d)$")
-    ax.set_title("Gradenverdeling van drie netwerken\n met 1000 knopen")
+    ax.set_title("Gradenverdeling van twee netwerken\n met 1000 knopen")
     ax.legend(loc=0)
     #ax.set_xticks([1, 10, 100, 1000])
     #ax.set_yticklabels([0.001, 0.01, 0.1, 1], map(str, [0.001, 0.01, 0.1, 1]))
