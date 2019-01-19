@@ -88,10 +88,6 @@ $$
 
 ### Naïeve Bayes
 
-- [x] TODO: knip logaritmes weg
-- [ ] Orden tabel alfabetisch
-- [ ] Vul tabel in met dingen de waarden die niet nodig zijn voor de oefening
-
 Nu we de regel van Bayes intuïtief begrijpen, kunnen we deze toepassen voor het voorspellen van $\beta$-platen in eiwitten. De *naïeve Bayes*-methode kan hiervoor gebruikt worden. Deze methode maakt gebruik van de regel van Bayes om voorspellingen te maken o.b.v. een gegeven input. In dit project willen we een $\beta$-plaat voorspellen o.b.v. de eiwitsequentie (de input).
 
 De regel van Bayes kan voor dit geval als volgt geschreven worden:
