@@ -181,7 +181,7 @@ De meeste knopen hebben een graad dicht bij dit gemiddelde. **In een (groot) wil
 
 [^gradenrn]: Om precies te zijn, de kans dat een knoop in een netwerk met $n$ knopen exact $m$ bogen heeft wordt gegeven door $$p^m(1-p)^{{n \choose 2} - M},,$$. Dit volgt uit de Binomiale verdeling. Hier is ${n \choose 2}$ de binomiaalcoëfficient $${n \choose 2}=\frac{n(n-1)}{2}\,,$$ dit is het aantal mogelijke manier je twee knopen kan kiezen uit $n$.
 
-> **Oefening** Een sociaal netwerk van een school telt 1000 leerlingen. Ga er van uit dat dit beschreven kan worden als een willekeurig netwerk met $p=0.01$. Hoeveel vrienden heeft een persoon gemiddeld? Denk je dat het waarschijnlijk is dat er iemand rond loopt die slechts twee of minder vrienden heeft?
+> **Oefening 3** Een sociaal netwerk van een school telt 1000 leerlingen. Ga er van uit dat dit beschreven kan worden als een willekeurig netwerk met $p=0.01$. Hoeveel vrienden heeft een persoon gemiddeld? Denk je dat het waarschijnlijk is dat er iemand rond loopt die slechts twee of minder vrienden heeft?
 
 $$
 \text{Gemiddeld aantal vriendschappen} = \ldots \quad
@@ -203,7 +203,7 @@ $$
 P(\text{Twee of minder vrienden})= \ldots
 $$
 
-> **Vraag** Binnen een random netwerk heeft elke knoop ongeveer hetzelfde aantal graden (iedereen heeft ongeveer evenveel vrienden in een sociaal netwerk). Denk je dat dit een realistische assumptie is voor veel netwerken?
+> **Vraag 6** Binnen een random netwerk heeft elke knoop ongeveer hetzelfde aantal graden (iedereen heeft ongeveer evenveel vrienden in een sociaal netwerk). Denk je dat dit een realistische assumptie is voor veel netwerken?
 
 
 #### Schaalvrije netwerken
@@ -213,7 +213,7 @@ Een netwerk wordt *schaalvrij* (Engels: scale-free)  genoemd als de gradenverdel
 [^propto]: $\propto$ wil zeggen 'evenredig aan'.
 
 $$
-d(k) \propto \frac{1}{k^a}\,,
+D(k) \propto \frac{1}{k^a}\,,
 $$
 
 met $a$ een exponent die verschild van network tot netwerk. **In een schaalvrij netwerk hebben enkele knopen een hoge graad en zijn er veel knopen met een lage graad.** Schaalvrije netwerken onstaan door een aggregatieproces waarbij 'the rich get richer': wanneer nieuwe knopen aan een netwerk toegevoegd worden, gaan deze preferentieel verbindingen aan met  knopen met een reeds hoge graad.
@@ -224,7 +224,7 @@ Schaalvrije netwerken komen overal voor:
 - netwerken van het internet: links (bogen) tussen websites (knopen);
 - netwerken die interacties (bogen) weergeven tussen eiwitten (knopen).
 
-> **Vraag**: Stel je een sociaal netwerk voor van drie vrienden waar gradueel nieuwe mensen aan geïntroduceerd worden. Kan je je een scenario voorstellen waarbij een schaalvrij netwerk bekomen zou worden?
+> **Vraag 7**: Stel je een sociaal netwerk voor van drie vrienden waar gradueel nieuwe mensen aan geïntroduceerd worden. Kan je je een scenario voorstellen waarbij een schaalvrij netwerk bekomen zou worden?
 
 ## Verspreiding van een ziekte doorheen een netwerk
 
@@ -242,7 +242,7 @@ Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan er
 2. Indien een knoop in tijdstip $t$ in toestand $S$ zit en minstend één van zijn buren eveneens in toestand $I$ zit, verandert de knoop in tijdstip $t+1$ naar toestand $I$.
 3. Indien een knoop in tijdstip $t$ in toestand $I$ zit blijft de knoop in tijdstip $t+1$ in toestand $I$.
 
-> **Oefening 3**: Gebruik het sociale netwerk dat je hebt gekregen om de verspreiding van een ziekte te modelleren.
+> **Oefening 3** Gebruik het sociale netwerk dat je hebt gekregen om de verspreiding van een ziekte te modelleren.
 > 1. Elk individu begint als vatbaar. Kies een persoon om de eerste geïnfecteerde te worden en kleurt deze in.
 > 2. Bij elke tijdstip, ga een voor een door de buren van een geïnfecteerde persoon en laat hen ook geïnfecteerde raken volgens de bovenstaande regels. Vul de tabel in om de spreiding over de tijd te volgen.
 > 3. Herhaal totdat het netwerk niet meer verandert.
@@ -274,23 +274,24 @@ Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan er
 
 <br>
 
-| knoop | $t=0$ |  $t=1$ |  $t=2$ |  $t=3$ |  $t=4$ |  $t=5$ |  $t=6$ |  $t=7$ |  $t=8$ |  $t=9$ |  $t=10$ |
-|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
-| $1$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $2$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $3$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $4$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $5$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $6$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $7$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $8$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $9$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $10$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $11$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $12$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $13$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $14$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $15$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| knoop                            | $t=0$ | $t=1$ | $t=2$ | $t=3$ | $t=4$ | $t=5$ | $t=6$ | $t=7$ | $t=8$ | $t=9$ | $t=10$ |
+|:-------------------------------- |:----- |:----- |:----- |:----- |:----- |:----- |:----- |:----- |:----- |:----- |:------ |
+| $1$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $2$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $3$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $4$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $5$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $6$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $7$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $8$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $9$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $10$                             | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $11$                             | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $12$                             | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $13$                             | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $14$                             | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| $15$                             | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| **totaal aantal geinfecteerden** | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
 
 ### Immuniteit en vaccinatie
 
@@ -305,26 +306,6 @@ Beschouw nu de volgende regels:
 
 ![Overzicht van de regels voor het SIR model op een netwerk.](../figuren/SIRregels.png)
 
-> **Oefening**: Simuleren we nu een epidemie in een populatie met een bepaalde  niveau van *natuurlijke immuniteit*.
->1. Elk individu begint als vatbaar. Kies een persoon om de eerste geïnfecteerde te worden en kleurt deze in.
->2. Ga een voor een door de buren van een geïnfecteerde persoon. Voor elke knoop gooi een dobbelsteen: als het **1 of 2** is, wordt die persoon ook geïnfecteerd. Als het **een ander nummer** is, zijn ze resistent.
->3. Herhaal voor de nieuwe geïnfecteerde mensen en ga door totdat je de dobbelstenen gegooid hebt voor de buren van elke geïnfecteerde persoon.
->4. Tel hoeveel mensen in de populatie zijn geïnfecteerd en hoeveel stappen je hebt genomen om ze allemaal te infecteren. Maak een plot.
->5. Herhaal de oefening met verschillende startpunten.
-
-> **Oefening**: Nu herhalen we de oefening, maar met *gerichte vaccinatie*.
->1. Elk individu begint als vatbaar. Vaccineer **50% van de populatie**: verander hun toestand in resistent.
->2. Kies een persoon om de eerste geïnfecteerde te worden en kleurt deze in.
->2. Ga een voor een door de buren van een geïnfecteerde persoon en laat hen ook geïnfecteerde raken volgens de bovenstaande regels.
->3. Herhaal voor de nieuwe geïnfecteerde mensen en ga door totdat je de dobbelstenen gegooid hebtvoor de buren van elke geïnfecteerde persoon.
->4. Tel hoeveel mensen in de populatie zijn geïnfecteerd en hoeveel stappen je hebt genomen om ze allemaal te infecteren. Maak een plot.
->5. Herhaal de oefening: deze keer vaccineer **75% van de populatie**.
-
-> **VRAAG**: Wat zou je doen als je slechts 3 doses van het vaccin had? Kies je om de meest populaire mensen te vaccineren, of zou je op bepaalde plaatsen proberen het netwerk te doorbreken? Waarom?
-
-
-### Kudde-immuniteit
-
 Sommige mensen kunnen door verschillende redenen niet immuun worden. Bijvoorbeeld, vaccins kunnen niet gegeven worden aan jonge baby's of mensen met ernstige medische aandoeningen. In deze groep is *kudde-immuniteit* dus een belangrijke beschermingsmethode.
 
 Kudde immuniteit betekent een indirecte bescherming tegen besmettelijke ziekten. Deze komt voor wanneer een groot percentage van de populatie immuun is tegen een infectie (door natuurlijke immuniteit of vaccinatie) en daardoor beschermen ze mensen die niet immuun zijn. Dit gebeurt omdat het grote aantal immune mensen de ziekteverspreiding vertraagt of zelfs stopt, want de transmissieverbindingen zijn verbroken.
@@ -333,23 +314,20 @@ Kudde immuniteit betekent een indirecte bescherming tegen besmettelijke ziekten.
 
 Als een bepaalde grenslijn kan bereikt worden, zal de kudde-immuniteit een ziekte uit een populatie elimineren. Als deze eliminatie over de hele wereld bereikt wordt, kan het aantal infecties permanent tot nul teruggebracht worden. Dan kunnen we spreken van de *uitroeiing* van de ziekte. Het moet duidelijk zijn dat volledige uitroeiing zeer moeilijk te bereiken is. Veel ziekten zijn regionaal uitgeroeid (bijvoorbeeld cholera in België), terwijl slechts twee ziekten wereldwijd uitgeroeid zijn: pokken en runderpest.
 
+> **Computeroefening**: Laat ons overgaan naar simulaties op de computer. Je kan deze uitvoeren in de Jupyter notebooks, schikbaar via de [biowiskundedagen website](https://mybinder.org/v2/gh/michielstock/biowiskundedagen/master). Via de interactieve widget kan je een netwerk van een bepaalde grootte genereren met 1 tot 10 geinfecteerde personen (deze knopen zijn donkerblauw ingekleurd). Het netwerk dat verschijnt is na 10 tijdsstappen. Ernaast zijn de fracties van de knopen in een bepaalde toestand geplot.
+> - **zonder vaccinatie**: `frac_vac=0`
+>   1. Hoeveel tijdstappen zijn er nodig voordat iedereen geïnfecteerd is?
+>   2. Is er een verschil tussen hoe snel de ziekte zich verspreidt tussen een willekeurig of een scaalvrij netwerk?
+> - **met vaccinatie**: `frac_vac>0`, er is keuze tussen een bepaalde fractie individuen willekeurig te kiezen voor vaccinatie of de fractie meest geconnecteerde individuen te vaccineren.
+>   1. Bekijk het effect van willekeurig vaccineren. Vanaf welke fractie worden ook vatbare individuen beschermd?
+>   2. wat is het verschil met gerichte vaccinatie?
+
 ## Ziektespreidingsmodellen in de praktijk
 
-Epidemieën komen voortdurend voor en daarom gebruiken volksgezondheidsorganisaties over de hele wereld modellen om interventiestrategieën te ontwikkelen en te evalueren. Met behulp van simulaties kunnen ze snel de situatie beoordelen en belangrijke beslissingen nemen.
-Om een ​​epidemie te herkennen en erop te reageren, hebben gezondheidswerkers informatie nodig die inherent onvoorspelbaar is (wat, waar, hoeveel gevallen, hoeveel zullen sterven, waar zal het zich verspreiden). De interacties die tot het uitbreken van een ziekte leiden zijn zeer complex: ze zijn vaak niet-lineair, zodat de resultaten soms onverwacht of contra-intuïtief zijn. Er zijn modellen nodig om deze interacties te begrijpen en om de kwantitatieve voorspellingen te maken die volksgezondheidswerkers nodig hebben om te beslissen over interventiestrategieën.
+Epidemieën komen voortdurend voor en daarom gebruiken volksgezondheidsorganisaties over de hele wereld modellen om interventiestrategieën te ontwikkelen en te evalueren. Met behulp van simulaties kunnen ze snel de situatie beoordelen en belangrijke beslissingen nemen. Om een ​​epidemie te herkennen en erop te reageren, hebben gezondheidswerkers informatie nodig die inherent onvoorspelbaar is (wat, waar, hoeveel gevallen, hoeveel zullen sterven, waar zal het zich verspreiden). De interacties die tot het uitbreken van een ziekte leiden zijn zeer complex: ze zijn vaak niet-lineair, zodat de resultaten soms onverwacht of contra-intuïtief zijn. Er zijn modellen nodig om deze interacties te begrijpen en om de kwantitatieve voorspellingen te maken die volksgezondheidswerkers nodig hebben om te beslissen over interventiestrategieën.
 
 Menselijk gedrag tijdens ziekte-uitbraken verandert vaak drastisch. Mensen vermijden drukke plaatsen of haasten zich naar drukke plaatsen zoals luchthavens of treinstations als ze proberen te ontsnappen aan de epidemie. Modellering kan gezondheidswerkers helpen dit soort effecten te voorzien en te begrijpen.
 
-Modellen kunnen ook worden gebruikt om te bepalen hoe bestaansmiddelen moeten worden toegewezen om de beste kans te hebben om de verspreiding van de ziekte te stoppen - bijvoorbeeld, als vaccins beperkt zijn, welke groep mensen dan met voorrang moet worden gevaccineerd? Wetenschappers kunnen modellen gebruiken om de uitkomsten van verschillende controlestrategieën te vergelijken.
-Modellen kunnen ook worden gekoppeld aan langetermijngegevens over het klimaat en klimaatvoorspellingen, om voorspellingen van uitbraken vele maanden in de toekomst te maken. Deze benadering wordt gebruikt om vaccinatiecampagnes te bepalen, bijvoorbeeld tegen influenza of mazelen.
+Modellen kunnen ook worden gebruikt om te bepalen hoe bestaansmiddelen moeten worden toegewezen om de beste kans te hebben om de verspreiding van de ziekte te stoppen - bijvoorbeeld, als vaccins beperkt zijn, welke groep mensen dan met voorrang moet worden gevaccineerd? Wetenschappers kunnen modellen gebruiken om de uitkomsten van verschillende controlestrategieën te vergelijken. Modellen kunnen ook worden gekoppeld aan langetermijngegevens over het klimaat en klimaatvoorspellingen, om voorspellingen van uitbraken vele maanden in de toekomst te maken. Deze benadering wordt gebruikt om vaccinatiecampagnes te bepalen, bijvoorbeeld tegen influenza of mazelen.
 
 Wetenschappers ontwikkelen hun begrip van ziekteverspreiding met behulp van gegevens zoals gedrags-, demografische en epidemische trends. Maar het is vaak moeilijk om betrouwbare gegevens te verzamelen en voor veel ziekten missen we nog steeds belangrijke informatie over hoe ze zich verspreiden. Modellering kan ook in deze gevallen helpen, omdat wetenschappers verschillende hypotheses kunnen testen om te proberen de hiaten in hun kennis in te vullen.
-
-![example in a high profile scientific study of exactly what the students have done](https://i.imgur.com/jEJJ3fJ.jpg)[^PNAS]
-
-[^PNAS]: Source: Cauchemez et al., "Role of social networks in shaping disease transmission during a community outbreak of 2009 H1N1 pandemic influenza," PNAS 108 (7): 2825-2830 (2011).
-
-
-## Meer informatie
-
-- https://www.gleamproject.org/news
