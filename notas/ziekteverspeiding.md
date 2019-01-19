@@ -1,7 +1,5 @@
 # Ziekteverspreiding
 
-- [ ] ==abstract==
-
 In dit project zullen we bestuderen hoe ziektes kunnen verspreiden via een (sociaal) netwerk. We zullen onderzoeken hoe de structuur van een netwerk een invloed kan hebben hoe snel een ziekte doorgegeven wordt. Ten slotte zullen we het effect van vaccinatie bekijken.
 
 [toc]
@@ -15,10 +13,7 @@ In de geschiedenis van de mensheid[^niethumaneziekten] heeft niets zoveel mensen
 Tegenwoordig veroorzaakt besmettelijke ziektes minder doden door betere medische kennis, technieken en middelen. Echter blijven ze een ernstig probleem voor de volksgezondheid. Toch zijn 3 van de 10 belangrijkste doodsoorzaken wereldwijd besmettelijke ziekten. Naast de verbeteringen van de moderne wereld zijn er ook nieuwe uitdagingen voor het stoppen van epidemieën. Nu kan een besmette persoon op een vliegtuig stappen en in een paar uur tijd een ziekte naar een ander continent verspreiden.
 
 
-![](https://i.imgur.com/TC1h64w.jpg)
-
-- [ ] bron figuur?
-- [x] technieken => link naar ander labo!
+![Verschillende vliegtuigroutes tussen luchthavens. De wereld is sterk geconnecteerd en ziektes kunnen zich nu veel sneller verspreiden.](../figuren/luchthaven.jpg)
 
 ## Ziekteverspreidingsmodellen
 
@@ -79,7 +74,7 @@ Het SIR-model kan niet exact worden opgelost, zoals veel differentiaalvergelijki
 
 Met behulp van computers is het gemakkelijk om op deze manier een numerieke oplossing voor het SIR-model te vinden. Vanuit deze oplossing kunnen we leren hoe de verschillende variabelen in de loop van de tijd veranderen. Om dit te doen, vertrekken we van een beginvoorwaarde: het is logisch om te beginnen met een populatie met zero resistente personen, een paar geïnfecteerde personen en de rest vatbaar. Vervolgens kunnen we onze numerieke oplossing gebruiken om het aantal mensen in elke groep bij elke tijdstap te berekenen. Als we een plot maken, zullen we de dynamiek zien die in de onderstaande figuur wordt getoond.
 
-![](https://i.imgur.com/M0NVPcz.png)
+![Een simulatie van een oplossingen van het stelsen differentiaalvergelijkingen die het standaard SIR model voorstellen.](../figuren/SIRsimulatie.png)
 
 > **Vraag 3**: Een epidemie wordt **uitbreidend** genoemd als het aantal geïnfecteerden toeneemt. Wanneer is de epidemie uitbreidend? Op het moment wanneer $I$ verandert van toenemend naar afnemend, wat kun je zeggen over de verandering van $I$? (**hint**: kijk naar de vorm van $\frac{dI}{dt}$)
 
@@ -93,8 +88,8 @@ Het standaard SIR model maakt de onrealistische veronderstelling dat twee willek
 
 Hieronder zie je een voorbeeld van een twee netwerken. Laten we ons voorstellen dat het het sociale netwerk van een schoolklas vertegenwoordigt. De punten vertegenwoordigen de studenten en worden *knopen* genoemd. De contacten tussen studenten worden weergegeven door lijnsegmenten tussen knopen, en worden *bogen* genoemd. We zeggen dat twee knopen met elkaar *verbonden* zijn als er een boog tussen zit. Hier gaan we er van uit dat een knoop niet verbonden kan zijn met zichzelf[^selfconnectance]. Ook is er maar maximaal één boog mogelijk tussen twee knopen. De *graad* van een knoop is het aantal bogen dat ermee verbonden zijn.
 
-![](https://i.imgur.com/AozX7EL.jpg)
-([source](https://royalsocietypublishing.org/doi/full/10.1098/rspb.2010.1807))
+![Voorbeelden van gekleurde grafen die netwerken tussen kinderen van verschillende leeftijden voorstellen ([bron](https://royalsocietypublishing.org/doi/full/10.1098/rspb.2010.1807)).](../figuren/netwerkkinderen.jpg)
+
 
 Zoals je ziet wordt een network of een graaf vaak voorgesteld in een figuur waar cirkels (of andere elementen) de knopen voorstellen die geconnecteerd zijn door lijnen, de bogen. Deze figuren zijn niet uniek: eenzelfde netwerk kan vaak op verschillende manieren voorgesteld worden. Soms hebben de knopen ook een kleur, bijvoorbeeld om geslacht te duiden in een sociaal netwerk. In dat geval spreekt men van een *gekleurde graaf*.
 
