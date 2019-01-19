@@ -47,7 +47,11 @@ Een van de eenvoudigste manieren om ziekteverspreiding in een gemeenschap te mod
 
 In deze beschrijving maken we een eerste grote vereenvoudiging van de werkelijkheid. We nemen aan dat elk van deze variablen reëelwaardig zijn en dat het aantal individuen in elke groep continu kan variëeren. In werkelijkheid is het aantal geïnfecteerden of vatbare individuen een geheel getal, je bent immers besmet of je bent het niet. Modelleerders werken echter graag met continue variablen omdat ze dan de technieken van wiskundige analyse kunnen gebruiken.
 
+<<<<<<< HEAD
 > **Vraag 1**: Onder welke omstandigheden gaat deze continue benadering ongeveer op? Wanneer niet?
+=======
+> **Vraag 2**: Onder welke omstandigheden gaat deze continue benadering ongeveer op? Wanneer niet?
+>>>>>>> master
 
 ![Visule voorstelling van het SIR model. Een vatbaar individu (toestand $S$) kan geïnfecteerd worden (toestand $I$), weergegeven door de volle pijlen. Een gïnfecteerd individu kan immuun worden en vatbare individuen kunnen  geimmuniseerd worden, weergegeven door de pijlen met stippellijnen. In dit project zullen we deze overgangen niet beschouwen.](../figuren/SIRtoestanden.png)
 
@@ -71,7 +75,11 @@ De overgangssnelheid van vatbaar naar geïnfecteerd hangt af van het contact tus
 
 De overgangssnelheid van geïnfecteerd naar resistent hangt alleen af van de snelheid van herstel, die we $\gamma$ noemen. Dus het aantal geïnfecteerde personen vermindert met deze snelheid op else tijdstip.
 
+<<<<<<< HEAD
 > **Vraag 1**: Kan je aantonen dat het totaal aantal individuen in de populatie $(S(t)+I(t)+R(t))$ constant zal blijven?
+=======
+> **Vraag 3**: Kan je aantonen dat het totaal aantal individuen in de populatie $(S(t)+I(t)+R(t))$ constant zal blijven?
+>>>>>>> master
 >
 
 Bij het vaststellen van deze overgangssnelheiden hebben we een andere belangrijke vereenvoudiging gemaakt. We nemen aan dat elke persoon in de populatie een gelijke waarschijnlijkheid heeft om in contact te komen met elke andere persoon. Anders gezegd, nemen we aan dat de populatie perfect gemengd is. In sommige gevallen kan deze vereenvoudiging passen bij de realiteit, bijvoorbeeld als we willen bijhouden hoe een griep zich door een fuif verspreidt.
@@ -82,7 +90,11 @@ Met behulp van computers is het gemakkelijk om op deze manier een numerieke oplo
 
 ![](https://i.imgur.com/M0NVPcz.png)
 
+<<<<<<< HEAD
 > **Vraag 2**: Een epidemie wordt **uitbreidend** genoemd als het aantal geïnfecteerden toeneemt. Wanneer is de epidemie uitbreidend? Op het moment wanneer $I$ verandert van toenemend naar afnemend, wat kun je zeggen over de verandering van $I$? (**hint**: kijk naar de vorm van $\frac{dI}{dt}$)
+=======
+> **Vraag 4**: Een epidemie wordt **uitbreidend** genoemd als het aantal geïnfecteerden toeneemt. Wanneer is de epidemie uitbreidend? Op het moment wanneer $I$ verandert van toenemend naar afnemend, wat kun je zeggen over de verandering van $I$? (**hint**: kijk naar de vorm van $\frac{dI}{dt}$)
+>>>>>>> master
 >
 
 ## Sociale netwerken
@@ -361,7 +373,17 @@ Kudde immuniteit betekent een indirecte bescherming tegen besmettelijke ziekten.
 Als een bepaalde grenslijn kan bereikt worden, zal de kudde-immuniteit een ziekte uit een populatie elimineren. Als deze eliminatie over de hele wereld bereikt wordt, kan het aantal infecties permanent tot nul teruggebracht worden. Dan kunnen we spreken van de *uitroeiing* van de ziekte. Het moet duidelijk zijn dat volledige uitroeiing zeer moeilijk te bereiken is. Veel ziekten zijn regionaal uitgeroeid (bijvoorbeeld cholera in België), terwijl slechts twee ziekten wereldwijd uitgeroeid zijn: pokken en runderpest.
 
 
-## Wat je geleerd hebt over ziekteverspreidingsmodellen
+## ziektespreidingsmodellen in de praktijk
+
+Epidemieën komen voortdurend voor en daarom gebruiken volksgezondheidsorganisaties over de hele wereld modellen om interventiestrategieën te ontwikkelen en te evalueren. Met behulp van simulaties kunnen ze snel de situatie beoordelen en belangrijke beslissingen nemen.
+Om een ​​epidemie te herkennen en erop te reageren, hebben gezondheidswerkers informatie nodig die inherent onvoorspelbaar is (wat, waar, hoeveel gevallen, hoeveel zullen sterven, waar zal het zich verspreiden). De interacties die tot het uitbreken van een ziekte leiden zijn zeer complex: ze zijn vaak niet-lineair, zodat de resultaten soms onverwacht of contra-intuïtief zijn. Er zijn modellen nodig om deze interacties te begrijpen en om de kwantitatieve voorspellingen te maken die volksgezondheidswerkers nodig hebben om te beslissen over interventiestrategieën.
+
+Menselijk gedrag tijdens ziekte-uitbraken verandert vaak drastisch. Mensen vermijden drukke plaatsen of haasten zich naar drukke plaatsen zoals luchthavens of treinstations als ze proberen te ontsnappen aan de epidemie. Modellering kan gezondheidswerkers helpen dit soort effecten te voorzien en te begrijpen.
+
+Modellen kunnen ook worden gebruikt om te bepalen hoe bestaansmiddelen moeten worden toegewezen om de beste kans te hebben om de verspreiding van de ziekte te stoppen - bijvoorbeeld, als vaccins beperkt zijn, welke groep mensen dan met voorrang moet worden gevaccineerd? Wetenschappers kunnen modellen gebruiken om de uitkomsten van verschillende controlestrategieën te vergelijken.
+Modellen kunnen ook worden gekoppeld aan langetermijngegevens over het klimaat en klimaatvoorspellingen, om voorspellingen van uitbraken vele maanden in de toekomst te maken. Deze benadering wordt gebruikt om vaccinatiecampagnes te bepalen, bijvoorbeeld tegen influenza of mazelen.
+
+Wetenschappers ontwikkelen hun begrip van ziekteverspreiding met behulp van gegevens zoals gedrags-, demografische en epidemische trends. Maar het is vaak moeilijk om betrouwbare gegevens te verzamelen en voor veel ziekten missen we nog steeds belangrijke informatie over hoe ze zich verspreiden. Modellering kan ook in deze gevallen helpen, omdat wetenschappers verschillende hypotheses kunnen testen om te proberen de hiaten in hun kennis in te vullen.
 
 ![example in a high profile scientific study of exactly what the students have done](https://i.imgur.com/jEJJ3fJ.jpg)[^PNAS]
 
