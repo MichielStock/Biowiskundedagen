@@ -47,11 +47,7 @@ Een van de eenvoudigste manieren om ziekteverspreiding in een gemeenschap te mod
 
 In deze beschrijving maken we een eerste grote vereenvoudiging van de werkelijkheid. We nemen aan dat elk van deze variablen reëelwaardig zijn en dat het aantal individuen in elke groep continu kan variëeren. In werkelijkheid is het aantal geïnfecteerden of vatbare individuen een geheel getal, je bent immers besmet of je bent het niet. Modelleerders werken echter graag met continue variablen omdat ze dan de technieken van wiskundige analyse kunnen gebruiken.
 
-<<<<<<< HEAD
 > **Vraag 1**: Onder welke omstandigheden gaat deze continue benadering ongeveer op? Wanneer niet?
-=======
-> **Vraag 2**: Onder welke omstandigheden gaat deze continue benadering ongeveer op? Wanneer niet?
->>>>>>> master
 
 ![Visule voorstelling van het SIR model. Een vatbaar individu (toestand $S$) kan geïnfecteerd worden (toestand $I$), weergegeven door de volle pijlen. Een gïnfecteerd individu kan immuun worden en vatbare individuen kunnen  geimmuniseerd worden, weergegeven door de pijlen met stippellijnen. In dit project zullen we deze overgangen niet beschouwen.](../figuren/SIRtoestanden.png)
 
@@ -75,12 +71,7 @@ De overgangssnelheid van vatbaar naar geïnfecteerd hangt af van het contact tus
 
 De overgangssnelheid van geïnfecteerd naar resistent hangt alleen af van de snelheid van herstel, die we $\gamma$ noemen. Dus het aantal geïnfecteerde personen vermindert met deze snelheid op else tijdstip.
 
-<<<<<<< HEAD
-> **Vraag 1**: Kan je aantonen dat het totaal aantal individuen in de populatie $(S(t)+I(t)+R(t))$ constant zal blijven?
-=======
-> **Vraag 3**: Kan je aantonen dat het totaal aantal individuen in de populatie $(S(t)+I(t)+R(t))$ constant zal blijven?
->>>>>>> master
->
+> **Vraag 2**: Kan je aantonen dat het totaal aantal individuen in de populatie $(S(t)+I(t)+R(t))$ constant zal blijven?
 
 Bij het vaststellen van deze overgangssnelheiden hebben we een andere belangrijke vereenvoudiging gemaakt. We nemen aan dat elke persoon in de populatie een gelijke waarschijnlijkheid heeft om in contact te komen met elke andere persoon. Anders gezegd, nemen we aan dat de populatie perfect gemengd is. In sommige gevallen kan deze vereenvoudiging passen bij de realiteit, bijvoorbeeld als we willen bijhouden hoe een griep zich door een fuif verspreidt.
 
@@ -90,12 +81,7 @@ Met behulp van computers is het gemakkelijk om op deze manier een numerieke oplo
 
 ![](https://i.imgur.com/M0NVPcz.png)
 
-<<<<<<< HEAD
-> **Vraag 2**: Een epidemie wordt **uitbreidend** genoemd als het aantal geïnfecteerden toeneemt. Wanneer is de epidemie uitbreidend? Op het moment wanneer $I$ verandert van toenemend naar afnemend, wat kun je zeggen over de verandering van $I$? (**hint**: kijk naar de vorm van $\frac{dI}{dt}$)
-=======
-> **Vraag 4**: Een epidemie wordt **uitbreidend** genoemd als het aantal geïnfecteerden toeneemt. Wanneer is de epidemie uitbreidend? Op het moment wanneer $I$ verandert van toenemend naar afnemend, wat kun je zeggen over de verandering van $I$? (**hint**: kijk naar de vorm van $\frac{dI}{dt}$)
->>>>>>> master
->
+> **Vraag 3**: Een epidemie wordt **uitbreidend** genoemd als het aantal geïnfecteerden toeneemt. Wanneer is de epidemie uitbreidend? Op het moment wanneer $I$ verandert van toenemend naar afnemend, wat kun je zeggen over de verandering van $I$? (**hint**: kijk naar de vorm van $\frac{dI}{dt}$)
 
 ## Sociale netwerken
 
@@ -116,7 +102,7 @@ Zoals je ziet wordt een network of een graaf vaak voorgesteld in een figuur waar
 
 > **Vraag 2**: Beschrijf het verschil tussen de sociale netwerken tussen kinderen van verschillende leeftijden.
 
-Een figuur is nuttig om te bekijken hoe het netwerk er uit ziet. Om er berekeningen mee te doen zijn er echter andere representaties nodig. Een graaf kan wiskundig voorgesteld worden in een matrix die heet en *bogenmatrix* (Engels: adjacency matrix). Als de aantal knopen in de graaf $n$ is, dan is de bogenmatrix een vierkante matrix met dimensies $n \times n$. Het element $A_{ij} = 1$ als de knopen $i$ en $j$ verbonden zijn, en $A_{i,j} = 0$ als ze niet verbonden zijn[^verbindingslijst]. Hoewel we hier niet zo ver zullen gaan, linkt de bogenmatrix graaftheorie met matrixtheorie!
+Een figuur is nuttig om te bekijken hoe het netwerk er uit ziet. Om er berekeningen mee te doen zijn er echter andere representaties nodig. Een graaf kan wiskundig voorgesteld worden in een matrix die heet en *bogenmatrix* (Engels: adjacency matrix). Als de aantal knopen in de graaf $n$ is, dan is de bogenmatrix een vierkante matrix met dimensies $n \times n$. Het element $A_{ij} = 1$ als de knopen $i$ en $j$ verbonden zijn, en $A_{ij} = 0$ als ze niet verbonden zijn[^verbindingslijst]. De bogenmatrix graaftheorie met matrixtheorie!
 
 [^verbindingslijst]: In het echte leven hebben de meeste mensen in een populatie geen contact met elkaar (denk aan het sociaal netwerk van een  hele stad). Dus de graaf is verre van *volledig verbonden* (elk paar knopen is verbonden) en de elementen van de bogenmatrix bestaat grotendeels uit nullen. In deze gevallen kan het soms beter zijn om een *verbindingslijst* te gebruiken. Dit is een lijst met dimensies $m \times 2$ waarbij $m$ het aantal bogen is, en elke rij bevat een koppel knopen die verbonden zijn. Afhankelijk van het specifieke netwerk dat we bestuderen en wat we ermee willen doen, kan de ene of de andere van deze datastructuren efficiënter zijn.
 
@@ -145,19 +131,16 @@ Het sociaal netwerk dat we beschouwen wordt weergegeven in onderstaande figuur. 
 | **14** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 | **15** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
-- [x] maak netwerk + plot
-- [x] verbindingmatrix
-
 ### Gradenverdeling
 
 > **Vraag 5**: Wie zal er eerder een verkoudheid oplopen: persoon 3 of 15 ?
 
 Een graaf is een complexe wiskundige structuur. Een gegeven knoop in een graaf wordt gekarakteriseerd door zijn bogen en dus ook graad. Echter, belangrijke eigenschappen van de graaf zijn *emergent*, dit wil zeggen dat ze enkel te verklaren zijn door de graaf in zijn geheel en niet enkel de individuele onderdelen.
 
-Als we iets willen leren over een netwerk, welke informatie kunnen we bekijken? Het zou zeer interessant zijn om te weten hoe verbonden het netwerk is. Hoe kunnen we bepalen tot welke mate de knopen met elkaar verbonden zijn? We zouden naar de gemiddelde knoopgraad kunnen kijken, maar dit zou ons niet veel zeggen. In plaats daarvan kunnen we tellen voor elk nummer $x$ het aantal $y$ van knopen met graad $x$. Deze plot wordt de *gradenverdeling*  (Engels: *degree distribution*) genoemd en kan ons veel vertellen over de structuur van een netwerk. Wiskundig drukken we de gradenverdeling uit als
+Als we iets willen leren over een netwerk, welke informatie kunnen we bekijken? Het zou zeer interessant zijn om te weten hoe verbonden het netwerk is. Hoe kunnen we bepalen tot welke mate de knopen met elkaar verbonden zijn? We zouden naar de gemiddelde knoopgraad kunnen kijken, maar dit zou ons niet veel zeggen. In plaats daarvan kunnen we tellen de fractie van de knopen met graad $k$. Deze plot wordt de *gradenverdeling*  (Engels: *degree distribution*) genoemd en kan ons veel vertellen over de structuur van een netwerk. Wiskundig drukken we de gradenverdeling uit als
 
 $$
-D(k)=\text{fractie van de knopen met $k$ bogen}\,.
+D(k)=\text{fractie van de knopen met $k$ bogen (graad $k$)}\,.
 $$
 
 > **Oefening 2**: Bereken en plot de gradenverdeling van het sociaal netwerk. Vul eerst onderstaande tabel in en teken dan de plot.
@@ -277,15 +260,11 @@ Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan er
 2. Indien een knoop in tijdstip $t$ in toestand $S$ zit en minstend één van zijn buren eveneens in toestand $I$ zit, verandert de knoop in tijdstip $t+1$ naar toestand $I$.
 3. Indien een knoop in tijdstip $t$ in toestand $I$ zit blijft de knoop in tijdstip $t+1$ in toestand $I$.
 
-
-![Overzicht van de regels voor het SIR model op een netwerk.](../figuren/SIRregels.png)
-
-
 > **Oefening 3**: Gebruik het sociale netwerk dat je hebt gekregen om de verspreiding van een ziekte te modelleren.
->1. Elk individu begint als vatbaar. Kies een persoon om de eerste geïnfecteerde te worden en kleurt deze in.
->2. Bij elke tijdstip, ga een voor een door de buren van een geïnfecteerde persoon en laat hen ook geïnfecteerde raken volgens de bovenstaande regels. Vul de tabel in om de spreiding over de tijd te volgen.
->3. Herhaal totdat het netwerk niet meer verandert.
->4. Volgens de tabel, plot het aantal geïnfecteerden bij elke tijdstip.
+> 1. Elk individu begint als vatbaar. Kies een persoon om de eerste geïnfecteerde te worden en kleurt deze in.
+> 2. Bij elke tijdstip, ga een voor een door de buren van een geïnfecteerde persoon en laat hen ook geïnfecteerde raken volgens de bovenstaande regels. Vul de tabel in om de spreiding over de tijd te volgen.
+> 3. Herhaal totdat het netwerk niet meer verandert.
+> 4. Volgens de tabel, plot het aantal geïnfecteerden bij elke tijdstip.
 
 
 | knoop | $t=0$ |  $t=1$ |  $t=2$ |  $t=3$ |  $t=4$ |  $t=5$ |  $t=6$ |  $t=7$ |  $t=8$ |  $t=9$ |  $t=10$ |
@@ -342,6 +321,8 @@ Beschouw nu de volgende regels:
 3. Indien een knoop in tijdstip $t$ in toestand $I$ zit blijft de knoop in tijdstip $t+1$ in toestand $I$.
 4. Een knoop in toestand $R$ blijft altijd in toestand $R$.
 
+![Overzicht van de regels voor het SIR model op een netwerk.](../figuren/SIRregels.png)
+
 > **Oefening**: Simuleren we nu een epidemie in een populatie met een bepaalde  niveau van *natuurlijke immuniteit*.
 >1. Elk individu begint als vatbaar. Kies een persoon om de eerste geïnfecteerde te worden en kleurt deze in.
 >2. Ga een voor een door de buren van een geïnfecteerde persoon. Voor elke knoop gooi een dobbelsteen: als het **1 of 2** is, wordt die persoon ook geïnfecteerd. Als het **een ander nummer** is, zijn ze resistent.
@@ -371,7 +352,6 @@ Kudde immuniteit betekent een indirecte bescherming tegen besmettelijke ziekten.
 [example of nice figures](https://www.reddit.com/r/dataisbeautiful/comments/5v72fw/how_herd_immunity_works_oc/)
 
 Als een bepaalde grenslijn kan bereikt worden, zal de kudde-immuniteit een ziekte uit een populatie elimineren. Als deze eliminatie over de hele wereld bereikt wordt, kan het aantal infecties permanent tot nul teruggebracht worden. Dan kunnen we spreken van de *uitroeiing* van de ziekte. Het moet duidelijk zijn dat volledige uitroeiing zeer moeilijk te bereiken is. Veel ziekten zijn regionaal uitgeroeid (bijvoorbeeld cholera in België), terwijl slechts twee ziekten wereldwijd uitgeroeid zijn: pokken en runderpest.
-
 
 ## ziektespreidingsmodellen in de praktijk
 
