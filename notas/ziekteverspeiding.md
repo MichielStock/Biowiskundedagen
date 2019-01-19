@@ -1,4 +1,4 @@
-# Ziekteverspreiding
+# Verspreiding van ziektes doorheen sociale netwerken
 
 In dit project zullen we bestuderen hoe ziektes kunnen verspreiden via een (sociaal) netwerk. We zullen onderzoeken hoe de structuur van een netwerk een invloed kan hebben hoe snel een ziekte doorgegeven wordt. Ten slotte zullen we het effect van vaccinatie bekijken.
 
@@ -329,11 +329,11 @@ Sommige mensen kunnen door verschillende redenen niet immuun worden. Bijvoorbeel
 
 Kudde immuniteit betekent een indirecte bescherming tegen besmettelijke ziekten. Deze komt voor wanneer een groot percentage van de populatie immuun is tegen een infectie (door natuurlijke immuniteit of vaccinatie) en daardoor beschermen ze mensen die niet immuun zijn. Dit gebeurt omdat het grote aantal immune mensen de ziekteverspreiding vertraagt of zelfs stopt, want de transmissieverbindingen zijn verbroken.
 
-- [ ] maak figuur herd immunity
+![Illustratie van kudde-immuniteit. Als voldoende mensen geimmuniseerd zijn breidt de ziekte zich niet verder uit bij vatbare mensen. (links) Netwerk na 100 stappen. (rechts) Verdelingen van de toestanden in de tijd.](../figuren/kuddeimmuniteit.png)
 
 Als een bepaalde grenslijn kan bereikt worden, zal de kudde-immuniteit een ziekte uit een populatie elimineren. Als deze eliminatie over de hele wereld bereikt wordt, kan het aantal infecties permanent tot nul teruggebracht worden. Dan kunnen we spreken van de *uitroeiing* van de ziekte. Het moet duidelijk zijn dat volledige uitroeiing zeer moeilijk te bereiken is. Veel ziekten zijn regionaal uitgeroeid (bijvoorbeeld cholera in België), terwijl slechts twee ziekten wereldwijd uitgeroeid zijn: pokken en runderpest.
 
-## ziektespreidingsmodellen in de praktijk
+## Ziektespreidingsmodellen in de praktijk
 
 Epidemieën komen voortdurend voor en daarom gebruiken volksgezondheidsorganisaties over de hele wereld modellen om interventiestrategieën te ontwikkelen en te evalueren. Met behulp van simulaties kunnen ze snel de situatie beoordelen en belangrijke beslissingen nemen.
 Om een ​​epidemie te herkennen en erop te reageren, hebben gezondheidswerkers informatie nodig die inherent onvoorspelbaar is (wat, waar, hoeveel gevallen, hoeveel zullen sterven, waar zal het zich verspreiden). De interacties die tot het uitbreken van een ziekte leiden zijn zeer complex: ze zijn vaak niet-lineair, zodat de resultaten soms onverwacht of contra-intuïtief zijn. Er zijn modellen nodig om deze interacties te begrijpen en om de kwantitatieve voorspellingen te maken die volksgezondheidswerkers nodig hebben om te beslissen over interventiestrategieën.

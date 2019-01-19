@@ -24,6 +24,7 @@ import networkx as nx
 from collections import Counter
 import numpy as np
 import random
+import matplotlib.pyplot as plt
 
 # maak de figuren reproduceerbaar
 seed = 2
@@ -48,6 +49,77 @@ def geef_verbindingsmatrix(G):
     Geef de verbindingsmatrix van een netwerk als een binaire Numpy matrix.
     """
     return nx.adj_matrix(G).todense()
+
+def update_toestand(A, x, resistent=[]):
+    """
+    Voor een gegeven verbindingsmatrix A en een binaire toestandsvector x
+    (0: vatbaar/resitent, 1: geinfecteerd) op tijdstip t, bereken de toestandsvector op
+    tijdstip t+1. Optioneel kan je een lijst met indices van resistente individuen
+    geven.
+    """
+    # update x
+    x[:] = A @ x > 0
+    # resitente worden niet ziek
+    if resistent:
+        x[resistent] = 0
+    return x
+
+def simuleer_uitbraak(n, initgeinf, netwerk, fractie_gevac, strategie):
+    similatiestappen = 10
+    if netwerk == "willekeurig":
+        p = 0.4 / (n - 1)
+        G = nx.binomial_graph(n=n, p=p)
+    elif netwerk == "schaalvrij":
+        G = nx.barabasi_albert_graph(n=n, m=2)
+    else:
+        raise(AttributeError("Netwerk is ofwel 'willeurig' of 'schaalvrij'"))
+    A = geef_verbindingsmatrix(G)
+    posities = nx.spring_layout(G)
+    x = np.zeros((n, 1), dtype=int)
+    x[:initgeinf] = 1  # eerste persoon is geinfecteerd
+    resistent = []
+    if strategie=="willekeurig":
+        resistent = random.sample(range(initgeinf, n), int(n * fractie_gevac))
+    elif strategie=="best connecteerd":
+        if fractie_gevac > 0:
+            D = -A.sum(0)
+            resistent = D.argsort(1).tolist()[0][:int(n * fractie_gevac)]
+            resistent = list(set(resistent) - set(range(initgeinf)))
+    else:
+        raise(AttributeError("strategie is ofwel 'willeurig' of 'best connecteerd'"))
+    geinfecteerd = [sum(x) / n]
+    for t in range(similatiestappen):
+        update_toestand(A, x, resistent)
+        geinfecteerd.append(sum(x) / n)
+    # plot resultaat
+    fig, axes = plt.subplots(ncols=2, figsize=(15, 10))
+    # plot het netwerk
+    knoopkleuren = [blauw] * initgeinf
+    for i in range(initgeinf, n):
+        if i in resistent:
+            knoopkleuren.append(groen)
+        elif x[i]:
+            knoopkleuren.append(rood)
+        else:
+            knoopkleuren.append(geel)
+    nx.draw_networkx_nodes(G, posities, node_size=10, alpha=0.8,
+                                    node_color=knoopkleuren, ax=axes[0])
+    nx.draw_networkx_edges(G, posities, ax=axes[0], edge_color=blauw,
+                                                        width=0.5, alpha=0.8)
+    deax(axes[0])
+    axes[0].set_title("Eindtoestand van de het netwerk na {} stappen".format(similatiestappen))
+
+    # plot nu de toestanden
+    vatbaar = 1 - np.array(geinfecteerd) - fractie_gevac
+    axes[1].plot(geinfecteerd, color=rood, ls="--", lw=2, label="geinfecteerd")
+    axes[1].plot([0, similatiestappen], [fractie_gevac, fractie_gevac], color=groen, ls=":",
+                            lw=2, label="resistent")
+    axes[1].plot(vatbaar, color=geel, lw=2, label="vatbaar")
+    axes[1].legend(loc=1)
+    axes[1].set_xlabel(r"$t$")
+    axes[0].set_xlabel(r"Fractie van de knopen")
+    axes[1].set_title("Evolutie van de toestanden.")
+
 
 def deax(ax):
     "Verwijder lelijke assen."
