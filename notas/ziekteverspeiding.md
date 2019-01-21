@@ -6,7 +6,7 @@ In dit project zullen we bestuderen hoe ziektes zich kunnen verspreiden via een 
 
 ## Besmettelijke ziektes
 
-In de geschiedenis van de mensheid[^niethumaneziekten] heeft niets zoveel mensen gedood als besmettelijke ziekten. De ziekte die de meeste mensen heeft gedood is waarschijnlijk tuberculose, waarbij 1000 miljoen mensen in alleen de 19de en 20ste eeuw werden gedood. De ziekte die het snelst gedood heeft, is de 'Spaanse griep' epidemie die tussen 191 en 1920 50 tot 100 miljoen mensen heeft gedood. De ziekte met het grootste evenredige dodental blijkt de Zwarte Dood, die 20% van de wereldbevolking en zelfs 50% van de Europese bevolking in de 14e eeuw doodde. Nog erger dan die ramp was het dodental op het Amerikaanse continent na de Europese kolonisatie, die op veel plaatsen de inheemse bevolking met meer dan 90% verminderde.
+In de geschiedenis van de mensheid[^niethumaneziekten] heeft niets zoveel mensen gedood als besmettelijke ziekten. De ziekte die de meeste mensen heeft gedood is waarschijnlijk tuberculose, waarbij 1000 miljoen mensen in alleen de 19de en 20ste eeuw werden gedood. De ziekte die het snelst gedood heeft, is de 'Spaanse griep' epidemie die tussen 191 en 1920 50 tot 100 miljoen mensen heeft gedood. De ziekte met het grootste evenredige dodental blijkt de Zwarte Dood, die 20% van de wereldbevolking en zelfs 50% van de Europese bevolking in de 14e eeuw doodde. Nog erger dan die ramp was het dodental op het Amerikaanse continent na de Europese kolonisatie. Er wordt geschat dat 90% van de inheemse bevolking geëlimineerd werd door de door Europeanen meegebrachte ziektes. De inheemse bevolking was namelijk nog nooit eerder met deze ziektes in contact gekomen en had dus nog niet de gelegenheid gehad om resistentie te ontwikkelen tegen deze ziektes.
 
 [^niethumaneziekten]: In deze nota's leggen we de nadruk op de verspreiding van humane ziektes. Dezelfde modellen worden echter ook gebruikt om ziektes tussen dieren (zoals verspreiding van *Myxomatosis* bij konijnen) of zelfs tussen planten (bijvoorbeeld verspreiding van *Phytophthora infestans*, een aardappelziekte die verantwoordelijk was voor de Ierse hongersnood).
 
@@ -49,20 +49,20 @@ In deze beschrijving maken we een eerste grote vereenvoudiging van de werkelijkh
 Deze drie variabelen worden aan elkaar gelinkt aan de hand van drie vergelijkingen. Hierin nemen we aan dat de grootte van de populatie ongewijzigd blijft. In de tijdspanne die het model beschrijft gebeuren er dus geen geboortes, noch sterven er mensen. We zullen ons hier dus beperken tot de verspreiding van een relatief onschuldige ziekte zoals een verkoudheid. De drie vergelijkingen zijn als volgt:
 
 $$
-\frac{\text{d}S(t)}{\text{d}t} = -\beta S(t)I(t)
+\frac{\text{d}S(t)}{\text{d}t} = -\beta \, S(t) \, I(t)
 $$
 
 $$
-\frac{\text{d}I(t)}{\text{d}t} = \beta S(t)I(t) - \gamma I(t)
+\frac{\text{d}I(t)}{\text{d}t} = \beta \, S(t) \,I(t) - \gamma \, I(t)
 $$
 
 $$
-\frac{\text{d}R(t)}{\text{d}t} = \gamma I(t)
+\frac{\text{d}R(t)}{\text{d}t} = \gamma \, I(t)
 $$
 
 Elke vergelijking vertelt ons hoeveel mensen zich op een bepaald moment bevinden in die groep. De vergelijkingen zijn gekoppeld via de *overgangssnelheiden*, die ons de waarschijnlijkheid om van de ene naar de andere groep over te gaan vertellen.
 
-De overgangssnelheid van vatbaar naar geïnfecteerd hangt af van het contact tussen een vatbare persoon en een geïnfecteerd persoon. We noemen deze contactsnelheid $\beta$. De kans dat de ziekte overgedragen wordt tijdens een contact tussen een vatbare en een geïnfecteerde persoon is dus $\beta I$. Het aantal vatbare personen vermindert dus met deze snelheid op elk tijdstip.
+De overgangssnelheid van vatbaar naar geïnfecteerd hangt af van het contact tussen een vatbare persoon en een geïnfecteerd persoon. We noemen deze contactsnelheid $\beta$. De kans dat de ziekte overgedragen wordt tijdens een contact tussen een vatbare en een geïnfecteerde persoon is dus $\beta \, I$. Het aantal vatbare personen vermindert dus met deze snelheid op elk tijdstip.
 
 De overgangssnelheid van geïnfecteerd naar resistent hangt alleen af van de snelheid van herstel, die we $\gamma$ noemen. Het aantal geïnfecteerde personen vermindert dus met deze snelheid op elk tijdstip.
 
@@ -97,7 +97,7 @@ Zoals je ziet wordt een network of een graaf vaak voorgesteld in een figuur waar
 
 > **Vraag 4**: Beschrijf het verschil tussen de sociale netwerken tussen kinderen van verschillende leeftijden.
 
-Een figuur is nuttig om te bekijken hoe het netwerk eruitziet. Om er berekeningen mee te doen zijn er echter andere representaties nodig. Een graaf kan wiskundig voorgesteld worden in een matrix die een *bogenmatrix* (Engels: adjacency matrix) genoemd wordt. Als het aantal knopen in de graaf $n$ is, dan is de bogenmatrix een vierkante matrix met dimensies $n \times n$. Het element $A_{ij} = 1$ als de knopen $i$ en $j$ verbonden zijn, en $A_{ij} = 0$ als ze niet verbonden zijn[^verbindingslijst]. De bogenmatrix graaftheorie met matrixtheorie!
+Een figuur is nuttig om te bekijken hoe het netwerk eruitziet. Om er berekeningen mee te doen zijn er echter andere representaties nodig. Een graaf kan wiskundig voorgesteld worden in een matrix die een *bogenmatrix* (Engels: adjacency matrix) genoemd wordt. Als het aantal knopen in de graaf $n$ is, dan is de bogenmatrix een vierkante matrix met dimensies $n \times n$. Het element $A_{ij} = 1$ als de knopen $i$ en $j$ verbonden zijn, en $A_{ij} = 0$ als ze niet verbonden zijn[^verbindingslijst]. De bogenmatrix linkt graaftheorie met matrixtheorie!
 
 [^verbindingslijst]: In het echte leven hebben de meeste mensen in een populatie geen contact met elkaar (denk aan het sociaal netwerk van een  hele stad). De graaf is dus verre van *volledig verbonden* (elk paar knopen is verbonden) en de elementen van de bogenmatrix bestaat grotendeels uit nullen. In deze gevallen kan het soms beter zijn om een *verbindingslijst* te gebruiken. Dit is een lijst met dimensies $m \times 2$ waarbij $m$ het aantal bogen is, en elke rij bevat een koppel knopen die verbonden zijn. Afhankelijk van het specifieke netwerk dat we bestuderen en wat we ermee willen doen, kan de ene of de andere datastructuur efficiënter zijn.
 
@@ -106,7 +106,7 @@ Het sociaal netwerk dat we beschouwen wordt weergegeven in onderstaande figuur. 
 ![Een sociaal netwerk tussen vijftien personen.](../figuren/socialnetwerk.png)
 
 
-> **Oefening 1**: voltooi de bogenmatrix en de verbindingslijst voor het sociale netwerk.
+> **Oefening 1**: voltooi de bogenmatrix voor het sociale netwerk.
 
 |      | 1    | 2    | 3    | 4    | 5    | 6    | 7    | 8    | 9    | 10   | 11   | 12   | 13   | 14   | 15  |
 :---| :---| :---| :---| :---| :---| :---| :---| :---| :---| :---| :---| :---| :---| :---|:--|
@@ -179,7 +179,7 @@ $$
 
 De meeste knopen hebben een graad dicht bij dit gemiddelde. **In een (groot) willekeurig netwerk vind je zelden een knoop met extreem veel of extreem weinig bogen**[^gradenrn].
 
-[^gradenrn]: Om precies te zijn, de kans dat een knoop in een netwerk met $n$ knopen exact $m$ bogen heeft wordt gegeven door $$p^m(1-p)^{{n \choose 2} - M},,$$. Dit volgt uit de Binomiale verdeling. Hier is ${n \choose 2}$ de binomiaalcoëfficient $${n \choose 2}=\frac{n(n-1)}{2}\,,$$ dit is het aantal mogelijke manier je twee knopen kan kiezen uit $n$.
+[^gradenrn]: Om precies te zijn, de kans dat een knoop in een netwerk met $n$ knopen exact $m$ bogen heeft wordt gegeven door $p^m \, (1-p)^{{n \choose 2} - m}\,$. Dit volgt uit de Binomiale verdeling. Hier is ${n \choose 2}$ de binomiaalcoëfficient ${n \choose 2}=\frac{n(n-1)}{2}\,$. Dit is het aantal mogelijke manieren waarop je twee knopen kan kiezen uit $n$.
 
 > **Oefening 3** Een sociaal netwerk van een school telt 1000 leerlingen. Ga ervan uit dat dit beschreven kan worden als een willekeurig netwerk met $p=0.01$. Hoeveel vrienden heeft een persoon gemiddeld? Denk je dat het waarschijnlijk is dat er iemand rond loopt die slechts twee of minder vrienden heeft?
 
