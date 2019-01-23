@@ -287,6 +287,36 @@ Als een bepaalde drempwelwaarde bereikt kan worden, zal de kudde-immuniteit een 
 >   1. Bekijk het effect van willekeurig vaccineren. Vanaf welke fractie worden ook vatbare individuen beschermd?
 >   2. Wat is het verschil met gerichte vaccinatie?
 
+## Simuleren van een het SIR-model op een netwerk
+
+Zoals eerder gezegd kunnen we via de verbindingsmatrix $A$ een netwerk voorstellen. We kunnen een toestandsvector $\mathbf{x}$ gebruiken waar een 0 voorstelt dat die persoon vatbaar is en een 1 als die geïnfecteerd is.
+
+```python
+from numpy import matrix
+import numpy as np
+
+# een matrix is een geneste lijst
+# kan je de graaf tekenen hiervan?
+A = matrix([[0, 1, 1, 0, 1],
+            [1, 0, 1, 0, 1],
+            [1, 1, 0, 0, 1],
+            [0, 0, 0, 1, 0],
+            [1, 0, 1, 0, 0]])
+
+# toestandsvector met 1 persoon geïnfecteerd
+x = matrix([[1, 0, 0, 0, 0]]).T
+```
+
+Simulatie kunnen we eenvoudig doen met een for-lus.
+
+```python
+for t in range(5):  # 5 tijdstappen
+    print("Tijdstip ",t, ": ", np.sum(x > 0), "geinfecteerden, x=",x.T > 0)
+    x = A * x   # matrix-vector vermenidgvuldiging verspreidt de ziekte
+```
+
+> **Optionele programmmeeropdracht**: Kan je het model aanpassen zodat persoon 2 en 3 resistent zijn?
+
 ## Ziektespreidingsmodellen in de praktijk
 
 Epidemieën komen voortdurend voor en daarom gebruiken volksgezondheidsorganisaties over de hele wereld modellen om interventiestrategieën te ontwikkelen en te evalueren. Met behulp van simulaties kunnen ze snel de situatie beoordelen en belangrijke beslissingen nemen. Om een ​​epidemie te herkennen en erop te reageren, hebben gezondheidswerkers informatie nodig die inherent onvoorspelbaar is (wat, waar, hoeveel gevallen, hoeveel zullen sterven, waar zal het zich verspreiden). De interacties die tot het uitbreken van een ziekte leiden zijn zeer complex: ze zijn vaak niet-lineair, zodat de resultaten soms onverwacht of contra-intuïtief zijn. Er zijn modellen nodig om deze interacties te begrijpen en om de kwantitatieve voorspellingen te maken die volksgezondheidswerkers nodig hebben om te beslissen over interventiestrategieën.
