@@ -38,7 +38,7 @@ Een van de eenvoudigste manieren om ziekteverspreiding in een gemeenschap te mod
 -  $I(t)$: het (relatief) aantal geinfecteerde individuen op tijdstip $t$;
 -  $R(t)$: het (relatief) aantal resistente individuen op tijdstip $t$.
 
-In deze beschrijving maken we een eerste grote vereenvoudiging van de werkelijkheid. We nemen aan dat elk van deze variablen reëelwaardig zijn en dat het aantal individuen in elke groep continu kan variëeren. In werkelijkheid is het aantal geïnfecteerden of vatbare individuen een geheel getal, je bent immers besmet of je bent het niet. Modelleerders werken echter graag met continue variablen omdat ze dan de technieken van wiskundige analyse kunnen gebruiken.
+In deze beschrijving maken we een eerste grote vereenvoudiging van de werkelijkheid. We nemen aan dat elk van deze variablen reëelwaardig zijn en dat het aantal individuen in elke groep continu kan variëren. In werkelijkheid is het aantal geïnfecteerden of vatbare individuen een geheel getal, je bent immers besmet of je bent het niet. Modelleerders werken echter graag met continue variablen omdat ze dan de technieken van wiskundige analyse kunnen gebruiken.
 
 > **Vraag 1**: Onder welke omstandigheden gaat deze continue benadering ongeveer op? Wanneer niet?
 
@@ -58,7 +58,7 @@ $$
 \frac{\text{d}R(t)}{\text{d}t} = \gamma \, I(t)
 $$
 
-Elke vergelijking vertelt ons hoeveel mensen zich op een bepaald moment bevinden in die groep. De vergelijkingen zijn gekoppeld via de *overgangssnelheiden*, die ons de waarschijnlijkheid om van de ene naar de andere groep over te gaan vertellen.
+Elke vergelijking vertelt ons hoeveel mensen zich op een bepaald moment bevinden in die groep. De vergelijkingen zijn gekoppeld via de *overgangssnelheiden*, die ons de kans om van de ene naar de andere groep over te gaan vertellen.
 
 De overgangssnelheid van vatbaar naar geïnfecteerd hangt af van het contact tussen een vatbare persoon en een geïnfecteerd persoon. We noemen deze contactsnelheid $\beta$. De kans dat de ziekte overgedragen wordt tijdens een contact tussen een vatbare en een geïnfecteerde persoon is dus $\beta \, I$. Het aantal vatbare personen vermindert dus met deze snelheid op elk tijdstip.
 
@@ -84,25 +84,26 @@ Het standaard SIR-model maakt de onrealistische veronderstelling dat twee willek
 
 ### Een voorbeeld
 
-Hieronder zie je een voorbeeld van netwerken. Laten we ons voorstellen dat het het sociale netwerk van een schoolklas vertegenwoordigt. De punten vertegenwoordigen de leerlingen en worden *knopen* genoemd. De contacten tussen leerlingen worden weergegeven door lijnsegmenten tussen knopen, en worden *bogen* genoemd. We zeggen dat twee knopen met elkaar *verbonden* zijn als er een boog tussen zit. Hier gaan we ervan uit dat een knoop niet verbonden kan zijn met zichzelf[^selfconnectance]. Ook is er maar maximaal één boog mogelijk tussen twee knopen. De *graad* van een knoop is het aantal bogen dat ermee verbonden zijn.
+Hieronder zie je een voorbeeld van enkele netwerken. De punten vertegenwoordigen de leerlingen en worden *knopen* genoemd. De contacten tussen leerlingen worden weergegeven door lijnsegmenten tussen knopen, en worden *bogen* genoemd. We zeggen dat twee knopen met elkaar *verbonden* zijn als ze met een boog geconnecteerd worden. Hier gaan we ervan uit dat een knoop niet verbonden kan zijn met zichzelf[^selfconnectance]. Ook is er maar maximaal één boog mogelijk tussen twee knopen. De *graad* van een knoop is het aantal bogen dat ermee verbonden zijn.
 
 ![Voorbeelden van gekleurde grafen die netwerken tussen kinderen van verschillende leeftijden voorstellen ([bron](https://royalsocietypublishing.org/doi/full/10.1098/rspb.2010.1807)).](../figuren/netwerkkinderen.jpg)
 
 
-Zoals je ziet wordt een network of een graaf vaak voorgesteld in een figuur waar cirkels (of andere elementen) de knopen voorstellen die geconnecteerd zijn door lijnen, de bogen. Deze figuren zijn niet uniek: eenzelfde netwerk kan vaak op verschillende manieren voorgesteld worden. Soms hebben de knopen ook een kleur, bijvoorbeeld om geslacht te duiden in een sociaal netwerk. In dat geval spreekt men van een *gekleurde graaf*.
+Zoals je ziet wordt een netwerk of een graaf vaak voorgesteld in een figuur waar cirkels (of andere elementen) de knopen voorstellen die geconnecteerd zijn door lijnen, de bogen. Deze figuren zijn niet uniek: eenzelfde netwerk kan vaak op verschillende manieren voorgesteld worden. Soms hebben de knopen ook een kleur, bijvoorbeeld om geslacht te duiden in een sociaal netwerk. In dat geval spreekt men van een *gekleurde graaf*.
 
 [^selfconnectance]: We gaan ervan uit dat je niet kan bevriend zijn met jezelf.
 
 > **Vraag 4**: Beschrijf het verschil tussen de sociale netwerken tussen kinderen van verschillende leeftijden.
 
-Een figuur is nuttig om te bekijken hoe het netwerk eruitziet. Om er berekeningen mee te doen zijn er echter andere representaties nodig. Een graaf kan wiskundig voorgesteld worden in een matrix die een *bogenmatrix* (Engels: adjacency matrix) genoemd wordt. Als het aantal knopen in de graaf $n$ is, dan is de bogenmatrix een vierkante matrix met dimensies $n \times n$. Het element $A_{ij} = 1$ als de knopen $i$ en $j$ verbonden zijn, en $A_{ij} = 0$ als ze niet verbonden zijn[^verbindingslijst]. De bogenmatrix linkt graaftheorie met matrixtheorie!
+Een figuur is nuttig om te bekijken hoe het netwerk eruitziet. Om er berekeningen mee te doen zijn er echter andere voorstellingen nodig. Een graaf kan wiskundig voorgesteld worden in een matrix die een *bogenmatrix* (Engels: adjacency matrix) genoemd wordt. Als het aantal knopen in de graaf $n$ is, dan is de bogenmatrix een vierkante matrix met dimensies $n \times n$. Het element $A_{ij} = 1$ als de knopen $i$ en $j$ verbonden zijn, en $A_{ij} = 0$ als ze niet verbonden zijn[^verbindingslijst]. De bogenmatrix linkt graaftheorie met matrixtheorie!
 
 [^verbindingslijst]: In het echte leven hebben de meeste mensen in een populatie geen contact met elkaar (denk aan het sociaal netwerk van een  hele stad). De graaf is dus verre van *volledig verbonden* (elk paar knopen is verbonden) en de elementen van de bogenmatrix bestaat grotendeels uit nullen. In deze gevallen kan het soms beter zijn om een *verbindingslijst* te gebruiken. Dit is een lijst met dimensies $m \times 2$ waarbij $m$ het aantal bogen is, en elke rij bevat een koppel knopen die verbonden zijn. Afhankelijk van het specifieke netwerk dat we bestuderen en wat we ermee willen doen, kan de ene of de andere datastructuur efficiënter zijn.
 
-Het sociaal netwerk dat we beschouwen wordt weergegeven in onderstaande figuur. De knopen (hier personen) zijn genummerd voor ons gemak. We houden geen rekening met geslacht of andere attributen. We zullen hier een ziekte-uitbraak op simuleren!
+Het sociaal netwerk dat we beschouwen wordt weergegeven in onderstaande figuur. De knopen, hier personen, zijn genummerd om ze makkelijk te kunnen identificeren. We houden geen rekening met geslacht of andere attributen. We zullen hier een ziekte-uitbraak op simuleren!
 
 ![Een sociaal netwerk tussen vijftien personen.](../figuren/socialnetwerk.png)
 
+\pagebreak
 
 > **Oefening 1**: voltooi de bogenmatrix voor het sociale netwerk.
 
@@ -138,25 +139,11 @@ $$
 
 > **Oefening 2**: Bereken en plot de gradenverdeling van het sociaal netwerk. Vul eerst onderstaande tabel in en teken dan de plot.
 
-| $k$ | $D(k)$ |
-|:--|:--|
-| $1$ | ... |
-| $2$ | ... |
-| $3$ | ... |
-| $4$ | ... |
-| $5$ | ... |
-| $6$ | ... |
-| $7$ | ... |
-| $8$ | ... |
-| $9$ | ... |
-| $10$ | ... |
-| $11$ | ... |
-| $12$ | ... |
-| $13$ | ... |
-| $14$ | ... |
-| $15$ | ... |
+| $k$     | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ | $7$ | $8$ | $9$ | $10$|
+| :------------- |-|:-|:-|:-|:-|:-|:-|:-|:-|:-|
+| **aantal knopen met graad $k$**      |  ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
-![](../figuren/gradenverdelingenleeg.png)
+![Schets hier de gradenverdeling. Vergeet niet te normalizeren!](../figuren/gradenverdelingenleeg.png)
 
 ### Twee typevoorbeelden van netwerken
 
@@ -177,29 +164,7 @@ $$
 
 De meeste knopen hebben een graad dicht bij dit gemiddelde. **In een (groot) willekeurig netwerk vind je zelden een knoop met extreem veel of extreem weinig bogen**[^gradenrn].
 
-[^gradenrn]: Om precies te zijn, de kans dat een knoop in een netwerk met $n$ knopen exact $m$ bogen heeft wordt gegeven door $p^m \, (1-p)^{{n \choose 2} - m}\,$. Dit volgt uit de Binomiale verdeling. Hier is ${n \choose 2}$ de binomiaalcoëfficient ${n \choose 2}=\frac{n(n-1)}{2}\,$. Dit is het aantal mogelijke manieren waarop je twee knopen kan kiezen uit $n$.
-
-> **Oefening 3** Een sociaal netwerk van een school telt 1000 leerlingen. Ga ervan uit dat dit beschreven kan worden als een willekeurig netwerk met $p=0.01$. Hoeveel vrienden heeft een persoon gemiddeld? Denk je dat het waarschijnlijk is dat er iemand rond loopt die slechts twee of minder vrienden heeft?
-
-$$
-\text{Gemiddeld aantal vriendschappen} = \ldots \quad
-$$
-
-$$
-P(\text{Geen vrienden})= \ldots
-$$
-
-$$
-P(\text{Eén vriend})= \ldots
-$$
-
-$$
-P(\text{Twee vrienden})= \ldots
-$$
-
-$$
-P(\text{Twee of minder vrienden})= \ldots
-$$
+[^gradenrn]: Om precies te zijn, de kans dat een knoop in een netwerk met $n$ knopen exact $m$ bogen heeft wordt gegeven door $p^m \, (1-p)^{{n \choose 2} - m}\,$. Dit volgt uit de binomiale verdeling. Hier is ${n \choose 2}$ de binomiaalcoëfficient ${n \choose 2}=\frac{n(n-1)}{2}\,$. Dit is het aantal mogelijke manieren waarop je twee knopen kunt kiezen uit $n$.
 
 > **Vraag 6** Binnen een random netwerk heeft elke knoop ongeveer hetzelfde aantal graden (iedereen heeft ongeveer evenveel vrienden in een sociaal netwerk). Denk je dat dit een realistische assumptie is voor veel netwerken?
 
@@ -214,7 +179,7 @@ $$
 D(k) \propto \frac{1}{k^a}\,,
 $$
 
-met $a$ een exponent die verschilt van netwerk tot netwerk. **In een schaalvrij netwerk hebben enkele knopen een hoge graad en zijn er veel knopen met een lage graad.** Schaalvrije netwerken onstaan door een aggregatieproces waarbij 'the rich get richer': wanneer nieuwe knopen aan een netwerk toegevoegd worden, gaan deze preferentieel verbindingen aan met  knopen met een reeds hoge graad.
+met $a$ een exponent die typisch kan verschillen van netwerk tot netwerk. **In een schaalvrij netwerk hebben enkele knopen een hoge graad en zijn er veel knopen met een lage graad.** Schaalvrije netwerken onstaan door een aggregatieproces waarbij *de rijken rijker worden*: wanneer nieuwe knopen aan een netwerk toegevoegd worden, gaan deze bij voorkeur verbindingen aan met  knopen met een reeds hoge graad.
 
 Schaalvrije netwerken komen overal voor:
 
@@ -230,9 +195,9 @@ Laat ons nu kijken hoe we het SIR-ziekteverspreidingsmodel kunnen vertalen naar 
 
 ### Ziektedynamiek op een netwerk
 
-In plaats van het aantal $S$, $I$ en $R$ individuen doorheen de tijd bij te houden zoals bij het standaard SIR-model, zullen we voor elke knoop in het netwerk zijn of haar toestand bijhouden. Ook de tijd zal niet meer continu variëren maar zal nu in discrete stappen wegtikken: $t \in 0, 1, 2, 3, \ldots$. De toestanden van het model worden dus beschreven door $N_i^t\in \{S, I, R\}$. Dit wil zeggen dat knoop $i$ op tijdstip $t$ de toestand $S$ (vatbaar), $I$ (geïnfecteerd) of $R$ (resistent) kan hebben. De verandering in toestanden voor de knopen beschrijven we aan de hand van enkele eenvoudige regels.
+In plaats van het aantal $S$, $I$ en $R$ individuen doorheen de tijd bij te houden zoals bij het standaard SIR-model, zullen we voor elke knoop in het netwerk zijn of haar toestand bijhouden. Ook de tijd zal niet meer continu variëren maar zal nu in discrete stappen voorbij gaan: $t \in 0, 1, 2, 3, \ldots$. De toestanden van het model worden dus beschreven door $N_i^t\in \{S, I, R\}$. Dit wil zeggen dat knoop $i$ op tijdstip $t$ de toestand $S$ (vatbaar), $I$ (geïnfecteerd) of $R$ (resistent) kan hebben. De verandering in toestanden voor de knopen beschrijven we aan de hand van enkele eenvoudige regels.
 
-#### Vatbare en geinfecteerde mensen
+#### Vatbare en geïnfecteerde mensen
 
 Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan ervan uit dat vatbare individuen ziek kunnen worden, maar zieke individuen niet meer kunnen genezen. Beschouw volgende regels:
 
@@ -247,24 +212,24 @@ Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan er
 > 4. Volgens de tabel, plot het aantal geïnfecteerden op elke tijdstip.
 
 
-| knoop | $t=0$ |  $t=1$ |  $t=2$ |  $t=3$ |  $t=4$ |  $t=5$ |  $t=6$ |  $t=7$ |  $t=8$ |  $t=9$ |  $t=10$ |
-|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
-| $1$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $2$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $3$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $4$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $5$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $6$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $7$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $8$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $9$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $10$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $11$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $12$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $13$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $14$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| $15$ | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| **totaal aantal geïnfecteerden** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| knoop | $t=0$ |  $t=1$ |  $t=2$ |  $t=3$ |  $t=4$ |  $t=5$ |  $t=6$ |  $t=7$ |  $t=8$ |
+|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
+| $1$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $2$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $3$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $4$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $5$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $6$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $7$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $8$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $9$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $10$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $11$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $12$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $13$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $14$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $15$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **totaal aantal geinfecteerden** | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
 <br>
 
@@ -272,33 +237,33 @@ Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan er
 
 <br>
 
-| knoop                            | $t=0$ | $t=1$ | $t=2$ | $t=3$ | $t=4$ | $t=5$ | $t=6$ | $t=7$ | $t=8$ | $t=9$ | $t=10$ |
-|:-------------------------------- |:----- |:----- |:----- |:----- |:----- |:----- |:----- |:----- |:----- |:----- |:------ |
-| $1$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
-| $2$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
-| $3$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
-| $4$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
-| $5$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
-| $6$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
-| $7$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
-| $8$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
-| $9$                              | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
-| $10$                             | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
-| $11$                             | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
-| $12$                             | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
-| $13$                             | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
-| $14$                             | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
-| $15$                             | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
-| **totaal aantal geïnfecteerden** | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...   | ...    |
+| knoop | $t=0$ |  $t=1$ |  $t=2$ |  $t=3$ |  $t=4$ |  $t=5$ |  $t=6$ |  $t=7$ |  $t=8$ |
+|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|
+| $1$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $2$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $3$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $4$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $5$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $6$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $7$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $8$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $9$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $10$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $11$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $12$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $13$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $14$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $15$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **totaal aantal geinfecteerden** | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
 ### Immuniteit en vaccinatie
 
-Het bovenstaande voorbeeld geeft ons een idee hoe we ziekteverspreiding op een netwerk kunnen modelleren, maar nu kunnen we enkele vereenvoudigingen verwijderen. Laten we nu *immuniteit* in onze populatie toestaan. Dit betekent dat sommige mensen niet geïnfecteerd kunnen worden. Hun immuniteit kan natuurlijk zijn (door een herstelling van een eerdere infectie) of kunstmatig (door een vaccin te krijgen).  Nu kunnen individuen dus in het netwerk ook in toestand $R$ (resistent) zitten.
+Het bovenstaande voorbeeld geeft ons een idee hoe we ziekteverspreiding op een netwerk kunnen modelleren, maar nu kunnen we enkele vereenvoudigingen verwijderen. Laten we nu *immuniteit* in onze populatie toestaan. Dit betekent dat sommige mensen niet geïnfecteerd kunnen worden. Hun immuniteit kan natuurlijk zijn (door een herstelling van een eerdere infectie) of kunstmatig (door een vaccin te krijgen).  Nu kunnen individuen dus in het netwerk ook in toestand $R$ (resistent) voorkomen.
 
 Beschouw nu de volgende regels:
 
 1. Indien een knoop op tijdstip $t$ in toestand $S$ of $R$ zit en al zijn buren eveneens in toestand $S$ of $R$ zitten, verandert de knoop zijn toestand niet op tijdstip $t+1$.
-2. Indien een knoop op tijdstip $t$ in toestand $S$ zit en minstend één van zijn buren eveneens in toestand $I$ zit, verandert de knoop op tijdstip $t+1$ naar toestand $I$.
+2. Indien een knoop op tijdstip $t$ in toestand $S$ zit en minstens één van zijn buren eveneens in toestand $I$ zit, verandert de knoop op tijdstip $t+1$ naar toestand $I$.
 3. Indien een knoop op tijdstip $t$ in toestand $I$ zit blijft de knoop op tijdstip $t+1$ in toestand $I$.
 4. Een knoop in toestand $R$ blijft altijd in toestand $R$.
 
@@ -306,13 +271,13 @@ Beschouw nu de volgende regels:
 
 Sommige mensen kunnen door verschillende redenen niet immuun worden. Vaccins kunnen bijvoorbeeld niet gegeven worden aan jonge baby's of mensen met ernstige medische aandoeningen. In deze groep is *kudde-immuniteit* een belangrijke beschermingsmethode.
 
-Kudde immuniteit betekent een indirecte bescherming tegen besmettelijke ziekten. Deze komt voor wanneer een groot percentage van de populatie immuun is tegen een infectie (door natuurlijke immuniteit of vaccinatie) en daardoor beschermen ze mensen die niet immuun zijn. Dit gebeurt omdat het grote aantal immune mensen de ziekteverspreiding vertraagt of zelfs stopt, want de verbindingen zijn verbroken.
+Kudde immuniteit betekent een indirecte bescherming tegen besmettelijke ziekten. Deze komt voor wanneer een groot percentage van de populatie immuun is tegen een infectie (door natuurlijke immuniteit of vaccinatie) en daardoor beschermen ze mensen die niet immuun zijn. Dit gebeurt omdat het grote aantal immune mensen de ziekteverspreiding vertraagt of zelfs stopt, want de verbindingen tussen zieke en vatbare mensen zijn geblokkeerd.
 
 ![Illustratie van kudde-immuniteit. Als voldoende mensen geïmmuniseerd zijn breidt de ziekte zich niet verder uit bij vatbare mensen. (links) Netwerk na 100 stappen. (rechts) Verdelingen van de toestanden in de tijd.](../figuren/kuddeimmuniteit.png)
 
-Als een bepaalde grenslijn kan bereikt worden, zal de kudde-immuniteit een ziekte uit een populatie elimineren. Als deze eliminatie over de hele wereld bereikt wordt, kan het aantal infecties permanent tot nul teruggebracht worden. Dan kunnen we spreken van de *uitroeiing* van de ziekte. Het moet duidelijk zijn dat volledige uitroeiing zeer moeilijk te bereiken is. Veel ziekten zijn regionaal uitgeroeid (bijvoorbeeld cholera in België), terwijl slechts twee ziekten wereldwijd uitgeroeid zijn: pokken en runderpest.
+Als een bepaalde drempwelwaarde bereikt kan worden, zal de kudde-immuniteit een ziekte uit een populatie elimineren. Als deze eliminatie over de hele wereld bereikt wordt, kan het aantal infecties permanent tot nul teruggebracht worden. Dan kunnen we spreken van de *uitroeiing* van de ziekte. Het moet duidelijk zijn dat volledige uitroeiing zeer moeilijk te bereiken is. Veel ziekten zijn regionaal uitgeroeid (bijvoorbeeld cholera in België), terwijl slechts twee ziekten wereldwijd uitgeroeid zijn: pokken en runderpest.
 
-> **Computeroefening**: Laat ons overgaan naar simulaties op de computer. Je kan deze uitvoeren in de Jupyter notebooks, schikbaar via de [biowiskundedagen website](https://mybinder.org/v2/gh/michielstock/biowiskundedagen/master). Via de interactieve widget kan je een netwerk van een bepaalde grootte genereren met 1 tot 10 geinfecteerde personen (deze knopen zijn donkerblauw ingekleurd). Het netwerk dat verschijnt is na 10 tijdsstappen. Ernaast zijn de fracties van de knopen in een bepaalde toestand geplot.
+> **Computeroefening**: Laat ons overgaan naar simulaties op de computer. Je kan deze uitvoeren in de Jupyter notebooks, schikbaar via de [biowiskundedagen website](https://mybinder.org/v2/gh/michielstock/biowiskundedagen/master). Via de interactieve widget kan je een netwerk van een bepaalde grootte genereren met 1 tot 10 geïnfecteerde personen (deze knopen zijn donkerblauw ingekleurd). Het netwerk dat verschijnt is na 10 tijdstappen. Ernaast zijn de fracties van de knopen in een bepaalde toestand geplot.
 >
 > - **zonder vaccinatie**: `frac_vac=0`
 >
@@ -328,6 +293,6 @@ Epidemieën komen voortdurend voor en daarom gebruiken volksgezondheidsorganisat
 
 Menselijk gedrag tijdens ziekte-uitbraken verandert vaak drastisch. Mensen vermijden drukke plaatsen of haasten zich naar drukke plaatsen zoals luchthavens of treinstations als ze proberen te ontsnappen aan de epidemie. Modellering kan gezondheidswerkers helpen dit soort effecten te voorzien en te begrijpen.
 
-Modellen kunnen ook gebruikt worden om te bepalen hoe bestaansmiddelen toegewezen moeten worden om de beste kans te hebben om de verspreiding van de ziekte te stoppen - bijvoorbeeld, als vaccins beperkt zijn, welke groep mensen moet dan met voorrang worden gevaccineerd? Wetenschappers kunnen modellen gebruiken om de uitkomsten van verschillende controlestrategieën te vergelijken. Modellen kunnen ook worden gekoppeld aan langetermijngegevens over het klimaat en klimaatvoorspellingen, om voorspellingen van uitbraken vele maanden in de toekomst te maken. Deze benadering wordt gebruikt om vaccinatiecampagnes te bepalen, bijvoorbeeld tegen influenza of mazelen.
+Modellen kunnen ook gebruikt worden om te bepalen hoe bestaansmiddelen toegewezen moeten worden om de beste kans te hebben om de verspreiding van de ziekte te stoppen - bijvoorbeeld, als vaccins beperkt zijn, welke groep mensen moet dan prioritair worden gevaccineerd? Wetenschappers kunnen modellen gebruiken om de uitkomsten van verschillende controlestrategieën te vergelijken. Modellen kunnen ook worden gekoppeld aan langetermijngegevens over het klimaat en klimaatvoorspellingen, om voorspellingen van uitbraken vele maanden in de toekomst te maken. Deze benadering wordt gebruikt om vaccinatiecampagnes te bepalen, bijvoorbeeld tegen influenza of mazelen.
 
 Wetenschappers ontwikkelen hun begrip van ziekteverspreiding met behulp van gegevens zoals gedrags-, demografische en epidemische trends, maar het is vaak moeilijk om betrouwbare gegevens te verzamelen en voor veel ziekten missen we nog steeds belangrijke informatie over hoe ze zich verspreiden. Modellering kan ook in deze gevallen helpen, omdat wetenschappers verschillende hypotheses kunnen testen om te proberen de hiaten in hun kennis in te vullen.
