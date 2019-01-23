@@ -1,17 +1,15 @@
 
-# Eiwitten beter begrijpen met kansberekening
+# 1. Eiwitten beter begrijpen met kansberekening
 
-In dit project zullen we kansrekening gebruiken om de secundaire structuur ($\beta$-platen) van een eiwit te voorspellen. We overlopen eerst de basisregels van kansrekening en dan zullen we een vereenvoudiging doorvoeren om het rekenen mogelijk te maken. Zo bekomen we een data-gedreven model om voor een amizuur de kans te berekenen of dit waarschijnlijk in $\beta$-plaat voorkomt of niet. Dit zullen we toepassen over volledige eiwitten via de glijdend venster methode. Ten slotte hebben we het kort even hebben over modelevaluatie: hoe betrouwbaar is zo'n model?
+In dit project zullen we kansrekening gebruiken om de secundaire structuur ($\beta$-platen) van een eiwit te voorspellen. We overlopen eerst de basisregels van kansrekening en dan zullen we een vereenvoudiging doorvoeren om het rekenen mogelijk te maken. Zo bekomen we een data-gedreven model om voor een aminozuur de kans te berekenen of dit waarschijnlijk in $\beta$-plaat voorkomt of niet. Dit zullen we toepassen over volledige eiwitten via de glijdend venster methode. Ten slotte hebben we het kort even hebben over modelevaluatie: hoe betrouwbaar is zo'n model?
 
-[toc]
+## 1.1 Een beetje achtergrond
 
-## Een beetje achtergrond
+### 1.1.1 De wereld van eiwitten en hun opbouw
 
-### De wereld van eiwitten en hun opbouw
+Eiwitten vormen één van de meest belangrijke klassen van biologische moleculen. Eiwitten vervullen actieve rollen en blijken essentieel te zijn voor zowat alle biologische processen in een levend organisme: ze staan in voor het verteren van voedsel, zorgen voor ontgifting, geven informatie door, maken beweging mogelijk en nog veel meer. Zo vormen ze een fundamenteel onderdeel van biologisch wezen.
 
-Eiwitten vormen één van de meest belangrijke klassen van biologische moleculen. Waar DNA een grotendeels passieve drager is van informatie, vervullen eiwitten vaak een meer actieve rol. Zo zijn eiwitten essentieel voor zowat alle biologische processen: ze staan in voor het verteren van voedsel, zorgen voor ontgifting, geven informatie door, maken beweging mogelijk en nog veel meer. Ze vormen een fundamenteel onderdeel van elk levend organisme.
-
-De opbouw van een eiwit is relatief simpel. Net zoals DNA is een eiwit een *polymeer*: een lange streng van meer eenvoudige moleculen. Voor de meeste organismen bestaan eiwitten uit een specifieke opeenvolging van 20 mogelijke *aminozuren*, elk voorgesteld door een hoofdletter. Deze aminozuren verschillen in hun grootte, lading en flexibiliteit. De opvolging van deze aminozuren wordt ook wel de *primaire structuur* van een eiwit genoemd. Deze primaire structuur bepaalt hoe het eiwit zich verder zal opvouwen en legt de biologische functie van een eiwit vast.
+De opbouw van een eiwit is relatief simpel. Net zoals DNA is een eiwit een *polymeer*: een lange streng van meer eenvoudige moleculen. Deze eenvoudige moleculen worden *aminozuren* genoemd, waarvan er in de natuur 20 verschillenden voorkomen, elk voorgesteld door een hoofdletter. Een specifieke opeenvolging van zo'n aminozuren wordt de *primaire structuur* van een eiwit genoemd. Deze primaire structuur bepaalt hoe het eiwit zich verder zal opvouwen (in een functionele 3D-structuur) en legt de biologische functie van een eiwit vast.
 
 Uit de primaire structuur van eiwitten volgt de *secundaire structuur*. Deze structuren onstaan door waterstofbruggen (niet-covalente bindingen tussen vrije waterstoffen en hydroxylgroepen) tussen naburige aminozuren. De belangrijkste secundaire structuren zijn *$\alpha$-helices* en *$\beta$-platen* (Engels: $\beta$-sheets). Gegeven dat deze secundaire structuur enkel door de primaire structuur bepaald wordt, kunnen we wiskunde gebruiken om de secundaire structuur te voorspellen[^structuur].
 
@@ -19,23 +17,23 @@ Uit de primaire structuur van eiwitten volgt de *secundaire structuur*. Deze str
 
 ![(boven) Eiwitsequenties vormen secundaire structuren via niet-covalente waterstofbindingen. (onder) Een eiwit is slechts een aaneenschakeling van aminozuren die zich zelfstandig opvouwen tot een driedimensionale structuur.](../figuren/sec_struct.png)
 
-### Stoute bacteriën en goede virussen
+### 1.1.2 Stoute bacteriën en goede virussen
 
 Zelfs de allerkleinste biologische entiteiten, de virussen, gebruiken eiwitten voor infectie en aldus om zich te kunnen vermenigvuldigen. Een zeer interessante groep virussen zijn de bacteriofagen of kortweg fagen. Dit zijn virussen die bacteriën infecteren en aldus ook kunnen afdoden. Bacteriën, en dus ook fagen, komen overvloedig voor in ons lichaam. Vele bacteriën zijn goedaardig en helpen ons lichaam optimaal functioneren. Soms dringen echter pathogene bacteriën ons lichaam binnen en maken ze ons ziek. *Salmonella enterica* is zo’n bacterie. *Salmonella* dringt ons lichaam binnen via besmet voedsel: de bacterie kan overleven op onvoldoende verhitte eieren en vlees, alsook op rauwe groenten en fruit. Eens de bacterie zich in onze darmen bevindt, kan ze ons ernstig ziek maken.
 
-![(links) Microscopische figuur van de *Salmonellabacterie. (rechts) Figuur van P22 fagen die *Salmonella* kunnen infecteren.](../figuren/salmonellafaag.png)
+![(links) Microscopische figuur van de *Salmonellabacterie*. (rechts) Figuur van P22 fagen die *Salmonella* kunnen infecteren.](../figuren/salmonellafaag.png)
 
-Een bijkomend probleem is dat *Salmonella* en andere bacteriën steeds meer resistent worden tegen antibiotica. Gelukkig kunnen we ook fagen inzetten om bacteriën te bestrijden! Cruciaal voor een faag bij het infecteren van zijn bacteriële gastheer zijn specifieke eiwitten die componenten van de salmonellabacterie herkennen. Verschillende salmonellafagen kunnen verschillende componenten van de bacterie herkennen door variaties in die specifieke eiwitten. Deze eiwitten hebben daarnaast ook vaak een geconserveerd eiwitdomein: een $\beta$-helicaal domein. Dit domein vormt als het ware een *moleculaire boor* die de celwand van de bacterie kan doorboren, wat nodig is om de infectie te starten. Door deze eiwitten beter te begrijpen kunnen we ze daarna ook beter inzetten tegen gevaarlijke bacteriën.
+Een bijkomend probleem is dat *Salmonella* en andere bacteriën steeds meer resistent worden tegen antibiotica. Gelukkig kunnen we ook fagen inzetten om bacteriën te bestrijden! Cruciaal voor een faag bij het infecteren van zijn bacteriële gastheer zijn specifieke faag eiwitten die componenten van de salmonellabacterie herkennen. Deze faag eiwitten verschillen vaak tussen verschillende salmonellafagen. Door deze verschillen kunnen fagen aldus verschillende varianten van de *Salmonella* bacterie herkennen. Anderzijds komt er tussen verschillende salmonellafagen ook vaak een geconserveerd eiwitdomein voor. Dit is een stukje van het eiwit dat wel hetzelfde is tussen de verschillende salmonellafagen. Bij salmonellafagen is dit een zogenaamd $\beta$-helicaal domein. Dit domein vormt als het ware een *moleculaire boor* die de celwand van de bacterie kan doorboren, wat nodig is om de infectie te starten. Door zo'n faag eiwitten beter te begrijpen kunnen we ze daarna ook beter inzetten tegen gevaarlijke bacteriën.
 
-Een voorbeeld van zo'n eiwit is het staarteiwit van Salmonellafaag P22: [P12528](https://www.uniprot.org/uniprot/P12528). Tussen aminozuur 140 en 543 bevindt zich een groot $\beta$-helicaal domein (bestaande uit parallele $\beta$-platen) dat een puntig einde heeft rond aminozuur 113. De aanwezigheid van die $\beta$-platen is belangrijk voor de specifieke functie van het eiwit. Deze secundaire structuren (de $\beta$-platen) kunnen we bestuderen via wiskunde en computers. Dit onderzoeksdomein noemen we *bio-informatica*. In bio-informatica wordt wiskunde gecombineerd met computerkracht om interessante biologische fenomenen te bestuderen en biologische problemen op te lossen.
+Een voorbeeld van zo'n faag eiwit is het staarteiwit van Salmonellafaag P22: [*P12528*](https://www.uniprot.org/uniprot/P12528). Tussen aminozuur 140 en 543 bevindt zich een groot $\beta$-helicaal domein (bestaande uit parallele $\beta$-platen) dat een puntig einde heeft rond aminozuur 113. De aanwezigheid van die $\beta$-platen is belangrijk voor de specifieke functie van het eiwit. Deze secundaire structuren (de $\beta$-platen) kunnen we bestuderen via wiskunde en computers. Dit onderzoeksdomein noemen we *bio-informatica*. In bio-informatica wordt wiskunde gecombineerd met computerkracht om interessante biologische fenomenen te bestuderen en biologische problemen op te lossen.
 
 ![Het P12528 eiwit, ook wel Salmonellafaag P22 *tail spike* eiwit genoemd. Dit eiwit bestaat uit een uitzonderlijk groot aantal $\beta$-platen die samen een complexe boorkop vormen. Regenboogkleuring in volgorde van de sequentie.](../figuren/P12528.png)
 
 In dit project zetten we de computer aan het werk om eiwitten te bestuderen. Zo'n eiwitten bestuderen wetenschappers vaak op basis van de aminozuursequentie van het eiwit. Door specifieke instructies te geven aan de computer kunnen we voorspellingen maken voor $\beta$-platen om zo de $\beta$-helicale domeinen te vinden! In dit project zullen we de computer leren om dergelijke voorspellingen te maken. Hieronder bekijken we eerst welke wiskunde je daar net voor nodig hebt.
 
-## Rekenen met kansen en de regel van Bayes
+## 1.2 Rekenen met kansen en de regel van Bayes
 
-### Kansrekening in een notendop
+### 1.2.1 Kansrekening in een notendop
 
 Kansrekening of probabiliteitstheorie is de tak van de wiskunde die zich bezig houdt met *kansen*. Met kansen kom je dagelijks in contact, denk maar aan gezelschapsspellen waarbij je moet dobbelen of Frank Deboosere die aangeeft dat er 60%[^procent] kans op neerslag is voor morgen. Er zijn nog vele andere voorbeelden, en net omdat kansberekenen zo belangrijk is in het dagelijkse leven, is het interessant om dit te bestuderen.
 
@@ -58,7 +56,7 @@ $$
 [^onafhkansen]: Bijvoorbeeld, de kans dat je bij twee opeenvolgende worpen van een dobbelsteen twee keer een zes gooit is $1/6\cdot1/6=1/36$.
 [^condkansen]: Bijvoorbeeld, de kans dat we met een dobbelsteen een zes gooien gegeven dat het een even getal was is $(1/6)/(1/2)=1/3$.
 
-![Voorstelling van de basisregels van kansrekening. Kansen voor beurtenissen worden voorsteld door niet-negatieve waarden die samen tot 1 sommeren. Onderaan een illustratie van de rekenregels voor kansen.](../figuren/probabiliteit.png)
+![Voorstelling van de basisregels van kansrekening. Kansen voor beurtenissen worden voorsteld door niet-negatieve waarden die samen tot 1 sommeren.](../figuren/probabiliteit.png)
 
 > **Oefening 1:** Je wordt op een nacht rillend van de koorts wakker. Je geeft over en hebt overal jeuk. Er zijn twee ziekten met deze symptomen: blauwkoorts en groenzucht. De ene ziekte komt vaker voor dan de andere: wie ziek is heeft in 80% van de gevallen last van blauwkoorts, terwijl groenzucht slechts in 20% van de gevallen voorkomt. Zoals de naam doet vermoeden, hebben deze ziekten nog een ander, duidelijk zichtbaar symptoom. Mensen met blauwkoorts krijgen doorgaans een blauw gezicht en deze met groenzucht een groen gezicht. **In 20% van de gevallen krijgt een persoon met blauwkoorts een groen gezicht en in 30% van de gevallen krijgt iemand met groenkoorts een blauw gezicht!** Je spoedt je naar de spiegel en iemand met een groen gezicht staart terug. Welke ziekte heb je? Bekijk onderstaande figuur en vul de ontbrekende kansen in de tabel verder aan.
 
@@ -86,9 +84,9 @@ $$
 P(\text{blauwkoorts} \mid \text{groen gezicht}) = \ldots\quad\quad P(\text{groenzucht} \mid \text{groen gezicht}) = \ldots
 $$
 
-### Naïeve Bayes
+### 1.2.2 Naive Bayes
 
-Nu we de regel van Bayes intuïtief begrijpen, kunnen we deze toepassen voor het voorspellen van $\beta$-platen in eiwitten. De *naïeve Bayes*-methode kan hiervoor gebruikt worden. Deze methode maakt gebruik van de regel van Bayes om voorspellingen te maken o.b.v. een gegeven input. In dit project willen we een $\beta$-plaat voorspellen o.b.v. de eiwitsequentie (de input).
+Nu we de regel van Bayes intuïtief begrijpen, kunnen we deze toepassen voor het voorspellen van $\beta$-platen in eiwitten. De *naive Bayes*-methode kan hiervoor gebruikt worden. Deze methode maakt gebruik van de regel van Bayes om voorspellingen te maken o.b.v. een gegeven input. In dit project willen we een $\beta$-plaat voorspellen o.b.v. de eiwitsequentie (de input).
 
 De regel van Bayes kan voor dit geval als volgt geschreven worden:
 
@@ -104,15 +102,21 @@ $$
 
 Hierboven schrijven we dus de eiwitsequentie gewoon als de opeenvolging van de $n$ aminozuren. Hier stelt $A_i$ de identiteit voor van het aminozuur op positie $i$. Hoe berekenen we de kans op een gegeven sequentie? Voor een stukje met lengte $n=10$ hebben we $20^{10}= 10240000000000\approx 10^{13}$ unieke sequenties. In een probabilistisch model moeten we dus een vereenvoudiging doorvoeren!
 
-> **Vereenvoudiging:** We gaan ervan uit dat de kans dat een bepaald aminozuur op een bepaalde plaats voorkomt **onafhankelijk is van de aminozuren op elke andere plaats**[^vereenvoudiging].
+\bigskip
 
-[^vereenvoudiging]: Ergens huilt er een moleculair bioloog.
+> **Vereenvoudiging:** We gaan ervan uit dat de kans dat een bepaald aminozuur op een bepaalde plaats voorkomt **onafhankelijk is van de aminozuren op elke andere plaats** (ergens huilt er een moleculair bioloog).
 
-Deze vereenvoudiging is natuurlijk volstrekt biologisch onrealistisch! De aminozuren zijn in werkelijkheid juist erg afhankelijk, bijvoorbeeld omdat twee aminozuurtjes met elkaar in contact komen en een waterstofbrug vormen. Hoe fout deze vereenvoudig ook is, ze is echter wel nuttig! Het laat ons toe om de kansen voor een $\beta$-plaat redelijk goed te benaderen! In formulevorm is deze veronderstelling voor ons probleem[^conditioneelvereenvoudiging][^productnotatie]:
+\bigskip
 
-[^conditioneelvereenvoudiging]: On helemaal precies te zijn, de veronderstelling zegt dat $P(A_1A_2\ldots A_n)\approx P(A_1)P(A_2)\ldots P(A_n)$, terwijl wij nu eerst de identiteit $P(A_1A_2\ldots A_n\mid \beta\text{-plaat})\approx P(A_1\mid \beta\text{-plaat})P(A_2\mid \beta\text{-plaat})\ldots P(A_n\mid \beta\text{-plaat})$ gebruiken. De eerste veronderstelling zegt dat de aminozuren onafhankelijk zijn, terwijl de tweede identiteit zegt dat ze onafhankelijk zijn binnen een $\beta$-plaat. Deze twee uitspraken zijn **niet** inwisselbaar!
+Deze vereenvoudiging is natuurlijk volstrekt biologisch onrealistisch! De aminozuren zijn in werkelijkheid juist erg afhankelijk, bijvoorbeeld omdat twee aminozuurtjes met elkaar in contact komen en een waterstofbrug vormen. Hoe fout deze vereenvoudiging ook is, ze is echter wel nuttig! 
 
-[^productnotatie]: Hier maken we gebruik van de notatie voor een product:$$\prod_{i=1}^n x_i=x_1 x_2\ldots x_n\,,$$ bijvoorbeeld $\prod_{i=2}^4 i = 2\times 3\times 4=24$.
+\pagebreak
+
+Het laat ons toe om de kansen voor een $\beta$-plaat redelijk goed te benaderen! In formulevorm is deze veronderstelling voor ons probleem[^conditioneelvereenvoudiging][^productnotatie]:
+
+[^conditioneelvereenvoudiging]: On helemaal precies te zijn, de veronderstelling zegt dat $P(A_1A_2\ldots A_n)\approx P(A_1)P(A_2)\ldots P(A_n)$, wat zegt dat aminozuren onafhankelijk zijn. Wij gebruiken de identiteit $P(A_1A_2\ldots A_n\mid \beta\text{-plaat})\approx P(A_1\mid \beta\text{-plaat})P(A_2\mid \beta\text{-plaat})\ldots P(A_n\mid \beta\text{-plaat})$, wat zegt dat aminozuren onafhankelijk zijn binnen een $\beta$-plaat. Deze twee uitspraken zijn **niet** inwisselbaar!
+
+[^productnotatie]: Hier maken we gebruik van de notatie voor een product: $\prod_{i=1}^n x_i=x_1 x_2\ldots x_n\,,$ (bv. $\prod_{i=2}^4 i = 2\times 3\times 4=24$).
 
 $$
 P(\text{eiwitsequentie} \mid \beta\text{-plaat})\approx P(A_1\mid\beta\text{-plaat})P(A_2\mid\beta\text{-plaat})\ldots P(A_n\mid\beta\text{-plaat})
@@ -127,15 +131,13 @@ $$
 P( \beta\text{-plaat} \mid \text{eiwitsequentie} ) \approx P(\beta\text{-plaat}) \prod_{i=1}^n \frac{P(A_i\mid\beta\text{-plaat})}{P(A_i)}\,.
 $$
 
-We kunnen de kans op een $\beta$-plaat gegeven een sequentie dus berekenen aan de hand van termen die we makkelijk uit data kunnen schatten door te tellen! De kans dat het aminozuur voorkomt in een $\beta$-plaat gedeeld door de kans dat dat aminozuur in een willekeurig eiwit voorkomt wordt de **odds** (Nederlands: *kansverhouding*) genoemd.
+We kunnen de kans op een $\beta$-plaat gegeven een sequentie dus berekenen aan de hand van termen die we makkelijk uit data kunnen schatten door te tellen! De kans dat het aminozuur voorkomt in een $\beta$-plaat gedeeld door de kans dat dat aminozuur in een willekeurig eiwit voorkomt wordt de **odds** (Nederlands: *kansverhouding*) genoemd. Hoewel we dit hier niet zullen doen, is het misschien ook wel belangrijk te vermelden dat in de praktijk de logaritme[^logaritme] van deze kansen genomen wordt om de berekeningen te vereenvoudigen.
 
 > **Vraag:** Wanneer zou je stellen dat een regio waarschijnlijk een $\beta$-plaat is?
 
-Hoewel we dit hier niet zullen doen, is het misschien ook wel belangrijk te vermelden dat in de praktijk de logaritme[^logaritme] van deze kansen genomen wordt om de berekeningen te vereenvoudigen.
+[^logaritme]: De logaritme met basis 10 wordt gedefineerd als: $$\log_{10}x=y \Longleftrightarrow 10^y=x\,.$$ Herinner je dat voor positieve getallen $a$ en $b$ geldt dat $\log(ab)=\log(a) + \log(b)$ en $\log(a/b)=\log(a) - \log(b)$. Wetenschappers gebruiken logaritmen vaak om vermenigvuldigingen in sommen om te zetten. Het voordeel met logaritmen is dat heel kleine getallen door vermenigvuldiging in negatieve waarden omgezet worden.
 
-[^logaritme]: De logaritme met basis 10 wordt gedefineerd als $$\log_{10}x=y \Longleftrightarrow 10^y=x\,.$$ Herinner je dat voor positieve getallen $a$ en $b$ geldt dat $\log(ab)=\log(a) + \log(b)$ en $\log(a/b)=\log(a) - \log(b)$. Wetenschappers gebruiken logaritmes vaak om vermenigvuldigingen in sommen om te zetten. De logaritmische transformatie heeft ook als voordeel dat de heel kleine getallen die je bekomt door de vermenigvuldiging in negatieve waarden omgezet worden.
-
-### Een eenvoudig voorbeeld met de hand uitwerken
+### 1.2.3 Een eenvoudig voorbeeld met de hand uitwerken
 
 Nu kunnen we de bovenstaande formule gebruiken om voorspellingen te maken voor eiwitten. Vooraleer we deze formule doorgeven aan de computer zullen we ze eerst zelf op papier eens toepassen. Hiervoor hebben we volgende kansen nodig (rechterlid van de bovenstaande formule):
 
@@ -143,10 +145,9 @@ Nu kunnen we de bovenstaande formule gebruiken om voorspellingen te maken voor e
 - $P(\beta\text{-plaat})$: de kans om een $\beta$-plaat waar te nemen.
 - $P(A_i\mid\beta\text{-plaat})$: de kans om een bepaald aminozuur waar te nemen, gegeven dat de sequentie een $\beta$-plaat is.
 
+\pagebreak
 
-> **Oefening 2:** Onderstaande tabel bevat experimenteel bepaalde aminozuur (AZ) aantallen van een staarteiwit van een faag die we zullen gebruiken om voorspellingen te maken. Op basis van de aantallen en het totaal aantal AZ kan je de ontbrekende kansen in de tabel berekenen, alsook de kans op een $\beta$-plaat. Deze kansen heb je nodig om de formule uit te werken. Vervolledig deze tabel.
-
-<br>
+> **Oefening 2:** Onderstaande tabel bevat experimenteel bepaalde aminozuur (AZ) aantallen van een staarteiwit van een faag die we zullen gebruiken om voorspellingen te maken. Op basis van de aantallen en het totaal aantal aminozuren kan je de ontbrekende kansen in de tabel berekenen, alsook de kans op een $\beta$-plaat. Deze kansen heb je nodig om de formule uit te werken. Vervolledig deze tabel.
 
 | AZ         | totaal aantal | $\mathbf{P(A_i)}$ | aantal in $\beta$-plaat | $\mathbf{P(A_i\mid\beta\text{-plaat})}$ | $\mathbf{\frac{P(A_i\mid \beta\text{-plaat})}{P(A_i)}}$ |
 |:-----------|:--------------|:------------------|:------------------------|:----------------------------------------|:--------------------------------------------------------|
@@ -172,15 +173,13 @@ Nu kunnen we de bovenstaande formule gebruiken om voorspellingen te maken voor e
 | Y          | 27            | ...               | 19                      | ...                                     | ...                                                     |
 | **Totaal** | **667**       | -                 | **331**                 | -                                       | -                                                       |
 
-<br>
-
+Dus is  de kans op een $\beta$-plaat gelijk aan:
 $$
 P(\beta\text{-plaat}) = \ldots
 $$
 
 > **Oefening 3:** Volgende korte sequentie is een klein deeltje van het P22 staarteiwit: 'YSIEADKK'. Experimenteel werd reeds bepaald dat dit geen $\beta$-plaat is, maar een $\alpha$-helix. Bereken nu via de laatst geziene formule de kans dat die sequentie een $\beta$-plaat bevat (deze kans zou klein moeten zijn). Maak gebruik van de tabel met kansen die je net hebt ingevuld.
 
-<br>
 
 | $i$ | $A_i$ | $\frac{P(A_i\mid \beta\text{-plaat})}{P(A_i)}$ |
 |:----|:------|:---------------------------------------------------------------------|
@@ -195,14 +194,14 @@ $$
 
 <br>
 
-Dus:
+Dus is de conditionele kans op een $\beta$-plaat gegeven de eiwitsequentie bij benadering gelijk aan:
 $$
 P(\beta\text{-plaat}\mid\text{eiwitsequentie}) \approx\ldots
 $$
 
-## Naive Bayes op de computer
+## 1.3 Naive Bayes op de computer
 
-### Glijdende vensters en drempelwaarden
+### 1.3.1 Glijdende vensters en drempelwaarden
 
 In het computerdeel van dit practicum gaan we nu de Naive Bayes-methode toepassen op het volledige P22 eiwit dat we eerder besproken hebben. Het doel is om te ontdekken waar de $\beta$-platen zich in het eiwit bevinden. We zullen $\beta$-platen voorspellen met behulp van de Naive Bayes-methode en de voorspellingen (i.e. de kansen) dan voorstellen via een grafiek. Hiervoor bewegen we aminozuur voor aminozuur over het eiwit via een *glijdend venster* van lengte $k$. In dit glijdend venster kijken we naar de aminozuren op elke positie van $i$ tot $i+k$ en vermenigvuldiging alle odds voor elk aminzozuur. We noteren dit als
 
@@ -233,11 +232,11 @@ Hier is $\theta$ een zorgvuldig gekozen *drempelwaarde* (Engels: threshold). De 
 
 Hieronder zie je een voorbeeld van een analyse met een glijdend venster.
 
-![](../figuren/glijdendvenstervoorbeeld.png)
+![Voorstelling van de resultaten van het glijdend venster. De regio's waar de conditionele kans de drempelwaarde overschreid gedurende een bepaalde lengte (bepaald door $k$), worden aangeduid als $\beta$-plaat.](../figuren/glijdendvenstervoorbeeld.png)
 
 Je kan dus inzien dat we de waarde van $\theta$ net goed willen kiezen zodat we het aantal foute voorspellingen tot een minimum beperken. Dit beperken van foute voorspellingen is altijd gewenst bij het gebruik van wiskundige modellen, en om deze fouten te bestuderen doen we aan *modelevaluatie*.
 
-### Modelevaluatie: op welke manier is je model fout?
+### 1.3.2 Modelevaluatie: op welke manier is je model fout?
 
 Wiskundige modellen maken zelden perfecte voorspellingen. Toch is het in de praktijk belangrijk dat modellen zeer accurate voorspellingen maken. Als bijvoorbeeld een zelfrijdende auto een foute voorspelling maakt over waar hij moet rijden kan dat mogelijks fataal zijn voor personen in de wagen en/of in de omgeving. Wanneer een wiskundig model voorspelt dat jij een kankergezwel hebt terwijl dat eigenlijk niet zo is, krijg je onnodig dure chemotherapie (die vaak ook slechte bijwerkingen heeft). Er zijn natuurlijk ook minder ernstige voorbeelden: wanneer het algoritme van Netflix je weer een serie aanraadt die je niet goed vindt, ga je naar die serie simpelweg niet beginnen kijken. Maar uiteraard wil ook Netflix zijn klanten de meest relevante films en series aanraden, en dat doen ze door continu voorspellingen te maken o.b.v. de series en films die jij al bekeken hebt en de grote hoeveelheid data die ze over hun andere klanten hebben.
 
@@ -256,7 +255,7 @@ De correcte en foute voorspellingen kunnen we eenvoudig voorstellen in een compa
 
 Beide foute voorspellingen zijn nauw verbonden met de keuze van de drempelwaarde $\theta$, alsook de grootte van het glijdend venster. In een laatste stap zullen we daarom de drempelwaarde $\theta$ en de grootte van het glijdend venster manueel aanpassen en het effect bestuderen op het aantal foute voorspellingen. Op die manier kunnen we $\theta$ en de grootte van het venster optimaal kiezen, om de foute voorspellingen tot een minimum te beperken.
 
-### Stappenplan
+### 1.3.3 Stappenplan
 
 Concreet zullen we de computer dus instructies geven om het volgende te doen:
 
@@ -266,16 +265,13 @@ Concreet zullen we de computer dus instructies geven om het volgende te doen:
 4. We laten de computer de voorspellingen vergelijken met de werkelijke secundaire structuren, zodat we het model kunnen evalueren o.b.v. vals positieven en vals negatieven.
 5. Als laatste stap veranderen we manueel de drempelwaarde $\theta$ en de grootte van het glijdend venster, om op die manier te proberen de vals positieven en vals negatieven tot een minimum te beperken.
 
-> **Computeroefeningen** Het glijdend venster om secundaire structuur te voorspellen is beschikbaar in een Jupyter notebook. Deze zijn beschikbaar via de website van de biowiskundedagen[^58ac248b] of door op [deze link](https://mybinder.org/v2/gh/michielstock/biowiskundedagen/master) te klikken.
-> 1. Eerst experimenteer met de grootte van het venster, de paramter $k$, welke invloed heeft die als die groter wordt? Wat wil $k=1$ zeggen?
-> 2. Verhoog en verlaag je threshold? Welke invloed heeft dit op je verschillende fouten?
->     - Kan je het aantal valse positieven (niet-$\beta$-platen die als $\beta$-plaat voorspeld worden) zo laag mogelijk krijgen?
->     - Hoe zorg je er voor dat je geen enkele $\beta$-plaat mist? Wat is het nadeel hiervan?
+> **Computeroefeningen:** Het glijdend venster om secundaire structuur te voorspellen is beschikbaar in een Jupyter notebook. Deze zijn beschikbaar via de website van de biowiskundedagen (http://www.biowiskundedagen.ugent.be/) of door op [*deze link*](https://mybinder.org/v2/gh/michielstock/biowiskundedagen/master) te klikken. Met die notebook kan je experimenteren met de grootte van het venster, de parameter $k$ en de drempelwaarde. Enkele vragen hierbij zijn de volgende: Welke invloed heeft de parameter $k$ als die groter wordt? Wat wil $k=1$ zeggen? Welke invloed heeft het verhogen en verlagen van de drempelwaarde op de verschillende types fouten? Kan je het aantal valse positieven (niet-$\beta$-platen die als $\beta$-plaat voorspeld worden) zo laag mogelijk krijgen? Hoe zorg je er voor dat je geen enkele $\beta$-plaat mist? Wat is het nadeel hiervan?
 
-[^58ac248b]: http://www.biowiskundedagen.ugent.be/
 
-## En verder...
+## 1.4 En verder...
 
 De concepten die je in deze praktische sessie geleerd hebt zijn eenvoudig en kunnen zeer nuttig zijn in de praktijk. Deze methode is een vereenvoudigede versie van de **Chou-Fasman** methode om secundaire structuren te voorspellen. Er bestaan echter ook veel complexere methoden om eiwitten te bestuderen. Misschien vind je onze methode van het glijdend venster nogal onelegant. Een veel krachtigere methode om secundaire structuren te bepalen is via *verborgen Markovketens* (Engels: Hidden Markov Chains) die op een slimme manier eiwit- en DNA-sequenties kunnen labellen.
 
-Daarenboven staat onderzoek in de bio-informatica nooit stil en zijn er zelfs grote bedrijven in geïnteresseerd, net omdat computers ons veel kunnen bijleren over biologie. Een zeer recent voorbeeld is Deepmind, een bedrijf dat onder Google werkt. Recent werk van hen gebruikt complexe artificiële intelligentie om de tertiaire structuur van een eiwit accuraat te voorspellen. Hun ontwikkelde methode [AlphaFold](https://deepmind.com/blog/alphafold/) is de eerste in zijn soort, maar zal waarschijnlijk niet de laatste zijn. Net zoals we in dit project gedaan hebben, werd hierbij een model gefit aan een databank met geannoteerde voorbeelden. Wij hebben echter met een model gewerkt met een twintigtal parameters, in de praktijk zijn het er miljoenen of miljarden.
+Daarenboven staat onderzoek in de bio-informatica nooit stil en zijn er zelfs grote bedrijven in geïnteresseerd, net omdat computers ons veel kunnen bijleren over biologie. Een zeer recent voorbeeld is Deepmind, een bedrijf dat onder Google werkt. Recent werk van hen gebruikt complexe artificiële intelligentie om de tertiaire structuur van een eiwit accuraat te voorspellen. Hun ontwikkelde methode [*AlphaFold*](https://deepmind.com/blog/alphafold/) is de eerste in zijn soort, maar zal waarschijnlijk niet de laatste zijn. Net zoals we in dit project gedaan hebben, werd hierbij een model gefit aan een databank met geannoteerde voorbeelden. Wij hebben echter met een model gewerkt met een twintigtal parameters, in de praktijk zijn het er miljoenen of miljarden.
+
+\pagebreak
