@@ -9,7 +9,7 @@ In dit project zullen we kansrekening gebruiken om de secundaire structuur ($\be
 
 Eiwitten vormen één van de meest belangrijke klassen van biologische moleculen. Eiwitten vervullen actieve rollen en blijken essentieel te zijn voor zowat alle biologische processen in een levend organisme: ze staan in voor het verteren van voedsel, zorgen voor ontgifting, geven informatie door, maken beweging mogelijk en nog veel meer. Zo vormen ze een fundamenteel onderdeel van biologisch wezen.
 
-De opbouw van een eiwit is relatief simpel. Net zoals DNA is een eiwit een *polymeer*: een lange streng van meer eenvoudige moleculen. Deze eenvoudige moleculen worden *aminozuren* genoemd, waarvan er in de natuur 20 verschillenden voorkomen, elk voorgesteld door een hoofdletter. Een specifieke opeenvolging van zo'n aminozuren wordt de *primaire structuur* van een eiwit genoemd. Deze primaire structuur bepaalt hoe het eiwit zich verder zal opvouwen (in een functionele 3D-structuur) en legt de biologische functie van een eiwit vast.
+De opbouw van een eiwit is relatief simpel. Net zoals DNA is een eiwit een *polymeer*: een lange streng van meer eenvoudige moleculen. Deze eenvoudige moleculen worden *aminozuren* (AZ) genoemd, waarvan er in de natuur 20 verschillenden voorkomen, elk voorgesteld door een hoofdletter. Een specifieke opeenvolging van zo'n aminozuren wordt de *primaire structuur* van een eiwit genoemd. Deze primaire structuur bepaalt hoe het eiwit zich verder zal opvouwen (in een functionele 3D-structuur) en legt de biologische functie van een eiwit vast.
 
 Uit de primaire structuur van eiwitten volgt de *secundaire structuur*. Deze structuren onstaan door waterstofbruggen (niet-covalente bindingen tussen vrije waterstoffen en hydroxylgroepen) tussen naburige aminozuren. De belangrijkste secundaire structuren zijn *$\alpha$-helices* en *$\beta$-platen* (Engels: $\beta$-sheets). Gegeven dat deze secundaire structuur enkel door de primaire structuur bepaald wordt, kunnen we wiskunde gebruiken om de secundaire structuur te voorspellen[^structuur].
 
@@ -41,7 +41,7 @@ Kansrekening of probabiliteitstheorie is de tak van de wiskunde die zich bezig h
 
 Er zijn enkele fundamentele regels die steeds gelden bij het berekenen van kansen. De figuur eronder stelt deze regels visueel voor:
 
-1. De kans van een gebeurtenis is een positief getal of 0[^positievekansen].
+1. De kans van een gebeurtenis is ofwel een positief getal ofwel 0[^positievekansen].
 2. De totale kans dat er *een* gebeurtenis plaatsvindt is 1 (honderd procent)[^normaliserenkans].
 3. (**somregel**) De kans dat een van twee elkaar uitsluitendende gebeurtenissen plaatsvindt is de som van de kansen van die gebeurtenissen[^uitsluitendekansen].
 4. (**productregel**) Zijn twee gebeurtenissen echter *onafhankelijk* van elkaar dan is de kans dat beide gebeurtenissen samen plaatsvinden het product van die kansen[^onafhkansen].

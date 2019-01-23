@@ -10,6 +10,6 @@
   - - `pandoc -N --latex-engine=xelatex cover.md voorwoord.md secundairestructuur.md ziekteverspeiding.md -o bwd2019.tex --from markdown --template eisvogel` (voor .tex)
 
 Checklist voor TeX:
-- [ ] inhoudstafel: `\tableofcontents`
+- [x] inhoudstafel: `\tableofcontents`
 - [ ] taal: `\usepackage[dutch]{babel}`
 - [ ] grootte figuren handmatig goedzetten

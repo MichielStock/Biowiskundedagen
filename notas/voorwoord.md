@@ -20,3 +20,7 @@ Januari 2019
 - Een heleboel anderen
 
 \pagebreak
+
+\tableofcontents
+
+\pagebreak

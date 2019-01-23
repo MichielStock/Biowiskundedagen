@@ -2,15 +2,13 @@
 
 In dit project zullen we bestuderen hoe ziektes kunnen verspreiden via een (sociaal) netwerk. We zullen onderzoeken hoe de structuur van een netwerk een invloed kan hebben hoe snel een ziekte doorgegeven wordt. Ten slotte zullen we het effect van vaccinatie bekijken.
 
-[toc]
-
 ## Besmettelijke ziektes
 
 In de geschiedenis van de mensheid[^niethumaneziekten] heeft niets zoveel mensen gedood als besmettelijke ziekten. De ziekte die de meeste mensen heeft gedood is waarschijnlijk tuberculose, waarbij 1000 miljoen mensen in alleen de 19de en 20ste eeuwen werden gedood. De ziekte die het snelst gedood heeft, is de 'Spaanse griep' epidemie die tussen 1918-1920 50-100 miljoen mensen heeft gedood. De ziekte met het grootste evenredige dodental blijkt de Zwarte Dood, die 20% van de wereldbevolking en zelfs 50% van de Europese bevolking in de 14e eeuw doodde. Nog erger dan die ramp was het dodental in het Amerikaanse continent na de Europese kolonisatie, die op veel plaatsen de inheemse bevolking met meer dan 90% verminderde.
 
 [^niethumaneziekten]: In deze nota's leggen we de nadruk op de verspreiding van humane ziektes. Dezelfde modellen worden echter ook gebruikt om ziektes tussen dieren (zoals verspreiding van *Myxomatosis* bij konijnen) of zelfs tussen planten (bijvoorbeeld verspreiding van *Phytophthora infestans*, een aardappelziekte die verantwoordelijk was voor de Ierse hongersnood).
 
-Tegenwoordig veroorzaakt besmettelijke ziektes minder doden door betere medische kennis, technieken en middelen. Echter blijven ze een ernstig probleem voor de volksgezondheid. Toch zijn 3 van de 10 belangrijkste doodsoorzaken wereldwijd besmettelijke ziekten. Naast de verbeteringen van de moderne wereld zijn er ook nieuwe uitdagingen voor het stoppen van epidemieën. Nu kan een besmette persoon op een vliegtuig stappen en in een paar uur tijd een ziekte naar een ander continent verspreiden.
+Tegenwoordig veroorzaken besmettelijke ziektes minder doden door betere medische kennis, technieken en middelen. Echter blijven ze een ernstig probleem voor de volksgezondheid. Toch zijn 3 van de 10 belangrijkste doodsoorzaken wereldwijd besmettelijke ziekten. Naast de verbeteringen van de moderne wereld zijn er ook nieuwe uitdagingen voor het stoppen van epidemieën. Nu kan een besmette persoon op een vliegtuig stappen en in een paar uur tijd een ziekte naar een ander continent verspreiden.
 
 
 ![Verschillende vliegtuigroutes tussen luchthavens. De wereld is sterk geconnecteerd en ziektes kunnen zich nu veel sneller verspreiden.](../figuren/luchthaven.jpg)
@@ -160,7 +158,7 @@ $$
 
 ![](../figuren/gradenverdelingenleeg.png)
 
-### Drie types van netwerken
+### Twee typevoorbeelden van netwerken
 
 Er zijn vele verschillende types van netwerken. We beschouwen twee belangrijke: **willekeurige** netwerken en **schaalvrije** netwerken.
 
@@ -321,7 +319,7 @@ Als een bepaalde grenslijn kan bereikt worden, zal de kudde-immuniteit een ziekt
 >   1. Hoeveel tijdstappen zijn er nodig voordat iedereen geïnfecteerd is?
 >   2. Is er een verschil tussen hoe snel de ziekte zich verspreidt tussen een willekeurig of een scaalvrij netwerk?
 > - **met vaccinatie**: `frac_vac>0`, er is keuze tussen een bepaalde fractie individuen willekeurig te kiezen voor vaccinatie of de fractie meest geconnecteerde individuen te vaccineren.
-> 
+>
 >   1. Bekijk het effect van willekeurig vaccineren. Vanaf welke fractie worden ook vatbare individuen beschermd?
 >   2. wat is het verschil met gerichte vaccinatie?
 
