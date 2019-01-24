@@ -232,7 +232,7 @@ Hier is $\theta$ een zorgvuldig gekozen *drempelwaarde* (Engels: threshold). De 
 
 Hieronder zie je een voorbeeld van een analyse met een glijdend venster.
 
-![Voorstelling van de resultaten van het glijdend venster. De regio's waar de conditionele kans de drempelwaarde overschreid gedurende een bepaalde lengte (bepaald door $k$), worden aangeduid als $\beta$-plaat.](../figuren/glijdendvenstervoorbeeld.png)
+![Voorstelling van de resultaten van het glijdend venster. De regio's waar de conditionele kans de drempelwaarde overschrijdt gedurende een bepaalde lengte (bepaald door $k$), worden aangeduid als $\beta$-plaat.](../figuren/glijdendvenstervoorbeeld.png)
 
 Je kan dus inzien dat we de waarde van $\theta$ net goed willen kiezen zodat we het aantal foute voorspellingen tot een minimum beperken. Dit beperken van foute voorspellingen is altijd gewenst bij het gebruik van wiskundige modellen, en om deze fouten te bestuderen doen we aan *modelevaluatie*.
 
