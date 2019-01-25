@@ -4,7 +4,7 @@ In dit project zullen we bestuderen hoe ziektes zich kunnen verspreiden via een 
 
 ## Besmettelijke ziektes
 
-In de geschiedenis van de mensheid[^niethumaneziekten] heeft niets zoveel mensen gedood als besmettelijke ziekten. De ziekte die de meeste mensen heeft gedood is waarschijnlijk tuberculose, waarbij 1000 miljoen mensen in alleen de 19de en 20ste eeuw werden gedood. De ziekte die het snelst gedood heeft, is de 'Spaanse griep' epidemie die tussen 191 en 1920 50 tot 100 miljoen mensen heeft gedood. De ziekte met het grootste evenredige dodental blijkt de Zwarte Dood, die 20% van de wereldbevolking en zelfs 50% van de Europese bevolking in de 14e eeuw doodde. Nog erger dan die ramp was het dodental op het Amerikaanse continent na de Europese kolonisatie. Er wordt geschat dat 90% van de inheemse bevolking geëlimineerd werd door de door Europeanen meegebrachte ziektes. De inheemse bevolking was namelijk nog nooit eerder met deze ziektes in contact gekomen en had dus nog niet de gelegenheid gehad om resistentie te ontwikkelen tegen deze ziektes.
+In de geschiedenis van de mensheid[^niethumaneziekten] heeft niets zoveel mensen gedood als besmettelijke ziekten. De ziekte die de meeste mensen heeft gedood is waarschijnlijk tuberculose, waarbij 1000 miljoen mensen in alleen de 19de en 20ste eeuw werden gedood. De ziekte die het snelst gedood heeft, is de 'Spaanse griep' epidemie die 50 tot 100 miljoen mensen heeft gedood tussen 1918 en 1920. De ziekte met het grootste evenredige dodental blijkt de Zwarte Dood, die 20% van de wereldbevolking en zelfs 50% van de Europese bevolking in de 14e eeuw doodde. Nog erger dan die ramp was het dodental op het Amerikaanse continent na de Europese kolonisatie. Er wordt geschat dat 90% van de inheemse bevolking geëlimineerd werd door de door Europeanen meegebrachte ziektes. De inheemse bevolking was namelijk nog nooit eerder met deze ziektes in contact gekomen en had dus nog niet de gelegenheid gehad om resistentie te ontwikkelen tegen deze ziektes.
 
 [^niethumaneziekten]: In deze nota's leggen we de nadruk op de verspreiding van humane ziektes. Dezelfde modellen worden echter ook gebruikt om ziektes tussen dieren (zoals verspreiding van *Myxomatosis* bij konijnen) of zelfs tussen planten (bijvoorbeeld verspreiding van *Phytophthora infestans*, een aardappelziekte die verantwoordelijk was voor de Ierse hongersnood).
 
@@ -17,7 +17,7 @@ Tegenwoordig veroorzaken besmettelijke ziektes minder doden door betere medische
 
 Bij de uitbraak van een besmettelijke ziekte is het belangrijk om inzicht te krijgen in hoe deze ziekte zich de volgende dagen en weken kan verspreiden. Dit zal helpen om het optimale gebruik van middelen en mensen te plannen om de ziekteverspreiding een halt toe te roepen. Bovendien, voordat we deze maatregelen ten uitvoer leggen, moeten we weten hoe ze het verloop van de ziekte kunnen beïnvloeden, zodat de meest efficiënte en goedkoopste maatregelen eerst geïmplementeerd kunnen worden.
 
-Om deze en andere belangrijke vragen te beantwoorden, worden *ziektespreidingsmodellen* vaak gebruikt. Deze modellen zijn gebaseerd op wiskundige vergelijkingen die beschrijven hoe een besmettelijke ziekte zich doorheen de tijd en/of ruimte verspreidt. Ze kunnen worden gebruikt om relevante vragen te beantwoorden, zoals:
+Om deze en andere belangrijke vragen te beantwoorden, worden *ziekteverspreidingsmodellen* vaak gebruikt. Deze modellen zijn gebaseerd op wiskundige vergelijkingen die beschrijven hoe een besmettelijke ziekte zich doorheen de tijd en/of ruimte verspreidt. Ze kunnen worden gebruikt om relevante vragen te beantwoorden, zoals:
 
 - Zonder tussenkomst, zal de ziekte uitsterven of ongecontroleerd verspreiden?
 - Hoeveel mensen moeten gevaccineerd worden om de verspreiding te stoppen?
@@ -38,13 +38,13 @@ Een van de eenvoudigste manieren om ziekteverspreiding in een gemeenschap te mod
 -  $I(t)$: het (relatief) aantal geinfecteerde individuen op tijdstip $t$;
 -  $R(t)$: het (relatief) aantal resistente individuen op tijdstip $t$.
 
-In deze beschrijving maken we een eerste grote vereenvoudiging van de werkelijkheid. We nemen aan dat elk van deze variablen reëelwaardig zijn en dat het aantal individuen in elke groep continu kan variëren. In werkelijkheid is het aantal geïnfecteerden of vatbare individuen een geheel getal, je bent immers besmet of je bent het niet. Modelleerders werken echter graag met continue variablen omdat ze dan de technieken van wiskundige analyse kunnen gebruiken.
+In deze beschrijving maken we een eerste grote vereenvoudiging van de werkelijkheid. We nemen aan dat elk van deze variablen reëelwaardig zijn en dat het aantal individuen in elke groep continu kan variëren. In werkelijkheid is het aantal geïnfecteerden of vatbare individuen een natuurlijk getal, je bent immers besmet of je bent het niet. Modelleerders werken echter graag met continue variablen omdat ze dan de technieken van wiskundige analyse kunnen gebruiken.
 
 > **Vraag 1**: Onder welke omstandigheden gaat deze continue benadering ongeveer op? Wanneer niet?
 
 ![Visule voorstelling van het SIR-model. Een vatbaar individu (toestand $S$) kan geïnfecteerd worden (toestand $I$), weergegeven door de volle pijlen. Een geïnfecteerd individu kan immuun worden en vatbare individuen kunnen  geïmmuniseerd worden, weergegeven door de pijlen met stippellijnen. In dit project zullen we deze overgangen niet beschouwen.](../figuren/SIRtoestanden.png)
 
-Deze drie variabelen worden aan elkaar gelinkt aan de hand van drie vergelijkingen. Hierin nemen we aan dat de grootte van de populatie ongewijzigd blijft. In de tijdspanne die het model beschrijft gebeuren er dus geen geboortes, noch sterven er mensen. We zullen ons hier dus beperken tot de verspreiding van een relatief onschuldige ziekte zoals een verkoudheid. De drie vergelijkingen zijn als volgt:
+Deze drie variabelen worden aan elkaar gelinkt aan de hand van drie differentiaalvergelijkingen (die elk een verandering in de tijd beschrijven). Hierin nemen we aan dat de grootte van de populatie ongewijzigd blijft. We nemen dus aan dat, gedurende de tijdspanne die het model beschrijft, er niemand geboren wordt en ook niemand sterft. We zullen ons hier dus beperken tot de verspreiding van een relatief onschuldige ziekte zoals een verkoudheid. De drie vergelijkingen zijn als volgt:
 
 $$
 \frac{\text{d}S(t)}{\text{d}t} = -\beta \, S(t) \, I(t)
@@ -58,27 +58,27 @@ $$
 \frac{\text{d}R(t)}{\text{d}t} = \gamma \, I(t)
 $$
 
-Elke vergelijking vertelt ons hoeveel mensen zich op een bepaald moment bevinden in die groep. De vergelijkingen zijn gekoppeld via de *overgangssnelheiden*, die ons de kans om van de ene naar de andere groep over te gaan vertellen.
+Elke vergelijking vertelt ons hoe het aantal mensen in elke groep wijzigt doorheen de tijd. Daaruit kunnen we ook berekenen hoeveel mensen zich op een bepaald moment bevinden in elke groep. De vergelijkingen zijn gekoppeld via de *overgangssnelheden*. Elke overgangssnelheid vertelt ons hoe waarschijnlijk het is om van de ene naar de andere groep over te gaan.
 
-De overgangssnelheid van vatbaar naar geïnfecteerd hangt af van het contact tussen een vatbare persoon en een geïnfecteerd persoon. We noemen deze contactsnelheid $\beta$. De kans dat de ziekte overgedragen wordt tijdens een contact tussen een vatbare en een geïnfecteerde persoon is dus $\beta \, I$. Het aantal vatbare personen vermindert dus met deze snelheid op elk tijdstip.
+De overgangssnelheid van vatbaar (S) naar geïnfecteerd (I) hangt af van het contact tussen een vatbare persoon en een geïnfecteerd persoon. We noemen deze contactsnelheid $\beta$. De kans dat de ziekte overgedragen wordt tijdens een contact tussen een vatbare en een geïnfecteerde persoon is dus $\beta \, I$. Het aantal vatbare personen (S) vermindert dus met deze snelheid op elk tijdstip.
 
-De overgangssnelheid van geïnfecteerd naar resistent hangt alleen af van de snelheid van herstel, die we $\gamma$ noemen. Het aantal geïnfecteerde personen vermindert dus met deze snelheid op elk tijdstip.
+De overgangssnelheid van geïnfecteerd (I) naar resistent (R) hangt alleen af van de snelheid van herstel, die we $\gamma$ noemen. Het aantal geïnfecteerde personen vermindert dus met deze snelheid op elk tijdstip.
 
 > **Vraag 2**: Kan je aantonen dat het totaal aantal individuen in de populatie $(S(t)+I(t)+R(t))$ constant zal blijven?
 
-Bij het vaststellen van deze overgangssnelheiden hebben we een andere belangrijke vereenvoudiging gemaakt. We nemen aan dat elke persoon in de populatie een gelijke waarschijnlijkheid heeft om in contact te komen met elke andere persoon. Anders gezegd, nemen we aan dat de populatie perfect gemengd is. In sommige gevallen kan deze vereenvoudiging passen bij de realiteit, bijvoorbeeld als we willen bijhouden hoe een griep zich door een fuif verspreidt.
+Bij het vaststellen van deze overgangssnelheiden hebben we een andere belangrijke vereenvoudiging gemaakt. We nemen aan dat elke persoon in de populatie een gelijke waarschijnlijkheid heeft om in contact te komen met elke andere persoon. Anders gezegd, we nemen aan dat de populatie perfect gemengd is. In sommige gevallen kan deze vereenvoudiging passen bij de realiteit, bijvoorbeeld als we willen bijhouden hoe de griep zich door een fuif verspreidt.
 
 Het SIR-model kan niet exact worden opgelost, zoals veel differentiaalvergelijkingen die optreden in de biologische wetenschappen. We moeten dus een *numerieke benadering* van de oplossing vinden. Dit betekent dat we een algoritme zullen gebruiken om een geschatte maar nauwkeurige oplossing te vinden. Er zijn verschillende mogelijkheiden om dit te doen. We zouden ons continue probleem kunnen vervangen door een discrete tegenhanger. Dit zou ons toelaten bepaalde numerieke methoden te gebruiken om een benaderende oplossing te krijgen. Anderzijds kunnen we een iteratieve methode gebruiken. Uitgaande van een initiële schatting, maken iteratieve methoden opeenvolgende benaderingen die stapsgewijs convergeren naar de exacte oplossing.
 
-Met behulp van computers is het gemakkelijk om op deze manier een numerieke oplossing voor het SIR-model te vinden. Vanuit deze oplossing kunnen we leren hoe de verschillende variabelen in de loop van de tijd veranderen. Om dit te doen, vertrekken we van een beginvoorwaarde: het is logisch om te beginnen met een populatie met nul resistente personen, een paar geïnfecteerde personen en de rest vatbaar. Vervolgens kunnen we onze numerieke oplossing gebruiken om het aantal mensen in elke groep op elke tijdstap te berekenen. Als we een plot maken, zullen we de dynamiek zien die in de onderstaande figuur wordt getoond.
+Met behulp van computers is het gemakkelijk om op deze manier een numerieke oplossing voor het SIR-model te vinden. Vanuit deze oplossing kunnen we leren hoe de verschillende variabelen in de loop van de tijd veranderen. Om dit te doen, vertrekken we van een beginvoorwaarde: het is logisch om te beginnen met een populatie met nul resistente personen, een paar geïnfecteerde personen en de rest vatbaar. Vervolgens kunnen we onze numerieke oplossing gebruiken om het aantal mensen in elke groep op elke tijdstap te berekenen. Als we een plot maken, zullen we de dynamiek zien die in de Figuur 10 wordt getoond.
 
-![Een simulatie van een oplossingen van het stelsel differentiaalvergelijkingen die het standaard SIR-model voorstellen.](../figuren/SIRsimulatie.png)
+![Een simulatie van een oplossing van het stelsel differentiaalvergelijkingen die het standaard SIR-model voorstellen.](../figuren/SIRsimulatie.png)
 
 > **Vraag 3**: Een epidemie wordt **uitbreidend** genoemd als het aantal geïnfecteerden toeneemt. Wanneer is de epidemie uitbreidend? Op het moment wanneer $I$ verandert van toenemend naar afnemend, wat kun je zeggen over de verandering van $I$? (**hint**: kijk naar de vorm van $\frac{dI}{dt}$)
 
 ## Sociale netwerken
 
-Het standaard SIR-model maakt de onrealistische veronderstelling dat twee willekeurige individuen telkens de zelfde kans hebben om met elkaar in contact te komen en zo mogelijks een ziekte door te geven [^contact]. In werkelijk gaat natuurlijk niet iedereen met dezelfde mensen om. We hebben allemaal mensen waar we meer mee omgaan dan anderen, sommigen komen meer in contact met anderen. Het geheel van wie met wie in contact staat wordt een *sociaal netwerk* genoemd (denk aan Facebook). Het lijkt evident dat de structuur van zo'n netwerk een sterke invloed zal hebben op de dynamiek van de ziekteverspreiding. In deze sectie zullen we bekijken hoe we een netwerk wiskundig kunnen beschrijven.
+Het standaard SIR-model maakt de onrealistische veronderstelling dat twee willekeurige individuen telkens dezelfde kans hebben om met elkaar in contact te komen en zo mogelijks een ziekte door te geven [^contact]. In werkelijkheid gaat natuurlijk niet iedereen met dezelfde mensen om. We hebben allemaal mensen waar we meer mee omgaan (meer in contact mee komen) dan met anderen. Het geheel van wie met wie in contact staat wordt een *sociaal netwerk* genoemd (denk aan Facebook). Het lijkt evident dat de structuur van zo'n netwerk een sterke invloed zal hebben op de dynamiek van de ziekteverspreiding. In deze sectie zullen we bekijken hoe we een netwerk wiskundig kunnen beschrijven.
 
 [^contact]: Welk type contact hier ook voor nodig zou zijn.
 
@@ -137,7 +137,7 @@ $$
 D(k)=\text{fractie van de knopen met $k$ bogen (graad $k$)}\,.
 $$
 
-> **Oefening 2**: Bereken en plot de gradenverdeling van het sociaal netwerk. Vul eerst onderstaande tabel in en teken dan de plot.
+> **Oefening 2**: Bereken en plot de gradenverdeling van het sociaal netwerk. Vul eerst de aantallen (niet fracties) in onderstaande tabel in, normalizeer deze aantallen en teken dan de plot (met genormalizeerde waarden).
 
 | $k$     | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ | $7$ | $8$ | $9$ | $10$|
 | :------------- |-|:-|:-|:-|:-|:-|:-|:-|:-|:-|
@@ -166,7 +166,7 @@ De meeste knopen hebben een graad dicht bij dit gemiddelde. **In een (groot) wil
 
 [^gradenrn]: Om precies te zijn, de kans dat een knoop in een netwerk met $n$ knopen exact $m$ bogen heeft wordt gegeven door $p^m \, (1-p)^{{n \choose 2} - m}\,$. Dit volgt uit de binomiale verdeling. Hier is ${n \choose 2}$ de binomiaalcoëfficient ${n \choose 2}=\frac{n(n-1)}{2}\,$. Dit is het aantal mogelijke manieren waarop je twee knopen kunt kiezen uit $n$.
 
-> **Vraag 6** Binnen een random netwerk heeft elke knoop ongeveer hetzelfde aantal graden (iedereen heeft ongeveer evenveel vrienden in een sociaal netwerk). Denk je dat dit een realistische assumptie is voor veel netwerken?
+> **Vraag 6** Binnen een random netwerk heeft elke knoop ongeveer dezelfde graad (iedereen heeft ongeveer evenveel vrienden in een sociaal netwerk). Denk je dat dit een realistische assumptie is voor veel netwerken?
 
 
 #### Schaalvrije netwerken
@@ -195,21 +195,23 @@ Laat ons nu kijken hoe we het SIR-ziekteverspreidingsmodel kunnen vertalen naar 
 
 ### Ziektedynamiek op een netwerk
 
-In plaats van het aantal $S$, $I$ en $R$ individuen doorheen de tijd bij te houden zoals bij het standaard SIR-model, zullen we voor elke knoop in het netwerk zijn of haar toestand bijhouden. Ook de tijd zal niet meer continu variëren maar zal nu in discrete stappen voorbij gaan: $t \in 0, 1, 2, 3, \ldots$. De toestanden van het model worden dus beschreven door $N_i^t\in \{S, I, R\}$. Dit wil zeggen dat knoop $i$ op tijdstip $t$ de toestand $S$ (vatbaar), $I$ (geïnfecteerd) of $R$ (resistent) kan hebben. De verandering in toestanden voor de knopen beschrijven we aan de hand van enkele eenvoudige regels.
+In plaats van het aantal $S$, $I$ en $R$ individuen doorheen de tijd bij te houden zoals bij het standaard SIR-model, zullen we voor elke knoop in het netwerk zijn of haar toestand bijhouden. Ook de tijd zal niet meer continu variëren maar zal nu in discrete stappen voorbij gaan: $t = 0, 1, 2, 3, \ldots$. De toestanden van het model worden dus beschreven door $N_i^t\in \{S, I, R\}$. Dit wil zeggen dat knoop $i$ op tijdstip $t$ de toestand $S$ (vatbaar), $I$ (geïnfecteerd) of $R$ (resistent) kan hebben. De verandering in toestanden voor de knopen beschrijven we aan de hand van enkele eenvoudige regels.
 
 #### Vatbare en geïnfecteerde mensen
 
-Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan ervan uit dat vatbare individuen ziek kunnen worden, maar zieke individuen niet meer kunnen genezen. Beschouw volgende regels:
+Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan ervan uit dat vatbare individuen geïnfecteerd kunnen worden, maar geïnfecteerde individuen niet meer kunnen genezen. Beschouw volgende regels:
 
 1. Indien een knoop op tijdstip $t$ in toestand $S$ zit en al zijn buren eveneens in toestand $S$ zitten, blijft de knoop op tijdstip $t+1$ in toestand $S$.
 2. Indien een knoop op tijdstip $t$ in toestand $S$ zit en minstend één van zijn buren eveneens in toestand $I$ zit, verandert de knoop op tijdstip $t+1$ naar toestand $I$.
 3. Indien een knoop op tijdstip $t$ in toestand $I$ zit blijft de knoop op tijdstip $t+1$ in toestand $I$.
 
-> **Oefening 3** Gebruik het sociale netwerk dat je hebt gekregen om de verspreiding van een ziekte te modelleren.
-> 1. Elk individu begint als vatbaar. Kies een persoon om de eerste geïnfecteerde te worden en kleur deze in.
-> 2. Op elke tijdstip, ga één voor één door de buren van een geïnfecteerde persoon en laat hen ook geïnfecteerde raken volgens de bovenstaande regels. Vul de tabel in om de spreiding over de tijd te volgen.
-> 3. Herhaal totdat het netwerk niet meer verandert.
+> **Oefening 3** Gebruik het sociale netwerk dat je hebt gekregen om de verspreiding van een ziekte te modelleren. \
+> 1. Elk individu begint als vatbaar. Kies een persoon om de eerste geïnfecteerde te worden en kleur deze in. \
+> 2. Op elke tijdstip, ga één voor één door de buren van een geïnfecteerde persoon en laat hen ook geïnfecteerde raken volgens de bovenstaande regels. Vul de tabel in om de spreiding over de tijd te volgen. \
+> 3. Herhaal totdat het netwerk niet meer verandert. \
 > 4. Volgens de tabel, plot het aantal geïnfecteerden op elke tijdstip.
+
+\bigskip
 
 
 | knoop | $t=0$ |  $t=1$ |  $t=2$ |  $t=3$ |  $t=4$ |  $t=5$ |  $t=6$ |  $t=7$ |  $t=8$ |
@@ -233,7 +235,7 @@ Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan er
 
 <br>
 
-> **OEFENING**: Herhaal de laatste oefening met een ander startpunt: kies een persoon met minder of meer contacten. Vul de tabel in en plot het aantal geïnfecteerden op elke tijdstip. Hoe verandert de ziekteverspreiding ?
+> **Oefening 4**: Herhaal de laatste oefening met een ander startpunt: kies een persoon met minder of meer contacten. Vul de tabel in en plot het aantal geïnfecteerden op elke tijdstip. Hoe verandert de ziekteverspreiding ?
 
 <br>
 
@@ -258,9 +260,9 @@ Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan er
 
 ### Immuniteit en vaccinatie
 
-Het bovenstaande voorbeeld geeft ons een idee hoe we ziekteverspreiding op een netwerk kunnen modelleren, maar nu kunnen we enkele vereenvoudigingen verwijderen. Laten we nu *immuniteit* in onze populatie toestaan. Dit betekent dat sommige mensen niet geïnfecteerd kunnen worden. Hun immuniteit kan natuurlijk zijn (door een herstelling van een eerdere infectie) of kunstmatig (door een vaccin te krijgen).  Nu kunnen individuen dus in het netwerk ook in toestand $R$ (resistent) voorkomen.
+Het bovenstaande voorbeeld geeft ons een idee hoe we ziekteverspreiding op een netwerk kunnen modelleren, maar nu kunnen we enkele vereenvoudigingen verwijderen. Laten we nu *immuniteit* in onze populatie toestaan. Dit betekent dat sommige mensen niet geïnfecteerd kunnen worden. Hun immuniteit kan natuurlijk zijn (door een herstelling van een eerdere infectie) of kunstmatig (door een vaccin te krijgen). Nu kunnen individuen in het netwerk zich ook in toestand $R$ (resistent) bevinden.
 
-Beschouw nu de volgende regels:
+Beschouw nu de volgende regels (visueel voorgesteld in Figuur 15):
 
 1. Indien een knoop op tijdstip $t$ in toestand $S$ of $R$ zit en al zijn buren eveneens in toestand $S$ of $R$ zitten, verandert de knoop zijn toestand niet op tijdstip $t+1$.
 2. Indien een knoop op tijdstip $t$ in toestand $S$ zit en minstens één van zijn buren eveneens in toestand $I$ zit, verandert de knoop op tijdstip $t+1$ naar toestand $I$.
@@ -277,7 +279,7 @@ Kudde immuniteit betekent een indirecte bescherming tegen besmettelijke ziekten.
 
 Als een bepaalde drempwelwaarde bereikt kan worden, zal de kudde-immuniteit een ziekte uit een populatie elimineren. Als deze eliminatie over de hele wereld bereikt wordt, kan het aantal infecties permanent tot nul teruggebracht worden. Dan kunnen we spreken van de *uitroeiing* van de ziekte. Het moet duidelijk zijn dat volledige uitroeiing zeer moeilijk te bereiken is. Veel ziekten zijn regionaal uitgeroeid (bijvoorbeeld cholera in België), terwijl slechts twee ziekten wereldwijd uitgeroeid zijn: pokken en runderpest.
 
-> **Computeroefening**: Laat ons overgaan naar simulaties op de computer. Je kan deze uitvoeren in de Jupyter notebooks, schikbaar via de [biowiskundedagen website](https://mybinder.org/v2/gh/michielstock/biowiskundedagen/master). Via de interactieve widget kan je een netwerk van een bepaalde grootte genereren met 1 tot 10 geïnfecteerde personen (deze knopen zijn donkerblauw ingekleurd). Het netwerk dat verschijnt is na 10 tijdstappen. Ernaast zijn de fracties van de knopen in een bepaalde toestand geplot.
+> **Computeroefening**: Laat ons overgaan naar simulaties op de computer. Je kan deze uitvoeren in de Jupyter notebooks, beschikbaar via de [biowiskundedagen website](https://mybinder.org/v2/gh/michielstock/biowiskundedagen/master). Via de interactieve widget kan je een netwerk van een bepaalde grootte genereren met 1 tot 10 geïnfecteerde personen (deze knopen zijn donkerblauw ingekleurd). Het netwerk dat verschijnt is na 10 tijdstappen. Ernaast zijn de fracties van de knopen in een bepaalde toestand geplot.
 >
 > - **zonder vaccinatie**: `frac_vac=0`
 >
@@ -319,7 +321,7 @@ for t in range(5):  # 5 tijdstappen
 
 ## Ziektespreidingsmodellen in de praktijk
 
-Epidemieën komen voortdurend voor en daarom gebruiken volksgezondheidsorganisaties over de hele wereld modellen om interventiestrategieën te ontwikkelen en te evalueren. Met behulp van simulaties kunnen ze snel de situatie beoordelen en belangrijke beslissingen nemen. Om een ​​epidemie te herkennen en erop te reageren, hebben gezondheidswerkers informatie nodig die inherent onvoorspelbaar is (wat, waar, hoeveel gevallen, hoeveel zullen sterven, waar zal het zich verspreiden). De interacties die tot het uitbreken van een ziekte leiden zijn zeer complex: ze zijn vaak niet-lineair, zodat de resultaten soms onverwacht of contra-intuïtief zijn. Er zijn modellen nodig om deze interacties te begrijpen en om de kwantitatieve voorspellingen te maken die volksgezondheidswerkers nodig hebben om te beslissen over interventiestrategieën.
+Epidemieën komen voortdurend voor en daarom gebruiken volksgezondheidsorganisaties over de hele wereld modellen om interventiestrategieën te ontwikkelen en te evalueren. Met behulp van simulaties kunnen ze snel de situatie beoordelen en belangrijke beslissingen nemen. Om een ​​epidemie te herkennen en erop te reageren, hebben gezondheidswerkers informatie nodig die inherent onvoorspelbaar is (wat, waar, hoeveel gevallen, hoeveel zullen sterven, waar zal het zich verspreiden). De interacties die tot het uitbreken van een ziekte leiden zijn zeer complex, zodat de resultaten soms onverwacht of contra-intuïtief zijn. Er zijn modellen nodig om deze interacties te begrijpen en om de kwantitatieve voorspellingen te maken die volksgezondheidswerkers nodig hebben om te beslissen over interventiestrategieën.
 
 Menselijk gedrag tijdens ziekte-uitbraken verandert vaak drastisch. Mensen vermijden drukke plaatsen of haasten zich naar drukke plaatsen zoals luchthavens of treinstations als ze proberen te ontsnappen aan de epidemie. Modellering kan gezondheidswerkers helpen dit soort effecten te voorzien en te begrijpen.
 
