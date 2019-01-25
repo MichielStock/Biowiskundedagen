@@ -267,6 +267,52 @@ Concreet zullen we de computer dus instructies geven om het volgende te doen:
 
 > **Computeroefeningen:** Het glijdend venster om secundaire structuur te voorspellen is beschikbaar in een Jupyter notebook. Deze zijn beschikbaar via de website van de biowiskundedagen (http://www.biowiskundedagen.ugent.be/) of door op [*deze link*](https://mybinder.org/v2/gh/michielstock/biowiskundedagen/master) te klikken. Met die notebook kan je experimenteren met de grootte van het venster, de parameter $k$ en de drempelwaarde. Enkele vragen hierbij zijn de volgende: Welke invloed heeft de parameter $k$ als die groter wordt? Wat wil $k=1$ zeggen? Welke invloed heeft het verhogen en verlagen van de drempelwaarde op de verschillende types fouten? Kan je het aantal valse positieven (niet-$\beta$-platen die als $\beta$-plaat voorspeld worden) zo laag mogelijk krijgen? Hoe zorg je er voor dat je geen enkele $\beta$-plaat mist? Wat is het nadeel hiervan?
 
+## Naive Bayes programmeren
+
+We illustreren hier hoe de kansen op de computer berekend kunnen worden in de programmeertaal Python.
+
+```python
+# volledige eiwitsequentie
+P22eiwit = "MTDITANVVVSNPRPIFTESRSFKAVANGKIYIGQIDTDPVNPANQIPVYIENEDGSHVQITQPLIINAAGKIVYNGQLVKIVTVQGHSMAIYDANGSQVDYIANVLKYDPDQYSIEADKKFKYSVKLSDYPTLQDAASAAVDGLLIDRDYNFYGGETVDFGGKVLTIECKAKFIGDGNLIFTKLGKGSRIAGVFMESTTTPWVIKPWTDDNQWLTDAAAVVATLKQSKTDGYQPTVSDYVKFPGIETLLPPNAKGQNITSTLEIRECIGVEVHRASGLMAGFLFRGCHFCKMVDANNPSGGKDGIITFENLSGDWGKGNYVIGGRTSYGSVSSAQFLRNNGGFERDGGVIGFTSYRAGESGVKTWQGTVGSTTSRNYNLQFRDSVVIYPVWDGFDLGADTDMNPELDRPGDYPITQYPLHQLPLNHLIDNLLVRGALGVGFGMDGKGMYVSNITVEDCAGSGAYLLTHESVFTNIAIIDTNTKDFQANQIYISGACRVNGLRLIGIRSTDGQGLTIDAPNSTVSGITGMVDPSRINVANLAEEGLGNIRANSFGYDSAAIKLRIHKLSKTLDSGALYSHINGGAGSGSAYTQLTAISGSTPDAVSLKVNHKDCRGAEIPFVPDIASDDFIKDSSCFLPYWENNSTSLKALVKKPNGELVRLTLATL"
+
+# voorbeelden van sequenties van beta-platen
+beta_platen = ["SRSF", "KIYIGQ", "VYIE", "HVQI", "QPLII", "IVY", "IVTVQ",
+                "SMAIY", "QVDYIA", "SVK", "YPT", "VDGLLI", "TVD", "TIEC",
+                "AKFI", "DGNLIFT", "RIAG", "FME", "WVI", "KTDGY", "STLEIRE",
+                "EVHR", "SGLMAGFLFRG", "KMVD", "NNPSG", "IITFE", "LSGD", "YVIG",
+                 "RTSY", "SAQFLRNN", "GVIG", "TSYR", "GVKT", "GTV", "NYN",
+                 "QFRDSVVIY", "GFDL", "DMN", "LIDNLLVR", "LGVGFGMDGKG",
+                 "YVSNITVED", "AGSGAYLLTHE", "VFTNIAIID", "QIYI", "RVNGLRL",
+                 "TIDAPNSTVSGITG", "INVANL", "NIRANS", "GYDSAAIKL", "KTL",
+                 "SGALYSHI", "AYTQLTAIS", "TPDAVSLKVN", "GAE", "VPD",
+                 "DSSCFLPYWE", "SLKALVK", "LVRLTLA"]
+```
+
+Via de geavanceerde datastructuur `Counter` kunnen we makkelijk de frequenties van de verschillende aminozuren bepalen.
+
+```python
+from collections import Counter
+
+freq_az_P22 = Counter(P22eiwit)
+
+for AZ, freq in freq_az_P22.items():
+    print(AZ, " : ", freq)
+```
+
+Ditto voor de $\beta$-platen:
+
+```python
+freq_az_betaplaten = Counter()  # initieer een counter object
+
+for betaplaat in beta_platen:
+    # voeg de individuele platen toe
+    freq_az_betaplaten.update(betaplaat)
+
+# kijk voor aminozuur P (proline)
+print("P :", freq_az_betaplaten["P"])
+```
+
+> **Optionele programmmeeropdracht**: bereken met de computer de kansverhoudingen zoals je op papier gedaan hebt. Bereken de kans dat peptide 'YSIEADKK' een $\beta$-plaat is volgens de Naive bayes methode.
 
 ## En verder...
 
