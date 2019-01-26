@@ -1,6 +1,6 @@
 """
 Created on Wednesday 09 Janary 2018
-Last update: Thursday 17 January 2019
+Last update: Saturday 26 January 2019
 
 @author: Michiel Stock
 michielfmstock@gmail.com
@@ -12,7 +12,7 @@ from collections import Counter
 import numpy as np
 import matplotlib.pyplot as plt
 import random as rd
-rd.seed(43)
+rd.seed(1)
 
 sequentie = P22eiwit = "MTDITANVVVSNPRPIFTESRSFKAVANGKIYIGQIDTDPVNPANQIPVYIENEDGSHVQITQPLIINAAGKIVYNGQLVKIVTVQGHSMAIYDANGSQVDYIANVLKYDPDQYSIEADKKFKYSVKLSDYPTLQDAASAAVDGLLIDRDYNFYGGETVDFGGKVLTIECKAKFIGDGNLIFTKLGKGSRIAGVFMESTTTPWVIKPWTDDNQWLTDAAAVVATLKQSKTDGYQPTVSDYVKFPGIETLLPPNAKGQNITSTLEIRECIGVEVHRASGLMAGFLFRGCHFCKMVDANNPSGGKDGIITFENLSGDWGKGNYVIGGRTSYGSVSSAQFLRNNGGFERDGGVIGFTSYRAGESGVKTWQGTVGSTTSRNYNLQFRDSVVIYPVWDGFDLGADTDMNPELDRPGDYPITQYPLHQLPLNHLIDNLLVRGALGVGFGMDGKGMYVSNITVEDCAGSGAYLLTHESVFTNIAIIDTNTKDFQANQIYISGACRVNGLRLIGIRSTDGQGLTIDAPNSTVSGITGMVDPSRINVANLAEEGLGNIRANSFGYDSAAIKLRIHKLSKTLDSGALYSHINGGAGSGSAYTQLTAISGSTPDAVSLKVNHKDCRGAEIPFVPDIASDDFIKDSSCFLPYWENNSTSLKALVKKPNGELVRLTLATL"
 
@@ -49,10 +49,12 @@ prior_beta = AZ_beta_platen_totaal / AZ_totaal
 
 AZ_prob = {}
 AZ_prob_beta = {}
+AZ_prob_geen_beta = {}
 AZ_odds = {}
 for AZ in sorted(aminozuren):
     AZ_prob[AZ] = AZ_aantal[AZ] / AZ_totaal
     AZ_prob_beta[AZ] = AZ_beta_platen_aantal[AZ] / AZ_beta_platen_totaal
+    AZ_prob_geen_beta[AZ] = (AZ_aantal[AZ] - AZ_beta_platen_aantal[AZ]) / (AZ_totaal - AZ_beta_platen_totaal)
     AZ_odds[AZ] = AZ_prob_beta[AZ] / AZ_prob[AZ]
 
 # Genereer een random eiwit met bepaalde structuur
@@ -102,10 +104,12 @@ def glijdendvenster(sequentie, k=5):
     n = len(sequentie)
     w = (k - 1) // 2
     posterior_kans = np.ones(n) * prior_beta
-    odds_array = np.array([AZ_odds[AZ] for AZ in sequentie])
+    likelihood_beta = np.array([AZ_prob_beta[AZ] for AZ in sequentie])
+    likelihood_geen_beta = np.array([AZ_prob_geen_beta[AZ] for AZ in sequentie])
     for i in range(w, n-w):
-        AZ = sequentie[i]
-        posterior_kans[i] = np.prod([odds_array[i-w:i+w+1]]) * prior_beta
+        p_seq_beta = np.prod([likelihood_beta[i-w:i+w+1]]) * prior_beta
+        p_seq_geen_beta = np.prod([likelihood_geen_beta[i-w:i+w+1]]) * (1 - prior_beta)
+        posterior_kans[i] = p_seq_beta / (p_seq_beta + p_seq_geen_beta)
     return posterior_kans
 
 def plot_glijdend_venster_ax(ax, threshold=0.5, k=5):
@@ -117,7 +121,7 @@ def plot_glijdend_venster_ax(ax, threshold=0.5, k=5):
         - threshold
         - k
     """
-    ax.set_ylim([1e-4, 2])
+    ax.set_ylim([1e-4, 1.2])
     ax.set_xlim([0, len(sequentie)])
     gv = glijdendvenster(sequentie, k)
     ax.plot(gv, zorder=2, color="#2a9d8f",
