@@ -104,99 +104,121 @@ Hierboven schrijven we dus de eiwitsequentie gewoon als de opeenvolging van de $
 
 \bigskip
 
-> **Vereenvoudiging:** We gaan ervan uit dat de kans dat een bepaald aminozuur op een bepaalde plaats voorkomt **onafhankelijk is van de aminozuren op elke andere plaats** (ergens huilt er een moleculair bioloog).
+> **Vereenvoudiging:** We gaan er van uit dat de kansen voor de verschillende aminozuren **binnen** een bepaalde regio onafhankelijk van elkaar zijn.
 
 \bigskip
 
-Deze vereenvoudiging is natuurlijk volstrekt biologisch onrealistisch! De aminozuren zijn in werkelijkheid juist erg afhankelijk, bijvoorbeeld omdat twee aminozuurtjes met elkaar in contact komen en een waterstofbrug vormen. Hoe fout deze vereenvoudiging ook is, ze is echter wel nuttig!
-
-\pagebreak
-
-Het laat ons toe om de kansen voor een $\beta$-plaat redelijk goed te benaderen! In formulevorm is deze veronderstelling voor ons probleem[^conditioneelvereenvoudiging][^productnotatie]:
-
-[^conditioneelvereenvoudiging]: On helemaal precies te zijn, de veronderstelling zegt dat $P(A_1A_2\ldots A_n)\approx P(A_1)P(A_2)\ldots P(A_n)$, wat zegt dat aminozuren onafhankelijk zijn. Wij gebruiken de identiteit $P(A_1A_2\ldots A_n\mid \beta\text{-plaat})\approx P(A_1\mid \beta\text{-plaat})P(A_2\mid \beta\text{-plaat})\ldots P(A_n\mid \beta\text{-plaat})$, wat zegt dat aminozuren onafhankelijk zijn binnen een $\beta$-plaat. Deze twee uitspraken zijn **niet** inwisselbaar!
+Deze vereenvoudiging is natuurlijk volstrekt biologisch onrealistisch! De aminozuren zijn in werkelijkheid juist erg afhankelijk, bijvoorbeeld omdat twee aminozuurtjes met elkaar in contact komen en een waterstofbrug vormen. Hoe fout deze vereenvoudiging ook is, ze is echter wel nuttig! Het laat ons toe om de kansen voor een $\beta$-plaat eenvoudig te hetschrijven. In formulevorm is deze veronderstelling voor ons probleem[^productnotatie]:
 
 [^productnotatie]: Hier maken we gebruik van de notatie voor een product: $\prod_{i=1}^n x_i=x_1 x_2\ldots x_n\,,$ (bv. $\prod_{i=2}^4 i = 2\times 3\times 4=24$).
 
 $$
-P(\text{eiwitsequentie} \mid \beta\text{-plaat})\approx P(A_1\mid\beta\text{-plaat})P(A_2\mid\beta\text{-plaat})\ldots P(A_n\mid\beta\text{-plaat})
+P(\text{eiwitsequentie} \mid \beta\text{-plaat})= P(A_1\mid\beta\text{-plaat})P(A_2\mid\beta\text{-plaat})\ldots P(A_n\mid\beta\text{-plaat})
 $$
 $$
-= \prod_{i=1}^n P(A_i\mid\beta\text{-plaat})
+= \prod_{i=1}^n P(A_i\mid\beta\text{-plaat})\,,
 $$
 
-Uiteindelijk kunnen we de regel van Bayes dus als volgt noteren om $\beta$-platen te voorspellen:
+en, analoog, de kans op een sequentie als het geen $\beta$-plaat is:
 
 $$
-P( \beta\text{-plaat} \mid \text{eiwitsequentie} ) \approx P(\beta\text{-plaat}) \prod_{i=1}^n \frac{P(A_i\mid\beta\text{-plaat})}{P(A_i)}\,.
+P(\text{eiwitsequentie} \mid \text{geen $\beta$-plaat})= \prod_{i=1}^n P(A_i\mid \text{geen $\beta$-plaat})\,.
 $$
 
-We kunnen de kans op een $\beta$-plaat gegeven een sequentie dus berekenen aan de hand van termen die we makkelijk uit data kunnen schatten door te tellen! De kans dat het aminozuur voorkomt in een $\beta$-plaat gedeeld door de kans dat dat aminozuur in een willekeurig eiwit voorkomt wordt de **odds** (Nederlands: *kansverhouding*) genoemd. Hoewel we dit hier niet zullen doen, is het misschien ook wel belangrijk te vermelden dat in de praktijk de logaritme[^logaritme] van deze kansen genomen wordt om de berekeningen te vereenvoudigen.
+Daarnaast moeten we ook nog de noemer berekenen, namelijk de kans op een eiwitsequentie, deze valt als volgt uiteen:
 
-> **Vraag:** Wanneer zou je stellen dat een regio waarschijnlijk een $\beta$-plaat is?
+\begin{multline*}
+P(\text{eiwitsequentie}) = P(\text{eiwitsequentie} \mid \text{$\beta$-plaat})P(\text{$\beta$-plaat})\\+ P(\text{eiwitsequentie} \mid \text{geen $\beta$-plaat}) P(\text{geen $\beta$-plaat})\,.
+\end{multline*}
 
-[^logaritme]: De logaritme met basis 10 wordt gedefineerd als: $$\log_{10}x=y \Longleftrightarrow 10^y=x\,.$$ Herinner je dat voor positieve getallen $a$ en $b$ geldt dat $\log(ab)=\log(a) + \log(b)$ en $\log(a/b)=\log(a) - \log(b)$. Wetenschappers gebruiken logaritmen vaak om vermenigvuldigingen in sommen om te zetten. Het voordeel met logaritmen is dat heel kleine getallen door vermenigvuldiging in negatieve waarden omgezet worden.
+Dit is alles wat we nodig hebbebn! We kunnen de kans op een $\beta$-plaat gegeven een sequentie dus berekenen aan de hand van termen die we makkelijk uit data kunnen schatten door te tellen:
+
+$$
+P(A_i\mid \text{$\beta$-plaat}) = \frac{\text{aantal keer aminozuur $A_i$ in $\beta$-plaat regio's}}{\text{totaal aantal aminozuren in $\beta$-plaat regio's}}\,,
+$$
+
+$$
+P(A_i\mid \text{geen $\beta$-plaat}) = \frac{\text{aantal keer aminozuur $A_i$ in niet-$\beta$-plaat regio's}}{\text{totaal aantal aminozuren in niet-$\beta$-plaat regio's}}
+$$
 
 ### Een eenvoudig voorbeeld met de hand uitwerken
 
-Nu kunnen we de bovenstaande formule gebruiken om voorspellingen te maken voor eiwitten. Vooraleer we deze formule doorgeven aan de computer zullen we ze eerst zelf op papier eens toepassen. Hiervoor hebben we volgende kansen nodig (rechterlid van de bovenstaande formule):
+Nu kunnen we de bovenstaande formule gebruiken om voorspellingen te maken voor eiwitten. Vooraleer we deze formule doorgeven aan de computer zullen we ze eerst zelf op papier eens toepassen.
 
-- $P(A_i)$: de probabiliteiten van het voorkomen van elk aminozuur $A_i$.
-- $P(\beta\text{-plaat})$: de kans om een $\beta$-plaat waar te nemen.
-- $P(A_i\mid\beta\text{-plaat})$: de kans om een bepaald aminozuur waar te nemen, gegeven dat de sequentie een $\beta$-plaat is.
+Onderstaande tabel bevat experimenteel bepaalde aminozuur (AZ) aantallen van een staarteiwit van een faag die we zullen gebruiken om voorspellingen te maken. Op basis van die aantallen zijn de verschillende conditionele kansen berekend.
 
-\pagebreak
+| AZ         | totaal aantal | aantal in $\beta$-plaat | aantal niet in $\beta$-plaat | $P(A_i\mid \beta\text{-plaat})$ | $P(A_i\mid \text{geen } \beta \text{-plaat})$ |
+|:-----------|:--------------|:------------------------|:-----------------------------|:--------------------------------|:----------------------------------------------|
+| A          | 48            | 21                      | 27                           | 0.0634                          | 0.0804                                        |
+| C          | 8             | 2                       | 6                            | 0.0060                          | 0.0179                                        |
+| D          | 48            | 19                      | 29                           | 0.0574                          | 0.0863                                        |
+| E          | 22            | 11                      | 11                           | 0.0332                          | 0.0327                                        |
+| F          | 25            | 13                      | 12                           | 0.0393                          | 0.0357                                        |
+| G          | 71            | 29                      | 42                           | 0.0876                          | 0.1250                                        |
+| H          | 10            | 4                       | 6                            | 0.0121                          | 0.0179                                        |
+| I          | 51            | 36                      | 15                           | 0.1088                          | 0.0446                                        |
+| K          | 34            | 12                      | 22                           | 0.0363                          | 0.0655                                        |
+| L          | 49            | 30                      | 19                           | 0.0906                          | 0.0565                                        |
+| M          | 9             | 6                       | 3                            | 0.0181                          | 0.0089                                        |
+| N          | 41            | 18                      | 23                           | 0.0544                          | 0.0685                                        |
+| P          | 28            | 7                       | 21                           | 0.0211                          | 0.0625                                        |
+| Q          | 22            | 9                       | 13                           | 0.0272                          | 0.0387                                        |
+| R          | 23            | 14                      | 9                            | 0.0423                          | 0.0268                                        |
+| S          | 50            | 25                      | 25                           | 0.0755                          | 0.0744                                        |
+| T          | 46            | 23                      | 23                           | 0.0695                          | 0.0685                                        |
+| V          | 48            | 31                      | 17                           | 0.0937                          | 0.0506                                        |
+| W          | 7             | 2                       | 5                            | 0.0060                          | 0.0149                                        |
+| Y          | 27            | 19                      | 8                            | 0.0574                          | 0.0238                                        |
+| **Totaal** | **667**       | **331**                 | **336**                      | **1**                           | **1**                                         |
+Dus is de kans op een $\beta$-plaat gelijk aan:
 
-> **Oefening 2:** Onderstaande tabel bevat experimenteel bepaalde aminozuur (AZ) aantallen van een staarteiwit van een faag die we zullen gebruiken om voorspellingen te maken. Op basis van de aantallen en het totaal aantal aminozuren kan je de ontbrekende kansen in de tabel berekenen, alsook de kans op een $\beta$-plaat. Deze kansen heb je nodig om de formule uit te werken. Vervolledig deze tabel.
-
-| AZ         | totaal aantal | $\mathbf{P(A_i)}$ | aantal in $\beta$-plaat | $\mathbf{P}(A_i\mid\beta\text{-plaat})$ | $\frac{\mathbf{P}(A_i\mid\beta \text{-plaat})}{P(A_i)}$ |
-|:-----------|:--------------|:------------------|:------------------------|:----------------------------------------|:--------------------------------------------------------|
-| A          | 48            | ...               | 21                      | ...                                     | ...                                                     |
-| C          | 8             | 0.0120            | 2                       | 0.0060                                  | 0.5038                                                  |
-| D          | 48            | ...               | 19                      | ...                                     | ...                                                     |
-| E          | 22            | ...               | 11                      | ...                                     | ...                                                     |
-| F          | 25            | 0.0375            | 13                      | 0.0393                                  | 1.0479                                                  |
-| G          | 71            | 0.1064            | 29                      | 0.0876                                  | 0.8231                                                  |
-| H          | 10            | 0.0150            | 4                       | 0.0121                                  | 0.8060                                                  |
-| I          | 51            | ...               | 36                      | ...                                     | ...                                                     |
-| K          | 34            | ...               | 12                      | ...                                     | ...                                                     |
-| L          | 49            | 0.0735            | 30                      | 0.0906                                  | 1.2337                                                  |
-| M          | 9             | 0.0135            | 6                       | 0.0181                                  | 1.3434                                                  |
-| N          | 41            | 0.0615            | 18                      | 0.0544                                  | 0.8847                                                  |
-| P          | 28            | 0.0420            | 7                       | 0.0211                                  | 0.5038                                                  |
-| Q          | 22            | 0.0330            | 9                       | 0.0272                                  | 0.8244                                                  |
-| R          | 23            | 0.0345            | 14                      | 0.0423                                  | 1.2266                                                  |
-| S          | 50            | ...               | 25                      | ...                                     | ...                                                     |
-| T          | 46            | 0.0690            | 23                      | 0.0695                                  | 1.0076                                                  |
-| V          | 48            | 0.0720            | 31                      | 0.0937                                  | 1.3014                                                  |
-| W          | 7             | 0.0105            | 2                       | 0.0060                                  | 0.5757                                                  |
-| Y          | 27            | ...               | 19                      | ...                                     | ...                                                     |
-| **Totaal** | **667**       | -                 | **331**                 | -                                       | -                                                       |
-
-Dus is  de kans op een $\beta$-plaat gelijk aan:
 $$
 P(\beta\text{-plaat}) = \ldots
 $$
 
-> **Oefening 3:** Volgende korte sequentie is een klein deeltje van het P22 staarteiwit: 'YSIEADKK'. Experimenteel werd reeds bepaald dat dit geen $\beta$-plaat is, maar een $\alpha$-helix. Bereken nu via de laatst geziene formule de kans dat die sequentie een $\beta$-plaat bevat (deze kans zou klein moeten zijn). Maak gebruik van de tabel met kansen die je net hebt ingevuld.
+en de kans op een geen $\beta$-plaat:
 
-
-| $i$ | $A_i$ | $\frac{P(A_i\mid \beta\text{-plaat})}{P(A_i)}$ |
-|:----|:------|:---------------------------------------------------------------------|
-| 1   | ...   | ...                                                                  |
-| 2   | ...   | ...                                                                  |
-| 3   | ...   | ...                                                                  |
-| 4   | ...   | ...                                                                  |
-| 5   | ...   | ...                                                                  |
-| 6   | ...   | ...                                                                  |
-| 7   | ...   | ...                                                                  |
-| 8   | ...   | ...                                                                 |
+$$
+P(\text{geen }\beta\text{-plaat}) = \ldots
+$$
 
 <br>
 
-Dus is de conditionele kans op een $\beta$-plaat gegeven de eiwitsequentie bij benadering gelijk aan:
+> **Oefening 2:** Volgende korte sequentie is een klein deeltje van het P22 staarteiwit: 'MLIDIAR'. Experimenteel werd reeds bepaald dat dit een $\beta$-plaat is. Bereken nu via de laatst geziene formule de kans dat die sequentie een stukje van een $\beta$-plaat is (deze kans zou groot moeten zijn).
+
+| $i$ | $A_i$ | $P(A_i\mid \beta\text{-plaat})$ | $P(A_i\mid \text{geen }\beta\text{-plaat})$ |
+|:----|:------|:--------------------------------|:--------------------------------------------|
+| 1   | ...   | ...                             | ...                                         |
+| 2   | ...   | ...                             | ...                                         |
+| 3   | ...   | ...                             | ...                                         |
+| 4   | ...   | ...                             | ...                                         |
+| 5   | ...   | ...                             | ...                                         |
+| 6   | ...   | ...                             | ...                                         |
+| 7   | ...   | ...                             | ...                                         |
+<br>
+
+En dus (vermenigvuldig alle kansen):
+
 $$
-P(\beta\text{-plaat}\mid\text{eiwitsequentie}) \approx\ldots
+P(\text{eiwitsequentie} \mid \text{$\beta$-plaat}) = \ldots
+$$
+
+en
+
+$$
+P(\text{eiwitsequentie} \mid \text{geen }\text{$\beta$-plaat}) = \ldots
+$$
+
+waaruit volgt:
+
+$$
+P(\text{eiwitsequentie}) = \ldots
+$$
+
+En dus finaal, volgens de regel van Bayes:
+
+$$
+P( \text{$\beta$-plaat} \mid \text{eiwitsequentie}) = \frac{\ldots\ldots\times \ldots\ldots}{\ldots\ldots}
 $$
 
 ## Naive Bayes op de computer
@@ -206,7 +228,7 @@ $$
 In het computerdeel van dit practicum gaan we nu de Naive Bayes-methode toepassen op het volledige P22 eiwit dat we eerder besproken hebben. Het doel is om te ontdekken waar de $\beta$-platen zich in het eiwit bevinden. We zullen $\beta$-platen voorspellen met behulp van de Naive Bayes-methode en de voorspellingen (i.e. de kansen) dan voorstellen via een grafiek. Hiervoor bewegen we aminozuur voor aminozuur over het eiwit via een *glijdend venster* van lengte $k$. In dit glijdend venster kijken we naar de aminozuren op elke positie van $i$ tot $i+k$ en vermenigvuldigen alle odds voor elk aminzozuur in dit venster ($i$ tot $i+k$). We noteren dit als
 
 $$
-s^k_i = P(\beta\text{-plaat})\prod_{j=i}^{i+k}\frac{P(A_j\mid\beta\text{-plaat})}{P(A_j)}\,.
+s^k_i = P(\beta\text{-plaat}\mid \text{subsequentie van $i$ tot $i+k$})\,.
 $$
 
 ![Illustratie van het glijdend venster over een sequentie.](../figuren/glijdendvenster.png)

@@ -145,21 +145,22 @@ def plot_glijdend_venster(threshold, k):
 if __name__ == '__main__':
 
     # PRINT TABEL KANSEN
-    peptide = "YSIEADKK"
+    #peptide = "YSIEADKK"
+    peptide = "MLIDIAR"
 
-    print("|  AZ  | totaal aantal | $\mathbf{P(A_i)}$ | aantal in $\beta$-plaat | $\mathbf{P(A_i\mid\beta\text{-plaat})}$ | $\mathbf{\frac{P(A_i\mid \beta\text{-plaat})}{P(A_i)}}$ |")
+    print("|  AZ  | totaal aantal | aantal in $\\beta$-plaat |  aantal niet in $\\beta$-plaat | $\\mathbf{P(A_i\\mid\\beta\\text{-plaat})}$ | $\\mathbf{P(A_i\\mid\\text{geen $\\beta$-plaat})}$ |")
     print("|:---|:----|:----------|:-----|:-----|:----|")
     for AZ in sorted(aminozuren):
         odds = AZ_prob_beta[AZ] / AZ_prob[AZ]
         AZ_odds[AZ] = odds
-        if AZ not in peptide:
-            print("| {AZ} | {n_AZ} | {p_AZ:.4f} | {n_AZ_beta} | {p_AZ_beta:.4f} | {p_odds:.4f} |".format(
+        if True: #AZ not in peptide:
+            print("| {AZ} | {n_AZ} | {n_AZ_beta} | {n_AZ_geen_beta} | {p_AZ_beta:.4f} | {p_AZ_geen_beta:.4f} |".format(
                     AZ=AZ,
                     n_AZ=AZ_aantal[AZ],
-                    p_AZ=AZ_prob[AZ],
                     n_AZ_beta=AZ_beta_platen_aantal[AZ],
+                    n_AZ_geen_beta=AZ_aantal[AZ] - AZ_beta_platen_aantal[AZ],
                     p_AZ_beta=AZ_prob_beta[AZ],
-                    p_odds=odds
+                    p_AZ_geen_beta=AZ_prob_geen_beta[AZ]
                     ))
         else:
             print("| {AZ} | {n_AZ} | ... | {n_AZ_beta} | ... | ... |".format(
@@ -167,13 +168,17 @@ if __name__ == '__main__':
                     n_AZ=AZ_aantal[AZ],
                     n_AZ_beta=AZ_beta_platen_aantal[AZ],
                     ))
-    print("| **Totaal** |  **{AZ_totaal}** | - | **{AZ_beta_platen_totaal}** | -|-|".format(
+    print("| **Totaal** |  **{AZ_totaal}** | **{AZ_beta_platen_totaal}** | **{AZ_geen_beta_platen_totaal}**|**1**| **1**| ".format(
                 AZ_totaal=AZ_totaal,
-                AZ_beta_platen_totaal=AZ_beta_platen_totaal
+                AZ_beta_platen_totaal=AZ_beta_platen_totaal,
+                AZ_geen_beta_platen_totaal=AZ_totaal-AZ_beta_platen_totaal
             ))
-    kans_beta = prior_beta
+    l_beta = 1
+    l_geen_beta = 1
     for AZ in peptide:
-        kans_beta *= AZ_odds[AZ]
+        l_beta *= AZ_prob_beta[AZ]
+        l_geen_beta *= AZ_prob_geen_beta[AZ]
+    kans_beta = prior_beta * l_beta / (prior_beta * l_beta + (1 - prior_beta) * l_geen_beta)
     print("Kans dat {peptide} een beta-plaat is: {kans_beta:.4f}".format(
                 peptide=peptide,
                 kans_beta=kans_beta
