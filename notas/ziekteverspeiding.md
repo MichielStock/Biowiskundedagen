@@ -34,9 +34,9 @@ In dit project zullen we twee van de belangrijkste en meest gebruikte types van 
 
 Een van de eenvoudigste manieren om ziekteverspreiding in een gemeenschap te modelleren is aan de hand van het SIR-model. SIR staat voor *Susceptible* (vatbaar), *Infected* (geïnfecteerd) en *Resistant* (resistent of hersteld), de drie types individuen die in een gemeenschap voorkomen. Meestal zijn de individuen gewoon mensen, maar dit model kan ook aangewend worden om ziekteuitbraak bij knaagdieren, vogels of zelfs planten te modelleren. Het SIR-model bestaat uit drie vergelijkingen die de veranderingen van het aantal individuen in een bepaalde groep beschrijven. De variabelen die de toestand beschrijven zijn:
 
--  $S(t)$: het (relatief) aantal vatbare individuen op tijdstip $t$;
--  $I(t)$: het (relatief) aantal geinfecteerde individuen op tijdstip $t$;
--  $R(t)$: het (relatief) aantal resistente individuen op tijdstip $t$.
+-  $S(t)$: het relatief aantal vatbare individuen op tijdstip $t$;
+-  $I(t)$: het relatief aantal geinfecteerde individuen op tijdstip $t$;
+-  $R(t)$: het relatief aantal resistente individuen op tijdstip $t$.
 
 In deze beschrijving maken we een eerste grote vereenvoudiging van de werkelijkheid. We nemen aan dat elk van deze variablen reëelwaardig zijn en dat het aantal individuen in elke groep continu kan variëren. In werkelijkheid is het aantal geïnfecteerden of vatbare individuen een natuurlijk getal, je bent immers besmet of je bent het niet. Modelleerders werken echter graag met continue variablen omdat ze dan de technieken van wiskundige analyse kunnen gebruiken.
 
@@ -139,9 +139,10 @@ $$
 
 > **Oefening 2**: Bereken en plot de gradenverdeling van het sociaal netwerk. Vul eerst de aantallen (niet fracties) in onderstaande tabel in, normalizeer deze aantallen en teken dan de plot (met genormalizeerde waarden).
 
-| $k$     | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ | $7$ | $8$ | $9$ | $10$|
-| :------------- |-|:-|:-|:-|:-|:-|:-|:-|:-|:-|
-| **aantal knopen met graad $k$**      |  ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| $k$                             | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ | $7$ | $8$ | $9$ | $10$ |
+|:------------------------------- | --- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:---- |
+| **aantal knopen met graad $k$** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ...  |
+|   $D(k)$                              | ... | ... | ... | ... | ... | ... | ... | ... | ... | ...  |
 
 ![Schets hier de gradenverdeling. Vergeet niet te normalizeren!](../figuren/gradenverdelingenleeg.png)
 
@@ -195,7 +196,7 @@ Laat ons nu kijken hoe we het SIR-ziekteverspreidingsmodel kunnen vertalen naar 
 
 ### Ziektedynamiek op een netwerk
 
-In plaats van het aantal $S$, $I$ en $R$ individuen doorheen de tijd bij te houden zoals bij het standaard SIR-model, zullen we voor elke knoop in het netwerk zijn of haar toestand bijhouden. Ook de tijd zal niet meer continu variëren maar zal nu in discrete stappen voorbij gaan: $t = 0, 1, 2, 3, \ldots$. De toestanden van het model worden dus beschreven door $N_i^t\in \{S, I, R\}$. Dit wil zeggen dat knoop $i$ op tijdstip $t$ de toestand $S$ (vatbaar), $I$ (geïnfecteerd) of $R$ (resistent) kan hebben. De verandering in toestanden voor de knopen beschrijven we aan de hand van enkele eenvoudige regels.
+In plaats van het aantal $S$, $I$ en $R$ individuen doorheen de tijd bij te houden zoals bij het standaard SIR-model, zullen we voor elke knoop in het netwerk zijn of haar toestand bijhouden. Ook de tijd zal niet meer continu variëren maar zal nu in discrete stappen voorbij gaan: $t = 0, 1, 2, 3, \ldots$. De toestand van knoop nummer $i$ op tijdstip $t$ wordt dus beschreven door $N_i^t\in \{S, I, R\}$. Dit wil zeggen dat knoop $i$ op tijdstip $t$ de toestand $S$ (vatbaar), $I$ (geïnfecteerd) of $R$ (resistent) kan hebben. De verandering in toestanden voor de knopen beschrijven we aan de hand van enkele eenvoudige regels.
 
 #### Vatbare en geïnfecteerde mensen
 
@@ -205,10 +206,11 @@ Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan er
 2. Indien een knoop op tijdstip $t$ in toestand $S$ zit en minstend één van zijn buren eveneens in toestand $I$ zit, verandert de knoop op tijdstip $t+1$ naar toestand $I$.
 3. Indien een knoop op tijdstip $t$ in toestand $I$ zit blijft de knoop op tijdstip $t+1$ in toestand $I$.
 
-> **Oefening 3** Gebruik het sociale netwerk dat je hebt gekregen om de verspreiding van een ziekte te modelleren. \
-> 1. Elk individu begint als vatbaar. Kies een persoon om de eerste geïnfecteerde te worden en kleur deze in. \
-> 2. Op elke tijdstip, ga één voor één door de buren van een geïnfecteerde persoon en laat hen ook geïnfecteerde raken volgens de bovenstaande regels. Vul de tabel in om de spreiding over de tijd te volgen. \
-> 3. Herhaal totdat het netwerk niet meer verandert. \
+> **Oefening 3** Gebruik het sociale netwerk dat je hebt gekregen om de verspreiding van een ziekte te modelleren. Neem persoon nummer 9 als startpunt voor de ziekteuitbraak (*patient zero*).
+>
+> 1. Elk individu begint als vatbaar. Kies een persoon om de eerste geïnfecteerde te worden en kleur deze in.
+> 2. Op elke tijdstip, ga één voor één door de buren van een geïnfecteerde persoon en laat hen ook geïnfecteerde raken volgens de bovenstaande regels. Vul de tabel in om de spreiding over de tijd te volgen.
+> 3. Herhaal totdat het netwerk niet meer verandert.
 > 4. Volgens de tabel, plot het aantal geïnfecteerden op elke tijdstip.
 
 \bigskip
@@ -235,7 +237,7 @@ Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan er
 
 <br>
 
-> **Oefening 4**: Herhaal de laatste oefening met een ander startpunt: kies een persoon met minder of meer contacten. Vul de tabel in en plot het aantal geïnfecteerden op elke tijdstip. Hoe verandert de ziekteverspreiding ?
+> **Oefening 4**: Herhaal de laatste oefening met een ander startpunt: kies een persoon met minder of meer contacten, bv. persoon 13. Vul de tabel in en plot het aantal geïnfecteerden op elke tijdstip. Hoe verandert de ziekteverspreiding?
 
 <br>
 

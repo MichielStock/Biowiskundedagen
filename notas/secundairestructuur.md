@@ -45,7 +45,7 @@ Er zijn enkele fundamentele regels die steeds gelden bij het berekenen van kanse
 2. De totale kans dat er *een* gebeurtenis plaatsvindt is 1 (honderd procent)[^normaliserenkans].
 3. (**somregel**) De kans dat één van twee elkaar uitsluitendende gebeurtenissen plaatsvindt is de som van de kansen van die gebeurtenissen[^uitsluitendekansen].
 4. (**productregel**) Bij twee *onafhankelijke* gebeurtenissen is de kans dat beide gebeurtenissen samen plaatsvinden het product van die kansen[^onafhkansen].
-5. Er bestaan *conditionele* kansen, dit is de kans dat een gebeurtenis $A$ plaatsvindt gegeven een gebeurtenis $B$. De conditionele kans[^condkansen] wordt berekend als: $$P(A\mid B) = \frac{P(A \text{ en } B)}{P(B)}\,.$$
+5. Er bestaan *conditionele* kansen, dit is de kans dat een gebeurtenis $A$ plaatsvindt gegeven een gebeurtenis $B$. De conditionele kans[^condkansen] wordt gedefinieerd als: $$P(A\mid B) = \frac{P(A \text{ en } B)}{P(B)}\,.$$
 7. Met de *regel van Bayes* kunnen we via de kansen van een gebeurtenis A de kansen berekenen voor een andere gebeurtenis B. De formule wordt hieronder gegeven voor gebeurtenissen A en B: $$
 P(A\mid B) = \frac{P(B \mid A) P(A)}{P(B)}\,.
 $$
@@ -100,7 +100,7 @@ $$
 P(\text{eiwitsequentie} \mid \beta\text{-plaat})=P(A_1A_2\ldots A_n\mid \beta\text{-plaat})\,.
 $$
 
-Hierboven schrijven we dus de eiwitsequentie gewoon als de opeenvolging van de $n$ aminozuren. Hier stelt $A_i$ de identiteit voor van het aminozuur op positie $i$. Hoe berekenen we de kans op een gegeven sequentie? Voor een stukje met lengte $n=10$ hebben we $20^{10}= 10240000000000\approx 10^{13}$ unieke sequenties. In een probabilistisch model moeten we dus een vereenvoudiging doorvoeren!
+Hierboven schrijven we dus de eiwitsequentie gewoon als de opeenvolging van de $n$ aminozuren. Hier stelt $A_i$ de identiteit voor van het aminozuur op positie $i$. Hoe berekenen we de kans op een gegeven sequentie? Voor een stukje met lengte $n=10$ hebben we $20^{10}= 10240000000000\approx 10^{13}$ ofwel 10 biljoen unieke sequenties. In een probabilistisch model moeten we dus een vereenvoudiging doorvoeren!
 
 \bigskip
 

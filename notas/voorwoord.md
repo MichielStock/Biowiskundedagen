@@ -16,8 +16,28 @@ Januari 2019
 
 **Biowiskunde-team 2018-2019**
 
-- Ikke
-- Een heleboel anderen
+- Jan Baetens
+- Michiel Stock
+- Laura Hoebeke
+- Dimitri Boeckaerts
+- Aisling Daly
+- Karel Vermeulen
+- Louis Coussement
+- Jenna Vergeynst
+- Elien Van de Walle
+- Bram De Jaegher
+- Peter Rubbens
+- David Vanavermaete
+- Tim Depraetere
+- Liselotte De Ligne
+- Joris Meys
+- Michael Ghijs
+- Lander De Visscher
+- An Schelfaut
+- Margot Vanhoubroeck
+- Ruth Van den Driessche
+- Tinne De Boeck
+- Jan Roels
 
 \pagebreak
 

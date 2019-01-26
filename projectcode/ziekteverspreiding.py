@@ -174,7 +174,7 @@ if __name__ == '__main__':
 
     netwerk_random = nx.binomial_graph(n=1000, p=0.05)
     ax.plot(bereken_gradenverdeling(netwerk_random), color=groen,
-                                            label="random netwerk")
+                                            label="willekeurig netwerk")
 
     netwerk_schaalvrij = nx.barabasi_albert_graph(n=1000, m=10)
     ax.plot(bereken_gradenverdeling(netwerk_schaalvrij), color=rood, ls=':',
