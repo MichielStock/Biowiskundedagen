@@ -17,7 +17,7 @@ Uit de primaire structuur van eiwitten volgt de *secundaire structuur*. Deze str
 
 ![(boven) Eiwitsequenties vormen secundaire structuren via niet-covalente waterstofbindingen. (onder) Een eiwit is slechts een aaneenschakeling van aminozuren die zich zelfstandig opvouwen tot een driedimensionale structuur.](../figuren/sec_struct.png)
 
-### Stoute bacteriën en goede virussen
+### Slechte bacteriën en goede virussen
 
 Zelfs de allerkleinste biologische entiteiten, de virussen, gebruiken eiwitten voor infectie, wat nodig is voor hun vermenigvuldiging. Een zeer interessante groep virussen zijn de bacteriofagen of kortweg fagen. Dit zijn virussen die bacteriën infecteren en ook kunnen afdoden. Bacteriën, en dus ook fagen, komen overvloedig voor in ons lichaam. Vele bacteriën zijn goedaardig en helpen ons lichaam optimaal functioneren. Soms dringen echter pathogene bacteriën ons lichaam binnen en maken ze ons ziek. *Salmonella enterica* is zo’n bacterie (Figuur 2). *Salmonella* dringt ons lichaam binnen via besmet voedsel: de bacterie kan overleven op onvoldoende verhitte eieren en vlees, alsook op rauwe groenten en fruit. Eens de bacterie zich in onze darmen bevindt, kan ze ons ernstig ziek maken.
 
@@ -100,7 +100,7 @@ $$
 P(\text{eiwitsequentie} \mid \beta\text{-plaat})=P(A_1A_2\ldots A_n\mid \beta\text{-plaat})\,.
 $$
 
-Hierboven schrijven we dus de eiwitsequentie gewoon als de opeenvolging van de $n$ aminozuren. Hier stelt $A_i$ de identiteit voor van het aminozuur op positie $i$. Hoe berekenen we de kans op een gegeven sequentie? Voor een stukje met lengte $n=10$ hebben we $20^{10}= 10240000000000\approx 10^{13}$ ofwel 10 biljoen unieke sequenties. In een probabilistisch model moeten we dus een vereenvoudiging doorvoeren!
+Hierboven schrijven we dus de eiwitsequentie gewoon als de opeenvolging van de $n$ aminozuren. Hier stelt $A_i$ de identiteit voor van het aminozuur op positie $i$. Hoe berekenen we de kans op een gegeven sequentie? Voor een stukje met een lengte tien aminozuren hebben we $20^{10}= 10240000000000\approx 10^{13}$ ofwel 10 biljoen unieke sequenties. In een probabilistisch model moeten we dus een vereenvoudiging doorvoeren!
 
 \bigskip
 
@@ -220,14 +220,14 @@ $$
 En dus finaal, volgens de regel van Bayes:
 
 $$
-P( \text{$\beta$-plaat} \mid \text{eiwitsequentie}) = \frac{\ldots\ldots\times \ldots\ldots}{\ldots\ldots}
+P( \text{$\beta$-plaat} \mid \text{eiwitsequentie}) = \frac{\ldots\ldots\times \ldots\ldots}{\ldots\ldots}=\ldots
 $$
 
 ## Naive Bayes op de computer
 
 ### Glijdende vensters en drempelwaarden
 
-In het computerdeel van dit practicum gaan we nu de Naive Bayes-methode toepassen op het volledige P22 eiwit dat we eerder besproken hebben. Het doel is om te ontdekken waar de $\beta$-platen zich in het eiwit bevinden. We zullen $\beta$-platen voorspellen met behulp van de Naive Bayes-methode en de voorspellingen (i.e. de kansen) dan voorstellen via een grafiek. Hiervoor bewegen we aminozuur voor aminozuur over het eiwit via een *glijdend venster* van lengte $k$. In dit glijdend venster kijken we naar de aminozuren op elke positie van $i$ tot $i+k$ en vermenigvuldigen alle odds voor elk aminzozuur in dit venster ($i$ tot $i+k$). We noteren dit als
+In het computerdeel van dit practicum gaan we nu de Naive Bayes-methode toepassen op het volledige P22 eiwit dat we eerder besproken hebben. Het doel is om te ontdekken waar de $\beta$-platen zich in het eiwit bevinden. We zullen $\beta$-platen voorspellen met behulp van de Naive Bayes-methode en de voorspellingen (i.e. de kansen) dan voorstellen via een grafiek. Hiervoor bewegen we aminozuur voor aminozuur over het eiwit via een *glijdend venster* van lengte $k$. In dit glijdend venster kijken we naar de aminozuren op elke positie van $i$ tot $i+k$ en berekenen we de conditionele kans voor een $\beta$-plaat in dit venster. We noteren dit als
 
 $$
 s^k_i = P(\beta\text{-plaat}\mid \text{subsequentie van $i$ tot $i+k$})\,.
@@ -290,7 +290,12 @@ Concreet zullen we de computer dus instructies geven om het volgende te doen:
 4. We laten de computer de voorspellingen vergelijken met de werkelijke secundaire structuren, zodat we het model kunnen evalueren o.b.v. vals positieven en vals negatieven.
 5. Als laatste stap veranderen we manueel de drempelwaarde $\theta$ en de grootte van het glijdend venster, om op die manier te proberen de vals positieven en vals negatieven tot een minimum te beperken.
 
-> **Computeroefeningen:** Het glijdend venster om secundaire structuur te voorspellen is beschikbaar in een Jupyter notebook. Deze zijn beschikbaar via de website van de biowiskundedagen (http://www.biowiskundedagen.ugent.be/) of door op [*deze link*](https://mybinder.org/v2/gh/michielstock/biowiskundedagen/master) te klikken. Met die notebook kan je experimenteren met de grootte van het venster, de parameter $k$ en de drempelwaarde. Enkele vragen hierbij zijn de volgende: Welke invloed heeft de parameter $k$ als die groter wordt? Wat wil $k=1$ zeggen? Welke invloed heeft het verhogen en verlagen van de drempelwaarde op de verschillende types fouten? Kan je het aantal valse positieven (niet-$\beta$-platen die als $\beta$-plaat voorspeld worden) zo laag mogelijk krijgen? Hoe zorg je er voor dat je geen enkele $\beta$-plaat mist? Wat is het nadeel hiervan?
+> **Computeroefeningen:** Het glijdend venster om secundaire structuur te voorspellen is beschikbaar in een Jupyter notebook. Deze zijn beschikbaar via de website van de biowiskundedagen (http://www.biowiskundedagen.ugent.be/) of door op [*deze link*](https://mybinder.org/v2/gh/michielstock/biowiskundedagen/master) te klikken. Met die notebook kan je experimenteren met de grootte van het venster, de parameter $k$ en de drempelwaarde. Enkele vragen hierbij zijn de volgende:
+>
+> - Welke invloed heeft de parameter $k$ als die groter wordt?
+> - Wat wil $k=1$ zeggen?
+> - Welke invloed heeft het verhogen en verlagen van de drempelwaarde op de verschillende types fouten?
+> - Kan je het aantal valse positieven (niet-$\beta$-platen die als $\beta$-plaat voorspeld worden) zo laag mogelijk krijgen? Hoe zorg je er voor dat je geen enkele $\beta$-plaat mist? Wat is het nadeel hiervan?
 
 ## Naive Bayes programmeren
 
@@ -326,26 +331,47 @@ Via de geavanceerde datastructuur `Counter` kunnen we makkelijk de frequenties v
 ```python
 from collections import Counter
 
-freq_az_P22 = Counter(P22eiwit)
+freq_az_P22 = Counter(P22eiwit)  # Counter is een dict datastructuur
 
 for AZ, freq in freq_az_P22.items():
     print(AZ, " : ", freq)
+
+aminozuren = freq_az_P22.keys()  # alle aminozuren
 ```
 
 Ditto voor de $\beta$-platen:
 
 ```python
-freq_az_betaplaten = Counter()  # initieer een counter object
+freq_az_betaplaat = Counter()  # initieer een counter object
 
 for betaplaat in beta_platen:
     # voeg de individuele platen toe
-    freq_az_betaplaten.update(betaplaat)
+    freq_az_betaplaat.update(betaplaat)
 
 # kijk voor aminozuur P (proline)
-print("P :", freq_az_betaplaten["P"])
+print("P :", freq_az_betaplaat["P"])
 ```
 
-> **Optionele programmmeeropdracht**: bereken met de computer de kansverhoudingen zoals je op papier gedaan hebt. Bereken de kans dat peptide 'YSIEADKK' een $\beta$-plaat is volgens de Naive bayes methode.
+De frequenties van de aminozuren die niet in een $\beta$-plaat voorkomen berekenen we als volgt.
+
+```python
+freq_az_niet_betaplaat = {}  # lege dictionary
+
+for AZ in aminozuren:
+    freq_az_niet_betaplaat[AZ] = freq_az_P22[AZ] - freq_az_betaplaat[AZ]
+```
+
+We kunnen makkelijk aantal aminozuren tellen in de regio's.
+
+```python
+totaal_beta = sum(freq_az_betaplaat.values())
+totaal_niet_beta = sum(freq_az_niet_betaplaat.values())
+
+print("Aantal aminozuren in beta-platen: ", totaal_beta)
+print("Aantal aminozuren in niet-beta-platen: ", totaal_niet_beta)
+```
+
+> **Optionele programmmeeropdracht**: bereken met de computer de posteriori kans op een $\beta$-plaat zoals je op papier gedaan hebt. Bereken de kans dat peptide 'YSIEADKK' een $\beta$-plaat is volgens de Naive bayes methode.
 
 ## En verder...
 
