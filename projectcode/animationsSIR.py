@@ -52,30 +52,6 @@ for i in range(n_points):
 def draw_nodes(ax, colors):
     ax.scatter(coordinates[:,0], coordinates[:,1], color=colors, zorder=2)
 
-"""
-def make_sir_animation(fig, ax, xinit, timesteps=20):
-    x = xinit.copy()
-    # plot edges graph
-    for i in range(n_points-1):
-        for j in range(i+1, n_points):
-            if A[i,j]:
-                ax.plot(coordinates[[i,j],0], coordinates[[i,j],1], zorder=1, color=blauw,
-                        lw=2, alpha=0.8)
-
-    colors_in_time = []
-    for i in range(timesteps+1):
-        colors = [geel if x[i] == 0 else red for i in range(n_points)]
-        colors_in_time.append(colors)
-        x = A @ x
-    draw_nodes(ax, colors)
-    anim = FuncAnimation(fig, lambda t : draw_nodes(ax, colors_in_time[t]),
-                frames=range(timesteps), interval=100)
-
-    ax.set_yticks([])
-    ax.set_xticks([])
-    return anim
-"""
-
 def plot_sir_step(filename, t, colors):
     fig, ax = plt.subplots()
     # draw edges
@@ -89,6 +65,12 @@ def plot_sir_step(filename, t, colors):
             t, colors.count(groen), colors.count(red), n_points))
     ax.set_yticks([])
     ax.set_xticks([])
+    ax.axis('off')
+    # legende
+    ax.scatter([],[], color=geel, label="vatbaar (S)")
+    ax.scatter([],[], color=rood, label="geïnfecteerd (I)")
+    ax.scatter([],[], color=groen, label="resistent (R)")
+    ax.legend(loc=0)
     fig.savefig("figuren/SIRanimatiesplots/{}_{}.png".format(filename, t))
     fig.clf()
     """

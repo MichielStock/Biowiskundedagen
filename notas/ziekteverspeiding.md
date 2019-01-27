@@ -123,9 +123,13 @@ Het sociaal netwerk dat we beschouwen wordt weergegeven in onderstaande figuur. 
 | **14** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 | **15** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
-### Gradenverdeling
+<br>
 
 > **Vraag 4**: Wie zal er eerder een verkoudheid oplopen: persoon 3 of 15 ?
+
+### Gradenverdeling
+
+
 
 Een graaf is een complexe wiskundige structuur. Een gegeven knoop in een graaf wordt gekarakteriseerd door zijn bogen en dus ook graad. Echter, belangrijke eigenschappen van de graaf zijn *emergent*, dit wil zeggen dat ze enkel te verklaren zijn door de graaf in zijn geheel en niet enkel de individuele onderdelen.
 
