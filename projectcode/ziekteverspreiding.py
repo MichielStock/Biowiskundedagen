@@ -72,7 +72,7 @@ def simuleer_uitbraak(n, initgeinf, netwerk, fractie_gevac, strategie):
     elif netwerk == "schaalvrij":
         G = nx.barabasi_albert_graph(n=n, m=2)
     else:
-        raise(AttributeError("Netwerk is ofwel 'willeurig' of 'schaalvrij'"))
+        raise(AttributeError("Netwerk is ofwel 'willekeurig' of 'schaalvrij'"))
     A = geef_verbindingsmatrix(G)
     posities = nx.spring_layout(G)
     x = np.zeros((n, 1), dtype=int)
@@ -143,7 +143,7 @@ def printtoestandtabel(n, t):
 
 if __name__ == '__main__':
     import matplotlib.pyplot as plt
-    plt.xkcd()
+    #plt.xkcd()
 
     # Voorbeeld netwerk
     # -----------------
