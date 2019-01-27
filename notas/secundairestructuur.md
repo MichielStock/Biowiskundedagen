@@ -141,6 +141,8 @@ $$
 P(A_i\mid \text{geen $\beta$-plaat}) = \frac{\text{aantal keer aminozuur $A_i$ in niet-$\beta$-plaat regio's}}{\text{totaal aantal aminozuren in niet-$\beta$-plaat regio's}}
 $$
 
+> **Vraag**: Onder dit model, denk je dat er een verschil is tussen de kans dat 'RGTHHG' of 'GHHTGR' deel uitmaakt van een $\beta$-plaat regio?
+
 ### Een eenvoudig voorbeeld met de hand uitwerken
 
 Nu kunnen we de bovenstaande formule gebruiken om voorspellingen te maken voor eiwitten. Vooraleer we deze formule doorgeven aan de computer zullen we ze eerst zelf op papier eens toepassen.
