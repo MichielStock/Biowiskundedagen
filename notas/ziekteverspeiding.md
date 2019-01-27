@@ -238,22 +238,24 @@ import numpy as np
 
 # een matrix is een geneste lijst
 # kan je de graaf tekenen hiervan?
-A = matrix([[0, 1, 1, 0, 1],
-            [1, 0, 1, 0, 1],
-            [1, 1, 0, 0, 1],
-            [0, 0, 0, 1, 0],
-            [1, 0, 1, 0, 0]])
+A = matrix([[0, 1, 1, 0, 0, 0],
+            [1, 0, 1, 0, 1, 0],
+            [1, 1, 0, 0, 1, 0],
+            [0, 0, 0, 0, 1, 1],
+            [0, 0, 1, 1, 0, 0],
+            [0, 0, 0, 1, 0, 0]])
 
 # toestandsvector met 1 persoon geïnfecteerd
-x = matrix([[1, 0, 0, 0, 0]]).T
+x0 = matrix([[1, 0, 0, 0, 0, 0]]).T
 ```
 
 Simulatie kunnen we eenvoudig doen met een for-lus.
 
 ```python
-for t in range(5):  # 5 tijdstappen
-    print("Tijdstip ",t, ": ", np.sum(x > 0), "geinfecteerden, x=",x.T > 0)
-    x = A * x   # matrix-vector vermenidgvuldiging verspreidt de ziekte
+x = x0.copy()  # we maken een kopie zodat x0 bewaard blijft
+for t in range(6):  # 5 tijdstappen (python begint vanaf 0 te tellen)
+    print("Tijdstip ",t, ": ", np.sum(x > 0), "geinfecteerden, x =",x.T > 0)
+    x = x + A * x   # matrix-vector vermenidgvuldiging verspreidt de ziekte
 ```
 
 > **Optionele programmmeeropdracht**: Kan je het model aanpassen zodat persoon 2 en 3 resistent zijn?
