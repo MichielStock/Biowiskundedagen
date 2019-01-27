@@ -74,8 +74,6 @@ Met behulp van computers is het gemakkelijk om op deze manier een numerieke oplo
 
 ![Een simulatie van een oplossing van het stelsel differentiaalvergelijkingen die het standaard SIR-model voorstellen.](../figuren/SIRsimulatie.png)
 
-> **Vraag 3**: Een epidemie wordt **uitbreidend** genoemd als het aantal geïnfecteerden toeneemt. Wanneer is de epidemie uitbreidend? Op het moment wanneer $I$ verandert van toenemend naar afnemend, wat kun je zeggen over de verandering van $I$? (**hint**: kijk naar de vorm van $\frac{dI}{dt}$)
-
 ## Sociale netwerken
 
 Het standaard SIR-model maakt de onrealistische veronderstelling dat twee willekeurige individuen telkens dezelfde kans hebben om met elkaar in contact te komen en zo mogelijks een ziekte door te geven [^contact]. In werkelijkheid gaat natuurlijk niet iedereen met dezelfde mensen om. We hebben allemaal mensen waar we meer mee omgaan (meer in contact mee komen) dan met anderen. Het geheel van wie met wie in contact staat wordt een *sociaal netwerk* genoemd (denk aan Facebook). Het lijkt evident dat de structuur van zo'n netwerk een sterke invloed zal hebben op de dynamiek van de ziekteverspreiding. In deze sectie zullen we bekijken hoe we een netwerk wiskundig kunnen beschrijven.
@@ -93,7 +91,7 @@ Zoals je ziet wordt een netwerk of een graaf vaak voorgesteld in een figuur waar
 
 [^selfconnectance]: We gaan ervan uit dat je niet kan bevriend zijn met jezelf.
 
-> **Vraag 4**: Beschrijf het verschil tussen de sociale netwerken tussen kinderen van verschillende leeftijden.
+> **Vraag 3**: Beschrijf het verschil tussen de sociale netwerken tussen kinderen van verschillende leeftijden.
 
 Een figuur is nuttig om te bekijken hoe het netwerk eruitziet. Om er berekeningen mee te doen zijn er echter andere voorstellingen nodig. Een graaf kan wiskundig voorgesteld worden in een matrix die een *bogenmatrix* (Engels: adjacency matrix) genoemd wordt. Als het aantal knopen in de graaf $n$ is, dan is de bogenmatrix een vierkante matrix met dimensies $n \times n$. Het element $A_{ij} = 1$ als de knopen $i$ en $j$ verbonden zijn, en $A_{ij} = 0$ als ze niet verbonden zijn[^verbindingslijst]. De bogenmatrix linkt graaftheorie met matrixtheorie!
 
@@ -127,7 +125,7 @@ Het sociaal netwerk dat we beschouwen wordt weergegeven in onderstaande figuur. 
 
 ### Gradenverdeling
 
-> **Vraag 5**: Wie zal er eerder een verkoudheid oplopen: persoon 3 of 15 ?
+> **Vraag 4**: Wie zal er eerder een verkoudheid oplopen: persoon 3 of 15 ?
 
 Een graaf is een complexe wiskundige structuur. Een gegeven knoop in een graaf wordt gekarakteriseerd door zijn bogen en dus ook graad. Echter, belangrijke eigenschappen van de graaf zijn *emergent*, dit wil zeggen dat ze enkel te verklaren zijn door de graaf in zijn geheel en niet enkel de individuele onderdelen.
 
@@ -167,7 +165,7 @@ De meeste knopen hebben een graad dicht bij dit gemiddelde. **In een (groot) wil
 
 [^gradenrn]: Om precies te zijn, de kans dat een knoop in een netwerk met $n$ knopen exact $m$ bogen heeft wordt gegeven door $p^m \, (1-p)^{{n \choose 2} - m}\,$. Dit volgt uit de binomiale verdeling. Hier is ${n \choose 2}$ de binomiaalcoëfficient ${n \choose 2}=\frac{n(n-1)}{2}\,$. Dit is het aantal mogelijke manieren waarop je twee knopen kunt kiezen uit $n$.
 
-> **Vraag 6** Binnen een random netwerk heeft elke knoop ongeveer dezelfde graad (iedereen heeft ongeveer evenveel vrienden in een sociaal netwerk). Denk je dat dit een realistische assumptie is voor veel netwerken?
+> **Vraag 5** Binnen een random netwerk heeft elke knoop ongeveer dezelfde graad (iedereen heeft ongeveer evenveel vrienden in een sociaal netwerk). Denk je dat dit een realistische assumptie is voor veel netwerken?
 
 
 #### Schaalvrije netwerken
@@ -188,7 +186,7 @@ Schaalvrije netwerken komen overal voor:
 - netwerken van het internet: links (bogen) tussen websites (knopen);
 - netwerken die interacties (bogen) weergeven tussen eiwitten (knopen).
 
-> **Vraag 7**: Stel je een sociaal netwerk voor van drie vrienden waar gradueel nieuwe mensen aan geïntroduceerd worden. Kan je je een scenario voorstellen waarbij een schaalvrij netwerk bekomen zou worden?
+> **Vraag 6**: Stel je een sociaal netwerk voor van drie vrienden waar gradueel nieuwe mensen aan geïntroduceerd worden. Kan je je een scenario voorstellen waarbij een schaalvrij netwerk bekomen zou worden?
 
 ## Verspreiding van een ziekte doorheen een netwerk
 
