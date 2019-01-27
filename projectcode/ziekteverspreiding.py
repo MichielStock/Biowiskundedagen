@@ -58,7 +58,7 @@ def update_toestand(A, x, resistent=[]):
     geven.
     """
     # update x
-    x[:] = A @ x > 0
+    x[:] += A @ x > 0
     # resitente worden niet ziek
     if resistent:
         x[resistent] = 0
@@ -117,7 +117,7 @@ def simuleer_uitbraak(n, initgeinf, netwerk, fractie_gevac, strategie):
     axes[1].plot(vatbaar, color=geel, lw=2, label="vatbaar")
     axes[1].legend(loc=1)
     axes[1].set_xlabel(r"$t$")
-    axes[0].set_xlabel(r"Fractie van de knopen")
+    axes[1].set_ylabel(r"Fractie van de knopen")
     axes[1].set_title("Evolutie van de toestanden.")
 
 

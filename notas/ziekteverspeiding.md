@@ -127,71 +127,6 @@ Het sociaal netwerk dat we beschouwen wordt weergegeven in onderstaande figuur. 
 
 > **Vraag 4**: Wie zal er eerder een verkoudheid oplopen: persoon 3 of 15 ?
 
-### Gradenverdeling
-
-
-
-Een graaf is een complexe wiskundige structuur. Een gegeven knoop in een graaf wordt gekarakteriseerd door zijn bogen en dus ook graad. Echter, belangrijke eigenschappen van de graaf zijn *emergent*, dit wil zeggen dat ze enkel te verklaren zijn door de graaf in zijn geheel en niet enkel de individuele onderdelen.
-
-Als we iets willen leren over een netwerk, welke informatie kunnen we dan bekijken? Het zou zeer interessant zijn om te weten hoe verbonden het netwerk is. Hoe kunnen we bepalen in welke mate de knopen met elkaar verbonden zijn? We zouden naar de gemiddelde knoopgraad kunnen kijken, maar dit zou ons niet veel zeggen. In plaats daarvan kunnen we de fractie van de knopen met graad $k$ tellen. Deze plot wordt de *gradenverdeling*  (Engels: *degree distribution*) genoemd en kan ons veel vertellen over de structuur van een netwerk. Wiskundig drukken we de gradenverdeling uit als
-
-$$
-D(k)=\text{fractie van de knopen met $k$ bogen (graad $k$)}\,.
-$$
-
-> **Oefening 2**: Bereken en plot de gradenverdeling van het sociaal netwerk. Vul eerst de aantallen (niet fracties) in onderstaande tabel in, normalizeer deze aantallen en teken dan de plot (met genormalizeerde waarden).
-
-| $k$                             | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ | $7$ | $8$ | $9$ | $10$ |
-|:------------------------------- | --- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:---- |
-| **aantal knopen met graad $k$** | ... | ... | ... | ... | ... | ... | ... | ... | ... | ...  |
-|   $D(k)$                              | ... | ... | ... | ... | ... | ... | ... | ... | ... | ...  |
-
-![Schets hier de gradenverdeling. Vergeet niet te normalizeren!](../figuren/gradenverdelingenleeg.png)
-
-### Twee typevoorbeelden van netwerken
-
-Er zijn vele verschillende types van netwerken. We beschouwen twee belangrijke: **willekeurige** netwerken en **schaalvrije** netwerken.
-
-![Illustraties van gradenverdelingen van verschillende types van netwerken.](../figuren/gradenverdelingen.png)
-
-
-#### Willekeurige netwerken
-
-Een *willekeurig netwerk* heeft eigenschappen die willekeurig worden bepaald, zoals het aantal knopen, het aantal bogen en de verbindingen tussen knopen en bogen. We kunnen een dergelijk netwerk beschrijven als $G(n, p)$ waarbij $n$ het aantal knopen is en $p$, een getal tussen 0 en 1, de kans dat er een boog tussen een willekeurig paar knopen is.
-
-Bij een willekeurig netwerk is het verwacht aantal graden per knoop gelijk aan
-
-$$
-n\cdot p\,.
-$$
-
-De meeste knopen hebben een graad dicht bij dit gemiddelde. **In een (groot) willekeurig netwerk vind je zelden een knoop met extreem veel of extreem weinig bogen**[^gradenrn].
-
-[^gradenrn]: Om precies te zijn, de kans dat een knoop in een netwerk met $n$ knopen exact $m$ bogen heeft wordt gegeven door $p^m \, (1-p)^{{n \choose 2} - m}\,$. Dit volgt uit de binomiale verdeling. Hier is ${n \choose 2}$ de binomiaalcoëfficient ${n \choose 2}=\frac{n(n-1)}{2}\,$. Dit is het aantal mogelijke manieren waarop je twee knopen kunt kiezen uit $n$.
-
-> **Vraag 5** Binnen een random netwerk heeft elke knoop ongeveer dezelfde graad (iedereen heeft ongeveer evenveel vrienden in een sociaal netwerk). Denk je dat dit een realistische assumptie is voor veel netwerken?
-
-
-#### Schaalvrije netwerken
-
-Een netwerk wordt *schaalvrij* (Engels: scale-free)  genoemd als de gradenverdeling ongeveer aan volgdende vorm voldoet, een zogenaamde *power law*[^propto]
-
-[^propto]: $\propto$ wil zeggen 'evenredig aan'.
-
-$$
-D(k) \propto \frac{1}{k^a}\,,
-$$
-
-met $a$ een exponent die typisch kan verschillen van netwerk tot netwerk. **In een schaalvrij netwerk hebben enkele knopen een hoge graad en zijn er veel knopen met een lage graad.** Schaalvrije netwerken onstaan door een aggregatieproces waarbij *de rijken rijker worden*: wanneer nieuwe knopen aan een netwerk toegevoegd worden, gaan deze bij voorkeur verbindingen aan met  knopen met een reeds hoge graad.
-
-Schaalvrije netwerken komen overal voor:
-
-- netwerken van filmsterren (knopen) die samen in een film gespeeld hebben (bogen);
-- netwerken van het internet: links (bogen) tussen websites (knopen);
-- netwerken die interacties (bogen) weergeven tussen eiwitten (knopen).
-
-> **Vraag 6**: Stel je een sociaal netwerk voor van drie vrienden waar gradueel nieuwe mensen aan geïntroduceerd worden. Kan je je een scenario voorstellen waarbij een schaalvrij netwerk bekomen zou worden?
-
 ## Verspreiding van een ziekte doorheen een netwerk
 
 Laat ons nu kijken hoe we het SIR-ziekteverspreidingsmodel kunnen vertalen naar de taal van netwerken. Aan de hand van een algemeen netwerk zullen we een veel realistischer model opstellen. Geen continue benadering meer! Vreemd genoeg sluit dit model niet enkel dichter aan bij de werkelijkheid, maar is het ook veel eenvoudiger om te bevatten en te simuleren. We kunnen een exacte oplossing bekomen zonder zelfs maar afgeleiden of andere geavanceerde wiskundige technieken nodig te hebben!
@@ -208,7 +143,7 @@ Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan er
 2. Indien een knoop op tijdstip $t$ in toestand $S$ zit en minstend één van zijn buren eveneens in toestand $I$ zit, verandert de knoop op tijdstip $t+1$ naar toestand $I$.
 3. Indien een knoop op tijdstip $t$ in toestand $I$ zit blijft de knoop op tijdstip $t+1$ in toestand $I$.
 
-> **Oefening 3** Gebruik het sociale netwerk dat je hebt gekregen om de verspreiding van een ziekte te modelleren. Neem persoon nummer 9 als startpunt voor de ziekteuitbraak (*patient zero*).
+> **Oefening 2** Gebruik het sociale netwerk dat je hebt gekregen om de verspreiding van een ziekte te modelleren. Neem persoon nummer 9 als startpunt voor de ziekteuitbraak (*patient zero*).
 >
 > 1. Elk individu begint als vatbaar. Kies een persoon om de eerste geïnfecteerde te worden en kleur deze in.
 > 2. Op elke tijdstip, ga één voor één door de buren van een geïnfecteerde persoon en laat hen ook geïnfecteerde raken volgens de bovenstaande regels. Vul de tabel in om de spreiding over de tijd te volgen.
@@ -239,7 +174,7 @@ Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan er
 
 <br>
 
-> **Oefening 4**: Herhaal de laatste oefening met een ander startpunt: kies een persoon met minder of meer contacten, bv. persoon 13. Vul de tabel in en plot het aantal geïnfecteerden op elke tijdstip. Hoe verandert de ziekteverspreiding?
+> **Oefening 3**: Herhaal de laatste oefening met een ander startpunt: kies een persoon met minder of meer contacten, bv. persoon 13. Vul de tabel in en plot het aantal geïnfecteerden op elke tijdstip. Hoe verandert de ziekteverspreiding?
 
 <br>
 
@@ -279,7 +214,7 @@ Sommige mensen kunnen door verschillende redenen niet immuun worden. Vaccins kun
 
 Kudde immuniteit betekent een indirecte bescherming tegen besmettelijke ziekten. Deze komt voor wanneer een groot percentage van de populatie immuun is tegen een infectie (door natuurlijke immuniteit of vaccinatie) en daardoor beschermen ze mensen die niet immuun zijn. Dit gebeurt omdat het grote aantal immune mensen de ziekteverspreiding vertraagt of zelfs stopt, want de verbindingen tussen zieke en vatbare mensen zijn geblokkeerd.
 
-![Illustratie van kudde-immuniteit. Als voldoende mensen geïmmuniseerd zijn breidt de ziekte zich niet verder uit bij vatbare mensen. (links) Netwerk na 100 stappen. (rechts) Verdelingen van de toestanden in de tijd.](../figuren/kuddeimmuniteit.png)
+![Illustratie van kudde-immuniteit. Als voldoende mensen geïmmuniseerd zijn breidt de ziekte zich niet verder uit bij vatbare mensen. De toestanden zijn hier stabiel en veranderen niet meer doorheen verdere tijdstappen.](../figuren/kuddeimmuniteit.png)
 
 Als een bepaalde drempwelwaarde bereikt kan worden, zal de kudde-immuniteit een ziekte uit een populatie elimineren. Als deze eliminatie over de hele wereld bereikt wordt, kan het aantal infecties permanent tot nul teruggebracht worden. Dan kunnen we spreken van de *uitroeiing* van de ziekte. Het moet duidelijk zijn dat volledige uitroeiing zeer moeilijk te bereiken is. Veel ziekten zijn regionaal uitgeroeid (bijvoorbeeld cholera in België), terwijl slechts twee ziekten wereldwijd uitgeroeid zijn: pokken en runderpest.
 
@@ -303,22 +238,24 @@ import numpy as np
 
 # een matrix is een geneste lijst
 # kan je de graaf tekenen hiervan?
-A = matrix([[0, 1, 1, 0, 1],
-            [1, 0, 1, 0, 1],
-            [1, 1, 0, 0, 1],
-            [0, 0, 0, 1, 0],
-            [1, 0, 1, 0, 0]])
+A = matrix([[0, 1, 1, 0, 0, 0],
+            [1, 0, 1, 0, 1, 0],
+            [1, 1, 0, 0, 1, 0],
+            [0, 0, 0, 0, 1, 1],
+            [0, 0, 1, 1, 0, 0],
+            [0, 0, 0, 1, 0, 0]])
 
 # toestandsvector met 1 persoon geïnfecteerd
-x = matrix([[1, 0, 0, 0, 0]]).T
+x0 = matrix([[1, 0, 0, 0, 0, 0]]).T
 ```
 
 Simulatie kunnen we eenvoudig doen met een for-lus.
 
 ```python
-for t in range(5):  # 5 tijdstappen
-    print("Tijdstip ",t, ": ", np.sum(x > 0), "geinfecteerden, x=",x.T > 0)
-    x = A * x   # matrix-vector vermenidgvuldiging verspreidt de ziekte
+x = x0.copy()  # we maken een kopie zodat x0 bewaard blijft
+for t in range(6):  # 5 tijdstappen (python begint vanaf 0 te tellen)
+    print("Tijdstip ",t, ": ", np.sum(x > 0), "geinfecteerden, x =",x.T > 0)
+    x = x + A * x   # matrix-vector vermenidgvuldiging verspreidt de ziekte
 ```
 
 > **Optionele programmmeeropdracht**: Kan je het model aanpassen zodat persoon 2 en 3 resistent zijn?

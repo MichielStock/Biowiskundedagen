@@ -101,7 +101,7 @@ for t in range(11):
     for i in resistent:
         colors[i] = groen
     plot_sir_step(filename, t, colors)
-    x = A @ x > 0
+    x = (x + A @ x) > 0
     x[resistent] = 0
 
 
