@@ -186,7 +186,7 @@ $$
 
 <br>
 
-> **Oefening 2:** Volgende korte sequentie is een klein deeltje van het P22 staarteiwit: 'MLIDIAR'. Experimenteel werd reeds bepaald dat dit een $\beta$-plaat is. Bereken nu via de laatst geziene formule de kans dat die sequentie een stukje van een $\beta$-plaat is (deze kans zou groot moeten zijn).
+> **Oefening 2:** Volgende korte sequentie is een klein deeltje van het P12528 staarteiwit: 'MLIDIAR'. Experimenteel werd reeds bepaald dat dit een $\beta$-plaat is. Bereken nu via de laatst geziene formule de kans dat die sequentie een stukje van een $\beta$-plaat is (deze kans zou groot moeten zijn).
 
 | $i$ | $A_i$ | $P(A_i\mid \beta\text{-plaat})$ | $P(A_i\mid \text{geen }\beta\text{-plaat})$ |
 |:----|:------|:--------------------------------|:--------------------------------------------|
@@ -227,7 +227,7 @@ $$
 
 ### Glijdende vensters en drempelwaarden
 
-In het computerdeel van dit practicum gaan we nu de Naive Bayes-methode toepassen op het volledige P22 eiwit dat we eerder besproken hebben. Het doel is om te ontdekken waar de $\beta$-platen zich in het eiwit bevinden. We zullen $\beta$-platen voorspellen met behulp van de Naive Bayes-methode en de voorspellingen (i.e. de kansen) dan voorstellen via een grafiek. Hiervoor bewegen we aminozuur voor aminozuur over het eiwit via een *glijdend venster* van lengte $k$. In dit glijdend venster kijken we naar de aminozuren op elke positie van $i$ tot $i+k$ en berekenen we de conditionele kans voor een $\beta$-plaat in dit venster. We noteren dit als
+In het computerdeel van dit practicum gaan we nu de Naive Bayes-methode toepassen op het volledige P12528 eiwit dat we eerder besproken hebben. Het doel is om te ontdekken waar de $\beta$-platen zich in het eiwit bevinden. We zullen $\beta$-platen voorspellen met behulp van de Naive Bayes-methode en de voorspellingen (i.e. de kansen) dan voorstellen via een grafiek. Hiervoor bewegen we aminozuur voor aminozuur over het eiwit via een *glijdend venster* van lengte $k$. In dit glijdend venster kijken we naar de aminozuren op elke positie van $i$ tot $i+k$ en berekenen we de conditionele kans voor een $\beta$-plaat in dit venster. We noteren dit als
 
 $$
 s^k_i = P(\beta\text{-plaat}\mid \text{subsequentie van $i$ tot $i+k$})\,.
@@ -303,7 +303,7 @@ We illustreren hier hoe de kansen op de computer berekend kunnen worden in de pr
 
 ```python
 # volledige eiwitsequentie
-P22eiwit = "MTDITANVVVSNPRPIFTESRSFKAVANGKIYIGQIDTDPVNPANQIPVYIENEDGSHVQITQPLII\
+P12528eiwit = "MTDITANVVVSNPRPIFTESRSFKAVANGKIYIGQIDTDPVNPANQIPVYIENEDGSHVQITQPLII\
 NAAGKIVYNGQLVKIVTVQGHSMAIYDANGSQVDYIANVLKYDPDQYSIEADKKFKYSVKLSDYPTLQDAASAAVDGLL\
 IDRDYNFYGGETVDFGGKVLTIECKAKFIGDGNLIFTKLGKGSRIAGVFMESTTTPWVIKPWTDDNQWLTDAAAVVATL\
 KQSKTDGYQPTVSDYVKFPGIETLLPPNAKGQNITSTLEIRECIGVEVHRASGLMAGFLFRGCHFCKMVDANNPSGGKD\
@@ -331,12 +331,12 @@ Via de geavanceerde datastructuur `Counter` kunnen we makkelijk de frequenties v
 ```python
 from collections import Counter
 
-freq_az_P22 = Counter(P22eiwit)  # Counter is een dict datastructuur
+freq_az_P12528 = Counter(P12528eiwit)  # Counter is een dict datastructuur
 
-for AZ, freq in freq_az_P22.items():
+for AZ, freq in freq_az_P12528.items():
     print(AZ, " : ", freq)
 
-aminozuren = freq_az_P22.keys()  # alle aminozuren
+aminozuren = freq_az_P12528.keys()  # alle aminozuren
 ```
 
 Ditto voor de $\beta$-platen:
@@ -358,7 +358,7 @@ De frequenties van de aminozuren die niet in een $\beta$-plaat voorkomen bereken
 freq_az_niet_betaplaat = {}  # lege dictionary
 
 for AZ in aminozuren:
-    freq_az_niet_betaplaat[AZ] = freq_az_P22[AZ] - freq_az_betaplaat[AZ]
+    freq_az_niet_betaplaat[AZ] = freq_az_P12528[AZ] - freq_az_betaplaat[AZ]
 ```
 
 We kunnen makkelijk het aantal aminozuren tellen in de regio's.
