@@ -46,8 +46,9 @@ Er zijn enkele fundamentele regels die steeds gelden bij het berekenen van kanse
 3. (**somregel**) De kans dat één van twee elkaar uitsluitendende gebeurtenissen plaatsvindt is de som van de kansen van die gebeurtenissen[^uitsluitendekansen].
 4. (**productregel**) Bij twee *onafhankelijke* gebeurtenissen is de kans dat beide gebeurtenissen samen plaatsvinden het product van die kansen[^onafhkansen].
 5. Er bestaan *conditionele* kansen, dit is de kans dat een gebeurtenis $A$ plaatsvindt gegeven een gebeurtenis $B$. De conditionele kans[^condkansen] wordt gedefinieerd als: $$P(A\mid B) = \frac{P(A \text{ en } B)}{P(B)}\,.$$
-7. Met de *regel van Bayes* kunnen we via de kansen van een gebeurtenis A de kansen berekenen voor een andere gebeurtenis B. De formule wordt hieronder gegeven voor gebeurtenissen A en B: $$
-P(A\mid B) = \frac{P(B \mid A) P(A)}{P(B)}\,.
+6. (**wet van totale probabiliteit**) Er geldt $$P(B)=P(B\mid A)P(A) + P(B|\text{niet }A)P(\text{niet }A)\,,$$ de kans op gebeurtenis $B$ kan dus berkend worden aan de hand van de kansen dat gebeurtenis $A$ al dan niet plaatsvindt[^wettotprob].
+7. Met de *regel van Bayes* kunnen we via de kansen van een gebeurtenis A de kansen berekenen voor een andere gebeurtenis B. De formule wordt hieronder gegeven voor gebeurtenissen $A$ en $B$: $$
+P(A\mid B) = \frac{P(B \mid A) P(A)}{P(B)} = \frac{P(B \mid A) P(A)}{P(B\mid A)P(A) + P(B|\text{niet }A)P(\text{niet }A)}\,.
 $$
 
 [^positievekansen]: Bijvoorbeeld, de kans op een 6 gooien met een zesogige dobbelsteen is 1/6.
@@ -55,6 +56,7 @@ $$
 [^uitsluitendekansen]: Bijvoorbeeld, met een dobbelsteen gooien kan je nooit én een even getal gooien (kans van 3/6=1/2) én een drie gooien (kans van 1/6). De kans op één van beide gebeurtenissen is 3/6+1/6=4/6=2/3.
 [^onafhkansen]: Bijvoorbeeld, de kans dat je bij twee opeenvolgende worpen van een dobbelsteen twee keer een zes gooit is $1/6\cdot1/6=1/36$.
 [^condkansen]: Bijvoorbeeld, de kans dat we met een dobbelsteen een zes gooien gegeven dat het een even getal was is $(1/6)/(1/2)=1/3$.
+[^wettotprob]: Stel, je hebt twee dobbelstenen met zes zijden en één dobbelsteen met acht zijden. Als je een willekeurige dobbelsteen gooit is de kans om een zes te gooien $(1/6)(2/3)+(1/8)(1/3)=11/72$.
 
 ![Voorstelling van de basisregels van kansrekening. Kansen voor beurtenissen worden voorsteld door niet-negatieve waarden die samen tot 1 sommeren.](../figuren/probabiliteit.png)
 
@@ -127,7 +129,7 @@ $$
 P(\text{eiwitsequentie} \mid \text{geen $\beta$-plaat})= \prod_{i=1}^n P(A_i\mid \text{geen $\beta$-plaat})\,.
 $$
 
-Daarnaast moeten we ook nog de noemer berekenen, namelijk de kans op een eiwitsequentie, deze valt als volgt uiteen:
+Daarnaast moeten we ook nog de noemer berekenen, namelijk de kans op een eiwitsequentie, deze valt als volgt uiteen (wet van de totale probabiliteit):
 
 \begin{multline*}
 P(\text{eiwitsequentie}) = P(\text{eiwitsequentie} \mid \text{$\beta$-plaat})P(\text{$\beta$-plaat})\\+ P(\text{eiwitsequentie} \mid \text{geen $\beta$-plaat}) P(\text{geen $\beta$-plaat})\,.
