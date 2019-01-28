@@ -80,6 +80,8 @@ $$
 P(\text{blauw gezicht}) = \ldots \quad\quad P(\text{groen gezicht}) = \ldots
 $$
 
+**Hint**: de kans op een blauw gezicht splitst zich uit in het geval dat je blauwkoorts hebt en het geval dat je groenkoorts hebt.
+
 $$
 P(\text{blauwkoorts} \mid \text{groen gezicht}) = \ldots\quad\quad P(\text{groenzucht} \mid \text{groen gezicht}) = \ldots
 $$
