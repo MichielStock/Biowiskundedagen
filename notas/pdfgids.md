@@ -8,7 +8,7 @@
 2. Open een terminal, begeef je naar de correcte map met de markdown files in en voer volgend commando uit:  
   - `pandoc -N --latex-engine=xelatex cover.md voorwoord.md secundairestructuur.md ziekteverspeiding.md -o bwd2019.pdf --from markdown --template eisvogel -V lang=nl` (voor PDF)
   - `pandoc -N --latex-engine=xelatex cover.md voorwoord.md secundairestructuur.md ziekteverspeiding.md -o bwd2019.tex --from markdown --template eisvogel -V lang=nl` (voor .tex)
-  - `pandoc -N --latex-engine=xelatex cover.md voorwoord.md secundairestructuur.md ziekteverspeiding.md -o bwd2019.html --from markdown --template eisvogel -V lang=nl` (voor HTML)
+  - `pandoc -N cover.md voorwoord.md secundairestructuur.md ziekteverspeiding.md -o bwd2019.html --from markdown --template eisvogel -V lang=nl` (voor HTML)
 
 Checklist voor TeX:
 - [x] inhoudstafel: `\tableofcontents`

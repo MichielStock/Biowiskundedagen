@@ -255,7 +255,7 @@ Simulatie kunnen we eenvoudig doen met een for-lus.
 x = x0.copy()  # we maken een kopie zodat x0 bewaard blijft
 for t in range(6):  # 5 tijdstappen (python begint vanaf 0 te tellen)
     print("Tijdstip ",t, ": ", np.sum(x > 0), "geinfecteerden, x =",x.T > 0)
-    x = x + A * x   # matrix-vector vermenidgvuldiging verspreidt de ziekte
+    x = x + A * x   # matrix-vector vermenigvuldiging verspreidt de ziekte
 ```
 
 > **Optionele programmmeeropdracht**: Kan je het model aanpassen zodat persoon 2 en 3 resistent zijn?
