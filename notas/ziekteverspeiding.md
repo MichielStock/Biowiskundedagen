@@ -230,35 +230,56 @@ Als een bepaalde drempwelwaarde bereikt kan worden, zal de kudde-immuniteit een 
 
 ## Simuleren van een het SIR-model op een netwerk
 
-Zoals eerder gezegd kunnen we via de verbindingsmatrix $A$ een netwerk voorstellen. We kunnen een toestandsvector $\mathbf{x}$ gebruiken waar een 0 voorstelt dat die persoon vatbaar is en een 1 als die geïnfecteerd is.
+Zoals eerder gezegd kunnen we via de verbindingsmatrix $A$ een netwerk voorstellen. We kunnen een toestandsvector $\mathbf{x}$ voorstellen als een lijst met voor elke persoon één van de mogelijke toestanden ($S$, $I$ of $R$).
 
 ```python
-from numpy import matrix
-import numpy as np
-
 # een matrix is een geneste lijst
-# kan je de graaf tekenen hiervan?
-A = matrix([[0, 1, 1, 0, 0, 0],
-            [1, 0, 1, 0, 1, 0],
-            [1, 1, 0, 0, 1, 0],
-            [0, 0, 0, 0, 1, 1],
-            [0, 0, 1, 1, 0, 0],
-            [0, 0, 0, 1, 0, 0]])
+# kan je de graaf hiervan tekenen?
+
+A = [[0, 1, 1, 0, 0, 0],
+     [1, 0, 1, 0, 1, 0],
+     [1, 1, 0, 0, 1, 0],
+     [0, 0, 0, 0, 1, 1],
+     [0, 0, 1, 1, 0, 0],
+     [0, 0, 0, 1, 0, 0]]
 
 # toestandsvector met 1 persoon geïnfecteerd
-x0 = matrix([[1, 0, 0, 0, 0, 0]]).T
+x0 = ["I", "S", "S", "S", "S", "S"]
+```
+
+We maken ook een functie die, gegeven de verbindingsmatrix en een oude toestandsvector, een nieuwe toestandsvector genereert.
+
+```python
+def update(A, x_oud):
+    """Gegeven de verbindingsmatrix en de lijst met de toestanden,
+    bereken de nieuwe toestand.
+    """
+    x_nieuw = []
+    n = len(x_oud)  # aantal elementen in x
+    for i in range(n):
+        if x_oud[i] == "I":
+            toestand = "I"  # regel 3
+        elif x_oud[i] == "S":
+            toestand = "S"
+            for j in range(n):  # overloop alle geconnecteerde knopen
+                if A[i][j] == 1 and x_oud[j] == "I":  # connectie die geïnfecteerd is
+                    toestand = "I"  # regel 2
+        # voeg hier regel 4 toe voor R
+        x_nieuw.append(toestand)  # voeg de nieuwe toestand toe
+    return x_nieuw
 ```
 
 Simulatie kunnen we eenvoudig doen met een for-lus.
 
 ```python
-x = x0.copy()  # we maken een kopie zodat x0 bewaard blijft
+x = x0
 for t in range(6):  # 5 tijdstappen (python begint vanaf 0 te tellen)
-    print("Tijdstip ",t, ": ", np.sum(x > 0), "geinfecteerden, x =",x.T > 0)
-    x = x + A * x   # matrix-vector vermenigvuldiging verspreidt de ziekte
+    print("Tijdstip ",t, ": ", x.count("I"), "geinfecteerden, x =",x)
+    x = update(A, x)   # matrix-vector vermenidgvuldiging verspreidt de ziekte
 ```
 
-> **Optionele programmmeeropdracht**: Kan je het model aanpassen zodat persoon 2 en 3 resistent zijn?
+> **Optionele programmmeeropdracht**: Kan je het model aanpassen zodat persoon 2 en 3 resistent zijn? Pas hiervoor de functie `update` aan.
+> Pas daarna de code aan om hetvoorbeeldnetwerk van de nota's te simuleren.
 
 ## Ziektespreidingsmodellen in de praktijk
 
