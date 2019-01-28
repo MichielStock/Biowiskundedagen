@@ -237,7 +237,7 @@ $$
 
 In elke stap (voor elk glijdend venster) maken we een voorspelling die we later visueel kunnen voorstellen in een plot.
 
-Eerder hebben we gesteld dat we een regio als een $\beta$-plaat classificeren indien
+We kunnen stellen dat we een regio als een $\beta$-plaat kunnen classificeren indien
 
 $$
 P(\beta\text{-plaat}\mid \text{eiwitsequentie}) > 0.5\,.
@@ -371,7 +371,7 @@ print("Aantal aminozuren in beta-platen: ", totaal_beta)
 print("Aantal aminozuren in niet-beta-platen: ", totaal_niet_beta)
 ```
 
-> **Optionele programmmeeropdracht**: Bereken met de computer de posteriori kans op een $\beta$-plaat zoals je op papier gedaan hebt. Bereken de kans dat peptide 'YSIEADKK' een $\beta$-plaat is volgens de Naive Bayes methode.
+> **Optionele programmmeeropdracht**: Bereken met de computer de conditionele kans op een $\beta$-plaat zoals je op papier gedaan hebt. Bereken de kans dat peptide 'YSIEADKK' een $\beta$-plaat is volgens de Naive Bayes methode.
 
 ## En verder...
 
