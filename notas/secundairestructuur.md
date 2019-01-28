@@ -1,7 +1,7 @@
 
 # Eiwitten beter begrijpen met kansrekening
 
-In dit project zullen we gebruik maken van kansrekening om de secundaire structuur ($\beta$-platen) van een eiwit te voorspellen. We overlopen eerst de basisregels van kansrekening en dan zullen we de kansformules vereenvoudigen  om eenvoudiger te kunnen rekenen. Zo bekomen we een data-gedreven model om voor een aminozuur de kans te berekenen of dit in een $\beta$-plaat voorkomt of niet. Dit proces zullen we toepassen over volledige eiwitten via de glijdend venster methode. Ten slotte hebben we het kort even hebben over modelevaluatie: hoe betrouwbaar is zo'n model?
+In dit project zullen we gebruik maken van kansrekening om de secundaire structuur ($\beta$-platen) van een eiwit te voorspellen. We overlopen eerst de basisregels van kansrekening en dan zullen we de kansformules vereenvoudigen  om eenvoudiger te kunnen rekenen. Zo bekomen we een data-gedreven model om voor een aminozuur de kans te berekenen of dit in een $\beta$-plaat voorkomt of niet. Dit proces zullen we toepassen over volledige eiwitten via de glijdend venster methode. Ten slotte hebben we het kort even over modelevaluatie: hoe betrouwbaar is zo'n model?
 
 ## Een beetje achtergrond
 
@@ -23,11 +23,11 @@ Zelfs de allerkleinste biologische entiteiten, de virussen, gebruiken eiwitten v
 
 ![(links) Microscopische figuur van de *Salmonellabacterie*. (rechts) Figuur van P22 fagen die *Salmonella* kunnen infecteren.](../figuren/salmonellafaag.png)
 
-Een bijkomend probleem is dat *Salmonella* en andere bacteriën steeds meer resistent worden tegen antibiotica. Gelukkig kunnen we ook fagen inzetten om bacteriën te bestrijden! Cruciaal voor een faag bij het infecteren van zijn bacteriële gastheer zijn specifieke faag eiwitten die componenten van de salmonellabacterie herkennen. Deze faag eiwitten verschillen vaak tussen verschillende salmonellafagen. Hierdoor kunnen verschillende fagen andere varianten van de *Salmonella* bacterie herkennen. Anderzijds komt er tussen verschillende salmonellafagen ook vaak een geconserveerd eiwitdomein voor. Dit is een stukje van het eiwit dat wel hetzelfde is tussen de verschillende salmonellafagen. Bij salmonellafagen is dit een zogenaamd $\beta$-helicaal domein. Dit domein vormt als het ware een *moleculaire boor* die de celwand van de bacterie kan doorboren, wat nodig is om de infectie te starten. Door zo'n faag eiwitten beter te begrijpen kunnen we ze daarna ook beter inzetten tegen gevaarlijke bacteriën.
+Een bijkomend probleem is dat *Salmonella* en andere bacteriën steeds meer resistent worden tegen antibiotica. Gelukkig kunnen we ook fagen inzetten om bacteriën te bestrijden! Cruciaal voor een faag bij het infecteren van zijn bacteriële gastheer zijn specifieke faageiwitten die componenten van de salmonellabacterie herkennen. Deze faageiwitten verschillen vaak tussen verschillende salmonellafagen. Hierdoor kunnen verschillende fagen andere varianten van de salmonellabacterie herkennen. Anderzijds komt er tussen verschillende salmonellafagen ook vaak een geconserveerd eiwitdomein voor. Dit is een stukje van het eiwit dat wel hetzelfde is tussen de verschillende salmonellafagen. Bij salmonellafagen is dit een zogenaamd $\beta$-helicaal domein. Dit domein vormt als het ware een *moleculaire boor* die de celwand van de bacterie kan doorboren, wat nodig is om de infectie te starten. Door zo'n faageiwitten beter te begrijpen kunnen we ze daarna ook beter inzetten tegen gevaarlijke bacteriën.
 
-Een voorbeeld van zo'n faag eiwit is het staarteiwit van Salmonellafaag P22: [*P12528*](https://www.uniprot.org/uniprot/P12528) (zie rechtse deel van Figuur 2). Tussen aminozuur 140 en 543 bevindt zich een groot $\beta$-helicaal domein (bestaande uit parallele $\beta$-platen) dat een puntig einde heeft rond aminozuur 113 (Figuur 3). De aanwezigheid van die $\beta$-platen is belangrijk voor de specifieke functie van het eiwit. Deze secundaire structuren (de $\beta$-platen) kunnen we bestuderen via wiskunde en computers. Dit onderzoeksdomein noemen we *bio-informatica*. In bio-informatica wordt wiskunde gecombineerd met computerkracht om interessante biologische fenomenen te bestuderen en biologische problemen op te lossen.
+Een voorbeeld van zo'n faageiwit is het staarteiwit van salmonellafaag P22: [*P12528*](https://www.uniprot.org/uniprot/P12528) (zie rechtse deel van Figuur 2). Tussen aminozuur 140 en 543 bevindt zich een groot $\beta$-helicaal domein (bestaande uit parallele $\beta$-platen) dat een puntig einde heeft rond aminozuur 113 (Figuur 3). De aanwezigheid van die $\beta$-platen is belangrijk voor de specifieke functie van het eiwit. Deze secundaire structuren (de $\beta$-platen) kunnen we bestuderen via wiskunde en computers. Dit onderzoeksdomein noemen we *bio-informatica*. In bio-informatica wordt wiskunde gecombineerd met computerkracht om interessante biologische fenomenen te bestuderen en biologische problemen op te lossen.
 
-![Het P12528 eiwit, ook wel Salmonellafaag P22 *tail spike* eiwit genoemd. Dit eiwit bestaat uit een uitzonderlijk groot aantal $\beta$-platen die samen een complexe boorkop vormen. Regenboogkleuring in volgorde van de sequentie.](../figuren/P12528.png)
+![Het P12528 eiwit, ook wel salmonellafaag P22 *tail spike* eiwit genoemd. Dit eiwit bestaat uit een uitzonderlijk groot aantal $\beta$-platen die samen een complexe boorkop vormen. Regenboogkleuring in volgorde van de sequentie.](../figuren/P12528.png)
 
 In dit project zetten we de computer aan het werk om eiwitten te bestuderen. Zo'n eiwitten bestuderen wetenschappers vaak op basis van de aminozuursequentie van het eiwit. Door specifieke instructies te geven aan de computer kunnen we voorspellingen maken voor $\beta$-platen om zo de $\beta$-helicale domeinen te vinden! In dit project zullen we de computer leren om dergelijke voorspellingen te maken. Hieronder bekijken we eerst welke wiskunde je daar net voor nodig hebt.
 
@@ -86,7 +86,7 @@ $$
 
 ### Naive Bayes
 
-Nu we de regel van Bayes intuïtief begrijpen, kunnen we deze toepassen voor het voorspellen van $\beta$-platen in eiwitten. De *naive Bayes*-methode kan hiervoor gebruikt worden. Deze methode maakt gebruik van de regel van Bayes om voorspellingen te maken o.b.v. een gegeven input. In dit project willen we een $\beta$-plaat voorspellen o.b.v. de eiwitsequentie (de input).
+Nu we de regel van Bayes intuïtief begrijpen, kunnen we deze toepassen voor het voorspellen van $\beta$-platen in eiwitten. De *Naive Bayes*-methode kan hiervoor gebruikt worden. Deze methode maakt gebruik van de regel van Bayes om voorspellingen te maken o.b.v. een gegeven input. In dit project willen we een $\beta$-plaat voorspellen o.b.v. de eiwitsequentie (de input).
 
 De regel van Bayes kan voor dit geval als volgt geschreven worden:
 
@@ -100,15 +100,15 @@ $$
 P(\text{eiwitsequentie} \mid \beta\text{-plaat})=P(A_1A_2\ldots A_n\mid \beta\text{-plaat})\,.
 $$
 
-Hierboven schrijven we dus de eiwitsequentie gewoon als de opeenvolging van de $n$ aminozuren. Hier stelt $A_i$ de identiteit voor van het aminozuur op positie $i$. Hoe berekenen we de kans op een gegeven sequentie? Voor een stukje met een lengte tien aminozuren hebben we $20^{10}= 10240000000000\approx 10^{13}$ ofwel 10 biljoen unieke sequenties. In een probabilistisch model moeten we dus een vereenvoudiging doorvoeren!
+Hierboven schrijven we dus de eiwitsequentie gewoon als de opeenvolging van de $n$ aminozuren. Hier stelt $A_i$ de identiteit voor van het aminozuur op positie $i$. Hoe berekenen we de kans op een gegeven sequentie? Voor een stukje met een lengte van tien aminozuren hebben we $20^{10}= 10240000000000\approx 10^{13}$ ofwel 10 biljoen unieke sequenties. In een probabilistisch model moeten we dus een vereenvoudiging doorvoeren!
 
 \bigskip
 
-> **Vereenvoudiging:** We gaan er van uit dat de kansen voor de verschillende aminozuren **binnen** een bepaalde regio onafhankelijk van elkaar zijn.
+> **Vereenvoudiging:** We gaan ervan uit dat de kansen voor de verschillende aminozuren **binnen** een bepaalde regio onafhankelijk van elkaar zijn.
 
 \bigskip
 
-Deze vereenvoudiging is natuurlijk volstrekt biologisch onrealistisch! De aminozuren zijn in werkelijkheid juist erg afhankelijk, bijvoorbeeld omdat twee aminozuurtjes met elkaar in contact komen en een waterstofbrug vormen. Hoe fout deze vereenvoudiging ook is, ze is echter wel nuttig! Het laat ons toe om de kansen voor een $\beta$-plaat eenvoudig te hetschrijven. In formulevorm is deze veronderstelling voor ons probleem[^productnotatie]:
+Deze vereenvoudiging is natuurlijk volstrekt biologisch onrealistisch! De aminozuren zijn in werkelijkheid juist erg afhankelijk, bijvoorbeeld omdat twee aminozuurtjes met elkaar in contact komen en een waterstofbrug vormen. Hoe fout deze vereenvoudiging ook is, ze is echter wel nuttig! Het laat ons toe om de kansen voor een $\beta$-plaat eenvoudig te herschrijven. In formulevorm is deze veronderstelling voor ons probleem[^productnotatie]:
 
 [^productnotatie]: Hier maken we gebruik van de notatie voor een product: $\prod_{i=1}^n x_i=x_1 x_2\ldots x_n\,,$ (bv. $\prod_{i=2}^4 i = 2\times 3\times 4=24$).
 
@@ -131,7 +131,7 @@ Daarnaast moeten we ook nog de noemer berekenen, namelijk de kans op een eiwitse
 P(\text{eiwitsequentie}) = P(\text{eiwitsequentie} \mid \text{$\beta$-plaat})P(\text{$\beta$-plaat})\\+ P(\text{eiwitsequentie} \mid \text{geen $\beta$-plaat}) P(\text{geen $\beta$-plaat})\,.
 \end{multline*}
 
-Dit is alles wat we nodig hebbebn! We kunnen de kans op een $\beta$-plaat gegeven een sequentie dus berekenen aan de hand van termen die we makkelijk uit data kunnen schatten door te tellen:
+Dit is alles wat we nodig hebben! We kunnen de kans op een $\beta$-plaat gegeven een sequentie dus berekenen aan de hand van termen die we makkelijk uit data kunnen schatten door te tellen:
 
 $$
 P(A_i\mid \text{$\beta$-plaat}) = \frac{\text{aantal keer aminozuur $A_i$ in $\beta$-plaat regio's}}{\text{totaal aantal aminozuren in $\beta$-plaat regio's}}\,,
@@ -252,7 +252,7 @@ $$
 Hier is $\theta$ een zorgvuldig gekozen *drempelwaarde* (Engels: threshold). De keuze van $\theta$ heeft gevolgen voor de correctheid van onze voorspellingen:
 
 - als we $\theta$ te hoog kiezen is onze drempelwaarde te streng en zullen we dus bepaalde regio's niet als $\beta$-platen voorspellen terwijl dit eigenlijk wel $\beta$-platen zijn.
-- als we $\theta$ te laag kiezen zijn we niet streng genoeg. We zullen dus regio's voorspellen als $\beta$-plaat dat eigenlijk geen $\beta$-plaat zijn.
+- als we $\theta$ te laag kiezen zijn we niet streng genoeg. We zullen dus regio's voorspellen als $\beta$-plaat die eigenlijk geen $\beta$-plaat zijn.
 
 Hieronder zie je een voorbeeld van een analyse met een glijdend venster.
 
@@ -361,7 +361,7 @@ for AZ in aminozuren:
     freq_az_niet_betaplaat[AZ] = freq_az_P22[AZ] - freq_az_betaplaat[AZ]
 ```
 
-We kunnen makkelijk aantal aminozuren tellen in de regio's.
+We kunnen makkelijk het aantal aminozuren tellen in de regio's.
 
 ```python
 totaal_beta = sum(freq_az_betaplaat.values())
@@ -371,12 +371,12 @@ print("Aantal aminozuren in beta-platen: ", totaal_beta)
 print("Aantal aminozuren in niet-beta-platen: ", totaal_niet_beta)
 ```
 
-> **Optionele programmmeeropdracht**: bereken met de computer de posteriori kans op een $\beta$-plaat zoals je op papier gedaan hebt. Bereken de kans dat peptide 'YSIEADKK' een $\beta$-plaat is volgens de Naive bayes methode.
+> **Optionele programmmeeropdracht**: Bereken met de computer de posteriori kans op een $\beta$-plaat zoals je op papier gedaan hebt. Bereken de kans dat peptide 'YSIEADKK' een $\beta$-plaat is volgens de Naive Bayes methode.
 
 ## En verder...
 
 De concepten die je in deze praktische sessie geleerd hebt zijn eenvoudig en kunnen zeer nuttig zijn in de praktijk. Deze methode is een vereenvoudigede versie van de **Chou-Fasman** methode om secundaire structuren te voorspellen. Er bestaan echter ook veel complexere methoden om eiwitten te bestuderen. Misschien vind je onze methode van het glijdend venster nogal onelegant. Een veel krachtigere methode om secundaire structuren te bepalen is via *verborgen Markovketens* (Engels: Hidden Markov Chains) die op een slimme manier eiwit- en DNA-sequenties kunnen labellen.
 
-Daarenboven staat onderzoek in de bio-informatica nooit stil en zijn er zelfs grote bedrijven in geïnteresseerd, net omdat computers ons veel kunnen bijleren over biologie. Een zeer recent voorbeeld is Deepmind, een bedrijf dat onder Google werkt. Recent werk van hen gebruikt complexe artificiële intelligentie om de tertiaire structuur van een eiwit accuraat te voorspellen. Hun ontwikkelde methode [*AlphaFold*](https://deepmind.com/blog/alphafold/) is de eerste in zijn soort, maar zal waarschijnlijk niet de laatste zijn. Net zoals we in dit project gedaan hebben, werd hierbij een model gefit aan een databank met geannoteerde voorbeelden. Wij hebben echter met een model gewerkt met een twintigtal parameters, in de praktijk zijn het er miljoenen of miljarden.
+Daarenboven staat onderzoek in de bio-informatica nooit stil en zijn er zelfs grote bedrijven in geïnteresseerd, net omdat computers ons veel kunnen bijleren over biologie. Een zeer recent voorbeeld is Deepmind, een bedrijf dat onder Google werkt. Recent werk van hen gebruikt complexe artificiële intelligentie om de tertiaire structuur van een eiwit accuraat te voorspellen. Hun ontwikkelde methode [*AlphaFold*](https://deepmind.com/blog/alphafold/) is de eerste in zijn soort, maar zal waarschijnlijk niet de laatste zijn. Net zoals we in dit project gedaan hebben, werd hierbij een model gefit aan een databank met gelabelde voorbeelden. Wij hebben echter met een model gewerkt met een twintigtal parameters, in de praktijk zijn het er miljoenen of miljarden.
 
 \pagebreak

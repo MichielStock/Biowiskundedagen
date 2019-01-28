@@ -4,11 +4,11 @@ In dit project zullen we bestuderen hoe ziektes zich kunnen verspreiden via een 
 
 ## Besmettelijke ziektes
 
-In de geschiedenis van de mensheid[^niethumaneziekten] heeft niets zoveel mensen gedood als besmettelijke ziekten. De ziekte die de meeste mensen heeft gedood is waarschijnlijk tuberculose, waarbij 1000 miljoen mensen in alleen de 19de en 20ste eeuw werden gedood. De ziekte die het snelst gedood heeft, is de 'Spaanse griep' epidemie die 50 tot 100 miljoen mensen heeft gedood tussen 1918 en 1920. De ziekte met het grootste evenredige dodental blijkt de Zwarte Dood, die 20% van de wereldbevolking en zelfs 50% van de Europese bevolking in de 14e eeuw doodde. Nog erger dan die ramp was het dodental op het Amerikaanse continent na de Europese kolonisatie. Er wordt geschat dat 90% van de inheemse bevolking geëlimineerd werd door de door Europeanen meegebrachte ziektes. De inheemse bevolking was namelijk nog nooit eerder met deze ziektes in contact gekomen en had dus nog niet de gelegenheid gehad om resistentie te ontwikkelen tegen deze ziektes.
+In de geschiedenis van de mensheid[^niethumaneziekten] heeft niets zoveel mensen gedood als besmettelijke ziekten. De ziekte die de meeste mensen heeft gedood is waarschijnlijk tuberculose, waarbij 1 miljard mensen in alleen de 19de en 20ste eeuw werden gedood. De ziekte die het snelst gedood heeft, is de 'Spaanse griep' epidemie die 50 tot 100 miljoen mensen heeft gedood tussen 1918 en 1920. De ziekte met het grootste evenredige dodental blijkt de Zwarte Dood, die 20% van de wereldbevolking en zelfs 50% van de Europese bevolking in de 14e eeuw doodde. Nog erger dan die ramp was het dodental op het Amerikaanse continent na de Europese kolonisatie. Er wordt geschat dat 90% van de inheemse bevolking geëlimineerd werd door de door Europeanen meegebrachte ziektes. De inheemse bevolking was namelijk nog nooit eerder met deze ziektes in contact gekomen en had dus nog niet de gelegenheid gehad om resistentie te ontwikkelen tegen deze ziektes.
 
 [^niethumaneziekten]: In deze nota's leggen we de nadruk op de verspreiding van humane ziektes. Dezelfde modellen worden echter ook gebruikt om ziektes tussen dieren (zoals verspreiding van *Myxomatosis* bij konijnen) of zelfs tussen planten (bijvoorbeeld verspreiding van *Phytophthora infestans*, een aardappelziekte die verantwoordelijk was voor de Ierse hongersnood).
 
-Tegenwoordig veroorzaken besmettelijke ziektes minder doden door betere medische kennis, technieken en middelen. Echter blijven ze een ernstig probleem voor de volksgezondheid. Toch zijn 3 van de 10 belangrijkste doodsoorzaken wereldwijd besmettelijke ziekten. Naast de verbeteringen van de moderne wereld zijn er ook nieuwe uitdagingen voor het stoppen van epidemieën. Nu kan een besmette persoon op een vliegtuig stappen en in een paar uur tijd een ziekte naar een ander continent verspreiden.
+Tegenwoordig veroorzaken besmettelijke ziektes minder doden door betere medische kennis, technieken en middelen. Echter blijven ze een ernstig probleem voor de volksgezondheid. Toch zijn 3 van de 10 belangrijkste doodsoorzaken wereldwijd besmettelijke ziekten. Naast de verbeteringen van de moderne wereld zijn er ook nieuwe uitdagingen voor het stoppen van epidemieën. Nu kan een besmette persoon op een vliegtuig stappen en in een paar uur tijd een ziekte naar een ander continent verspreiden (zie Figuur 8).
 
 
 ![Verschillende vliegtuigroutes tussen luchthavens. De wereld is sterk geconnecteerd en ziektes kunnen zich nu veel sneller verspreiden.](../figuren/luchthaven.jpg)
@@ -35,7 +35,7 @@ In dit project zullen we twee van de belangrijkste en meest gebruikte types van 
 Een van de eenvoudigste manieren om ziekteverspreiding in een gemeenschap te modelleren is aan de hand van het SIR-model. SIR staat voor *Susceptible* (vatbaar), *Infected* (geïnfecteerd) en *Resistant* (resistent of hersteld), de drie types individuen die in een gemeenschap voorkomen. Meestal zijn de individuen gewoon mensen, maar dit model kan ook aangewend worden om ziekteuitbraak bij knaagdieren, vogels of zelfs planten te modelleren. Het SIR-model bestaat uit drie vergelijkingen die de veranderingen van het aantal individuen in een bepaalde groep beschrijven. De variabelen die de toestand beschrijven zijn:
 
 -  $S(t)$: het relatief aantal vatbare individuen op tijdstip $t$;
--  $I(t)$: het relatief aantal geinfecteerde individuen op tijdstip $t$;
+-  $I(t)$: het relatief aantal geïnfecteerde individuen op tijdstip $t$;
 -  $R(t)$: het relatief aantal resistente individuen op tijdstip $t$.
 
 In deze beschrijving maken we een eerste grote vereenvoudiging van de werkelijkheid. We nemen aan dat elk van deze variablen reëelwaardig zijn en dat het aantal individuen in elke groep continu kan variëren. In werkelijkheid is het aantal geïnfecteerden of vatbare individuen een natuurlijk getal, je bent immers besmet of je bent het niet. Modelleerders werken echter graag met continue variablen omdat ze dan de technieken van wiskundige analyse kunnen gebruiken.
@@ -82,7 +82,7 @@ Het standaard SIR-model maakt de onrealistische veronderstelling dat twee willek
 
 ### Een voorbeeld
 
-Hieronder zie je een voorbeeld van enkele netwerken. De punten vertegenwoordigen de leerlingen en worden *knopen* genoemd. De contacten tussen leerlingen worden weergegeven door lijnsegmenten tussen knopen, en worden *bogen* genoemd. We zeggen dat twee knopen met elkaar *verbonden* zijn als ze met een boog geconnecteerd worden. Hier gaan we ervan uit dat een knoop niet verbonden kan zijn met zichzelf[^selfconnectance]. Ook is er maar maximaal één boog mogelijk tussen twee knopen. De *graad* van een knoop is het aantal bogen dat ermee verbonden zijn.
+Hieronder zie je een voorbeeld van enkele netwerken. De punten vertegenwoordigen de leerlingen en worden *knopen* genoemd. De contacten tussen leerlingen worden weergegeven door lijnsegmenten tussen knopen, en worden *bogen* genoemd. We zeggen dat twee knopen met elkaar *verbonden* zijn als ze met een boog geconnecteerd worden. Hier gaan we ervan uit dat een knoop niet verbonden kan zijn met zichzelf[^selfconnectance]. Ook is er maar maximaal één boog mogelijk tussen twee knopen. De *graad* van een knoop is het aantal bogen dat ermee verbonden is.
 
 ![Voorbeelden van gekleurde grafen die netwerken tussen kinderen van verschillende leeftijden voorstellen ([bron](https://royalsocietypublishing.org/doi/full/10.1098/rspb.2010.1807)).](../figuren/netwerkkinderen.jpg)
 
@@ -143,7 +143,7 @@ Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan er
 2. Indien een knoop op tijdstip $t$ in toestand $S$ zit en minstend één van zijn buren eveneens in toestand $I$ zit, verandert de knoop op tijdstip $t+1$ naar toestand $I$.
 3. Indien een knoop op tijdstip $t$ in toestand $I$ zit blijft de knoop op tijdstip $t+1$ in toestand $I$.
 
-> **Oefening 2** Gebruik het sociale netwerk dat je hebt gekregen om de verspreiding van een ziekte te modelleren. Neem persoon nummer 9 als startpunt voor de ziekteuitbraak (*patient zero*).
+> **Oefening 2**: Gebruik het sociale netwerk dat je hebt gekregen om de verspreiding van een ziekte te modelleren. Neem persoon nummer 9 als startpunt voor de ziekteuitbraak (*patient zero*).
 >
 > 1. Elk individu begint als vatbaar. Kies een persoon om de eerste geïnfecteerde te worden en kleur deze in.
 > 2. Op elke tijdstip, ga één voor één door de buren van een geïnfecteerde persoon en laat hen ook geïnfecteerde raken volgens de bovenstaande regels. Vul de tabel in om de spreiding over de tijd te volgen.
@@ -170,7 +170,7 @@ Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan er
 | $13$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 | $14$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 | $15$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| **totaal aantal geinfecteerden** | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **totaal aantal geïnfecteerden** | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
 <br>
 
@@ -195,7 +195,7 @@ Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan er
 | $13$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 | $14$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 | $15$ | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| **totaal aantal geinfecteerden** | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| **totaal aantal geïnfecteerden** | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
 ### Immuniteit en vaccinatie
 
@@ -210,27 +210,27 @@ Beschouw nu de volgende regels (visueel voorgesteld in Figuur 15):
 
 ![Overzicht van de regels voor het SIR-model op een netwerk.](../figuren/SIRregels.png)
 
-Sommige mensen kunnen door verschillende redenen niet immuun worden. Vaccins kunnen bijvoorbeeld niet gegeven worden aan jonge baby's of mensen met ernstige medische aandoeningen. In deze groep is *kudde-immuniteit* een belangrijke beschermingsmethode.
+Sommige mensen kunnen om verschillende redenen niet immuun worden. Vaccins kunnen bijvoorbeeld niet gegeven worden aan jonge baby's of mensen met ernstige medische aandoeningen. In deze groep is *kudde-immuniteit* een belangrijke beschermingsmethode.
 
-Kudde immuniteit betekent een indirecte bescherming tegen besmettelijke ziekten. Deze komt voor wanneer een groot percentage van de populatie immuun is tegen een infectie (door natuurlijke immuniteit of vaccinatie) en daardoor beschermen ze mensen die niet immuun zijn. Dit gebeurt omdat het grote aantal immune mensen de ziekteverspreiding vertraagt of zelfs stopt, want de verbindingen tussen zieke en vatbare mensen zijn geblokkeerd.
+Kudde-immuniteit betekent een indirecte bescherming tegen besmettelijke ziekten. Deze komt voor wanneer een groot percentage van de populatie immuun is tegen een infectie (door natuurlijke immuniteit of vaccinatie) en daardoor beschermen ze mensen die niet immuun zijn. Dit gebeurt omdat het grote aantal immune mensen de ziekteverspreiding vertraagt of zelfs stopt, want de verbindingen tussen zieke en vatbare mensen zijn geblokkeerd.
 
 ![Illustratie van kudde-immuniteit. Als voldoende mensen geïmmuniseerd zijn breidt de ziekte zich niet verder uit bij vatbare mensen. De toestanden zijn hier stabiel en veranderen niet meer doorheen verdere tijdstappen.](../figuren/kuddeimmuniteit.png)
 
 Als een bepaalde drempwelwaarde bereikt kan worden, zal de kudde-immuniteit een ziekte uit een populatie elimineren. Als deze eliminatie over de hele wereld bereikt wordt, kan het aantal infecties permanent tot nul teruggebracht worden. Dan kunnen we spreken van de *uitroeiing* van de ziekte. Het moet duidelijk zijn dat volledige uitroeiing zeer moeilijk te bereiken is. Veel ziekten zijn regionaal uitgeroeid (bijvoorbeeld cholera in België), terwijl slechts twee ziekten wereldwijd uitgeroeid zijn: pokken en runderpest.
 
-> **Computeroefening**: Laat ons overgaan naar simulaties op de computer. Je kan deze uitvoeren in de Jupyter notebooks, beschikbaar via de [biowiskundedagen website](https://mybinder.org/v2/gh/michielstock/biowiskundedagen/master). Via de interactieve widget kan je een netwerk van een bepaalde grootte genereren met 1 tot 10 geïnfecteerde personen (deze knopen zijn donkerblauw ingekleurd). Het netwerk dat verschijnt is na 10 tijdstappen. Ernaast zijn de fracties van de knopen in een bepaalde toestand geplot.
+> **Computeroefening**: Laat ons overgaan naar simulaties op de computer. Je kan deze uitvoeren in de Jupyter notebooks, beschikbaar via de [biowiskundedagen website](https://mybinder.org/v2/gh/michielstock/biowiskundedagen/master). Via de interactieve widget kan je een netwerk van een bepaalde grootte genereren met 1 tot 10 geïnfecteerde personen (deze knopen zijn donkerblauw ingekleurd). Het netwerk dat verschijnt is dat na 10 tijdstappen. Ernaast zijn de fracties van de knopen in een bepaalde toestand geplot.
 >
 > - **zonder vaccinatie**: `frac_vac=0`
 >
 >   1. Hoeveel tijdstappen zijn er nodig voordat iedereen geïnfecteerd is?
->   2. Is er een verschil tussen hoe snel de ziekte zich verspreidt in een willekeurig of een shcaalvrij netwerk?
+>   2. Is er een verschil tussen hoe snel de ziekte zich verspreidt in een willekeurig of een schaalvrij netwerk?
 > - **met vaccinatie**: `frac_vac>0`, er is keuze tussen een bepaalde fractie individuen willekeurig te vaccinatie of de fractie meest geconnecteerde individuen te vaccineren.
 >   1. Bekijk het effect van willekeurig vaccineren. Vanaf welke fractie worden ook vatbare individuen beschermd?
 >   2. Wat is het verschil met gerichte vaccinatie?
 
 ## Simuleren van een het SIR-model op een netwerk
 
-Zoals eerder gezegd kunnen we via de verbindingsmatrix $A$ een netwerk voorstellen. We kunnen een toestandsvector $\mathbf{x}$ gebruiken waar een 0 voorstelt dat die persoon vatbaar is en een 1 als die geïnfecteerd is.
+Zoals eerder gezegd kunnen we via de verbindingsmatrix $A$ een netwerk voorstellen. We kunnen een toestandsvector $\mathbf{x}$ gebruiken waar een 0 voorstelt dat die persoon vatbaar is en een 1 dat die persoon geïnfecteerd is.
 
 ```python
 from numpy import matrix
@@ -249,12 +249,12 @@ A = matrix([[0, 1, 1, 0, 0, 0],
 x0 = matrix([[1, 0, 0, 0, 0, 0]]).T
 ```
 
-Simulatie kunnen we eenvoudig doen met een for-lus.
+Simulaties kunnen we eenvoudig doen met een for-lus.
 
 ```python
 x = x0.copy()  # we maken een kopie zodat x0 bewaard blijft
 for t in range(6):  # 5 tijdstappen (python begint vanaf 0 te tellen)
-    print("Tijdstip ",t, ": ", np.sum(x > 0), "geinfecteerden, x =",x.T > 0)
+    print("Tijdstip ",t, ": ", np.sum(x > 0), "geïnfecteerden, x =",x.T > 0)
     x = x + A * x   # matrix-vector vermenidgvuldiging verspreidt de ziekte
 ```
 
