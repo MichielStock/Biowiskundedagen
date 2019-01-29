@@ -1,7 +1,7 @@
 
 # Eiwitten beter begrijpen met kansrekening
 
-In dit project zullen we gebruik maken van kansrekening om de secundaire structuur ($\beta$-platen) van een eiwit te voorspellen. We overlopen eerst de basisregels van kansrekening en dan zullen we de kansformules vereenvoudigen  om eenvoudiger te kunnen rekenen. Zo bekomen we een data-gedreven model om voor een aminozuur de kans te berekenen of dit in een $\beta$-plaat voorkomt of niet. Dit proces zullen we toepassen over volledige eiwitten via de glijdend venster methode. Ten slotte hebben we het kort even over modelevaluatie: hoe betrouwbaar is zo'n model?
+In dit project zullen we gebruik maken van kansrekening om de secundaire structuur ($\beta$-platen) van een eiwit te voorspellen. We overlopen eerst de basisregels van kansrekening en dan zullen we de kansformules vereenvoudigen om een bevatbaar model te ontwikkelen. Zo bekomen we een data-gedreven model om voor een sequentie van aminozuren de kans te berekenen of dit in een $\beta$-plaat voorkomt of niet. Dit proces zullen we toepassen over volledige eiwitten via de glijdend venster methode. Ten slotte hebben we het kort even over modelevaluatie: hoe betrouwbaar is zo'n model?
 
 ## Een beetje achtergrond
 
@@ -29,7 +29,7 @@ Een voorbeeld van zo'n faageiwit is het staarteiwit van salmonellafaag P22: [*P1
 
 ![Het P12528 eiwit, ook wel salmonellafaag P22 *tail spike* eiwit genoemd. Dit eiwit bestaat uit een uitzonderlijk groot aantal $\beta$-platen die samen een complexe boorkop vormen. Regenboogkleuring in volgorde van de sequentie.](../figuren/P12528.png)
 
-In dit project zetten we de computer aan het werk om eiwitten te bestuderen. Zo'n eiwitten bestuderen wetenschappers vaak op basis van de aminozuursequentie van het eiwit. Door specifieke instructies te geven aan de computer kunnen we voorspellingen maken voor $\beta$-platen om zo de $\beta$-helicale domeinen te vinden! In dit project zullen we de computer leren om dergelijke voorspellingen te maken. Hieronder bekijken we eerst welke wiskunde je daar net voor nodig hebt.
+In dit project zetten we de computer aan het werk om eiwitten te bestuderen. Zo'n eiwitten bestuderen wetenschappers vaak op basis van de aminozuursequentie van het eiwit. Door specifieke instructies te geven aan de computer kunnen we voorspellingen maken voor $\beta$-platen om zo de $\beta$-helicale domeinen te vinden! In dit project zullen we de computer leren om dergelijke voorspellingen te maken. Hieronder bekijken we eerst welke wiskunde je daar voor nodig hebt.
 
 ## Rekenen met kansen en de regel van Bayes
 
@@ -41,12 +41,12 @@ Kansrekening of probabiliteitstheorie is de tak van de wiskunde die zich bezig h
 
 Er zijn enkele fundamentele regels die steeds gelden bij het berekenen van kansen. Figuur 4 stelt deze regels visueel voor:
 
-1. De kans van een gebeurtenis is een niet-negatief getal  (nul inclusief) [^positievekansen].
+1. De kans van een gebeurtenis (vaak aangeduid met een hoofdletter) is een niet-negatief getal  (nul inclusief) [^positievekansen].
 2. De totale kans dat er *een* gebeurtenis plaatsvindt is 1 (honderd procent)[^normaliserenkans].
 3. (**somregel**) De kans dat één van twee elkaar uitsluitendende gebeurtenissen plaatsvindt is de som van de kansen van die gebeurtenissen[^uitsluitendekansen].
 4. (**productregel**) Bij twee *onafhankelijke* gebeurtenissen is de kans dat beide gebeurtenissen samen plaatsvinden het product van die kansen[^onafhkansen].
 5. Er bestaan *conditionele* kansen, dit is de kans dat een gebeurtenis $A$ plaatsvindt gegeven een gebeurtenis $B$. De conditionele kans[^condkansen] wordt gedefinieerd als: $$P(A\mid B) = \frac{P(A \text{ en } B)}{P(B)}\,.$$
-6. (**wet van totale probabiliteit**) Er geldt $$P(B)=P(B\mid A)P(A) + P(B|\text{niet }A)P(\text{niet }A)\,,$$ de kans op gebeurtenis $B$ kan dus berkend worden aan de hand van de kansen dat gebeurtenis $A$ al dan niet plaatsvindt[^wettotprob].
+6. (**wet van totale probabiliteit**) Er geldt: $$P(B)=P(B\mid A)P(A) + P(B|\text{niet }A)P(\text{niet }A)\,,$$ de kans op gebeurtenis $B$ kan dus berkend worden aan de hand van de kansen dat gebeurtenis $A$ al dan niet plaatsvindt[^wettotprob].
 7. Met de *regel van Bayes* kunnen we via de kansen van een gebeurtenis A de kansen berekenen voor een andere gebeurtenis B. De formule wordt hieronder gegeven voor gebeurtenissen $A$ en $B$: $$
 P(A\mid B) = \frac{P(B \mid A) P(A)}{P(B)} = \frac{P(B \mid A) P(A)}{P(B\mid A)P(A) + P(B|\text{niet }A)P(\text{niet }A)}\,.
 $$
@@ -176,6 +176,9 @@ Onderstaande tabel bevat experimenteel bepaalde aminozuur (AZ) aantallen van een
 | W          | 7             | 2                       | 5                            | 0.0060                          | 0.0149                                        |
 | Y          | 27            | 19                      | 8                            | 0.0574                          | 0.0238                                        |
 | **Totaal** | **667**       | **331**                 | **336**                      | **1**                           | **1**                                         |
+
+> **Vraag** Welke aminozuren zijn relatief specifiek voor $\beta$-platen?
+
 Dus is de kans op een $\beta$-plaat gelijk aan:
 
 $$

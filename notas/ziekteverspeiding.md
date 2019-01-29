@@ -93,7 +93,7 @@ Zoals je ziet wordt een netwerk of een graaf vaak voorgesteld in een figuur waar
 
 > **Vraag 3**: Beschrijf het verschil tussen de sociale netwerken tussen kinderen van verschillende leeftijden.
 
-Een figuur is nuttig om te bekijken hoe het netwerk eruitziet. Om er berekeningen mee te doen zijn er echter andere voorstellingen nodig. Een graaf kan wiskundig voorgesteld worden in een matrix die een *bogenmatrix* (Engels: adjacency matrix) genoemd wordt. Als het aantal knopen in de graaf $n$ is, dan is de bogenmatrix een vierkante matrix met dimensies $n \times n$. Het element $A_{ij} = 1$ als de knopen $i$ en $j$ verbonden zijn, en $A_{ij} = 0$ als ze niet verbonden zijn[^verbindingslijst]. De bogenmatrix linkt graaftheorie met matrixtheorie!
+Een figuur is nuttig om te bekijken hoe het netwerk eruitziet. Om er berekeningen mee te doen zijn er echter andere voorstellingen nodig. Een graaf kan wiskundig voorgesteld worden in een matrix die een *bogenmatrix* (Engels: adjacency matrix) genoemd wordt. Als het aantal knopen in de graaf $n$ is, dan is de bogenmatrix een vierkante matrix met dimensies $n \times n$. Het element $A_{ij} = 1$ als de knopen $i$ en $j$ verbonden zijn, en $A_{ij} = 0$ als ze niet verbonden zijn[^verbindingslijst]. De bogenmatrix linkt grafentheorie met matrixtheorie!
 
 [^verbindingslijst]: In het echte leven hebben de meeste mensen in een populatie geen contact met elkaar (denk aan het sociaal netwerk van een  hele stad). De graaf is dus verre van *volledig verbonden* (elk paar knopen is verbonden) en de elementen van de bogenmatrix bestaat grotendeels uit nullen. In deze gevallen kan het soms beter zijn om een *verbindingslijst* te gebruiken. Dit is een lijst met dimensies $m \times 2$ waarbij $m$ het aantal bogen is, en elke rij bevat een koppel knopen die verbonden zijn. Afhankelijk van het specifieke netwerk dat we bestuderen en wat we ermee willen doen, kan de ene of de andere datastructuur efficiënter zijn.
 
@@ -237,7 +237,7 @@ Zoals eerder gezegd kunnen we via de verbindingsmatrix $A$ een netwerk voorstell
 # kan je de graaf hiervan tekenen?
 
 A = [[0, 1, 1, 0, 0, 0],
-     [1, 0, 1, 0, 1, 0],
+     [1, 0, 1, 0, 0, 0],
      [1, 1, 0, 0, 1, 0],
      [0, 0, 0, 0, 1, 1],
      [0, 0, 1, 1, 0, 0],
@@ -275,7 +275,7 @@ Simulaties kunnen we eenvoudig doen met een for-lus.
 x = x0
 for t in range(6):  # 5 tijdstappen (python begint vanaf 0 te tellen)
     print("Tijdstip ",t, ": ", x.count("I"), "geinfecteerden, x =",x)
-    x = update(A, x)  # update de toestandsvector
+    x = update(A, x)  # update van de toestandsvector
 ```
 
 > **Optionele programmmeeropdracht**: Kan je het model aanpassen zodat persoon 2 en 3 resistent zijn? Pas hiervoor de functie `update` aan.
