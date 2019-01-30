@@ -58,7 +58,7 @@ def update_toestand(A, x, resistent=[]):
     geven.
     """
     # update x
-    x[:] += A @ x > 0
+    x[:] = (x + A @ x) > 0
     # resitente worden niet ziek
     if resistent:
         x[resistent] = 0
