@@ -262,7 +262,8 @@ def update(A, x_oud):
         elif x_oud[i] == "S":
             toestand = "S"
             for j in range(n):  # overloop alle geconnecteerde knopen
-                if A[i][j] == 1 and x_oud[j] == "I":  # connectie die geïnfecteerd is
+                # connectie die geïnfecteerd is
+                if A[i][j] == 1 and x_oud[j] == "I":  
                     toestand = "I"  # regel 2
         # voeg hier regel 4 toe voor R
         x_nieuw.append(toestand)  # voeg de nieuwe toestand toe

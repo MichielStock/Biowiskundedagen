@@ -1,4 +1,3 @@
-
 # Eiwitten beter begrijpen met kansrekening
 
 In dit project zullen we gebruik maken van kansrekening om de secundaire structuur ($\beta$-platen) van een eiwit te voorspellen. We overlopen eerst de basisregels van kansrekening en dan zullen we de kansformules vereenvoudigen om een bevatbaar model te ontwikkelen. Zo bekomen we een data-gedreven model om voor een sequentie van aminozuren de kans te berekenen of dit in een $\beta$-plaat voorkomt of niet. Dit proces zullen we toepassen over volledige eiwitten via de glijdend venster methode. Ten slotte hebben we het kort even over modelevaluatie: hoe betrouwbaar is zo'n model?
@@ -45,9 +44,16 @@ Er zijn enkele fundamentele regels die steeds gelden bij het berekenen van kanse
 2. De totale kans dat er *een* gebeurtenis plaatsvindt is 1 (honderd procent)[^normaliserenkans].
 3. (**somregel**) De kans dat één van twee elkaar uitsluitendende gebeurtenissen plaatsvindt is de som van de kansen van die gebeurtenissen[^uitsluitendekansen].
 4. (**productregel**) Bij twee *onafhankelijke* gebeurtenissen is de kans dat beide gebeurtenissen samen plaatsvinden het product van die kansen[^onafhkansen].
-5. Er bestaan *conditionele* kansen, dit is de kans dat een gebeurtenis $A$ plaatsvindt gegeven een gebeurtenis $B$. De conditionele kans[^condkansen] wordt gedefinieerd als: $$P(A\mid B) = \frac{P(A \text{ en } B)}{P(B)}\,.$$
-6. (**wet van totale probabiliteit**) Er geldt: $$P(B)=P(B\mid A)P(A) + P(B|\text{niet }A)P(\text{niet }A)\,,$$ de kans op gebeurtenis $B$ kan dus berkend worden aan de hand van de kansen dat gebeurtenis $A$ al dan niet plaatsvindt[^wettotprob].
-7. Met de *regel van Bayes* kunnen we via de kansen van een gebeurtenis A de kansen berekenen voor een andere gebeurtenis B. De formule wordt hieronder gegeven voor gebeurtenissen $A$ en $B$: $$
+5. Er bestaan *conditionele* kansen, dit is de kans dat een gebeurtenis $A$ plaatsvindt gegeven een gebeurtenis $B$. De conditionele kans[^condkansen] wordt gedefinieerd als:
+$$
+P(A\mid B) = \frac{P(A \text{ en } B)}{P(B)}\,.
+$$
+6. (**wet van totale probabiliteit**) Er geldt:
+$$
+P(B)=P(B\mid A)P(A) + P(B|\text{niet }A)P(\text{niet }A)\,,
+$$ de kans op gebeurtenis $B$ kan dus berkend worden aan de hand van de kansen dat gebeurtenis $A$ al dan niet plaatsvindt[^wettotprob].
+7. Met de *regel van Bayes* kunnen we via de kansen van een gebeurtenis A de kansen berekenen voor een andere gebeurtenis B. De formule wordt hieronder gegeven voor gebeurtenissen $A$ en $B$:
+$$
 P(A\mid B) = \frac{P(B \mid A) P(A)}{P(B)} = \frac{P(B \mid A) P(A)}{P(B\mid A)P(A) + P(B|\text{niet }A)P(\text{niet }A)}\,.
 $$
 
@@ -119,6 +125,7 @@ Deze vereenvoudiging is natuurlijk volstrekt biologisch onrealistisch! De aminoz
 $$
 P(\text{eiwitsequentie} \mid \beta\text{-plaat})= P(A_1\mid\beta\text{-plaat})P(A_2\mid\beta\text{-plaat})\ldots P(A_n\mid\beta\text{-plaat})
 $$
+
 $$
 = \prod_{i=1}^n P(A_i\mid\beta\text{-plaat})\,,
 $$
@@ -310,22 +317,25 @@ We illustreren hier hoe de kansen op de computer berekend kunnen worden in de pr
 
 ```python
 # volledige eiwitsequentie
-P12528eiwit = "MTDITANVVVSNPRPIFTESRSFKAVANGKIYIGQIDTDPVNPANQIPVYIENEDGSHVQITQPLII\
-NAAGKIVYNGQLVKIVTVQGHSMAIYDANGSQVDYIANVLKYDPDQYSIEADKKFKYSVKLSDYPTLQDAASAAVDGLL\
-IDRDYNFYGGETVDFGGKVLTIECKAKFIGDGNLIFTKLGKGSRIAGVFMESTTTPWVIKPWTDDNQWLTDAAAVVATL\
-KQSKTDGYQPTVSDYVKFPGIETLLPPNAKGQNITSTLEIRECIGVEVHRASGLMAGFLFRGCHFCKMVDANNPSGGKD\
-GIITFENLSGDWGKGNYVIGGRTSYGSVSSAQFLRNNGGFERDGGVIGFTSYRAGESGVKTWQGTVGSTTSRNYNLQFR\
-DSVVIYPVWDGFDLGADTDMNPELDRPGDYPITQYPLHQLPLNHLIDNLLVRGALGVGFGMDGKGMYVSNITVEDCAGS\
-GAYLLTHESVFTNIAIIDTNTKDFQANQIYISGACRVNGLRLIGIRSTDGQGLTIDAPNSTVSGITGMVDPSRINVANL\
-AEEGLGNIRANSFGYDSAAIKLRIHKLSKTLDSGALYSHINGGAGSGSAYTQLTAISGSTPDAVSLKVNHKDCRGAEIP\
-FVPDIASDDFIKDSSCFLPYWENNSTSLKALVKKPNGELVRLTLATL"
+P12528eiwit = "MTDITANVVVSNPRPIFTESRSFKAVANGKIYIGQIDTDPVNPA\
+NQIPVYIENEDGSHVQITQPLIINAAGKIVYNGQLVKIVTVQGHSMAIYDANGSQVDYI\
+ANVLKYDPDQYSIEADKKFKYSVKLSDYPTLQDAASAAVDGLLIDRDYNFYGGETVDFG\
+GKVLTIECKAKFIGDGNLIFTKLGKGSRIAGVFMESTTTPWVIKPWTDDNQWLTDAAAV\
+VATLKQSKTDGYQPTVSDYVKFPGIETLLPPNAKGQNITSTLEIRECIGVEVHRASGLM\
+AGFLFRGCHFCKMVDANNPSGGKDGIITFENLSGDWGKGNYVIGGRTSYGSVSSAQFLR\
+NNGGFERDGGVIGFTSYRAGESGVKTWQGTVGSTTSRNYNLQFRDSVVIYPVWDGFDLG\
+ADTDMNPELDRPGDYPITQYPLHQLPLNHLIDNLLVRGALGVGFGMDGKGMYVSNITVE\
+DCAGSGAYLLTHESVFTNIAIIDTNTKDFQANQIYISGACRVNGLRLIGIRSTDGQGLT\
+IDAPNSTVSGITGMVDPSRINVANLAEEGLGNIRANSFGYDSAAIKLRIHKLSKTLDSG\
+ALYSHINGGAGSGSAYTQLTAISGSTPDAVSLKVNHKDCRGAEIPFVPDIASDDFIKDS\
+SCFLPYWENNSTSLKALVKKPNGELVRLTLATL"
 
 # voorbeelden van sequenties van beta-platen
-beta_platen = ["SRSF", "KIYIGQ", "VYIE", "HVQI", "QPLII", "IVY", "IVTVQ",
-                "SMAIY", "QVDYIA", "SVK", "YPT", "VDGLLI", "TVD", "TIEC",
-                "AKFI", "DGNLIFT", "RIAG", "FME", "WVI", "KTDGY", "STLEIRE",
-                "EVHR", "SGLMAGFLFRG", "KMVD", "NNPSG", "IITFE", "LSGD", "YVIG",
-                 "RTSY", "SAQFLRNN", "GVIG", "TSYR", "GVKT", "GTV", "NYN",
+beta_platen = ["SRSF", "KIYIGQ", "VYIE", "HVQI",
+              "QPLII", "IVY", "IVTVQ","SMAIY", "QVDYIA",
+              "SVK", "YPT", "VDGLLI", "TVD", "TIEC", "AKFI",
+              "DGNLIFT", "RIAG", "FME", "WVI", "KTDGY", "STLEIRE","EVHR",
+              "RTSY", "SAQFLRNN", "GVIG", "TSYR", "GVKT", "GTV", "NYN",
                  "QFRDSVVIY", "GFDL", "DMN", "LIDNLLVR", "LGVGFGMDGKG",
                  "YVSNITVED", "AGSGAYLLTHE", "VFTNIAIID", "QIYI", "RVNGLRL",
                  "TIDAPNSTVSGITG", "INVANL", "NIRANS", "GYDSAAIKL", "KTL",

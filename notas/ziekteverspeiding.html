@@ -1,0 +1,911 @@
+<h1 id="verspreiding-van-ziektes-doorheen-sociale-netwerken">Verspreiding van ziektes doorheen sociale netwerken</h1>
+<p>In dit project zullen we bestuderen hoe ziektes zich kunnen verspreiden via een (sociaal) netwerk. We zullen onderzoeken hoe de structuur van een netwerk een invloed kan hebben op hoe snel een ziekte doorgegeven wordt. Ten slotte zullen we het effect van vaccinatie bekijken.</p>
+<h2 id="besmettelijke-ziektes">Besmettelijke ziektes</h2>
+<p>In de geschiedenis van de mensheid<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> heeft niets zoveel mensen gedood als besmettelijke ziekten. De ziekte die de meeste mensen heeft gedood is waarschijnlijk tuberculose, waarbij 1 miljard mensen in alleen de 19de en 20ste eeuw werden gedood. De ziekte die het snelst gedood heeft, is de 'Spaanse griep' epidemie die 50 tot 100 miljoen mensen heeft gedood tussen 1918 en 1920. De ziekte met het grootste evenredige dodental blijkt de Zwarte Dood, die 20% van de wereldbevolking en zelfs 50% van de Europese bevolking in de 14e eeuw doodde. Nog erger dan die ramp was het dodental op het Amerikaanse continent na de Europese kolonisatie. Er wordt geschat dat 90% van de inheemse bevolking geëlimineerd werd door de door Europeanen meegebrachte ziektes. De inheemse bevolking was namelijk nog nooit eerder met deze ziektes in contact gekomen en had dus nog niet de gelegenheid gehad om resistentie te ontwikkelen tegen deze ziektes.</p>
+<p>Tegenwoordig veroorzaken besmettelijke ziektes minder doden door betere medische kennis, technieken en middelen. Echter blijven ze een ernstig probleem voor de volksgezondheid. Toch zijn 3 van de 10 belangrijkste doodsoorzaken wereldwijd besmettelijke ziekten. Naast de verbeteringen van de moderne wereld zijn er ook nieuwe uitdagingen voor het stoppen van epidemieën. Nu kan een besmette persoon op een vliegtuig stappen en in een paar uur tijd een ziekte naar een ander continent verspreiden (zie Figuur 8).</p>
+<div class="figure">
+<img src="../figuren/luchthaven.jpg" alt="Verschillende vliegtuigroutes tussen luchthavens. De wereld is sterk geconnecteerd en ziektes kunnen zich nu veel sneller verspreiden." />
+<p class="caption">Verschillende vliegtuigroutes tussen luchthavens. De wereld is sterk geconnecteerd en ziektes kunnen zich nu veel sneller verspreiden.</p>
+</div>
+<h2 id="ziekteverspreidingsmodellen">Ziekteverspreidingsmodellen</h2>
+<p>Bij de uitbraak van een besmettelijke ziekte is het belangrijk om inzicht te krijgen in hoe deze ziekte zich de volgende dagen en weken kan verspreiden. Dit zal helpen om het optimale gebruik van middelen en mensen te plannen om de ziekteverspreiding een halt toe te roepen. Bovendien, voordat we deze maatregelen ten uitvoer leggen, moeten we weten hoe ze het verloop van de ziekte kunnen beïnvloeden, zodat de meest efficiënte en goedkoopste maatregelen eerst geïmplementeerd kunnen worden.</p>
+<p>Om deze en andere belangrijke vragen te beantwoorden, worden <em>ziekteverspreidingsmodellen</em> vaak gebruikt. Deze modellen zijn gebaseerd op wiskundige vergelijkingen die beschrijven hoe een besmettelijke ziekte zich doorheen de tijd en/of ruimte verspreidt. Ze kunnen worden gebruikt om relevante vragen te beantwoorden, zoals:</p>
+<ul>
+<li>Zonder tussenkomst, zal de ziekte uitsterven of ongecontroleerd verspreiden?</li>
+<li>Hoeveel mensen moeten gevaccineerd worden om de verspreiding te stoppen?</li>
+<li>Hoe beïnvloedt het gedrag van mensen of dieren de verspreiding van ziektes?</li>
+<li>Welk effect zullen verschillende quarantainemaatregelen hebben?</li>
+</ul>
+<p>Aangezien het verloop doorheen de tijd cruciaal is in het geval van ziekteverspreiding, zijn bijna alle ziektespreidingsmodellen <em>dynamisch</em><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> van aard. Maar sinds de ontwikkeling van de eerste ziektespreidingsmodellen in de eerste helft van de 20e eeuw, zijn bijna alle mogelijke modeltypes gebruikt om de dynamiek van besmettelijke ziektes te beschrijven.</p>
+<p>In dit project zullen we twee van de belangrijkste en meest gebruikte types van ziektespreidingsmodellen bestuderen.</p>
+<h2 id="het-sir-model">Het SIR-model</h2>
+<p>Een van de eenvoudigste manieren om ziekteverspreiding in een gemeenschap te modelleren is aan de hand van het SIR-model. SIR staat voor <em>Susceptible</em> (vatbaar), <em>Infected</em> (geïnfecteerd) en <em>Resistant</em> (resistent of hersteld), de drie types individuen die in een gemeenschap voorkomen. Meestal zijn de individuen gewoon mensen, maar dit model kan ook aangewend worden om ziekteuitbraak bij knaagdieren, vogels of zelfs planten te modelleren. Het SIR-model bestaat uit drie vergelijkingen die de veranderingen van het aantal individuen in een bepaalde groep beschrijven. De variabelen die de toestand beschrijven zijn:</p>
+<ul>
+<li><span class="math inline"><em>S</em>(<em>t</em>)</span>: het relatief aantal vatbare individuen op tijdstip <span class="math inline"><em>t</em></span>;</li>
+<li><span class="math inline"><em>I</em>(<em>t</em>)</span>: het relatief aantal geïnfecteerde individuen op tijdstip <span class="math inline"><em>t</em></span>;</li>
+<li><span class="math inline"><em>R</em>(<em>t</em>)</span>: het relatief aantal resistente individuen op tijdstip <span class="math inline"><em>t</em></span>.</li>
+</ul>
+<p>In deze beschrijving maken we een eerste grote vereenvoudiging van de werkelijkheid. We nemen aan dat elk van deze variablen reëelwaardig zijn en dat het aantal individuen in elke groep continu kan variëren. In werkelijkheid is het aantal geïnfecteerden of vatbare individuen een natuurlijk getal, je bent immers besmet of je bent het niet. Modelleerders werken echter graag met continue variablen omdat ze dan de technieken van wiskundige analyse kunnen gebruiken.</p>
+<blockquote>
+<p><strong>Vraag 1</strong>: Onder welke omstandigheden gaat deze continue benadering ongeveer op? Wanneer niet?</p>
+</blockquote>
+<div class="figure">
+<img src="../figuren/SIRtoestanden.png" alt="Visule voorstelling van het SIR-model. Een vatbaar individu (toestand S) kan geïnfecteerd worden (toestand I), weergegeven door de volle pijlen. Een geïnfecteerd individu kan immuun worden en vatbare individuen kunnen geïmmuniseerd worden, weergegeven door de pijlen met stippellijnen. In dit project zullen we deze overgangen niet beschouwen." />
+<p class="caption">Visule voorstelling van het SIR-model. Een vatbaar individu (toestand <span class="math inline"><em>S</em></span>) kan geïnfecteerd worden (toestand <span class="math inline"><em>I</em></span>), weergegeven door de volle pijlen. Een geïnfecteerd individu kan immuun worden en vatbare individuen kunnen geïmmuniseerd worden, weergegeven door de pijlen met stippellijnen. In dit project zullen we deze overgangen niet beschouwen.</p>
+</div>
+<p>Deze drie variabelen worden aan elkaar gelinkt aan de hand van drie differentiaalvergelijkingen (die elk een verandering in de tijd beschrijven). Hierin nemen we aan dat de grootte van de populatie ongewijzigd blijft. We nemen dus aan dat, gedurende de tijdspanne die het model beschrijft, er niemand geboren wordt en ook niemand sterft. We zullen ons hier dus beperken tot de verspreiding van een relatief onschuldige ziekte zoals een verkoudheid. De drie vergelijkingen zijn als volgt:</p>
+<p><span class="math inline">$\frac{\text{d}S(t)}{\text{d}t} = -\beta \, S(t) \, I(t)$</span></p>
+<p><span class="math inline">$\frac{\text{d}I(t)}{\text{d}t} = \beta \, S(t) \,I(t) - \gamma \, I(t)$</span></p>
+<p><span class="math inline">$\frac{\text{d}R(t)}{\text{d}t} = \gamma \, I(t)$</span></p>
+<p>Elke vergelijking vertelt ons hoe het aantal mensen in elke groep wijzigt doorheen de tijd. Daaruit kunnen we ook berekenen hoeveel mensen zich op een bepaald moment bevinden in elke groep. De vergelijkingen zijn gekoppeld via de <em>overgangssnelheden</em>. Elke overgangssnelheid vertelt ons hoe waarschijnlijk het is om van de ene naar de andere groep over te gaan.</p>
+<p>De overgangssnelheid van vatbaar (S) naar geïnfecteerd (I) hangt af van het contact tussen een vatbare persoon en een geïnfecteerd persoon. We noemen deze contactsnelheid <span class="math inline"><em>β</em></span>. De kans dat de ziekte overgedragen wordt tijdens een contact tussen een vatbare en een geïnfecteerde persoon is dus <span class="math inline"><em>β</em> <em>I</em></span>. Het aantal vatbare personen (S) vermindert dus met deze snelheid op elk tijdstip.</p>
+<p>De overgangssnelheid van geïnfecteerd (I) naar resistent (R) hangt alleen af van de snelheid van herstel, die we <span class="math inline"><em>γ</em></span> noemen. Het aantal geïnfecteerde personen vermindert dus met deze snelheid op elk tijdstip.</p>
+<blockquote>
+<p><strong>Vraag 2</strong>: Kan je aantonen dat het totaal aantal individuen in de populatie <span class="math inline">(<em>S</em>(<em>t</em>)+<em>I</em>(<em>t</em>)+<em>R</em>(<em>t</em>))</span> constant zal blijven?</p>
+</blockquote>
+<p>Bij het vaststellen van deze overgangssnelheiden hebben we een andere belangrijke vereenvoudiging gemaakt. We nemen aan dat elke persoon in de populatie een gelijke waarschijnlijkheid heeft om in contact te komen met elke andere persoon. Anders gezegd, we nemen aan dat de populatie perfect gemengd is. In sommige gevallen kan deze vereenvoudiging passen bij de realiteit, bijvoorbeeld als we willen bijhouden hoe de griep zich door een fuif verspreidt.</p>
+<p>Het SIR-model kan niet exact worden opgelost, zoals veel differentiaalvergelijkingen die optreden in de biologische wetenschappen. We moeten dus een <em>numerieke benadering</em> van de oplossing vinden. Dit betekent dat we een algoritme zullen gebruiken om een geschatte maar nauwkeurige oplossing te vinden. Er zijn verschillende mogelijkheiden om dit te doen. We zouden ons continue probleem kunnen vervangen door een discrete tegenhanger. Dit zou ons toelaten bepaalde numerieke methoden te gebruiken om een benaderende oplossing te krijgen. Anderzijds kunnen we een iteratieve methode gebruiken. Uitgaande van een initiële schatting, maken iteratieve methoden opeenvolgende benaderingen die stapsgewijs convergeren naar de exacte oplossing.</p>
+<p>Met behulp van computers is het gemakkelijk om op deze manier een numerieke oplossing voor het SIR-model te vinden. Vanuit deze oplossing kunnen we leren hoe de verschillende variabelen in de loop van de tijd veranderen. Om dit te doen, vertrekken we van een beginvoorwaarde: het is logisch om te beginnen met een populatie met nul resistente personen, een paar geïnfecteerde personen en de rest vatbaar. Vervolgens kunnen we onze numerieke oplossing gebruiken om het aantal mensen in elke groep op elke tijdstap te berekenen. Als we een plot maken, zullen we de dynamiek zien die in de Figuur 10 wordt getoond.</p>
+<div class="figure">
+<img src="../figuren/SIRsimulatie.png" alt="Een simulatie van een oplossing van het stelsel differentiaalvergelijkingen die het standaard SIR-model voorstellen." />
+<p class="caption">Een simulatie van een oplossing van het stelsel differentiaalvergelijkingen die het standaard SIR-model voorstellen.</p>
+</div>
+<h2 id="sociale-netwerken">Sociale netwerken</h2>
+<p>Het standaard SIR-model maakt de onrealistische veronderstelling dat twee willekeurige individuen telkens dezelfde kans hebben om met elkaar in contact te komen en zo mogelijks een ziekte door te geven <a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>. In werkelijkheid gaat natuurlijk niet iedereen met dezelfde mensen om. We hebben allemaal mensen waar we meer mee omgaan (meer in contact mee komen) dan met anderen. Het geheel van wie met wie in contact staat wordt een <em>sociaal netwerk</em> genoemd (denk aan Facebook). Het lijkt evident dat de structuur van zo'n netwerk een sterke invloed zal hebben op de dynamiek van de ziekteverspreiding. In deze sectie zullen we bekijken hoe we een netwerk wiskundig kunnen beschrijven.</p>
+<h3 id="een-voorbeeld">Een voorbeeld</h3>
+<p>Hieronder zie je een voorbeeld van enkele netwerken. De punten vertegenwoordigen de leerlingen en worden <em>knopen</em> genoemd. De contacten tussen leerlingen worden weergegeven door lijnsegmenten tussen knopen, en worden <em>bogen</em> genoemd. We zeggen dat twee knopen met elkaar <em>verbonden</em> zijn als ze met een boog geconnecteerd worden. Hier gaan we ervan uit dat een knoop niet verbonden kan zijn met zichzelf<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>. Ook is er maar maximaal één boog mogelijk tussen twee knopen. De <em>graad</em> van een knoop is het aantal bogen dat ermee verbonden is.</p>
+<div class="figure">
+<img src="../figuren/netwerkkinderen.jpg" alt="Voorbeelden van gekleurde grafen die netwerken tussen kinderen van verschillende leeftijden voorstellen (bron)." />
+<p class="caption">Voorbeelden van gekleurde grafen die netwerken tussen kinderen van verschillende leeftijden voorstellen (<a href="https://royalsocietypublishing.org/doi/full/10.1098/rspb.2010.1807">bron</a>).</p>
+</div>
+<p>Zoals je ziet wordt een netwerk of een graaf vaak voorgesteld in een figuur waar cirkels (of andere elementen) de knopen voorstellen die geconnecteerd zijn door lijnen, de bogen. Deze figuren zijn niet uniek: eenzelfde netwerk kan vaak op verschillende manieren voorgesteld worden. Soms hebben de knopen ook een kleur, bijvoorbeeld om geslacht te duiden in een sociaal netwerk. In dat geval spreekt men van een <em>gekleurde graaf</em>.</p>
+<blockquote>
+<p><strong>Vraag 3</strong>: Beschrijf het verschil tussen de sociale netwerken tussen kinderen van verschillende leeftijden.</p>
+</blockquote>
+<p>Een figuur is nuttig om te bekijken hoe het netwerk eruitziet. Om er berekeningen mee te doen zijn er echter andere voorstellingen nodig. Een graaf kan wiskundig voorgesteld worden in een matrix die een <em>bogenmatrix</em> (Engels: adjacency matrix) genoemd wordt. Als het aantal knopen in de graaf <span class="math inline"><em>n</em></span> is, dan is de bogenmatrix een vierkante matrix met dimensies <span class="math inline"><em>n</em> × <em>n</em></span>. Het element <span class="math inline"><em>A</em><sub><em>i</em><em>j</em></sub> = 1</span> als de knopen <span class="math inline"><em>i</em></span> en <span class="math inline"><em>j</em></span> verbonden zijn, en <span class="math inline"><em>A</em><sub><em>i</em><em>j</em></sub> = 0</span> als ze niet verbonden zijn<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>. De bogenmatrix linkt grafentheorie met matrixtheorie!</p>
+<p>Het sociaal netwerk dat we beschouwen wordt weergegeven in onderstaande figuur. De knopen, hier personen, zijn genummerd om ze makkelijk te kunnen identificeren. We houden geen rekening met geslacht of andere attributen. We zullen hier een ziekte-uitbraak op simuleren!</p>
+<div class="figure">
+<img src="../figuren/socialnetwerk.png" alt="Een sociaal netwerk tussen vijftien personen." />
+<p class="caption">Een sociaal netwerk tussen vijftien personen.</p>
+</div>
+
+<blockquote>
+<p><strong>Oefening 1</strong>: voltooi de bogenmatrix voor het sociale netwerk.</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">1</th>
+<th align="left">2</th>
+<th align="left">3</th>
+<th align="left">4</th>
+<th align="left">5</th>
+<th align="left">6</th>
+<th align="left">7</th>
+<th align="left">8</th>
+<th align="left">9</th>
+<th align="left">10</th>
+<th align="left">11</th>
+<th align="left">12</th>
+<th align="left">13</th>
+<th align="left">14</th>
+<th align="left">15</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>1</strong></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>2</strong></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>3</strong></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>4</strong></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>5</strong></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>6</strong></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>7</strong></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>8</strong></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>9</strong></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>10</strong></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>11</strong></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>12</strong></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>13</strong></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>14</strong></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>15</strong></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><strong>Vraag 4</strong>: Wie zal er eerder een verkoudheid oplopen: persoon 3 of 15 ?</p>
+</blockquote>
+<h2 id="verspreiding-van-een-ziekte-doorheen-een-netwerk">Verspreiding van een ziekte doorheen een netwerk</h2>
+<p>Laat ons nu kijken hoe we het SIR-ziekteverspreidingsmodel kunnen vertalen naar de taal van netwerken. Aan de hand van een algemeen netwerk zullen we een veel realistischer model opstellen. Geen continue benadering meer! Vreemd genoeg sluit dit model niet enkel dichter aan bij de werkelijkheid, maar is het ook veel eenvoudiger om te bevatten en te simuleren. We kunnen een exacte oplossing bekomen zonder zelfs maar afgeleiden of andere geavanceerde wiskundige technieken nodig te hebben!</p>
+<h3 id="ziektedynamiek-op-een-netwerk">Ziektedynamiek op een netwerk</h3>
+<p>In plaats van het aantal <span class="math inline"><em>S</em></span>, <span class="math inline"><em>I</em></span> en <span class="math inline"><em>R</em></span> individuen doorheen de tijd bij te houden zoals bij het standaard SIR-model, zullen we voor elke knoop in het netwerk zijn of haar toestand bijhouden. Ook de tijd zal niet meer continu variëren maar zal nu in discrete stappen voorbij gaan: <span class="math inline"><em>t</em> = 0, 1, 2, 3, …</span>. De toestand van knoop nummer <span class="math inline"><em>i</em></span> op tijdstip <span class="math inline"><em>t</em></span> wordt dus beschreven door <span class="math inline"><em>N</em><sub><em>i</em></sub><sup><em>t</em></sup> ∈ {<em>S</em>, <em>I</em>, <em>R</em>}</span>. Dit wil zeggen dat knoop <span class="math inline"><em>i</em></span> op tijdstip <span class="math inline"><em>t</em></span> de toestand <span class="math inline"><em>S</em></span> (vatbaar), <span class="math inline"><em>I</em></span> (geïnfecteerd) of <span class="math inline"><em>R</em></span> (resistent) kan hebben. De verandering in toestanden voor de knopen beschrijven we aan de hand van enkele eenvoudige regels.</p>
+<h4 id="vatbare-en-geïnfecteerde-mensen">Vatbare en geïnfecteerde mensen</h4>
+<p>Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan ervan uit dat vatbare individuen geïnfecteerd kunnen worden, maar geïnfecteerde individuen niet meer kunnen genezen. Beschouw volgende regels:</p>
+<ol style="list-style-type: decimal">
+<li>Indien een knoop op tijdstip <span class="math inline"><em>t</em></span> in toestand <span class="math inline"><em>S</em></span> zit en al zijn buren eveneens in toestand <span class="math inline"><em>S</em></span> zitten, blijft de knoop op tijdstip <span class="math inline"><em>t</em> + 1</span> in toestand <span class="math inline"><em>S</em></span>.</li>
+<li>Indien een knoop op tijdstip <span class="math inline"><em>t</em></span> in toestand <span class="math inline"><em>S</em></span> zit en minstend één van zijn buren eveneens in toestand <span class="math inline"><em>I</em></span> zit, verandert de knoop op tijdstip <span class="math inline"><em>t</em> + 1</span> naar toestand <span class="math inline"><em>I</em></span>.</li>
+<li>Indien een knoop op tijdstip <span class="math inline"><em>t</em></span> in toestand <span class="math inline"><em>I</em></span> zit blijft de knoop op tijdstip <span class="math inline"><em>t</em> + 1</span> in toestand <span class="math inline"><em>I</em></span>.</li>
+</ol>
+<blockquote>
+<p><strong>Oefening 2</strong>: Gebruik het sociale netwerk dat je hebt gekregen om de verspreiding van een ziekte te modelleren. Neem persoon nummer 9 als startpunt voor de ziekteuitbraak (<em>patient zero</em>).</p>
+<ol style="list-style-type: decimal">
+<li>Elk individu begint als vatbaar. Kies een persoon om de eerste geïnfecteerde te worden en kleur deze in.</li>
+<li>Op elke tijdstip, ga één voor één door de buren van een geïnfecteerde persoon en laat hen ook geïnfecteerde raken volgens de bovenstaande regels. Vul de tabel in om de spreiding over de tijd te volgen.</li>
+<li>Herhaal totdat het netwerk niet meer verandert.</li>
+<li>Volgens de tabel, plot het aantal geïnfecteerden op elke tijdstip.</li>
+</ol>
+</blockquote>
+
+<table>
+<thead>
+<tr class="header">
+<th align="left">knoop</th>
+<th align="left"><span class="math inline"><em>t</em> = 0</span></th>
+<th align="left"><span class="math inline"><em>t</em> = 1</span></th>
+<th align="left"><span class="math inline"><em>t</em> = 2</span></th>
+<th align="left"><span class="math inline"><em>t</em> = 3</span></th>
+<th align="left"><span class="math inline"><em>t</em> = 4</span></th>
+<th align="left"><span class="math inline"><em>t</em> = 5</span></th>
+<th align="left"><span class="math inline"><em>t</em> = 6</span></th>
+<th align="left"><span class="math inline"><em>t</em> = 7</span></th>
+<th align="left"><span class="math inline"><em>t</em> = 8</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">1</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">2</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">3</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">4</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">5</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">6</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">7</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">8</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">9</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">10</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">11</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">12</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">13</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">14</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">15</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>totaal aantal geïnfecteerden</strong></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><strong>Oefening 3</strong>: Herhaal de laatste oefening met een ander startpunt: kies een persoon met minder of meer contacten, bv. persoon 13. Vul de tabel in en plot het aantal geïnfecteerden op elke tijdstip. Hoe verandert de ziekteverspreiding?</p>
+</blockquote>
+<p><br></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">knoop</th>
+<th align="left"><span class="math inline"><em>t</em> = 0</span></th>
+<th align="left"><span class="math inline"><em>t</em> = 1</span></th>
+<th align="left"><span class="math inline"><em>t</em> = 2</span></th>
+<th align="left"><span class="math inline"><em>t</em> = 3</span></th>
+<th align="left"><span class="math inline"><em>t</em> = 4</span></th>
+<th align="left"><span class="math inline"><em>t</em> = 5</span></th>
+<th align="left"><span class="math inline"><em>t</em> = 6</span></th>
+<th align="left"><span class="math inline"><em>t</em> = 7</span></th>
+<th align="left"><span class="math inline"><em>t</em> = 8</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">1</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">2</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">3</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">4</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">5</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">6</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">7</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">8</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">9</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">10</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">11</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">12</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">13</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">14</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">15</span></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>totaal aantal geïnfecteerden</strong></td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+</tbody>
+</table>
+<h3 id="immuniteit-en-vaccinatie">Immuniteit en vaccinatie</h3>
+<p>Het bovenstaande voorbeeld geeft ons een idee hoe we ziekteverspreiding op een netwerk kunnen modelleren, maar nu kunnen we enkele vereenvoudigingen verwijderen. Laten we nu <em>immuniteit</em> in onze populatie toestaan. Dit betekent dat sommige mensen niet geïnfecteerd kunnen worden. Hun immuniteit kan natuurlijk zijn (door een herstelling van een eerdere infectie) of kunstmatig (door een vaccin te krijgen). Nu kunnen individuen in het netwerk zich ook in toestand <span class="math inline"><em>R</em></span> (resistent) bevinden.</p>
+<p>Beschouw nu de volgende regels (visueel voorgesteld in Figuur 15):</p>
+<ol style="list-style-type: decimal">
+<li>Indien een knoop op tijdstip <span class="math inline"><em>t</em></span> in toestand <span class="math inline"><em>S</em></span> of <span class="math inline"><em>R</em></span> zit en al zijn buren eveneens in toestand <span class="math inline"><em>S</em></span> of <span class="math inline"><em>R</em></span> zitten, verandert de knoop zijn toestand niet op tijdstip <span class="math inline"><em>t</em> + 1</span>.</li>
+<li>Indien een knoop op tijdstip <span class="math inline"><em>t</em></span> in toestand <span class="math inline"><em>S</em></span> zit en minstens één van zijn buren eveneens in toestand <span class="math inline"><em>I</em></span> zit, verandert de knoop op tijdstip <span class="math inline"><em>t</em> + 1</span> naar toestand <span class="math inline"><em>I</em></span>.</li>
+<li>Indien een knoop op tijdstip <span class="math inline"><em>t</em></span> in toestand <span class="math inline"><em>I</em></span> zit blijft de knoop op tijdstip <span class="math inline"><em>t</em> + 1</span> in toestand <span class="math inline"><em>I</em></span>.</li>
+<li>Een knoop in toestand <span class="math inline"><em>R</em></span> blijft altijd in toestand <span class="math inline"><em>R</em></span>.</li>
+</ol>
+<div class="figure">
+<img src="../figuren/SIRregels.png" alt="Overzicht van de regels voor het SIR-model op een netwerk." />
+<p class="caption">Overzicht van de regels voor het SIR-model op een netwerk.</p>
+</div>
+<p>Sommige mensen kunnen om verschillende redenen niet immuun worden. Vaccins kunnen bijvoorbeeld niet gegeven worden aan jonge baby's of mensen met ernstige medische aandoeningen. In deze groep is <em>kudde-immuniteit</em> een belangrijke beschermingsmethode.</p>
+<p>Kudde-immuniteit betekent een indirecte bescherming tegen besmettelijke ziekten. Deze komt voor wanneer een groot percentage van de populatie immuun is tegen een infectie (door natuurlijke immuniteit of vaccinatie) en daardoor beschermen ze mensen die niet immuun zijn. Dit gebeurt omdat het grote aantal immune mensen de ziekteverspreiding vertraagt of zelfs stopt, want de verbindingen tussen zieke en vatbare mensen zijn geblokkeerd.</p>
+<div class="figure">
+<img src="../figuren/kuddeimmuniteit.png" alt="Illustratie van kudde-immuniteit. Als voldoende mensen geïmmuniseerd zijn breidt de ziekte zich niet verder uit bij vatbare mensen. De toestanden zijn hier stabiel en veranderen niet meer doorheen verdere tijdstappen." />
+<p class="caption">Illustratie van kudde-immuniteit. Als voldoende mensen geïmmuniseerd zijn breidt de ziekte zich niet verder uit bij vatbare mensen. De toestanden zijn hier stabiel en veranderen niet meer doorheen verdere tijdstappen.</p>
+</div>
+<p>Als een bepaalde drempwelwaarde bereikt kan worden, zal de kudde-immuniteit een ziekte uit een populatie elimineren. Als deze eliminatie over de hele wereld bereikt wordt, kan het aantal infecties permanent tot nul teruggebracht worden. Dan kunnen we spreken van de <em>uitroeiing</em> van de ziekte. Het moet duidelijk zijn dat volledige uitroeiing zeer moeilijk te bereiken is. Veel ziekten zijn regionaal uitgeroeid (bijvoorbeeld cholera in België), terwijl slechts twee ziekten wereldwijd uitgeroeid zijn: pokken en runderpest.</p>
+<blockquote>
+<p><strong>Computeroefening</strong>: Laat ons overgaan naar simulaties op de computer. Je kan deze uitvoeren in de Jupyter notebooks, beschikbaar via de <a href="https://mybinder.org/v2/gh/michielstock/biowiskundedagen/master">biowiskundedagen website</a>. Via de interactieve widget kan je een netwerk van een bepaalde grootte genereren met 1 tot 1000 geïnfecteerde personen (deze knopen zijn donkerblauw ingekleurd). Het netwerk dat verschijnt is dat na 10 tijdstappen. Ernaast zijn de fracties van de knopen in een bepaalde toestand geplot.</p>
+<ul>
+<li><strong>zonder vaccinatie</strong>: <code>frac_vac=0</code></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Hoeveel tijdstappen zijn er nodig voordat iedereen geïnfecteerd is?</li>
+<li>Is er een verschil tussen hoe snel de ziekte zich verspreidt in een willekeurig of een schaalvrij netwerk?</li>
+</ol>
+<ul>
+<li><strong>met vaccinatie</strong>: <code>frac_vac&gt;0</code>, er is keuze tussen een bepaalde fractie individuen willekeurig te vaccinatie of de fractie meest geconnecteerde individuen te vaccineren.</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Bekijk het effect van willekeurig vaccineren. Vanaf welke fractie worden ook vatbare individuen beschermd?</li>
+<li>Wat is het verschil met gerichte vaccinatie?</li>
+</ol>
+</blockquote>
+<h2 id="simuleren-van-een-het-sir-model-op-een-netwerk">Simuleren van een het SIR-model op een netwerk</h2>
+<p>Zoals eerder gezegd kunnen we via de verbindingsmatrix <span class="math inline"><em>A</em></span> een netwerk voorstellen. We kunnen een toestandsvector <span class="math inline"><strong>x</strong></span> voorstellen als een lijst met voor elke persoon één van de mogelijke toestanden (<span class="math inline"><em>S</em></span>, <span class="math inline"><em>I</em></span> of <span class="math inline"><em>R</em></span>).</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># een matrix is een geneste lijst</span>
+<span class="co"># kan je de graaf hiervan tekenen?</span>
+
+A <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],
+     [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],
+     [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>],
+     [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>],
+     [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>],
+     [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>]]
+
+<span class="co"># toestandsvector met 1 persoon geïnfecteerd</span>
+x0 <span class="op">=</span> [<span class="st">&quot;I&quot;</span>, <span class="st">&quot;S&quot;</span>, <span class="st">&quot;S&quot;</span>, <span class="st">&quot;S&quot;</span>, <span class="st">&quot;S&quot;</span>, <span class="st">&quot;S&quot;</span>]</code></pre></div>
+<p>We maken ook een functie die, gegeven de verbindingsmatrix en een oude toestandsvector, een nieuwe toestandsvector genereert.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> update(A, x_oud):
+    <span class="co">&quot;&quot;&quot;Gegeven de verbindingsmatrix en de lijst met de toestanden,</span>
+<span class="co">    bereken de nieuwe toestand.</span>
+<span class="co">    &quot;&quot;&quot;</span>
+    x_nieuw <span class="op">=</span> []
+    n <span class="op">=</span> <span class="bu">len</span>(x_oud)  <span class="co"># aantal elementen in x</span>
+    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):
+        <span class="cf">if</span> x_oud[i] <span class="op">==</span> <span class="st">&quot;I&quot;</span>:
+            toestand <span class="op">=</span> <span class="st">&quot;I&quot;</span>  <span class="co"># regel 3</span>
+        <span class="cf">elif</span> x_oud[i] <span class="op">==</span> <span class="st">&quot;S&quot;</span>:
+            toestand <span class="op">=</span> <span class="st">&quot;S&quot;</span>
+            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n):  <span class="co"># overloop alle geconnecteerde knopen</span>
+                <span class="co"># connectie die geïnfecteerd is</span>
+                <span class="cf">if</span> A[i][j] <span class="op">==</span> <span class="dv">1</span> <span class="kw">and</span> x_oud[j] <span class="op">==</span> <span class="st">&quot;I&quot;</span>:  
+                    toestand <span class="op">=</span> <span class="st">&quot;I&quot;</span>  <span class="co"># regel 2</span>
+        <span class="co"># voeg hier regel 4 toe voor R</span>
+        x_nieuw.append(toestand)  <span class="co"># voeg de nieuwe toestand toe</span>
+    <span class="cf">return</span> x_nieuw</code></pre></div>
+<p>Simulaties kunnen we eenvoudig doen met een for-lus.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">x <span class="op">=</span> x0
+<span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>):  <span class="co"># 5 tijdstappen (python begint vanaf 0 te tellen)</span>
+    <span class="bu">print</span>(<span class="st">&quot;Tijdstip &quot;</span>,t, <span class="st">&quot;: &quot;</span>, x.count(<span class="st">&quot;I&quot;</span>), <span class="st">&quot;geinfecteerden, x =&quot;</span>,x)
+    x <span class="op">=</span> update(A, x)  <span class="co"># update van de toestandsvector</span></code></pre></div>
+<blockquote>
+<p><strong>Optionele programmmeeropdracht</strong>: Kan je het model aanpassen zodat persoon 2 en 3 resistent zijn? Pas hiervoor de functie <code>update</code> aan. Pas daarna de code aan om hetvoorbeeldnetwerk van de nota's te simuleren.</p>
+</blockquote>
+<h2 id="ziektespreidingsmodellen-in-de-praktijk">Ziektespreidingsmodellen in de praktijk</h2>
+<p>Epidemieën komen voortdurend voor en daarom gebruiken volksgezondheidsorganisaties over de hele wereld modellen om interventiestrategieën te ontwikkelen en te evalueren. Met behulp van simulaties kunnen ze snel de situatie beoordelen en belangrijke beslissingen nemen. Om een ​​epidemie te herkennen en erop te reageren, hebben gezondheidswerkers informatie nodig die inherent onvoorspelbaar is (wat, waar, hoeveel gevallen, hoeveel zullen sterven, waar zal het zich verspreiden). De interacties die tot het uitbreken van een ziekte leiden zijn zeer complex, zodat de resultaten soms onverwacht of contra-intuïtief zijn. Er zijn modellen nodig om deze interacties te begrijpen en om de kwantitatieve voorspellingen te maken die volksgezondheidswerkers nodig hebben om te beslissen over interventiestrategieën.</p>
+<p>Menselijk gedrag tijdens ziekte-uitbraken verandert vaak drastisch. Mensen vermijden drukke plaatsen of haasten zich naar drukke plaatsen zoals luchthavens of treinstations als ze proberen te ontsnappen aan de epidemie. Modellering kan gezondheidswerkers helpen dit soort effecten te voorzien en te begrijpen.</p>
+<p>Modellen kunnen ook gebruikt worden om te bepalen hoe bestaansmiddelen toegewezen moeten worden om de beste kans te hebben om de verspreiding van de ziekte te stoppen - bijvoorbeeld, als vaccins beperkt zijn, welke groep mensen moet dan prioritair worden gevaccineerd? Wetenschappers kunnen modellen gebruiken om de uitkomsten van verschillende controlestrategieën te vergelijken. Modellen kunnen ook worden gekoppeld aan langetermijngegevens over het klimaat en klimaatvoorspellingen, om voorspellingen van uitbraken vele maanden in de toekomst te maken. Deze benadering wordt gebruikt om vaccinatiecampagnes te bepalen, bijvoorbeeld tegen influenza of mazelen.</p>
+<p>Wetenschappers ontwikkelen hun begrip van ziekteverspreiding met behulp van gegevens zoals gedrags-, demografische en epidemische trends, maar het is vaak moeilijk om betrouwbare gegevens te verzamelen en voor veel ziekten missen we nog steeds belangrijke informatie over hoe ze zich verspreiden. Modellering kan ook in deze gevallen helpen, omdat wetenschappers verschillende hypotheses kunnen testen om te proberen de hiaten in hun kennis in te vullen.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>In deze nota's leggen we de nadruk op de verspreiding van humane ziektes. Dezelfde modellen worden echter ook gebruikt om ziektes tussen dieren (zoals verspreiding van <em>Myxomatosis</em> bij konijnen) of zelfs tussen planten (bijvoorbeeld verspreiding van <em>Phytophthora infestans</em>, een aardappelziekte die verantwoordelijk was voor de Ierse hongersnood).<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>Een dynamisch model modelleert een verandering in de tijd.<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>Welk type contact hier ook voor nodig zou zijn.<a href="#fnref3">↩</a></p></li>
+<li id="fn4"><p>We gaan ervan uit dat je niet kan bevriend zijn met jezelf.<a href="#fnref4">↩</a></p></li>
+<li id="fn5"><p>In het echte leven hebben de meeste mensen in een populatie geen contact met elkaar (denk aan het sociaal netwerk van een hele stad). De graaf is dus verre van <em>volledig verbonden</em> (elk paar knopen is verbonden) en de elementen van de bogenmatrix bestaat grotendeels uit nullen. In deze gevallen kan het soms beter zijn om een <em>verbindingslijst</em> te gebruiken. Dit is een lijst met dimensies <span class="math inline"><em>m</em> × 2</span> waarbij <span class="math inline"><em>m</em></span> het aantal bogen is, en elke rij bevat een koppel knopen die verbonden zijn. Afhankelijk van het specifieke netwerk dat we bestuderen en wat we ermee willen doen, kan de ene of de andere datastructuur efficiënter zijn.<a href="#fnref5">↩</a></p></li>
+</ol>
+</div>

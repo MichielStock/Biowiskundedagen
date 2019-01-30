@@ -1,0 +1,523 @@
+<h1 id="eiwitten-beter-begrijpen-met-kansrekening">Eiwitten beter begrijpen met kansrekening</h1>
+<p>In dit project zullen we gebruik maken van kansrekening om de secundaire structuur (<span class="math inline"><em>β</em></span>-platen) van een eiwit te voorspellen. We overlopen eerst de basisregels van kansrekening en dan zullen we de kansformules vereenvoudigen om een bevatbaar model te ontwikkelen. Zo bekomen we een data-gedreven model om voor een sequentie van aminozuren de kans te berekenen of dit in een <span class="math inline"><em>β</em></span>-plaat voorkomt of niet. Dit proces zullen we toepassen over volledige eiwitten via de glijdend venster methode. Ten slotte hebben we het kort even over modelevaluatie: hoe betrouwbaar is zo'n model?</p>
+<h2 id="een-beetje-achtergrond">Een beetje achtergrond</h2>
+<h3 id="de-wereld-van-eiwitten-en-hun-opbouw">De wereld van eiwitten en hun opbouw</h3>
+<p>Eiwitten vormen één van de meest belangrijke klassen van biologische moleculen. Eiwitten vervullen actieve rollen en blijken essentieel te zijn voor zowat alle biologische processen in een levend organisme: ze staan in voor het verteren van voedsel, zorgen voor ontgifting, geven informatie door, maken beweging mogelijk en nog veel meer. Zo vormen ze een fundamenteel onderdeel van elk biologisch wezen.</p>
+<p>De opbouw van een eiwit is relatief simpel. Net zoals DNA is een eiwit een <em>polymeer</em>: een lange streng van meer eenvoudige moleculen. Deze eenvoudige moleculen worden <em>aminozuren</em> (AZ) genoemd, waarvan er in de natuur 20 verschillenden voorkomen, elk voorgesteld door een hoofdletter. Een specifieke opeenvolging van dergelijke aminozuren wordt de <em>primaire structuur</em> van een eiwit genoemd. Deze primaire structuur bepaalt hoe een eiwit zich verder zal opvouwen (in een functionele 3D-structuur) en legt de biologische functie van een eiwit vast.</p>
+<p>Uit de primaire structuur van eiwitten volgt de <em>secundaire structuur</em>. Deze structuren onstaan door waterstofbruggen (niet-covalente bindingen tussen vrije waterstoffen en hydroxylgroepen) tussen naburige aminozuren (zie Figuur 1). De belangrijkste secundaire structuren zijn <em><span class="math inline"><em>α</em></span>-helices</em> en <em><span class="math inline"><em>β</em></span>-platen</em> (Engels: <span class="math inline"><em>β</em></span>-sheets). Gegeven dat deze secundaire structuur enkel door de primaire structuur bepaald wordt, kunnen we wiskunde gebruiken om de secundaire structuur te voorspellen<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
+<div class="figure">
+<img src="../figuren/sec_struct.png" alt="(boven) Eiwitsequenties vormen secundaire structuren via niet-covalente waterstofbindingen. (onder) Een eiwit is slechts een aaneenschakeling van aminozuren die zich zelfstandig opvouwen tot een driedimensionale structuur." />
+<p class="caption">(boven) Eiwitsequenties vormen secundaire structuren via niet-covalente waterstofbindingen. (onder) Een eiwit is slechts een aaneenschakeling van aminozuren die zich zelfstandig opvouwen tot een driedimensionale structuur.</p>
+</div>
+<h3 id="slechte-bacteriën-en-goede-virussen">Slechte bacteriën en goede virussen</h3>
+<p>Zelfs de allerkleinste biologische entiteiten, de virussen, gebruiken eiwitten voor infectie, wat nodig is voor hun vermenigvuldiging. Een zeer interessante groep virussen zijn de bacteriofagen of kortweg fagen. Dit zijn virussen die bacteriën infecteren en ook kunnen afdoden. Bacteriën, en dus ook fagen, komen overvloedig voor in ons lichaam. Vele bacteriën zijn goedaardig en helpen ons lichaam optimaal functioneren. Soms dringen echter pathogene bacteriën ons lichaam binnen en maken ze ons ziek. <em>Salmonella enterica</em> is zo’n bacterie (Figuur 2). <em>Salmonella</em> dringt ons lichaam binnen via besmet voedsel: de bacterie kan overleven op onvoldoende verhitte eieren en vlees, alsook op rauwe groenten en fruit. Eens de bacterie zich in onze darmen bevindt, kan ze ons ernstig ziek maken.</p>
+<div class="figure">
+<img src="../figuren/salmonellafaag.png" alt="(links) Microscopische figuur van de Salmonellabacterie. (rechts) Figuur van P22 fagen die Salmonella kunnen infecteren." />
+<p class="caption">(links) Microscopische figuur van de <em>Salmonellabacterie</em>. (rechts) Figuur van P22 fagen die <em>Salmonella</em> kunnen infecteren.</p>
+</div>
+<p>Een bijkomend probleem is dat <em>Salmonella</em> en andere bacteriën steeds meer resistent worden tegen antibiotica. Gelukkig kunnen we ook fagen inzetten om bacteriën te bestrijden! Cruciaal voor een faag bij het infecteren van zijn bacteriële gastheer zijn specifieke faageiwitten die componenten van de salmonellabacterie herkennen. Deze faageiwitten verschillen vaak tussen verschillende salmonellafagen. Hierdoor kunnen verschillende fagen andere varianten van de salmonellabacterie herkennen. Anderzijds komt er tussen verschillende salmonellafagen ook vaak een geconserveerd eiwitdomein voor. Dit is een stukje van het eiwit dat wel hetzelfde is tussen de verschillende salmonellafagen. Bij salmonellafagen is dit een zogenaamd <span class="math inline"><em>β</em></span>-helicaal domein. Dit domein vormt als het ware een <em>moleculaire boor</em> die de celwand van de bacterie kan doorboren, wat nodig is om de infectie te starten. Door zo'n faageiwitten beter te begrijpen kunnen we ze daarna ook beter inzetten tegen gevaarlijke bacteriën.</p>
+<p>Een voorbeeld van zo'n faageiwit is het staarteiwit van salmonellafaag P22: <a href="https://www.uniprot.org/uniprot/P12528"><em>P12528</em></a> (zie rechtse deel van Figuur 2). Tussen aminozuur 140 en 543 bevindt zich een groot <span class="math inline"><em>β</em></span>-helicaal domein (bestaande uit parallele <span class="math inline"><em>β</em></span>-platen) dat een puntig einde heeft rond aminozuur 113 (Figuur 3). De aanwezigheid van die <span class="math inline"><em>β</em></span>-platen is belangrijk voor de specifieke functie van het eiwit. Deze secundaire structuren (de <span class="math inline"><em>β</em></span>-platen) kunnen we bestuderen via wiskunde en computers. Dit onderzoeksdomein noemen we <em>bio-informatica</em>. In bio-informatica wordt wiskunde gecombineerd met computerkracht om interessante biologische fenomenen te bestuderen en biologische problemen op te lossen.</p>
+<div class="figure">
+<img src="../figuren/P12528.png" alt="Het P12528 eiwit, ook wel salmonellafaag P22 tail spike eiwit genoemd. Dit eiwit bestaat uit een uitzonderlijk groot aantal \beta-platen die samen een complexe boorkop vormen. Regenboogkleuring in volgorde van de sequentie." />
+<p class="caption">Het P12528 eiwit, ook wel salmonellafaag P22 <em>tail spike</em> eiwit genoemd. Dit eiwit bestaat uit een uitzonderlijk groot aantal <span class="math inline"><em>β</em></span>-platen die samen een complexe boorkop vormen. Regenboogkleuring in volgorde van de sequentie.</p>
+</div>
+<p>In dit project zetten we de computer aan het werk om eiwitten te bestuderen. Zo'n eiwitten bestuderen wetenschappers vaak op basis van de aminozuursequentie van het eiwit. Door specifieke instructies te geven aan de computer kunnen we voorspellingen maken voor <span class="math inline"><em>β</em></span>-platen om zo de <span class="math inline"><em>β</em></span>-helicale domeinen te vinden! In dit project zullen we de computer leren om dergelijke voorspellingen te maken. Hieronder bekijken we eerst welke wiskunde je daar voor nodig hebt.</p>
+<h2 id="rekenen-met-kansen-en-de-regel-van-bayes">Rekenen met kansen en de regel van Bayes</h2>
+<h3 id="kansrekening-in-een-notendop">Kansrekening in een notendop</h3>
+<p>Kansrekening of probabiliteitstheorie is de tak van de wiskunde die zich bezig houdt met <em>kansen</em>. Met kansen kom je dagelijks in contact, denk maar aan gezelschapsspellen waarbij je moet dobbelen of Frank Deboosere die aangeeft dat er 60%<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> kans op neerslag is voor morgen. Er zijn nog vele andere voorbeelden, en net omdat kansrekenen zo belangrijk is in het dagelijkse leven, is het interessant om dit te bestuderen.</p>
+<p>Er zijn enkele fundamentele regels die steeds gelden bij het berekenen van kansen. Figuur 4 stelt deze regels visueel voor:</p>
+<ol style="list-style-type: decimal">
+<li>De kans van een gebeurtenis (vaak aangeduid met een hoofdletter) is een niet-negatief getal (nul inclusief) <a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>.</li>
+<li>De totale kans dat er <em>een</em> gebeurtenis plaatsvindt is 1 (honderd procent)<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>.</li>
+<li>(<strong>somregel</strong>) De kans dat één van twee elkaar uitsluitendende gebeurtenissen plaatsvindt is de som van de kansen van die gebeurtenissen<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>.</li>
+<li>(<strong>productregel</strong>) Bij twee <em>onafhankelijke</em> gebeurtenissen is de kans dat beide gebeurtenissen samen plaatsvinden het product van die kansen<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a>.</li>
+<li>Er bestaan <em>conditionele</em> kansen, dit is de kans dat een gebeurtenis <span class="math inline"><em>A</em></span> plaatsvindt gegeven een gebeurtenis <span class="math inline"><em>B</em></span>. De conditionele kans<a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a> wordt gedefinieerd als: <span class="math inline">$P(A\mid B) = \frac{P(A \text{ en } B)}{P(B)}\,.$</span></li>
+<li>(<strong>wet van totale probabiliteit</strong>) Er geldt: <span class="math inline"><em>P</em>(<em>B</em>)=<em>P</em>(<em>B</em> ∣ <em>A</em>)<em>P</em>(<em>A</em>)+<em>P</em>(<em>B</em>|niet <em>A</em>)<em>P</em>(niet <em>A</em>) ,</span> de kans op gebeurtenis <span class="math inline"><em>B</em></span> kan dus berkend worden aan de hand van de kansen dat gebeurtenis <span class="math inline"><em>A</em></span> al dan niet plaatsvindt<a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a>.</li>
+<li>Met de <em>regel van Bayes</em> kunnen we via de kansen van een gebeurtenis A de kansen berekenen voor een andere gebeurtenis B. De formule wordt hieronder gegeven voor gebeurtenissen <span class="math inline"><em>A</em></span> en <span class="math inline"><em>B</em></span>: <span class="math inline">$P(A\mid B) = \frac{P(B \mid A) P(A)}{P(B)} = \frac{P(B \mid A) P(A)}{P(B\mid A)P(A) + P(B|\text{niet }A)P(\text{niet }A)}\,.$</span></li>
+</ol>
+<div class="figure">
+<img src="../figuren/probabiliteit.png" alt="Voorstelling van de basisregels van kansrekening. Kansen voor beurtenissen worden voorsteld door niet-negatieve waarden die samen tot 1 sommeren." />
+<p class="caption">Voorstelling van de basisregels van kansrekening. Kansen voor beurtenissen worden voorsteld door niet-negatieve waarden die samen tot 1 sommeren.</p>
+</div>
+<blockquote>
+<p><strong>Oefening 1:</strong> Je wordt op een nacht rillend van de koorts wakker. Je moet overgeven en hebt overal jeuk. Er zijn twee ziekten met deze symptomen: blauwkoorts en groenzucht. De ene ziekte komt vaker voor dan de andere: wie ziek is heeft in 80% van de gevallen last van blauwkoorts, terwijl groenzucht slechts in 20% van de gevallen voorkomt. Zoals de naam doet vermoeden, hebben deze ziekten nog een ander, duidelijk zichtbaar symptoom. Mensen met blauwkoorts krijgen doorgaans een blauw gezicht en deze met groenzucht een groen gezicht. <strong>In 20% van de gevallen krijgt een persoon met blauwkoorts een groen gezicht en in 30% van de gevallen krijgt iemand met groenkoorts een blauw gezicht!</strong> Je spoedt je naar de spiegel en iemand met een groen gezicht staart terug. Welke ziekte heb je meest waarschijnlijk? Bekijk onderstaande figuur en vul de ontbrekende kansen in de tabel verder aan.</p>
+</blockquote>
+<div class="figure">
+<img src="../figuren/ziektebayes.png" alt="Honderd individuen met blauwkoorts en groenzucht. Sommigen hebben een blauwe gezichtskleur, anderen een groene." />
+<p class="caption">Honderd individuen met blauwkoorts en groenzucht. Sommigen hebben een blauwe gezichtskleur, anderen een groene.</p>
+</div>
+<p><span class="math inline"><em>P</em>(blauwkoorts)=…  <em>P</em>(groenzucht)=…</span></p>
+<p><br></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">ziekte</th>
+<th align="left">kans blauw gezicht</th>
+<th>kans groen gezicht</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">blauwkoorts</td>
+<td align="left">...</td>
+<td>...</td>
+</tr>
+<tr class="even">
+<td align="left">groenzucht</td>
+<td align="left">...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><span class="math inline"><em>P</em>(blauw gezicht)=…  <em>P</em>(groen gezicht)=…</span></p>
+<p><strong>Hint</strong>: de kans op een blauw gezicht splitst zich uit in het geval dat je blauwkoorts hebt en het geval dat je groenkoorts hebt.</p>
+<p><span class="math inline"><em>P</em>(blauwkoorts ∣ groen gezicht)=…  <em>P</em>(groenzucht ∣ groen gezicht)=…</span></p>
+<h3 id="naive-bayes">Naive Bayes</h3>
+<p>Nu we de regel van Bayes intuïtief begrijpen, kunnen we deze toepassen voor het voorspellen van <span class="math inline"><em>β</em></span>-platen in eiwitten. De <em>Naive Bayes</em>-methode kan hiervoor gebruikt worden. Deze methode maakt gebruik van de regel van Bayes om voorspellingen te maken o.b.v. een gegeven input. In dit project willen we een <span class="math inline"><em>β</em></span>-plaat voorspellen o.b.v. de eiwitsequentie (de input).</p>
+<p>De regel van Bayes kan voor dit geval als volgt geschreven worden:</p>
+<p><span class="math inline">$P(\beta\text{-plaat}\mid \text{eiwitsequentie}) = \frac{P(\text{eiwitsequentie} \mid \beta\text{-plaat})P(\beta\text{-plaat}) }{P(\text{eiwitsequentie})}$</span></p>
+<p>De eerste kans in de breuk kunnen we wat herschrijven als:</p>
+<p><span class="math inline"><em>P</em>(eiwitsequentie ∣ <em>β</em>-plaat)=<em>P</em>(<em>A</em><sub>1</sub><em>A</em><sub>2</sub>…<em>A</em><sub><em>n</em></sub> ∣ <em>β</em>-plaat) .</span></p>
+<p>Hierboven schrijven we dus de eiwitsequentie gewoon als de opeenvolging van de <span class="math inline"><em>n</em></span> aminozuren. Hier stelt <span class="math inline"><em>A</em><sub><em>i</em></sub></span> de identiteit voor van het aminozuur op positie <span class="math inline"><em>i</em></span>. Hoe berekenen we de kans op een gegeven sequentie? Voor een stukje met een lengte van tien aminozuren hebben we <span class="math inline">20<sup>10</sup> = 10240000000000 ≈ 10<sup>13</sup></span> ofwel 10 biljoen unieke sequenties. In een probabilistisch model moeten we dus een vereenvoudiging doorvoeren!</p>
+
+<blockquote>
+<p><strong>Vereenvoudiging:</strong> We gaan ervan uit dat de kansen voor de verschillende aminozuren <strong>binnen</strong> een bepaalde regio onafhankelijk van elkaar zijn.</p>
+</blockquote>
+
+<p>Deze vereenvoudiging is natuurlijk volstrekt biologisch onrealistisch! De aminozuren zijn in werkelijkheid juist erg afhankelijk, bijvoorbeeld omdat twee aminozuurtjes met elkaar in contact komen en een waterstofbrug vormen. Hoe fout deze vereenvoudiging ook is, ze is echter wel nuttig! Het laat ons toe om de kansen voor een <span class="math inline"><em>β</em></span>-plaat eenvoudig te herschrijven. In formulevorm is deze veronderstelling voor ons probleem<a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a>:</p>
+<p><span class="math inline"><em>P</em>(eiwitsequentie ∣ <em>β</em>-plaat)=<em>P</em>(<em>A</em><sub>1</sub> ∣ <em>β</em>-plaat)<em>P</em>(<em>A</em><sub>2</sub> ∣ <em>β</em>-plaat)…<em>P</em>(<em>A</em><sub><em>n</em></sub> ∣ <em>β</em>-plaat)</span></p>
+<p><span class="math inline">$=\prod_{i=1}^n P(A_i\mid\beta\text{-plaat})\,,$</span></p>
+<p>en, analoog, de kans op een sequentie als het geen <span class="math inline"><em>β</em></span>-plaat is:</p>
+<p><span class="math inline">$P(\text{eiwitsequentie} \mid \text{geen $\beta$-plaat})= \prod_{i=1}^n P(A_i\mid \text{geen $\beta$-plaat})\,.$</span></p>
+<p>Daarnaast moeten we ook nog de noemer berekenen, namelijk de kans op een eiwitsequentie, deze valt als volgt uiteen (wet van de totale probabiliteit):</p>
+
+<p>Dit is alles wat we nodig hebben! We kunnen de kans op een <span class="math inline"><em>β</em></span>-plaat gegeven een sequentie dus berekenen aan de hand van termen die we makkelijk uit data kunnen schatten door te tellen:</p>
+<p><span class="math inline">$P(A_i\mid \text{$\beta$-plaat}) = \frac{\text{aantal keer aminozuur $A_i$ in $\beta$-plaat regio's}}{\text{totaal aantal aminozuren in $\beta$-plaat regio's}}\,,$</span></p>
+<p><span class="math inline">$P(A_i\mid \text{geen $\beta$-plaat}) = \frac{\text{aantal keer aminozuur $A_i$ in niet-$\beta$-plaat regio's}}{\text{totaal aantal aminozuren in niet-$\beta$-plaat regio's}}$</span></p>
+<blockquote>
+<p><strong>Vraag</strong>: Onder dit model, denk je dat er een verschil is tussen de kans dat 'RGTHHG' of 'GHHTGR' deel uitmaakt van een <span class="math inline"><em>β</em></span>-plaat regio?</p>
+</blockquote>
+<h3 id="een-eenvoudig-voorbeeld-met-de-hand-uitwerken">Een eenvoudig voorbeeld met de hand uitwerken</h3>
+<p>Nu kunnen we de bovenstaande formule gebruiken om voorspellingen te maken voor eiwitten. Vooraleer we deze formule doorgeven aan de computer zullen we ze eerst zelf op papier eens toepassen.</p>
+<p>Onderstaande tabel bevat experimenteel bepaalde aminozuur (AZ) aantallen van een staarteiwit van een faag die we zullen gebruiken om voorspellingen te maken. Op basis van die aantallen zijn de verschillende conditionele kansen berekend.</p>
+<table style="width:100%;">
+<colgroup>
+<col width="7%" />
+<col width="9%" />
+<col width="15%" />
+<col width="18%" />
+<col width="20%" />
+<col width="28%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">AZ</th>
+<th align="left">totaal aantal</th>
+<th align="left">aantal in <span class="math inline"><em>β</em></span>-plaat</th>
+<th align="left">aantal niet in <span class="math inline"><em>β</em></span>-plaat</th>
+<th align="left"><span class="math inline"><em>P</em>(<em>A</em><sub><em>i</em></sub> ∣ <em>β</em>-plaat)</span></th>
+<th align="left"><span class="math inline"><em>P</em>(<em>A</em><sub><em>i</em></sub> ∣ geen <em>β</em>-plaat)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">48</td>
+<td align="left">21</td>
+<td align="left">27</td>
+<td align="left">0.0634</td>
+<td align="left">0.0804</td>
+</tr>
+<tr class="even">
+<td align="left">C</td>
+<td align="left">8</td>
+<td align="left">2</td>
+<td align="left">6</td>
+<td align="left">0.0060</td>
+<td align="left">0.0179</td>
+</tr>
+<tr class="odd">
+<td align="left">D</td>
+<td align="left">48</td>
+<td align="left">19</td>
+<td align="left">29</td>
+<td align="left">0.0574</td>
+<td align="left">0.0863</td>
+</tr>
+<tr class="even">
+<td align="left">E</td>
+<td align="left">22</td>
+<td align="left">11</td>
+<td align="left">11</td>
+<td align="left">0.0332</td>
+<td align="left">0.0327</td>
+</tr>
+<tr class="odd">
+<td align="left">F</td>
+<td align="left">25</td>
+<td align="left">13</td>
+<td align="left">12</td>
+<td align="left">0.0393</td>
+<td align="left">0.0357</td>
+</tr>
+<tr class="even">
+<td align="left">G</td>
+<td align="left">71</td>
+<td align="left">29</td>
+<td align="left">42</td>
+<td align="left">0.0876</td>
+<td align="left">0.1250</td>
+</tr>
+<tr class="odd">
+<td align="left">H</td>
+<td align="left">10</td>
+<td align="left">4</td>
+<td align="left">6</td>
+<td align="left">0.0121</td>
+<td align="left">0.0179</td>
+</tr>
+<tr class="even">
+<td align="left">I</td>
+<td align="left">51</td>
+<td align="left">36</td>
+<td align="left">15</td>
+<td align="left">0.1088</td>
+<td align="left">0.0446</td>
+</tr>
+<tr class="odd">
+<td align="left">K</td>
+<td align="left">34</td>
+<td align="left">12</td>
+<td align="left">22</td>
+<td align="left">0.0363</td>
+<td align="left">0.0655</td>
+</tr>
+<tr class="even">
+<td align="left">L</td>
+<td align="left">49</td>
+<td align="left">30</td>
+<td align="left">19</td>
+<td align="left">0.0906</td>
+<td align="left">0.0565</td>
+</tr>
+<tr class="odd">
+<td align="left">M</td>
+<td align="left">9</td>
+<td align="left">6</td>
+<td align="left">3</td>
+<td align="left">0.0181</td>
+<td align="left">0.0089</td>
+</tr>
+<tr class="even">
+<td align="left">N</td>
+<td align="left">41</td>
+<td align="left">18</td>
+<td align="left">23</td>
+<td align="left">0.0544</td>
+<td align="left">0.0685</td>
+</tr>
+<tr class="odd">
+<td align="left">P</td>
+<td align="left">28</td>
+<td align="left">7</td>
+<td align="left">21</td>
+<td align="left">0.0211</td>
+<td align="left">0.0625</td>
+</tr>
+<tr class="even">
+<td align="left">Q</td>
+<td align="left">22</td>
+<td align="left">9</td>
+<td align="left">13</td>
+<td align="left">0.0272</td>
+<td align="left">0.0387</td>
+</tr>
+<tr class="odd">
+<td align="left">R</td>
+<td align="left">23</td>
+<td align="left">14</td>
+<td align="left">9</td>
+<td align="left">0.0423</td>
+<td align="left">0.0268</td>
+</tr>
+<tr class="even">
+<td align="left">S</td>
+<td align="left">50</td>
+<td align="left">25</td>
+<td align="left">25</td>
+<td align="left">0.0755</td>
+<td align="left">0.0744</td>
+</tr>
+<tr class="odd">
+<td align="left">T</td>
+<td align="left">46</td>
+<td align="left">23</td>
+<td align="left">23</td>
+<td align="left">0.0695</td>
+<td align="left">0.0685</td>
+</tr>
+<tr class="even">
+<td align="left">V</td>
+<td align="left">48</td>
+<td align="left">31</td>
+<td align="left">17</td>
+<td align="left">0.0937</td>
+<td align="left">0.0506</td>
+</tr>
+<tr class="odd">
+<td align="left">W</td>
+<td align="left">7</td>
+<td align="left">2</td>
+<td align="left">5</td>
+<td align="left">0.0060</td>
+<td align="left">0.0149</td>
+</tr>
+<tr class="even">
+<td align="left">Y</td>
+<td align="left">27</td>
+<td align="left">19</td>
+<td align="left">8</td>
+<td align="left">0.0574</td>
+<td align="left">0.0238</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Totaal</strong></td>
+<td align="left"><strong>667</strong></td>
+<td align="left"><strong>331</strong></td>
+<td align="left"><strong>336</strong></td>
+<td align="left"><strong>1</strong></td>
+<td align="left"><strong>1</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Vraag</strong> Welke aminozuren zijn relatief specifiek voor <span class="math inline"><em>β</em></span>-platen?</p>
+</blockquote>
+<p>Dus is de kans op een <span class="math inline"><em>β</em></span>-plaat gelijk aan:</p>
+<p><span class="math inline"><em>P</em>(<em>β</em>-plaat)=…</span></p>
+<p>en de kans op een geen <span class="math inline"><em>β</em></span>-plaat:</p>
+<p><span class="math inline"><em>P</em>(geen <em>β</em>-plaat)=…</span></p>
+<p><br></p>
+<blockquote>
+<p><strong>Oefening 2:</strong> Volgende korte sequentie is een klein deeltje van het P12528 staarteiwit: 'MLIDIAR'. Experimenteel werd reeds bepaald dat dit een <span class="math inline"><em>β</em></span>-plaat is. Bereken nu via de laatst geziene formule de kans dat die sequentie een stukje van een <span class="math inline"><em>β</em></span>-plaat is (deze kans zou groot moeten zijn).</p>
+</blockquote>
+<table>
+<colgroup>
+<col width="6%" />
+<col width="8%" />
+<col width="36%" />
+<col width="48%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"><span class="math inline"><em>i</em></span></th>
+<th align="left"><span class="math inline"><em>A</em><sub><em>i</em></sub></span></th>
+<th align="left"><span class="math inline"><em>P</em>(<em>A</em><sub><em>i</em></sub> ∣ <em>β</em>-plaat)</span></th>
+<th align="left"><span class="math inline"><em>P</em>(<em>A</em><sub><em>i</em></sub> ∣ geen <em>β</em>-plaat)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>En dus (vermenigvuldig alle kansen):</p>
+<p><span class="math inline"><em>P</em>(eiwitsequentie ∣ <em>β</em>-plaat)=…</span></p>
+<p>en</p>
+<p><span class="math inline"><em>P</em>(eiwitsequentie ∣ geen <em>β</em>-plaat)=…</span></p>
+<p>waaruit volgt:</p>
+<p><span class="math inline"><em>P</em>(eiwitsequentie)=…</span></p>
+<p>En dus finaal, volgens de regel van Bayes:</p>
+<p><span class="math inline">$P( \text{$\beta$-plaat} \mid \text{eiwitsequentie}) = \frac{\ldots\ldots\times \ldots\ldots}{\ldots\ldots}=\ldots$</span></p>
+<h2 id="naive-bayes-op-de-computer">Naive Bayes op de computer</h2>
+<h3 id="glijdende-vensters-en-drempelwaarden">Glijdende vensters en drempelwaarden</h3>
+<p>In het computerdeel van dit practicum gaan we nu de Naive Bayes-methode toepassen op het volledige P12528 eiwit dat we eerder besproken hebben. Het doel is om te ontdekken waar de <span class="math inline"><em>β</em></span>-platen zich in het eiwit bevinden. We zullen <span class="math inline"><em>β</em></span>-platen voorspellen met behulp van de Naive Bayes-methode en de voorspellingen (i.e. de kansen) dan voorstellen via een grafiek. Hiervoor bewegen we aminozuur voor aminozuur over het eiwit via een <em>glijdend venster</em> van lengte <span class="math inline"><em>k</em></span>. In dit glijdend venster kijken we naar de aminozuren op elke positie van <span class="math inline"><em>i</em></span> tot <span class="math inline"><em>i</em> + <em>k</em></span> en berekenen we de conditionele kans voor een <span class="math inline"><em>β</em></span>-plaat in dit venster. We noteren dit als</p>
+<p><span class="math inline"><em>s</em><sub><em>i</em></sub><sup><em>k</em></sup> = <em>P</em>(<em>β</em>-plaat ∣ subsequentie van <em>i</em> tot <em>i</em> + <em>k</em>) .</span></p>
+<div class="figure">
+<img src="../figuren/glijdendvenster.png" alt="Illustratie van het glijdend venster over een sequentie." />
+<p class="caption">Illustratie van het glijdend venster over een sequentie.</p>
+</div>
+<p>In elke stap (voor elk glijdend venster) maken we een voorspelling die we later visueel kunnen voorstellen in een plot.</p>
+<p>We kunnen stellen dat we een regio als een <span class="math inline"><em>β</em></span>-plaat kunnen classificeren indien</p>
+<p><span class="math inline"><em>P</em>(<em>β</em>-plaat ∣ eiwitsequentie)&gt;0.5 .</span></p>
+<p>We willen dit echter veralgemenen zodat we strenger of minder streng kunnen zijn om secundaire structuren te vinden:</p>
+<p><span class="math inline"><em>P</em>(<em>β</em>-plaat ∣ eiwitsequentie)&gt;<em>θ</em> .</span></p>
+<p>Hier is <span class="math inline"><em>θ</em></span> een zorgvuldig gekozen <em>drempelwaarde</em> (Engels: threshold). De keuze van <span class="math inline"><em>θ</em></span> heeft gevolgen voor de correctheid van onze voorspellingen:</p>
+<ul>
+<li>als we <span class="math inline"><em>θ</em></span> te hoog kiezen is onze drempelwaarde te streng en zullen we dus bepaalde regio's niet als <span class="math inline"><em>β</em></span>-platen voorspellen terwijl dit eigenlijk wel <span class="math inline"><em>β</em></span>-platen zijn.</li>
+<li>als we <span class="math inline"><em>θ</em></span> te laag kiezen zijn we niet streng genoeg. We zullen dus regio's voorspellen als <span class="math inline"><em>β</em></span>-plaat die eigenlijk geen <span class="math inline"><em>β</em></span>-plaat zijn.</li>
+</ul>
+<p>Hieronder zie je een voorbeeld van een analyse met een glijdend venster.</p>
+<div class="figure">
+<img src="../figuren/glijdendvenstervoorbeeld.png" alt="Voorstelling van de resultaten van het glijdend venster. De regio&#39;s waar de conditionele kans de drempelwaarde overschrijdt gedurende een bepaalde lengte (bepaald door k), worden aangeduid als \beta-plaat." />
+<p class="caption">Voorstelling van de resultaten van het glijdend venster. De regio's waar de conditionele kans de drempelwaarde overschrijdt gedurende een bepaalde lengte (bepaald door <span class="math inline"><em>k</em></span>), worden aangeduid als <span class="math inline"><em>β</em></span>-plaat.</p>
+</div>
+<p>Je kan dus inzien dat we de waarde van <span class="math inline"><em>θ</em></span> net goed willen kiezen zodat we het aantal foute voorspellingen tot een minimum beperken. Dit beperken van foute voorspellingen is altijd gewenst bij het gebruik van wiskundige modellen, en om deze fouten te bestuderen doen we aan <em>modelevaluatie</em>.</p>
+<h3 id="modelevaluatie-op-welke-manier-is-je-model-fout">Modelevaluatie: op welke manier is je model fout?</h3>
+<p>Wiskundige modellen maken zelden perfecte voorspellingen. Toch is het in de praktijk belangrijk dat modellen zeer accurate voorspellingen maken. Als bijvoorbeeld een zelfrijdende auto een foute voorspelling maakt over waar hij moet rijden kan dat mogelijks fataal zijn voor personen in de wagen en/of in de omgeving. Wanneer een wiskundig model voorspelt dat jij een kankergezwel hebt terwijl dat eigenlijk niet zo is, krijg je onnodig dure chemotherapie (die vaak ook slechte bijwerkingen heeft). Er zijn natuurlijk ook minder ernstige voorbeelden: wanneer het algoritme van Netflix je weer een serie aanraadt die je niet goed vindt, ga je simpelweg niet naar die serie beginnen kijken. Maar uiteraard wil ook Netflix zijn klanten de meest relevante films en series aanraden, en dat doen ze door continu voorspellingen te maken o.b.v. de series en films die jij al bekeken hebt en de grote hoeveelheid data die ze over hun andere klanten hebben.</p>
+<p>Om inzicht te krijgen in hoe goed of hoe slecht een model voorspellingen maakt, zullen we het model evalueren: we bepalen hoe goed het model werkt op nieuwe data. Bij het voorspellen van secundaire structuren kan ons model slechts twee soorten voorspellingen maken: ofwel is de beschouwde regio onderdeel van een <span class="math inline"><em>β</em></span>-plaat ofwel is die dat niet. Het eerste noemen we een <em>positieve voorspelling</em>, het tweede een <em>negatieve voorspelling</em>. Deze terminologie is afkomstig uit de geneeskunde: een diagnostische test is positief als de persoon ziek is, en negatief als de persoon niet ziek is. In onze context hebben we echter geen voorkeur voor een positieve of negatieve voorspelling, we willen enkel correcte voorspellingen! Ons model kan twee soorten foute voorspellingen maken:</p>
+<ul>
+<li>Er werd foutief voorspeld dat een regio deel uitmaakt van een <span class="math inline"><em>β</em></span>-plaat. Dit heet een <strong>vals positieve</strong> voorspelling (Engels: <em>false positive</em>).</li>
+<li>Een regio werd voorspeld als geen deel van een <span class="math inline"><em>β</em></span>-plaat terwijl dit in werkelijkheid wel zo is. Dit is een <strong>vals negatieve</strong> voorspelling (Engels: <em>false negative</em>).</li>
+</ul>
+<p>De correcte en foute voorspellingen kunnen we eenvoudig voorstellen in een tabel:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left"><strong>Voorspeld als <span class="math inline"><em>β</em></span>-plaat</strong></th>
+<th align="left"><strong>Voorspeld als geen <span class="math inline"><em>β</em></span>-plaat</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Regio is deel van <span class="math inline"><em>β</em></span>-plaat</strong></td>
+<td align="left">echt positief</td>
+<td align="left">vals negatief</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Regio is geen deel van <span class="math inline"><em>β</em></span>-plaat</strong></td>
+<td align="left">vals positief</td>
+<td align="left">echt negatief</td>
+</tr>
+</tbody>
+</table>
+
+<p>Beide foute voorspellingen zijn nauw verbonden met de keuze van de drempelwaarde <span class="math inline"><em>θ</em></span>, alsook de grootte van het glijdend venster. In een laatste stap zullen we daarom de drempelwaarde <span class="math inline"><em>θ</em></span> en de grootte van het glijdend venster manueel aanpassen en het effect bestuderen op het aantal foute voorspellingen. Op die manier kunnen we <span class="math inline"><em>θ</em></span> en de grootte van het venster optimaal kiezen en zo de foute voorspellingen tot een minimum beperken.</p>
+<h3 id="stappenplan">Stappenplan</h3>
+<p>Concreet zullen we de computer dus instructies geven om het volgende te doen:</p>
+<ol style="list-style-type: decimal">
+<li>Startend bij het begin van een eiwitsequentie maakt de computer een eerste voorspelling voor het stukje van de sequentie dat zich in het glijdend venster bevindt. Dit doet hij door Naive Bayes toe te passen en het stukje sequentie als <span class="math inline"><em>β</em></span>-plaat te voorspellen wanneer de berekende kans groter is dan de vooropgestelde drempelwaarde <span class="math inline"><em>θ</em></span>.</li>
+<li>Daarna schuift de computer het glijdend venster één aminozuur op in de sequentie en maakt een nieuwe voorspelling voor dit glijdend venster. Dit proces herhaalt de computer tot het einde van de eiwitsequentie bereikt is.</li>
+<li>Voor elk glijdend venster slaat de computer de voorspelling op, zodat die later visueel voorgesteld kan worden.</li>
+<li>We laten de computer de voorspellingen vergelijken met de werkelijke secundaire structuren, zodat we het model kunnen evalueren o.b.v. vals positieven en vals negatieven.</li>
+<li>Als laatste stap veranderen we manueel de drempelwaarde <span class="math inline"><em>θ</em></span> en de grootte van het glijdend venster, om op die manier te proberen de vals positieven en vals negatieven tot een minimum te beperken.</li>
+</ol>
+<blockquote>
+<p><strong>Computeroefeningen:</strong> Het glijdend venster om secundaire structuur te voorspellen is beschikbaar in een Jupyter notebook. Deze zijn beschikbaar via de website van de biowiskundedagen (http://www.biowiskundedagen.ugent.be/) of door op <a href="https://mybinder.org/v2/gh/michielstock/biowiskundedagen/master"><em>deze link</em></a> te klikken. Met die notebook kan je experimenteren met de grootte van het venster, de parameter <span class="math inline"><em>k</em></span> en de drempelwaarde. Enkele vragen hierbij zijn de volgende:</p>
+<ul>
+<li>Welke invloed heeft de parameter <span class="math inline"><em>k</em></span> als die groter wordt?</li>
+<li>Wat wil <span class="math inline"><em>k</em> = 1</span> zeggen?</li>
+<li>Welke invloed heeft het verhogen en verlagen van de drempelwaarde op de verschillende types fouten?</li>
+<li>Kan je het aantal valse positieven (niet-<span class="math inline"><em>β</em></span>-platen die als <span class="math inline"><em>β</em></span>-plaat voorspeld worden) zo laag mogelijk krijgen? Hoe zorg je er voor dat je geen enkele <span class="math inline"><em>β</em></span>-plaat mist? Wat is het nadeel hiervan?</li>
+</ul>
+</blockquote>
+<h2 id="naive-bayes-programmeren">Naive Bayes programmeren</h2>
+<p>We illustreren hier hoe de kansen op de computer berekend kunnen worden in de programmeertaal Python.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># volledige eiwitsequentie</span>
+P12528eiwit <span class="op">=</span> <span class="st">&quot;MTDITANVVVSNPRPIFTESRSFKAVANGKIYIGQIDTDPVNPA\</span>
+<span class="st">NQIPVYIENEDGSHVQITQPLIINAAGKIVYNGQLVKIVTVQGHSMAIYDANGSQVDYI\</span>
+<span class="st">ANVLKYDPDQYSIEADKKFKYSVKLSDYPTLQDAASAAVDGLLIDRDYNFYGGETVDFG\</span>
+<span class="st">GKVLTIECKAKFIGDGNLIFTKLGKGSRIAGVFMESTTTPWVIKPWTDDNQWLTDAAAV\</span>
+<span class="st">VATLKQSKTDGYQPTVSDYVKFPGIETLLPPNAKGQNITSTLEIRECIGVEVHRASGLM\</span>
+<span class="st">AGFLFRGCHFCKMVDANNPSGGKDGIITFENLSGDWGKGNYVIGGRTSYGSVSSAQFLR\</span>
+<span class="st">NNGGFERDGGVIGFTSYRAGESGVKTWQGTVGSTTSRNYNLQFRDSVVIYPVWDGFDLG\</span>
+<span class="st">ADTDMNPELDRPGDYPITQYPLHQLPLNHLIDNLLVRGALGVGFGMDGKGMYVSNITVE\</span>
+<span class="st">DCAGSGAYLLTHESVFTNIAIIDTNTKDFQANQIYISGACRVNGLRLIGIRSTDGQGLT\</span>
+<span class="st">IDAPNSTVSGITGMVDPSRINVANLAEEGLGNIRANSFGYDSAAIKLRIHKLSKTLDSG\</span>
+<span class="st">ALYSHINGGAGSGSAYTQLTAISGSTPDAVSLKVNHKDCRGAEIPFVPDIASDDFIKDS\</span>
+<span class="st">SCFLPYWENNSTSLKALVKKPNGELVRLTLATL&quot;</span>
+
+<span class="co"># voorbeelden van sequenties van beta-platen</span>
+beta_platen <span class="op">=</span> [<span class="st">&quot;SRSF&quot;</span>, <span class="st">&quot;KIYIGQ&quot;</span>, <span class="st">&quot;VYIE&quot;</span>, <span class="st">&quot;HVQI&quot;</span>,
+              <span class="st">&quot;QPLII&quot;</span>, <span class="st">&quot;IVY&quot;</span>, <span class="st">&quot;IVTVQ&quot;</span>,<span class="st">&quot;SMAIY&quot;</span>, <span class="st">&quot;QVDYIA&quot;</span>,
+              <span class="st">&quot;SVK&quot;</span>, <span class="st">&quot;YPT&quot;</span>, <span class="st">&quot;VDGLLI&quot;</span>, <span class="st">&quot;TVD&quot;</span>, <span class="st">&quot;TIEC&quot;</span>, <span class="st">&quot;AKFI&quot;</span>,
+              <span class="st">&quot;DGNLIFT&quot;</span>, <span class="st">&quot;RIAG&quot;</span>, <span class="st">&quot;FME&quot;</span>, <span class="st">&quot;WVI&quot;</span>, <span class="st">&quot;KTDGY&quot;</span>, <span class="st">&quot;STLEIRE&quot;</span>,<span class="st">&quot;EVHR&quot;</span>,
+              <span class="st">&quot;RTSY&quot;</span>, <span class="st">&quot;SAQFLRNN&quot;</span>, <span class="st">&quot;GVIG&quot;</span>, <span class="st">&quot;TSYR&quot;</span>, <span class="st">&quot;GVKT&quot;</span>, <span class="st">&quot;GTV&quot;</span>, <span class="st">&quot;NYN&quot;</span>,
+                 <span class="st">&quot;QFRDSVVIY&quot;</span>, <span class="st">&quot;GFDL&quot;</span>, <span class="st">&quot;DMN&quot;</span>, <span class="st">&quot;LIDNLLVR&quot;</span>, <span class="st">&quot;LGVGFGMDGKG&quot;</span>,
+                 <span class="st">&quot;YVSNITVED&quot;</span>, <span class="st">&quot;AGSGAYLLTHE&quot;</span>, <span class="st">&quot;VFTNIAIID&quot;</span>, <span class="st">&quot;QIYI&quot;</span>, <span class="st">&quot;RVNGLRL&quot;</span>,
+                 <span class="st">&quot;TIDAPNSTVSGITG&quot;</span>, <span class="st">&quot;INVANL&quot;</span>, <span class="st">&quot;NIRANS&quot;</span>, <span class="st">&quot;GYDSAAIKL&quot;</span>, <span class="st">&quot;KTL&quot;</span>,
+                 <span class="st">&quot;SGALYSHI&quot;</span>, <span class="st">&quot;AYTQLTAIS&quot;</span>, <span class="st">&quot;TPDAVSLKVN&quot;</span>, <span class="st">&quot;GAE&quot;</span>, <span class="st">&quot;VPD&quot;</span>,
+                 <span class="st">&quot;DSSCFLPYWE&quot;</span>, <span class="st">&quot;SLKALVK&quot;</span>, <span class="st">&quot;LVRLTLA&quot;</span>]</code></pre></div>
+<p>Via de geavanceerde datastructuur <code>Counter</code> kunnen we makkelijk de frequenties van de verschillende aminozuren bepalen.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> collections <span class="im">import</span> Counter
+
+freq_az_P12528 <span class="op">=</span> Counter(P12528eiwit)  <span class="co"># Counter is een dict datastructuur</span>
+
+<span class="cf">for</span> AZ, freq <span class="kw">in</span> freq_az_P12528.items():
+    <span class="bu">print</span>(AZ, <span class="st">&quot; : &quot;</span>, freq)
+
+aminozuren <span class="op">=</span> freq_az_P12528.keys()  <span class="co"># alle aminozuren</span></code></pre></div>
+<p>Ditto voor de <span class="math inline"><em>β</em></span>-platen:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">freq_az_betaplaat <span class="op">=</span> Counter()  <span class="co"># initieer een counter object</span>
+
+<span class="cf">for</span> betaplaat <span class="kw">in</span> beta_platen:
+    <span class="co"># voeg de individuele platen toe</span>
+    freq_az_betaplaat.update(betaplaat)
+
+<span class="co"># kijk voor aminozuur P (proline)</span>
+<span class="bu">print</span>(<span class="st">&quot;P :&quot;</span>, freq_az_betaplaat[<span class="st">&quot;P&quot;</span>])</code></pre></div>
+<p>De frequenties van de aminozuren die niet in een <span class="math inline"><em>β</em></span>-plaat voorkomen berekenen we als volgt.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">freq_az_niet_betaplaat <span class="op">=</span> {}  <span class="co"># lege dictionary</span>
+
+<span class="cf">for</span> AZ <span class="kw">in</span> aminozuren:
+    freq_az_niet_betaplaat[AZ] <span class="op">=</span> freq_az_P12528[AZ] <span class="op">-</span> freq_az_betaplaat[AZ]</code></pre></div>
+<p>We kunnen makkelijk het aantal aminozuren tellen in de regio's.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">totaal_beta <span class="op">=</span> <span class="bu">sum</span>(freq_az_betaplaat.values())
+totaal_niet_beta <span class="op">=</span> <span class="bu">sum</span>(freq_az_niet_betaplaat.values())
+
+<span class="bu">print</span>(<span class="st">&quot;Aantal aminozuren in beta-platen: &quot;</span>, totaal_beta)
+<span class="bu">print</span>(<span class="st">&quot;Aantal aminozuren in niet-beta-platen: &quot;</span>, totaal_niet_beta)</code></pre></div>
+<blockquote>
+<p><strong>Optionele programmmeeropdracht</strong>: Bereken met de computer de conditionele kans op een <span class="math inline"><em>β</em></span>-plaat zoals je op papier gedaan hebt. Bereken de kans dat peptide 'YSIEADKK' een <span class="math inline"><em>β</em></span>-plaat is volgens de Naive Bayes methode.</p>
+</blockquote>
+<h2 id="en-verder...">En verder...</h2>
+<p>De concepten die je in deze praktische sessie geleerd hebt zijn eenvoudig en kunnen zeer nuttig zijn in de praktijk. Deze methode is een vereenvoudigede versie van de <strong>Chou-Fasman</strong> methode om secundaire structuren te voorspellen. Er bestaan echter ook veel complexere methoden om eiwitten te bestuderen. Misschien vind je onze methode van het glijdend venster nogal onelegant. Een veel krachtigere methode om secundaire structuren te bepalen is via <em>verborgen Markovketens</em> (Engels: Hidden Markov Chains) die op een slimme manier eiwit- en DNA-sequenties kunnen labellen.</p>
+<p>Daarenboven staat onderzoek in de bio-informatica nooit stil en zijn er zelfs grote bedrijven in geïnteresseerd, net omdat computers ons veel kunnen bijleren over biologie. Een zeer recent voorbeeld is Deepmind, een bedrijf dat onder Google werkt. Recent werk van hen gebruikt complexe artificiële intelligentie om de tertiaire structuur van een eiwit accuraat te voorspellen. Hun ontwikkelde methode <a href="https://deepmind.com/blog/alphafold/"><em>AlphaFold</em></a> is de eerste in zijn soort, maar zal waarschijnlijk niet de laatste zijn. Net zoals we in dit project gedaan hebben, werd hierbij een model gefit aan een databank met gelabelde voorbeelden. Wij hebben echter met een model gewerkt met een twintigtal parameters, in de praktijk zijn het er miljoenen of miljarden.</p>
+
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Naast de primaire en secundaire structuur hebben eiwitten doorgaans ook en <em>tertiaire</em> en <em>quaternaire</em> structuur. De tertiaire structuur is de globale opvouwing van het eiwit en is veel (veeeeeeeeel) moeilijker om computationeel te bepalen. De quaternaire structuur omvat hoe verschillende eiwitten samen een groter complex vormen.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>Vergeet niet bij het rekenen dat 60% = 0.60.<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>Bijvoorbeeld, de kans op een 6 gooien met een zesogige dobbelsteen is 1/6.<a href="#fnref3">↩</a></p></li>
+<li id="fn4"><p>De som van de kansen van alle mogelijke uitkomsten van een worp van een dobbelsteen is 1/6+1/6+...+1/6=1.<a href="#fnref4">↩</a></p></li>
+<li id="fn5"><p>Bijvoorbeeld, met een dobbelsteen gooien kan je nooit én een even getal gooien (kans van 3/6=1/2) én een drie gooien (kans van 1/6). De kans op één van beide gebeurtenissen is 3/6+1/6=4/6=2/3.<a href="#fnref5">↩</a></p></li>
+<li id="fn6"><p>Bijvoorbeeld, de kans dat je bij twee opeenvolgende worpen van een dobbelsteen twee keer een zes gooit is <span class="math inline">1/6 ⋅ 1/6 = 1/36</span>.<a href="#fnref6">↩</a></p></li>
+<li id="fn7"><p>Bijvoorbeeld, de kans dat we met een dobbelsteen een zes gooien gegeven dat het een even getal was is <span class="math inline">(1/6)/(1/2)=1/3</span>.<a href="#fnref7">↩</a></p></li>
+<li id="fn8"><p>Stel, je hebt twee dobbelstenen met zes zijden en één dobbelsteen met acht zijden. Als je een willekeurige dobbelsteen gooit is de kans om een zes te gooien <span class="math inline">(1/6)(2/3)+(1/8)(1/3)=11/72</span>.<a href="#fnref8">↩</a></p></li>
+<li id="fn9"><p>Hier maken we gebruik van de notatie voor een product: <span class="math inline">$\prod_{i=1}^n x_i=x_1 x_2\ldots x_n\,,$</span> (bv. <span class="math inline">$\prod_{i=2}^4 i = 2\times 3\times 4=24$</span>).<a href="#fnref9">↩</a></p></li>
+</ol>
+</div>
