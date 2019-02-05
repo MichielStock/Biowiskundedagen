@@ -1,6 +1,6 @@
 """
 Created on Wednesday 09 Janary 2018
-Last update: Saturday 26 January 2019
+Last update: Tuesday 05 February 2019
 
 @author: Michiel Stock
 michielfmstock@gmail.com
@@ -89,10 +89,10 @@ def confusiematrix(y, p):
     --------------------------------------------------------------------------------
     regio is deel van beta-plaat    |       {tp}         |           {fn}             |
     regio geen deel van beta-plaat  |       {fp}         |           {tn}            |
-    """.format(tp=sum(np.logical_and(y, p)),
-            fn=np.sum(p) - sum(np.logical_and(y, p)),
-            fp=np.sum(y) - sum(np.logical_and(y, p)),
-            tn=n - sum(np.logical_or(y, p))
+    """.format(tp=sum([p[i]==True for i in range(n) if y[i]]),
+            fn=sum([p[i]==False for i in range(n) if y[i]]),
+            fp=sum([p[i]==True for i in range(n) if not y[i]]),
+            tn=sum([p[i]==False for i in range(n) if not y[i]])
     )
 
     )
