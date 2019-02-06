@@ -67,7 +67,7 @@ def update_toestand(A, x, resistent=[]):
 def simuleer_uitbraak(n, initgeinf, netwerk, fractie_gevac, strategie):
     similatiestappen = 10
     if netwerk == "willekeurig":
-        p = 4 / n
+        p = 10.0 / n
         G = nx.binomial_graph(n=n, p=p)
     elif netwerk == "schaalvrij":
         G = nx.barabasi_albert_graph(n=n, m=2)
