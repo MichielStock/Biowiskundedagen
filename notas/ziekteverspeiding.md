@@ -140,7 +140,7 @@ In plaats van het aantal $S$, $I$ en $R$ individuen doorheen de tijd bij te houd
 Laten we ons eerst beperken tot vatbare en geïnfecteerde individuen. We gaan ervan uit dat vatbare individuen geïnfecteerd kunnen worden, maar geïnfecteerde individuen niet meer kunnen genezen. Beschouw volgende regels:
 
 1. Indien een knoop op tijdstip $t$ in toestand $S$ zit en al zijn buren eveneens in toestand $S$ zitten, blijft de knoop op tijdstip $t+1$ in toestand $S$.
-2. Indien een knoop op tijdstip $t$ in toestand $S$ zit en minstend één van zijn buren eveneens in toestand $I$ zit, verandert de knoop op tijdstip $t+1$ naar toestand $I$.
+2. Indien een knoop op tijdstip $t$ in toestand $S$ zit en minstens één van zijn buren in toestand $I$ zit, verandert de knoop op tijdstip $t+1$ naar toestand $I$.
 3. Indien een knoop op tijdstip $t$ in toestand $I$ zit blijft de knoop op tijdstip $t+1$ in toestand $I$.
 
 > **Oefening 2**: Gebruik het sociale netwerk dat je hebt gekregen om de verspreiding van een ziekte te modelleren. Neem persoon nummer 9 als startpunt voor de ziekteuitbraak (*patient zero*).
@@ -204,7 +204,7 @@ Het bovenstaande voorbeeld geeft ons een idee hoe we ziekteverspreiding op een n
 Beschouw nu de volgende regels (visueel voorgesteld in Figuur 15):
 
 1. Indien een knoop op tijdstip $t$ in toestand $S$ of $R$ zit en al zijn buren eveneens in toestand $S$ of $R$ zitten, verandert de knoop zijn toestand niet op tijdstip $t+1$.
-2. Indien een knoop op tijdstip $t$ in toestand $S$ zit en minstens één van zijn buren eveneens in toestand $I$ zit, verandert de knoop op tijdstip $t+1$ naar toestand $I$.
+2. Indien een knoop op tijdstip $t$ in toestand $S$ zit en minstens één van zijn buren in toestand $I$ zit, verandert de knoop op tijdstip $t+1$ naar toestand $I$.
 3. Indien een knoop op tijdstip $t$ in toestand $I$ zit blijft de knoop op tijdstip $t+1$ in toestand $I$.
 4. Een knoop in toestand $R$ blijft altijd in toestand $R$.
 
@@ -224,7 +224,7 @@ Als een bepaalde drempwelwaarde bereikt kan worden, zal de kudde-immuniteit een 
 >
 >   1. Hoeveel tijdstappen zijn er nodig voordat iedereen geïnfecteerd is?
 >   2. Is er een verschil tussen hoe snel de ziekte zich verspreidt in een willekeurig of een schaalvrij netwerk?
-> - **met vaccinatie**: `frac_vac>0`, er is keuze tussen een bepaalde fractie individuen willekeurig te vaccinatie of de fractie meest geconnecteerde individuen te vaccineren.
+> - **met vaccinatie**: `frac_vac>0`, er is keuze tussen een bepaalde fractie individuen willekeurig te vaccineren of de fractie meest geconnecteerde individuen te vaccineren.
 >   1. Bekijk het effect van willekeurig vaccineren. Vanaf welke fractie worden ook vatbare individuen beschermd?
 >   2. Wat is het verschil met gerichte vaccinatie?
 

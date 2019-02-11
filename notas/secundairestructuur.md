@@ -51,7 +51,7 @@ $$
 6. (**wet van totale probabiliteit**) Er geldt:
 $$
 P(B)=P(B\mid A)P(A) + P(B|\text{niet }A)P(\text{niet }A)\,,
-$$ de kans op gebeurtenis $B$ kan dus berkend worden aan de hand van de kansen dat gebeurtenis $A$ al dan niet plaatsvindt[^wettotprob].
+$$ de kans op gebeurtenis $B$ kan dus berekend worden aan de hand van de kansen dat gebeurtenis $A$ al dan niet plaatsvindt[^wettotprob].
 7. Met de *regel van Bayes* kunnen we via de kansen van een gebeurtenis A de kansen berekenen voor een andere gebeurtenis B. De formule wordt hieronder gegeven voor gebeurtenissen $A$ en $B$:
 $$
 P(A\mid B) = \frac{P(B \mid A) P(A)}{P(B)} = \frac{P(B \mid A) P(A)}{P(B\mid A)P(A) + P(B|\text{niet }A)P(\text{niet }A)}\,.
@@ -64,7 +64,7 @@ $$
 [^condkansen]: Bijvoorbeeld, de kans dat we met een dobbelsteen een zes gooien gegeven dat het een even getal was is $(1/6)/(1/2)=1/3$.
 [^wettotprob]: Stel, je hebt twee dobbelstenen met zes zijden en één dobbelsteen met acht zijden. Als je een willekeurige dobbelsteen gooit is de kans om een zes te gooien $(1/6)(2/3)+(1/8)(1/3)=11/72$.
 
-![Voorstelling van de basisregels van kansrekening. Kansen voor beurtenissen worden voorsteld door niet-negatieve waarden die samen tot 1 sommeren.](../figuren/probabiliteit.png)
+![Voorstelling van de basisregels van kansrekening. Kansen voor gebeurtenissen worden voorsteld door niet-negatieve waarden die samen tot 1 sommeren.](../figuren/probabiliteit.png)
 
 > **Oefening 1:** Je wordt op een nacht rillend van de koorts wakker. Je moet overgeven en hebt overal jeuk. Er zijn twee ziekten met deze symptomen: blauwkoorts en groenzucht. De ene ziekte komt vaker voor dan de andere: wie ziek is heeft in 80% van de gevallen last van blauwkoorts, terwijl groenzucht slechts in 20% van de gevallen voorkomt. Zoals de naam doet vermoeden, hebben deze ziekten nog een ander, duidelijk zichtbaar symptoom. Mensen met blauwkoorts krijgen doorgaans een blauw gezicht en deze met groenzucht een groen gezicht. **In 20% van de gevallen krijgt een persoon met blauwkoorts een groen gezicht en in 30% van de gevallen krijgt iemand met groenkoorts een blauw gezicht!** Je spoedt je naar de spiegel en iemand met een groen gezicht staart terug. Welke ziekte heb je meest waarschijnlijk? Bekijk onderstaande figuur en vul de ontbrekende kansen in de tabel verder aan.
 
